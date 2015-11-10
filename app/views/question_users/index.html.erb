@@ -1,0 +1,89 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-user"></i>
+      Listing Users Submissions
+      <% if params[:search] %>
+        Search Result About <%=params[:search]%>
+      <% end %>
+      ( <%=@count%> )
+      <div class="pull-right search-wrapper col-md-6">
+        <% @Search_placeholder="Search in name , email" %>
+        <%= render 'home/admin_search' %>
+      </div>
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Export To Excel", question_users_path(format: "xls") %>
+      </div>
+      <br>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Platform</th>
+          <th>Name</th>
+          <th>Country</th>
+          <th>Email</th>
+          <th>Answers</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @question_users.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+           <% @question_users.each do |question_user| %>
+            <tr class="show-image">
+              <td>
+                <% if question_user.question_user_submissions.present? %>
+                  <% question_user.question_user_submissions.first(1).each do |submission| %>
+                    <% if submission.page.present? && submission.page.social_media_platform.present? %>
+                     <div class="<%= submission.page.social_media_platform.font_awesome_style %>" style="color:<%=submission.page.social_media_platform.color%>" title="<%=submission.page.social_media_platform.title%>"></div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if question_user.name? %>
+                  <%= question_user.name %>
+                <% else %>
+                  Anonymous
+                <% end %>
+              </td>
+              <td>
+                <% if question_user.country.present? %>
+                  <%=question_user.country.name %>
+                <% else %>
+                  Anonymous
+                <% end %>
+              </td>
+              <td>
+                <% if question_user.email? %>
+                  <%= question_user.email %>
+                <% else %>
+                  Anonymous
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to question_user, :title => "Show" do %><div class="icon-show"><i class="fa fa-file-text-o"></i></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @question_users %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

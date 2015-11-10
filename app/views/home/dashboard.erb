@@ -1,0 +1,155 @@
+<!--BackEnd page-->
+<% if user_signed_in? %>
+  <div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+    <div class="content-box-header">
+      <div class="panel-title">Stories</div>
+    </div><!--content-box-header-->
+    <div class="admin-content-box content-box-large box-with-header">
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3> Recently Published </h3>
+          <ul>
+          <% @published_stories.each do |ps| %>
+            <li> <%= link_to ps.title, edit_story_path(ps) %> </li>
+          <% end %>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3> Unpublished </h3>
+          <ul>
+          <% @unpublished_stories.each do |us| %>
+            <li> <%= link_to us.title, edit_story_path(us) %> </li>
+          <% end %>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="admin-links">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'Manage Stories', admin_stories_path %>
+      </div>
+    </div><!--content-box-large-->
+  </div><!--col-md-12-->
+
+  <div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+    <div class="content-box-header">
+      <div class="panel-title">News/Analysis</div>
+    </div><!--content-box-header-->
+    <div class="admin-content-box content-box-large box-with-header">
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3> Latest </h3>
+          <ul>
+          <% @latest_posts.each do |lp| %>
+            <li> <%= link_to lp.title, edit_post_path(lp) %> </li>
+          <% end %>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3> Drafts </h3>
+          <ul>
+          <% @draft_posts.each do |dp| %>
+            <li> <%= link_to dp.title, edit_post_path(dp) %> </li>
+          <% end %>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <h3> Pinned </h3>
+          <p class="tip"> Posts selected to appear on home page. </p>
+          <ul>
+          <% @pinned_posts.each do |pp| %>
+            <li> <%= link_to pp.title, edit_post_path(pp) %> </li>
+          <% end %>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3> Featured </h3>
+          <p class="tip"> Only latest featured post will be displayed on home page. </p>
+          <ul>
+            <% if @featured_post.nil? %>
+              <li> There are no posts yet. </li>
+            <% else %>
+              <li> <%= link_to @featured_post.title, edit_post_path(@featured_post) %> </li>
+            <% end %>
+          </ul>
+        </div>
+
+      </div><!--row-->
+
+      <div class="admin-links">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'Manage Posts', admin_posts_path %> .
+        <%= link_to 'Manage Categories', admin_categories_path %> .
+        <%= link_to 'Manage Themes', admin_posts_themes_path %>
+      </div>
+    </div><!--content-box-large-->
+  </div><!--col-md-12-->
+
+
+  <div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+    <div class="content-box-header">
+      <div class="panel-title">Content</div>
+    </div><!--content-box-header-->
+    <div class="admin-content-box content-box-large box-with-header">
+      <div class="row">
+
+        <div class="col-md-4">
+          <h3> Pages </h3>
+          <p class="tip"> Manage pages content and text. </p>
+          <ul>
+            <li> <%= link_to 'Home page', edit_home_field_path(1) %> </li>
+            <% @pages.each do |page| %>
+              <li> <%= link_to page.page_title, edit_content_management_page_path(page) %> </li>
+            <% end %>
+            <li> <%= link_to 'FAQs Page', admin_faqs_path %> </li>
+            <li> <%= link_to 'Further Readings', admin_further_reads_path %> </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h3> People </h3>
+          <p class="tip"> Team members, advisors, and authors. </p>
+          <ul>
+          <% @people.each do |p| %>
+            <li> <%= link_to p.name, person_path(p) %> </li>
+          <% end %>
+          </ul>
+          <div class="admin-links">
+            <i class="fa fa-pencil-square-o"></i>
+            <%= link_to 'Manage People', admin_people_path %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h3> Quotes </h3>
+          <p class="tip"> Manage quote to appear on news/analysis page. </p>
+          <ul>
+          <% @quotes.each do |quote| %>
+            <li> <%= link_to quote.quote[0..100], quote_path(quote) %> </li>
+          <% end %>
+          </ul>
+          <div class="admin-links">
+            <i class="fa fa-pencil-square-o"></i>
+            <%= link_to 'Manage Quotes', admin_quotes_path %>
+          </div>
+        </div>
+
+      </div><!--row-->
+
+    </div><!--content-box-large-->
+  </div><!--col-md-12-->
+
+<% else %>
+  <%=render "home/permissions_notifications" %>
+<% end %>

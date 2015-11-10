@@ -1,0 +1,14 @@
+<table width="100%" cellspacing="2">
+  <tr>
+    <th style="text-align:left; font-weight:bold;">Registered at</th>
+    <th style="text-align:left; font-weight:bold;">Name</th>
+  </tr>
+
+  <% @contacts_topics.each do |excel| %>
+    <tr>
+      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;"><%= excel.name %></td>
+    </tr>
+  <% end %>
+
+</table>

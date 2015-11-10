@@ -1,0 +1,23 @@
+<%= form_for(@contacts_topic) do |f| %>
+  <% if @contacts_topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contacts_topic.errors.count, "error") %> prohibited this contacts_topic from being saved:</h2>
+
+      <ul>
+      <% @contacts_topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name , required: true , :class=>"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+
+<% end %>

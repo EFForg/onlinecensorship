@@ -1,0 +1,16 @@
+<div class="field fieldset add-page-fieldset" id="<%=@last_id%>">
+	<label class="pull-left">Slider order</label>
+	<input class="form-control pull-left page-order" name="page_theorder[]" type="number" />
+	<p class="tip pull-left tip-margin"> Optional</p>
+	<div class="pull-left saved hide" id="save_<%=@last_id%>">saved</div>
+	<a data-remote="true" data-confirm="Are you sure?" data-method="delete" href="/pages/<%=@last_id%>" rel="nofollow" title="Delete" class="delete-page">
+		<i class="pull-right fa fa-trash-o icon-margin cursor" title="Delete"></i>
+	</a>
+
+  <%= link_to admin_pages_questions_path(page_id: @last_id,page_div: "page-#{@last_id.to_s}-registerd-questions"), remote: true  do %>
+		<div class="pull-right btn btn-primary open-popup" data-toggle="modal" data-target="#myQuestionsPopup">Add questions </div>
+	<% end %>
+
+	<ul id="page-<%=@last_id.to_s%>-registerd-questions"></ul>
+
+</div>

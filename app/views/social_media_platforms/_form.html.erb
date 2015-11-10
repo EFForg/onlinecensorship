@@ -1,0 +1,47 @@
+<%= form_for(@social_media_platform) do |f| %>
+  <% if @social_media_platform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@social_media_platform.errors.count, "error") %> prohibited this social_media_platform from being saved:</h2>
+
+      <ul>
+      <% @social_media_platform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--<div class="field">
+    <% if params[:action]=="edit" %>
+      <%= image_tag @social_media_platform.logo.url(:small) %><br>
+    <% end %>
+    <%= f.label :logo %>
+    <%= f.file_field :logo, :class=>"form-control" %>   
+  </div>-->
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , required: true , :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.text_field :color , required: true , :class=>"form-control demo demo-1 demo-auto" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :font_awesome_style ,"Icon style" %><br>
+    <%= f.text_field :font_awesome_style, required: true, :class=>"form-control" %>
+    <br>
+    for example for facebook icon "fa fa-facebook-square" 
+    <br>
+    you can select icons style form this 
+    <a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_blank"> link</a>
+  </div> 
+
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+
+<% end %>

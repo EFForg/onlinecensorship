@@ -1,0 +1,8 @@
+<label for="question_option">Related options</label>
+<select class="form-control input-sm col-md-10" id="question_option" name="question_option">
+	<option value="">Select related option</option>
+	<% @related_options.each do |option| %>
+		<option value="<%=option.id%>"><%=option.option_title%></option>
+	<% end %>
+</select>
+<input type="hidden" name="depend_on_question_id" value="<%=params[:depend_on_question_id]%>">

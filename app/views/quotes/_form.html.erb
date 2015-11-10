@@ -1,0 +1,60 @@
+<%= form_for(@quote) do |f| %>
+  <% if @quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% @quote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="fieldset clearfix">
+    <p class="required"><b> Post platfroms *</b> </p>
+    <% @platfroms.each_with_index do |platfrom , index| %>
+      <div class="checkbox-wrapper">
+      <%= label_tag "platfrom_#{index.to_s}", raw("#{check_box_tag("platfrom[]", platfrom.id, @quote.social_media_platforms.include?(platfrom),:id=>"platfrom_"+index.to_s)} #{platfrom.title}") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="fieldset clearfix">
+    <p class="required"><b> Post themes *</b> </p>
+    <% @themes.each_with_index do |theme , index| %>
+      <div class="checkbox-wrapper">
+      <%= label_tag "theme_#{index.to_s}", raw("#{check_box_tag("theme[]", theme.id, @quote.posts_themes.include?(theme),:id=>"theme_"+index.to_s)} #{theme.title}") %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author , required: true , :class=>"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quote %><br>
+    <%= f.text_area :quote , required: true , :class=>"form-control text_area_height" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :twitter_text %><br>
+    <%= f.text_area :twitter_text , required: true , :class=>"form-control", :maxlength => "99" %>
+    <span class="tip"> Maximun 99 characters, "OC link and @censored" will be appended. </span>
+  </div>
+  <div class="field">
+    <%= f.label :font_size %><br>
+    <%= f.number_field :font_size , required: true , :class=>"form-control"  %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.check_box :featured %>
+    <%= f.label :featured %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

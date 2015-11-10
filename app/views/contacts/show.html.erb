@@ -1,0 +1,49 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-envelope-o"></i> Message
+      </div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+      <div class="col-md-12 details">
+        
+        <p>
+          <strong>Name:</strong>
+          <%= @contact.name %>
+        </p>
+
+        <p>
+          <strong>Surname:</strong>
+          <%= @contact.surname %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @contact.email %>
+        </p>
+
+        <p>
+          <strong>Pgp key:</strong>
+          <%= @contact.pgp_key %>
+        </p>
+
+        <p>
+          <strong>Contacts topic:</strong>
+          <% if @contact.contacts_topic.present? %>
+            <%=@contact.contacts_topic.name %>
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Message:</strong>
+          <%= @contact.message %>
+        </p>
+
+        <p>
+          <%= link_to 'All Messages', admin_contacts_path %>
+        </p>
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

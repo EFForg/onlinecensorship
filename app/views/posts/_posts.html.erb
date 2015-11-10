@@ -1,0 +1,186 @@
+<% posts_count=@posts.count %>
+<% if posts_count > 0 %>
+
+  <% j = 0 %>
+  
+  <% @posts.each_with_index do |post, i| %>
+
+    <% 
+    # Show the first post with image
+    if i == 0 
+    %>
+      
+      <div class="col-md-8">
+        <div class="news-box featured-post clearfix">
+          <div class="col-md-6 col-no-padding">
+            <div class="image-wrapper">
+              <% if post.category && post.category.title.downcase=="news" %>
+                <%=link_to post.link , :target => "_blank" do %>
+                  <%=image_tag post.photo(:thumb) %>
+                <% end %>
+              <% else %>
+                <%=link_to post_path(post),:title=>post.title do %>
+                  <%=image_tag post.photo(:thumb) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        
+          <div class="col-md-6 col-no-padding">
+            <div class="post-content">
+              <% if post.category.present? %>
+                <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
+                <label class="category"><%= post.category.title %></label>
+              <% end %>
+                                    
+              <h3> 
+                <% if post.category && post.category.title.downcase=="news" %>
+                  <%=link_to post.link , :target => "_blank" do %>
+                    <%=post.title %>
+                  <% end %>
+                <% else %>
+                  <%=link_to post_path(post),:title=>post.title do %>
+                    <%=post.title %>
+                  <% end %>
+                <% end %>
+              </h3>
+
+              <h5>
+                <% if post.person_id? %>
+                  <% if post.person.present? %>
+                    <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+                      <%= post.person.name %>
+                    <% end %>
+                  <% end %>
+                <% elsif post.news_source? %>
+                  <%=post.news_source%>
+                <% end %>
+              </h5>
+              <h6><%=post.publish_date%></h6>
+              <p class="post-brief"><%=post.intro.to_s[0..160] %>...</p>
+              <hr>
+              <label class="post-tags">
+                <% if post.tags?%>
+                  <% post.tags.split(/,/).each do |tag| %>
+                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                  <% end %>
+                <% end %>
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <% if posts_count < 3 %>
+        <% if @quotes[0] %>
+          <div class="col-md-4">
+            <div class="news-box quote-box dark-blue-bg">
+              
+              <div class="post-quote">
+                <div class="quote-text-wrapper">
+                  <p class="quote-text" style="font-size: <%= @quotes[j].font_size.to_s%>px;"> <%= @quotes[j].quote %> </p>
+                </div>
+                <p class="quote-by"> <%= @quotes[j].author %> </p>
+
+                <div class="quote-share">
+                  <p> SHARE IT </p>
+                  <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
+                  <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                  <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>      
+      <% end %>
+
+    <% else %>
+
+      <div class="col-md-4">
+        <div class="news-box">
+          <% if post.category.present? %>
+            <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
+            <label class="category"> <%= post.category.title %> </label>
+          <% end %>
+          
+          <h3>
+            <% if post.category && post.category.title.downcase=="news" %>
+              <%=link_to post.link , :target => "_blank" do %>
+                <%=post.title %>
+              <% end %>
+            <% else %>
+              <%=link_to post_path(post),:title=>post.title do %>
+                <%=post.title %>
+              <% end %>
+            <% end %>
+          </h3>
+
+          <h5>
+              <% if post.person_id? %>
+                <% if post.person.present? %>
+                  <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+                    <%= post.person.name %>
+                  <% end %>
+                <% end %>
+              <% elsif post.news_source? %>
+                <%=post.news_source%>
+              <% end %>
+            </h5>
+          <h6><%=post.publish_date %></h6>
+          <p class="post-brief"><%=post.intro.to_s[0..160] %>...</p>
+          <hr>
+          <label class="post-tags">
+            <% if post.tags?%>
+              <% post.tags.split(/,/).each do |tag| %>
+                <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+              <% end %>
+            <% end %>
+          </label>
+        </div>
+      </div>
+
+      <% 
+      # Show quote every 3 posts
+      if @quotes.count > 0 && i%3 == 0
+      %>
+
+        <% if @quotes[j] %>
+          <div class="col-md-4">
+            <div class="news-box quote-box dark-blue-bg">
+              
+              <div class="post-quote">
+                <div class="quote-text-wrapper">
+                  <p class="quote-text" style="font-size: <%= @quotes[j].font_size.to_s%>px;"> <%= @quotes[j].quote %> </p>
+                </div>
+                <p class="quote-by"> <%= @quotes[j].author %> </p>
+
+                <div class="quote-share">
+                  <p> SHARE IT </p>
+                  <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
+                  <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                  <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+
+        <% j = j+1 %>
+
+      <% end %>
+
+    <% end %>
+
+
+  <% end %>
+
+<% else %>
+<div class="col-md-12">
+  <div class="news-box no-results">
+    <h3>No Results!</h3>
+  </div>
+</div>
+<% end %>

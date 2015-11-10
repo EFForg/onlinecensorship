@@ -1,0 +1,1 @@
+angular.module("nprogress-rails",[]).config(["$httpProvider",function(r){r.interceptors.push(["$q",function(r){return{request:function(r){return NProgress.start(),r},requestError:function(e){return NProgress.done(),r.reject(e)},response:function(r){return NProgress.done(),r},responseError:function(e){return NProgress.done(),r.reject(e)}}}])}]);

@@ -1,0 +1,6 @@
+<select class="form-control input-sm col-md-10 related-questions" id="question_question_options_attributes_INDEX_dependent_on_question_id" name="question[question_options_attributes][INDEX][dependent_on_question_id]">
+	<option value=""></option>
+	<% @questions.each do |question| %>
+		<option value="<%=question.id%>"><%=question.question_title%></option>
+	<% end %>
+</select>

@@ -1,0 +1,31 @@
+<table width="100%" cellspacing="2">
+  <tr>
+    <th style="text-align:left; font-weight:bold;">Registered at</th>
+    <th style="text-align:left; font-weight:bold;">Question</th>
+    <th style="text-align:left; font-weight:bold;">Type</th>
+    <th style="text-align:left; font-weight:bold;">Required</th>
+    <th style="text-align:left; font-weight:bold;">Options</th>
+  </tr>
+
+  <% @questions.each do |excel| %>
+    <tr>
+      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;"><%= excel.question_title %></td>
+      <td style="text-align:left;"><%= excel.question_type %></td>
+      <td style="text-align:left;"><%= excel.required_field %></td>
+      <td style="text-align:left;">
+        <% if excel.question_options.present? %>
+          <ul>
+            <% excel.question_options.each do |option| %>
+              <li><%=option.option_title%></li>
+            <% end %>
+            <% if excel.other_answer==true %>
+              <li>other answer</li>
+            <% end %>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

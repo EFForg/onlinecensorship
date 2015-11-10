@@ -1,0 +1,22 @@
+<%= form_for(@posts_theme) do |f| %>
+  <% if @posts_theme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@posts_theme.errors.count, "error") %> prohibited this posts_theme from being saved:</h2>
+
+      <ul>
+      <% @posts_theme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, required: true , :class=>"form-control"  %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

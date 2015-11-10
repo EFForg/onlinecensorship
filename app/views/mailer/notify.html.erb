@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear OC Admin,</h1>
+    <p>
+      We just notify you because someone 
+      <% if @user !="" %> 
+        called "<%= @user %>" 
+      <% end %> 
+      filled the OC <b><%= @form %></b> form. 
+      <br>
+
+      <% if @user !="" %>
+        <%= @user %>
+      <% else %> 
+        the 
+      <% end %>
+       data was : 
+      <br>
+      <%= @data.html_safe %>
+    </p>
+
+    <p>Regards,</p>
+
+    <p>
+      OC Notification System
+    </p>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field image-field">
+
+    <%= f.label :photo, "Thumbnail" %> <b>*</b>
+    <%= f.file_field :photo, :class=>"form-control" %>
+
+    <% if params[:action]=="edit" %>
+      <br><%= image_tag @story.photo(:thumb) %><br>
+    <% end %>
+
+  </div>
+  
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , required: true, :class=>"form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :brief %><br>
+    <%= f.text_area :brief , required: true, :class=>"form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content , :class=>"form-control ckeditor" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :external_link %><br>
+    <%= f.text_field :external_link , :class=>"form-control" %>
+    <span class="tip"> Full link: http://www.oc.org/ </span>
+  </div>
+  
+  <div class="field">
+    <%= f.check_box :published %>
+    <%= f.label :published %><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

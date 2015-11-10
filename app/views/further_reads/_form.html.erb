@@ -1,0 +1,58 @@
+<%= form_for(@further_read) do |f| %>
+  <% if @further_read.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@further_read.errors.count, "error") %> prohibited this further_read from being saved:</h2>
+
+      <ul>
+      <% @further_read.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, options_for_select([["STAFF PICKS","STAFF"],["BOOKS AND JOURNAL ARTICLES","BOOKS"],["BLOG POSTS AND NEWS ARTICLES","BLOG"]],@further_read.category),{},{:class=>"form-control",:include_blank => true,:required => true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , required: true , :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author , required: true , :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link , required: true , :class=>"form-control" %>
+    <span class="tip"> for example : http://www.visualizingimpact.org</span>
+  </div>
+
+  <div class="field">
+    <%= f.label :written_in %><br>
+    <%= f.text_field :written_in, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :the_order %><br>
+    <% if params[:action]=="new" %>
+      <%= f.number_field :the_order, :value => FurtherRead.count+1 , :class=>"form-control" %>
+    <% else %>
+      <%= f.number_field :the_order , :class=>"form-control" %>
+    <% end %>
+    <p class="tip"> Optional </p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

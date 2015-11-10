@@ -1,0 +1,1 @@
+!function(o){o(function(){o("div.bootstrap-modal").modal(),o("div.bootstrap-modal").modal("hide").addClass("fade"),o("a.bootstrap-modal-cancel-button").click(function(a){o(a.target).closest("div.modal").modal("hide")})})}(jQuery);

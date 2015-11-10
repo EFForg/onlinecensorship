@@ -1,0 +1,34 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-quote-left"></i>FAQ Details
+    	</div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+    	<div class="col-md-12 details">
+
+				<p>
+				  <strong>Question:</strong>
+				  <%= @faq.question.html_safe %>
+				</p>
+
+				<p>
+				  <strong>Answer:</strong>
+				  <%= @faq.answer.html_safe %>
+				</p>
+
+				<p>
+				  <strong>Theorder:</strong>
+				  <%= @faq.theorder %>
+				</p>
+
+				<p>
+					<%= link_to 'Edit', edit_faq_path(@faq) %> |
+					<%= link_to 'All Faqs', admin_faqs_path %>
+				</p>
+
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

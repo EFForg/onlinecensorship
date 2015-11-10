@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administration BackEnd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag "backend", media: "all", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <% favicon_link_tag '/favicon.ico'%>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+		<div class="row">
+		  <div class="col-sm-6 col-md-4 col-centered login-container">
+
+			  <div class="notice-area">
+			    <div class="container">
+			      <%= notice %> <%= alert %>
+			    </div>
+			  </div>
+
+		  	<%= yield %>
+
+		  </div>
+		</div>
+		
+    <%= javascript_include_tag "backend", "data-turbolinks-track" => false %>    
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

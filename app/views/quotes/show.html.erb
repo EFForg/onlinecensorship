@@ -1,0 +1,48 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-quote-left"></i>Quote Details
+      </div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+      <div class="col-md-12 details">
+
+				<p>
+				  <strong>Author:</strong>
+				  <%= @quote.author %>
+				</p>
+
+        <p>
+          <strong>Font size:</strong>
+          <%= @quote.font_size %>
+        </p>
+
+				<p>
+				  <strong>Quote:</strong>
+				  <%= @quote.quote %>
+				</p>
+
+        <p>
+          <strong>Twitter text:</strong>
+          <%= @quote.twitter_text %>
+        </p>
+            
+        <p>
+          <strong>Featured:</strong>
+          <% if @quote.featured %>
+            <%= link_to "Unfeatured", quote_unfeatured_path(@quote.id) %>
+          <% else %>
+            <%= link_to "Featured", quote_featured_path(@quote.id) %>
+          <% end %>
+        </p>
+
+        <p>
+          <%= link_to 'Edit', edit_quote_path(@quote) %> |
+          <%= link_to 'All Quotes', admin_quotes_path %>
+        </p>
+    
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

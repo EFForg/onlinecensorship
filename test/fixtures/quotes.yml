@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  auther: MyString
+  font_size: 1
+  quote: MyText
+
+two:
+  title: MyString
+  auther: MyString
+  font_size: 1
+  quote: MyText

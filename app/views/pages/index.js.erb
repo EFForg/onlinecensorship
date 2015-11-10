@@ -1,0 +1,66 @@
+var request_type= "<%=params[:request_type]%>";
+var platform_id= "<%=params[:social_media_platform_id]%>";
+var content;
+
+if(request_type=="new_page"){
+  //  Add new pages 
+  content = $('<%= escape_javascript render(:partial => "add_page") %>');
+  // Append the result in the view
+  $(".append-frame").append(content).fadeIn(500);
+  NProgress.done();
+}else if(request_type=="registerd_pages") {
+  //  show the platform old pages
+  content = $('<%= escape_javascript render(:partial => "registerd_pages") %>');
+  // show the add slide page link
+  $('#myLink').removeClass("hide");
+  var my_link='<a class="link" data-remote="true" href="/pages?request_type=new_page&social_media_platform_id='+platform_id+'" id="add-slide-page" title="Add Page">+ Add Page</a>';
+  $("#myLink").html(my_link);
+  // append result to the view
+  $(".append-frame").html(content).fadeIn(500);
+  // push state
+  window.history.pushState("Administration Panel", "Administration Panel","?platform="+platform_id);
+
+  NProgress.done();
+}
+
+// Hide the deleted page fieldset
+$(".delete-page").click(function() {
+  $(this).parents(".fieldset").fadeOut(500);
+  // End loading
+  NProgress.done();
+});
+
+// Hide the deleted page question
+$(".delete-question").click(function() {
+  $(this).parents("li").fadeOut(500);
+  // End loading
+  NProgress.done();
+});
+
+// Save the page order number
+$(".page-order").change(function() {
+  var el_id=$(this).parents(".fieldset").attr("id");
+  $.ajax({
+    method: "POST",
+    url: "/admin/update_page",
+    data: { id: el_id, theorder: $(this).val()}
+  })
+  .done(function(html) {
+    // show saving notification
+    $("#save_"+el_id).removeClass('hide').delay(2000).queue(function(){
+      $(this).addClass('hide'); 
+    });
+  });
+});
+
+// show the selected platform
+$(".platform_dropdown li a").click(function(){
+  $(".platform_dropdown-title .btn:first-child").text($(this).text());
+  $(".platform_dropdown-title .btn:first-child").val($(this).text());
+  $(".platform_dropdown-title").removeClass("open");
+});
+
+// Ajax loading
+$(".load").click(function() {
+  NProgress.start();
+});

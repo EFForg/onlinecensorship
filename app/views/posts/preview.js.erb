@@ -1,0 +1,33 @@
+var content = $('<%= escape_javascript render(:partial => "preview") %>');
+
+$("body").css("overflow", "hidden");
+
+// append the result in the view
+$(".post-preview").html(content).fadeIn();
+
+// displaying data in preview panel
+$(".preview-post-cover").attr("src",$(".preview-post-cover-input").attr("src"));
+$(".preview-post-title").html($("#post_title").val());
+$(".preview-post-category").html($("#post_category_id option:selected").text());
+$(".preview-post-author").html($("#post_person_id option:selected").text());
+$(".preview-post-date").html($("#post_publish_date_3i option:selected").text() + " " + $("#post_publish_date_2i option:selected").text() + " " + $("#post_publish_date_1i option:selected").text());
+$(".preview-post-tags").html("#" + $("#post_tags").val().replace(/,/g," #"));
+$(".preview-post-content").html(CKEDITOR.instances['post_description'].getData());
+$(".preview-post-image-caption").html($("#post_side_image_caption").val());
+
+if($("#post_side_image_link").val() != "") {
+	$(".preview-post-image-link").attr("href", $("#post_side_image_link").val());
+}
+$(".preview-post-image-link img").attr("src",$(".preview-side-image").attr("src"));
+
+if($("#post_quote_text").val() != "") {
+	$(".preview-post-quote-text").html($("#post_quote_text").val());
+	$(".preview-post-quote-author").html($(".post-quote-author").val());
+} else {
+	$(".post-quote").hide();
+}
+
+$(".preview-post-quote-twitter").attr("href", "http://twitter.com/home?status=" + $("#post_twitter_text").val() + " http://onlinecensorship.org @censored");
+
+// end loading
+NProgress.done();

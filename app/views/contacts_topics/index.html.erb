@@ -1,0 +1,69 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-envelope-o"></i>
+      Listing Contacts Topics
+      <% if params[:search] %>
+        Search Result About <%=params[:search]%>
+      <% end %>
+      ( <%=@count%> )
+
+      <div class="pull-right search-wrapper col-md-6">
+        <% @Search_placeholder="Search in name" %>
+        <%= render 'home/admin_search' %>
+      </div>
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Contacts topic', new_contacts_topic_path %>
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Export To Excel", contacts_topics_path(format: "xls") %>
+      </div>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Name</th>
+          <th>Messages</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @contacts_topics.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @contacts_topics.each do |contacts_topic| %>
+            <tr class="show-image">
+              <td><%= contacts_topic.name %></td>
+              <td>
+                <% if contacts_topic.contacts.present? %>
+                  <%=contacts_topic.contacts.count %>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_contacts_topic_path(contacts_topic), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to contacts_topic, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @contacts_topics %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

@@ -1,0 +1,88 @@
+<%
+  meta title: "How to appeal"
+%>
+
+<% cms_page_content('how-to-appeal') %>
+
+<section class="dark-blue-bg page-title-wrapper">
+
+  <% unless @page.nil? %>
+    <div class="container">
+      <h1> <%= @page.page_title %> </h1>
+
+      <% if @page.brief.present? %>
+
+  	    <div class="row">
+  	    	<div class="col-md-9">
+  			    <p>
+  			    	<%= @page.brief %>
+  			    </p>
+  		    </div>
+  	    </div>
+
+      <% end %>
+    </div>
+  <% end %>
+
+</section>
+
+<div class="container appeal-page">
+
+	<div class="row">
+
+		<div class="col-md-3">
+
+			<div class="appeal-tabs">
+				<ul class="nav nav-pills">
+				  <li class="active"><a data-toggle="tab" href="#facebook">Facebook</a></li>
+				  <li><a data-toggle="tab" href="#twitter">Twitter</a></li>
+				  <li><a data-toggle="tab" href="#youtube">youtube</a></li>
+				  <li><a data-toggle="tab" href="#google">google+</a></li>
+				  <li><a data-toggle="tab" href="#instagram">instagram</a></li>
+				  <li><a data-toggle="tab" href="#flickr">flickr</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="col-md-9">
+
+			<div class="tab-content">
+
+				<div id="facebook" class="tab-pane fade in active">
+					<% cms_page_content('how-to-appeal-facebook')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+				<div id="twitter" class="tab-pane fade">
+					<% cms_page_content('how-to-appeal-twitter')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+				<div id="youtube" class="tab-pane fade">
+					<% cms_page_content('how-to-appeal-youtube')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+				<div id="google" class="tab-pane fade">
+					<% cms_page_content('how-to-appeal-google')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+				<div id="instagram" class="tab-pane fade">
+					<% cms_page_content('how-to-appeal-instagram')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+				<div id="flickr" class="tab-pane fade">
+					<% cms_page_content('how-to-appeal-flickr')%>
+					<%=@page.content.html_safe%>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

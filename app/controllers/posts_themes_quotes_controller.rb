@@ -1,0 +1,2 @@
+class PostsThemesQuotesController < ApplicationController
+end

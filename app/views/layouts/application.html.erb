@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% metamagic site: "onlinecensorship.org", title: [:site, :title], separator: " — " %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.png', :rel => 'shortcut icon' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <%= metamagic %>
+</head>
+<body class="page-<%= controller_name %>">
+
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top <%= controller_name %>-header main-header">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path, :class => "navbar-brand hidden-xs" do %>
+          <%= image_tag "logo-desktop.png" %>
+        <% end %>
+        <%= link_to root_path, :class => "navbar-brand hidden-lg hidden-md hidden-sm" do %>
+          <%= image_tag "logo-mobile.png" %>
+        <% end %>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li> <%= link_to "What we do", about_what_we_do_path %> </li>
+              <li> <%= link_to "Who we are", about_who_we_are_path %> </li>
+              <li> <%= link_to "Faqs", about_faqs_path %> </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li> <%= link_to "News & Analysis", posts_path %> </li>
+              <li> <%= link_to "How to appeal", resources_how_to_appeal_path %> </a></li>
+              <li> <%= link_to "Further readings", resources_further_readings_path %> </li>
+              <!--<li><a href="#">Getting involved</a></li>-->
+            </ul>
+          </li>
+          <li> <%= link_to "Submit Report", submit_report_path %> </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <%= yield %>
+  </div>
+
+  <footer class="dark-blue-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag "logo-footer.png", :class => "logo" %> 
+        </div>
+        <div class="col-md-3">
+          <h5> Follow us </h5>
+          <div class="social-links">
+            <a href="https://www.twitter.com/censored" target="_blank"> <i class="fa fa-twitter"></i>@@censored</a>
+            <a href="https://www.facebook.com/OnlineCensorship" target="_blank"> <i class="fa fa-facebook"></i> onlinecensorship.org </a>
+          </div>
+          <div class="subscribe-form">
+
+            <div class="form-wrapper">
+              <%= render 'subscribes/form' %>
+            </div>
+            <div class="form-confirmation">
+              <p> Thank you. </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h5> Share on </h5>
+          <a href="http://twitter.com/home?status=Has your picture/page/account been censored? Submit your report <%= root_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-twitter"></i> Twitter </a><!--
+
+        --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= root_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-facebook"></i> Facebook </a>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h5> &nbsp; </h5>
+          <%= link_to "Contact us", contacts_path, :class => "btn btn-footer" %>
+          <%= link_to "Privacy policy", privacy_policy_path, :class => "btn btn-footer" %>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:700,400' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+
+</body>
+</html>

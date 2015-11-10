@@ -1,0 +1,6 @@
+<div class="btn btn-report upload-file">
+	<label> Choose File </label>
+	<%= file_field_tag "question[#{@question_id}]",:require=>true ,:class=>"require-field", :tabindex => @tab_index  %>
+</div>
+
+<span class="uploaded-filename"> No file chosen </span>

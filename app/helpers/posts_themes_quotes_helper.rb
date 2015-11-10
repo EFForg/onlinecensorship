@@ -1,0 +1,2 @@
+module PostsThemesQuotesHelper
+end

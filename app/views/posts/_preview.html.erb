@@ -1,0 +1,85 @@
+<div class="close-post-preview">
+  <i class="fa fa-times"></i>
+</div>
+
+<div class="post-cover">
+  <div class="overlay"></div>
+  <%= image_tag "", :class => "preview-post-cover" %>
+</div>
+
+<div class="container">
+  <div class="post-wrapper">
+    
+    <div class="row">
+      <div class="col-md-7">
+
+        <i class="fa fa-circle" style="color: #deb240"></i>
+        <label class="category preview-post-category"></label>
+
+        <h1 class="preview-post-title"></h1>
+        <p class="post-info">
+          by <a href="#" class="preview-post-author"></a> |  
+          <span class="preview-post-date"></span> | 
+          <span class="preview-post-tags"></span>
+        </p>
+      </div>
+    </div>
+    
+    <div class="post-content">
+      <div class="row">
+
+        <div class="col-md-7 preview-post-content">
+        </div>
+
+        <div class="col-md-5">
+
+          <div class="post-image">
+            <a href="#" target="_blank" class="preview-post-image-link">
+              <%= image_tag "" %>
+            </a>
+            <p class="image-caption preview-post-image-caption"></p>
+          </div>
+            
+          <div class="post-quote">
+            <div class="quote-text-wrapper">
+              <p class="quote-text preview-post-quote-text"></p>
+            </div>
+            <p class="quote-by preview-post-quote-author"></p>
+
+            <div class="quote-share">
+              <p> SHARE IT </p>
+              <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
+              <a class="preview-post-quote-twitter" href="#" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+              <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="seperator">
+      </div>
+
+      <div class="row">
+        <div class="col-md-7">
+          <div class="post-author team-member clearfix">
+            <div class="personal-photo">
+              <a href="#">
+                <%= image_tag "" %>
+              </a>
+            </div>
+            <div class="personal-info">
+              <h4> ABOUT THE AUTHOR </h4>
+              <h2> 
+                <a href="#" class="preview-post-author"></a>
+              </h2>
+              <div> Bio text about this author appears here. </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

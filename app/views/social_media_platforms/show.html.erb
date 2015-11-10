@@ -1,0 +1,50 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-facebook-square"></i>Post Details
+    	</div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+    	<div class="col-md-12 details">
+
+        <!--<p>
+          <%= image_tag @social_media_platform.logo.url(:small) %>
+        </p>-->
+
+				<p>
+				  <strong>Title:</strong>
+				  <%= @social_media_platform.title %>
+				</p>
+
+        <p>
+          <strong>Color:</strong>
+          <%= @social_media_platform.color %>
+        </p>
+
+        <p>
+          <strong>Slide Pages:</strong>
+          <% if @social_media_platform.pages.present? %>
+            <%= @social_media_platform.pages.count %>
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Total Questions:</strong>
+          <% if @social_media_platform.pages.present? %>
+            <% total_questions=0%>
+            <% @social_media_platform.pages.each do |page| %>
+              <% total_questions=total_questions+page.questions.count%>
+            <% end %>
+            <%=total_questions%> questions
+          <% end %>          
+        </p>
+
+				<p>
+					<%= link_to 'Edit', edit_social_media_platform_path(@social_media_platform) %> |
+					<%= link_to 'All platforms', admin_social_media_platforms_path %>
+				</p>
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

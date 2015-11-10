@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Censorship</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+  <% favicon_link_tag '/favicon.ico'%>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body class="page-<%= controller_name %> report-slider">
+
+	<div class="close-report">
+		<i class="fa fa-times"></i>
+	</div>
+
+  <div class="slider-container container">
+  	<%= yield %>
+  </div>
+
+  <div class="nav-btns hidden-xs">
+    <i class="fa fa-arrow-up"></i>
+    <i class="fa fa-arrow-down"></i>
+  </div>
+
+  <div class="close-popup-wrapper">
+    <div class="close-popup">
+      <div class="close-popup-content">
+        <p>Do you really want to quit?</p>
+        <div>
+          <a href="#" class="btn btn-report close-popup-link"> No </a>
+          <%= link_to "Yes", submit_report_path, :class => "btn btn-report" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:700,400' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+
+</body>
+</html>

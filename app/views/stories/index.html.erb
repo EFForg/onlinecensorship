@@ -1,0 +1,82 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-newspaper-o"></i>
+      Listing Stories
+      <% if params[:search] %>
+        Search Result About <%=params[:search]%>
+      <% end %>
+      ( <%=@count%> )
+
+      <div class="pull-right search-wrapper col-md-6">
+        <% @Search_placeholder="Search in title , brief , content" %>
+        <%= render 'home/admin_search' %>
+      </div>
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Story', new_story_path %>
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Export To Excel", stories_path(format: "xls") %>
+      </div>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Title</th>
+          <th>Published</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @stories.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @stories.each do |story| %>
+            <tr class="show-image">
+              <td><%= story.title %></td>
+              <td>
+                <% if story.published %>
+                  <%= link_to "Unpublish", story_unpublish_path(story.id) %>
+                <% else %>
+                  <%= link_to "Publish", story_publish_path(story.id) %>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <% if story.photo? %>
+                  <div class="main-image"><%= image_tag story.photo(:thumb)%></div>
+                  <div class="backend-icon icon-image" title="Contain image"></div>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to story, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_story_path(story), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to story, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @stories %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

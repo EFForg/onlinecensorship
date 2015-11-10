@@ -1,0 +1,10 @@
+<% @question_options.each_with_index do |radio_button,index| %>
+
+	<div class="input-report select-input radio-select" id="<%=radio_button.id%>">
+  	<%= radio_button_tag @question_id,radio_button.id,false,:id=>"op-"+radio_button.id.to_s,:name=>"question[#{@question_id}]",:class=>"option" , :tabindex => @tab_index  %>
+  	<%= label_tag "op-"+radio_button.id.to_s,:class=>"option" do %>
+  		<%= radio_button.option_title.gsub('{platform}',@social_media_platform_title) %>
+  		<i class="fa fa-check"></i>
+  	<% end %>
+ 	</div>
+<% end %>

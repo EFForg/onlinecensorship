@@ -1,0 +1,57 @@
+<%= form_for(@home_field) do |f| %>
+  <% if @home_field.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@home_field.errors.count, "error") %> prohibited this home_field from being saved:</h2>
+
+      <ul>
+      <% @home_field.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :slogan %><br>
+    <%= f.text_area :slogan, :class=>"form-control"%>
+  </div>
+  
+  <br> <br>
+  
+  <div class="field">
+    <%= f.label :submit_btn_text, "Submit button text" %><br>
+    <%= f.text_area :submit_btn_text, required: true, :class=>"form-control"%>
+  </div>
+
+  <br> <br>
+  
+  <p>
+    <strong>What is Online Censorship fields: </strong><br>
+    <div class="field">
+      <%= f.label :what_oc_title, "What is OC title" %><br>
+      <%= f.text_field :what_oc_title, required: true , :class=>"form-control"%>
+    </div>
+    <div class="field">
+      <%= f.label :what_oc_text, "What is OC text" %><br>
+      <%= f.text_area :what_oc_text, required: true, :class=>"form-control text_area_height" %>
+    </div>
+  </p>
+
+  <br> <br>
+
+  <p>
+    <strong>How to appeal fields: </strong><br>
+    <div class="field">
+      <%= f.label :appeal_text %><br>
+      <%= f.text_area :appeal_text, required: true , :class=>"form-control text_area_height" %>
+    </div>
+    <div class="field">
+      <%= f.label :appeal_btn_text, "Appeal button text" %><br>
+      <%= f.text_field :appeal_btn_text, required: true, :class=>"form-control" %>
+    </div>
+  </p>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

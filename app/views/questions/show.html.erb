@@ -1,0 +1,55 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-question"></i>Question Details
+      </div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+      <div class="col-md-12 details">
+
+        <p>
+          <strong>Social media platform:</strong>
+          <% if @question.pages.present? %>
+            <% @question.pages.each do |page| %>
+              <span class="<%= page.social_media_platform.font_awesome_style %>" style="color:<%=page.social_media_platform.color%>"></span>              
+            <% end %>
+          <% end %>
+        </p>
+
+        <p>
+          <strong>Question text:</strong>
+          <%= @question.question_title %>
+        </p>
+
+        <p>
+          <strong>Question type:</strong>
+          <%= @question.question_type.gsub('_',' ') %>
+        </p>
+
+        <% if @question.question_type=="prompt" %>
+          <p>
+            <strong>Prompt link text :</strong>
+            <%= @question.prompt_text %>
+          </p>
+          
+          <p>
+            <strong>Prompt link:</strong>
+            <%= @question.prompt_link %>
+          </p>
+        <% end %>
+       
+        <p>
+          <strong>Required question:</strong>
+          <%= @question.required_field %>
+        </p>
+
+        <p>
+          <%= link_to 'Edit', edit_question_path(:id => @question)%> |
+          <%= link_to 'All Questions', admin_questions_path %>
+        </p>
+
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

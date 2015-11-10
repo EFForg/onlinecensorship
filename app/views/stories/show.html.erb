@@ -1,0 +1,83 @@
+<%
+meta title: @story.title,
+     description: @story.brief
+meta og: {
+  image: @story.photo.to_s,
+  title: @story.title,
+  description: @story.brief
+}
+%>
+
+<div class="post-cover">
+  <div class="overlay"></div>
+  <%= image_tag @story.photo.url %>
+</div>
+
+<div class="container">
+  <div class="post-wrapper">
+    
+    <div class="row">
+      <div class="col-md-7">
+      
+        <h1> <%= @story.title %> </h1>
+        <p class="post-info"> 
+          <%= @story.created_at.to_date %>
+        </p>
+      </div>
+    </div>
+    
+
+    <div class="post-content">
+      <div class="row">
+
+          <div class="col-md-7">
+            <%= @story.content.html_safe %>
+          </div>
+
+          <div class="col-md-5">
+
+          </div>
+
+      </div>
+
+      <div class="seperator">
+      </div>
+
+    </div>
+
+    <div class="suggested-topics">
+      <h2> SUGGESTED READINGS </h2>
+
+      <div class="row">
+
+        <% @stories.each do |p| %>
+
+          <div class="col-md-4">
+            <div class="news-box">
+              <i class="fa fa-circle news-dot"></i>
+              <label class="category"> Story </label>
+              <h3>
+                <% if p.external_link? %>
+                  <%=link_to p.external_link , :target => "_blank" do %>
+                    <%= p.title %>
+                  <% end %>
+                <% else %>
+                  <%=link_to story_path(p),:title=>p.title do %>
+                    <%= p.title %>
+                  <% end %>
+                <% end %>
+              </h3>
+              <h5> &nbsp;</h5>
+              <h6> <%= p.created_at.to_date %> </h6>
+              <p class="post-brief"> <%= p.brief.truncate(160) %> <p>
+              <hr>
+              <label class="post-tags">&nbsp;</label>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

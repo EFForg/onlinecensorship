@@ -1,0 +1,112 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :question_title, "Question text" %><br>
+    <%= f.text_field :question_title  , required: true , :class=>"form-control" %>
+    <span class="tip"> If you need to use the platform title please use this hash {platform} enstead of typing the real name </span><br>
+    <span class="tip"> for example : Type your {platform} link account </span>
+  </div>
+
+  <div class="field">
+    <%= f.label :question_type %><br>
+    <%= f.select :question_type, options_for_select([["Text","text"],["Email","email"],["URL","url"],["Prompt","prompt"],["Long Text","long_text"],["Upload File","upload"],["Select","select"],["Multi Select","multi_select"],["Countries","countries"],["Languages","languages"]],@question.question_type) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'}%>
+  </div>
+
+  <% 
+    if @question.question_type && ( @question.question_type =="text" || @question.question_type =="email" || @question.question_type =="url" || @question.question_type =="long_text") 
+      placeholder_klass="show"
+    else
+      placeholder_klass="hide"
+    end 
+  %>
+
+  <div class="field placeholder-field <%=placeholder_klass%>">
+    <%= f.label :placeholder, "Question placeholder" %><br>
+    <%= f.text_field :placeholder , :class=>"form-control" %>
+    <span class="tip"> The question placeholder hint </span>
+  </div>
+
+  <br>
+
+  <% 
+  if @question.question_type=="select" || @question.question_type=="multi_select" 
+    klass=""
+  else
+    klass="hide"
+  end
+  %>
+
+  <div class="special-fields questions-options-fields <%=klass %> clearfix">
+
+    <div class="append-frame">
+      <%= f.fields_for :question_options do |option| %>
+
+        <div class="field fieldset clearfix">
+          <i class="fa fa-question-circle"></i>
+          <%= option.label :option_title , "Question Option " %>
+          <%= option.text_field :option_title , :class => "form-control option-field" %>
+          <div class="option-controlle">
+            <%= option.check_box :_destroy %>
+            <%= option.label :_destroy , "Remove"%>
+          </div>
+
+        </div><!--fieldset-->
+      <% end %>
+    </div><!--append-frame-->
+    
+    <% 
+    if @question.question_type=="multi_select"
+      other_klass=""
+    else
+      other_klass="hide"
+    end 
+    %>
+  
+    <div class="field other-option <%=other_klass%>">
+      <%= f.check_box :other_answer %>
+      <%= f.label :other_answer , "Has other answer ?!" %>
+    </div>
+
+    <br/>
+      <span class="link cursor load" id="add-option">+Add Option</span>
+    <br/>
+
+  </div><!--questions-options-fields-->
+
+  <div class="special-fields prompt-field <% if @question.question_type !="prompt" %> hide <% end %> clearfix">
+
+    <div class="field">
+      <%= f.label :prompt_text , "Prompt link text" %><br>
+      <%= f.text_field :prompt_text , :class=>"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :prompt_link %><br>
+      <%= f.text_field :prompt_link , :class=>"form-control" %>
+      <span class="tip"> for example : http://www.visualizingimpact.org</span>
+    </div>
+
+  </div><!--questions-options-fields-->
+
+  <div class="field">
+    <%= f.check_box :required_field %>
+    <%= f.label :required_field , "required question ?!" %>
+  </div>
+
+  <div class="actions">
+    <%= f.hidden_field :social_media_platform_id, :value => params[:social_media_platform_id] %>
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+
+<% end %>

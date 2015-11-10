@@ -1,0 +1,192 @@
+<%
+meta title: @post.title,
+     description: @post.intro
+meta og: {
+  image: @post.photo.to_s,
+  title: @post.title,
+  description: @post.intro
+}
+%>
+
+<div class="post-cover">
+	<div class="overlay"></div>
+	<%= image_tag @post.photo.url %>
+</div>
+
+<div class="container">
+	<div class="post-wrapper">
+		
+		<div class="row">
+			<div class="col-md-7">
+				<% if @post.category.present? %>
+					<i class="fa fa-circle" style="color: <%= @post.category.color %>"></i>
+					<label class="category"> <%= @post.category.title %> </label>
+			  <% end %>
+				<h1> <%= @post.title %> </h1>
+				<p class="post-info">
+					by 
+					<% if @post.person.present? %>
+            <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
+              <%= @post.person.name %>
+            <% end %> |  
+					<% end%> 
+					<%= @post.publish_date %> | 
+					<% if @post.tags? %>
+            <% @post.tags.split(/,/).each do |tag| %>
+              <%= link_to posts_path(tag: tag) do %><%="#"+tag.to_s%><% end %>
+            <% end %>
+          <% end %>
+				</p>
+			</div>
+		</div>
+
+
+		<% if user_signed_in? %>
+			<div class="row">
+				<div class="col-md-12">
+					<%= link_to "Edit", edit_post_path(@post), :title => "Edit Post" %> |
+					<% if @post.published %>
+	          <%= link_to "Unpublish", post_unpublish_path(@post.id) %>
+	        <% else %>
+	          <%= link_to "Publish", post_publish_path(@post.id) %>
+	        <% end %> |
+	        <% if @post.featured %>
+	          <%= link_to "Unfeature", post_unfeatured_path(@post.id) %>
+	        <% else %>
+	          <%= link_to "Feature", post_featured_path(@post.id) %>
+	        <% end %> |
+	        <%= link_to "Manage posts", admin_posts_path(), :title => "Manage Posts" %>
+				</div>
+			</div>
+		<% end %>
+		
+
+		<div class="post-content">
+			<div class="row">
+
+					<div class="col-md-7">
+						<%= @post.description.html_safe %>
+					</div>
+
+					<div class="col-md-5">
+
+						<% if @post.side_image.present? %>
+							<div class="post-image">
+								<% if @post.side_image_link?%>
+									<%=link_to @post.side_image_link,:target=>"_blank" do %>
+										<%= image_tag @post.side_image %>
+									<% end %>
+								<% else %>
+									<%= image_tag @post.side_image %>								
+								<% end %>
+								<p class="image-caption">
+									<%= @post.side_image_caption %>
+								</p>
+							</div>
+						<% end %>
+						
+						<% if @post.quote_text.present? %>
+							<div class="post-quote">
+								<div class="quote-text-wrapper">
+									<p class="quote-text"> <%= @post.quote_text %> </p>
+								</div>
+								<p class="quote-by"> <%= @post.quote_author %> </p>
+
+								<div class="quote-share">
+									<p> SHARE IT </p>
+									<!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
+									<a href="http://twitter.com/home?status=<%= @post.twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+									<!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
+								</div>
+							</div>
+						<% end %>
+
+					</div>
+
+			</div>
+
+			<div class="seperator">
+			</div>
+
+			<% if @post.person.present? %>
+				<div class="row">
+					<div class="col-md-7">
+						<div class="post-author team-member clearfix">
+							<div class="personal-photo">
+								<%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
+		  						<%= image_tag @post.person.photo(:thumb) %>
+		  					<% end %>
+		  				</div>
+		  				<div class="personal-info">
+		  					<h4> ABOUT THE AUTHOR </h4>
+		  					<h2> 
+			            <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
+			              <%= @post.person.name %>
+			            <% end %>
+		  					</h2>
+		  					<div> <%= @post.person.bio.html_safe %> </div>
+		  				</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+
+			<div class="row">
+				<div class="col-md-7">
+					<div class="share-post">
+						<h5> Share on </h5>
+						
+						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> Twitter </a><!--
+
+        --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> Facebook </a>
+
+        	</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="suggested-topics">
+			<h2> SUGGESTED READINGS </h2>
+
+			<div class="row">
+
+				<% @posts.each do |p| %>
+
+					<div class="col-md-4">
+		        <div class="news-box">
+		          <i class="fa fa-circle news-dot" style="color:<%= p.category.color%>"></i>
+		          <label class="category"> <%= p.category.title %> </label>
+		          <h3> 
+                <%=link_to post_path(p),:title=>p.title do %>
+		          		<%= p.title %>
+		          	<% end %>
+		          </h3>
+		          <h5> 
+		          	<% if p.person.present?%>
+		          		<%=link_to author_path(id: p.person),:title=>p.person.name do %>
+		          			<%= p.person.name %>
+		          		<% end %>
+		          	<% end %>
+		          </h5>
+		          <h6> <%= p.publish_date %> </h6>
+		          <p class="post-brief"> <%= p.intro.truncate(160) %> <p>
+		          <hr>
+		          <label class="post-tags">
+		          	<% if p.tags? %>
+                  <% p.tags.split(/,/).each do |tag| %>
+                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                  <% end %>
+                <% end %>
+		          </label>
+		        </div>
+		      </div>
+
+		    <% end %>
+
+			</div>
+		</div>
+
+	</div>
+</div>

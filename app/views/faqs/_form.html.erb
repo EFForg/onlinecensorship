@@ -1,0 +1,38 @@
+<%= form_for(@faq) do |f| %>
+  <% if @faq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faq.errors.count, "error") %> prohibited this faq from being saved:</h2>
+
+      <ul>
+      <% @faq.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :question %><br>
+    <%= f.text_field :question , required: true , :class=>"form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :answer %><br>
+    <%= f.text_area :answer , required: true , :class=>"form-control ckeditor"  %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :theorder %><br>
+    <% if params[:action]=="new" %>
+      <%= f.number_field :theorder, :value => Faq.count+1 , :class=>"form-control" %>
+    <% else %>
+      <%= f.number_field :theorder , :class=>"form-control" %>
+    <% end %>
+    <p class="tip"> Optional </p>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+
+<% end %>

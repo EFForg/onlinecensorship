@@ -1,0 +1,24 @@
+#################
+# Mail Settings #
+#################
+
+smtp_username: ''
+smtp_password: ''
+smtp_address: ''
+smtp_port: "25"
+smtp_domain: "onlinecensorship.org"
+smtp_authentication: 'login'
+smtp_enable_starttls_auto: "true"
+mailings_from: 'Online Censorship <no-reply@onlinecensorship.org>' # not used
+
+
+
+#######################
+# Typical Rails Stuff #
+#######################
+
+admin_user: '' # email
+admin_pass: ''
+secret_key_base: ''   # generate these secrets with `rake secret`
+devise_secret_key: '' 
+time_zone: 'Pacific Time (US & Canada)' # not used

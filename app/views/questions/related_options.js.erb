@@ -1,0 +1,3 @@
+var div_id= "<%=params[:div_id]%>";
+var content = $('<%= escape_javascript render(:partial => "related_options") %>');
+$("#question_options").html(content).fadeIn(500);

@@ -1,0 +1,88 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-facebook-square"></i>
+      Listing Social Media Platforms
+      <% if params[:search] %>
+        Search Result About <%=params[:search]%>
+      <% end %>
+      ( <%=@count%> )
+
+      <div class="pull-right search-wrapper col-md-6">
+        <% @Search_placeholder="Search in title " %>
+        <%= render 'home/admin_search' %>
+      </div>
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Platform', new_social_media_platform_path %>
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Export To Excel", social_media_platforms_path(format: "xls") %>
+      </div>
+  </div><!--panel-title-->
+
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Title</th>
+          <th>Icon</th>
+          <th>Slides</th>
+          <th>Questions</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @social_media_platforms.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @social_media_platforms.each do |social_media_platform| %>
+            <tr class="show-image">
+              <td><%= social_media_platform.title %></td>
+              <td>
+                <div class="<%= social_media_platform.font_awesome_style %>" style="color:<%=social_media_platform.color%>"></div>
+              </td>
+              <td>
+                <% if social_media_platform.pages.present? %>
+                  <%=social_media_platform.pages.count%>
+                <% end %>
+              </td>
+              <td>
+                <% if social_media_platform.pages.present? %>
+                  <% total_questions=0%>
+                  <% social_media_platform.pages.each do |page| %>
+                    <% total_questions=total_questions+page.questions.count%>
+                  <% end %>
+                  <%=total_questions%>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to social_media_platform, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_social_media_platform_path(social_media_platform), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to social_media_platform, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @social_media_platforms %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

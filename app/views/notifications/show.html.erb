@@ -1,0 +1,43 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-bell"></i>Notification Details
+      </div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+      <div class="col-md-12 details">
+
+        <p>
+          <strong>Name:</strong>
+          <%= @notification.name %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @notification.email %>
+        </p>
+
+        <p>
+          <strong>Submit report:</strong>
+          <%= @notification.submit_report %>
+        </p>
+
+        <p>
+          <strong>Contact us:</strong>
+          <%= @notification.contact_us %>
+        </p>
+
+        <p>
+          <strong>Subscriber:</strong>
+          <%= @notification.subscriber %>
+        </p>
+
+        <p>
+          <%= link_to 'Edit', edit_notification_path(@notification) %> |
+          <%= link_to 'All Notifications', admin_notifications_path %>
+        </p>
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

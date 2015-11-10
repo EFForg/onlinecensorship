@@ -1,0 +1,34 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-list"></i>Post Category Details
+    	</div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+    	<div class="col-md-12 details">
+				<p>
+				  <strong>Title:</strong>
+				  <%= @category.title %>
+				</p>
+
+				<p>
+				  <strong>Color:</strong>
+				  <i class="fa fa-circle" style="color: <%= @category.color %>"></i>
+				</p>
+
+				<p>
+				  <strong>Posts:</strong>
+				  <% if @category.posts.present? %>
+						<%=@category.posts.count %>
+					<% end %>
+				</p>
+
+				<p>
+					<%= link_to 'Edit', edit_category_path(@category) %> |
+					<%= link_to 'All Posts Categories', admin_categories_path %>
+				</p>
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

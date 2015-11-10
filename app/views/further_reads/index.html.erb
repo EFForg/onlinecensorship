@@ -1,0 +1,114 @@
+<%
+  meta title: "Further Readings"
+%>
+
+<section class="dark-blue-bg page-title-wrapper">
+  <div class="container">
+    <h1> Further Readings </h1>   
+  </div>
+</section>
+
+<div class="container readings-page">
+
+	<% if @staff.count > 0 %>
+
+		<div class="dark-blue-bg box">
+			<div class="row">
+				
+				<div class="col-md-3">
+					<h2> FEATURED READS </h2>
+				</div>
+
+				<div class="col-md-8">
+
+					<% @staff.each do |read| %>
+
+						<div class="read">
+							<p> <%=read.author%> (<%=read.year%>) </p>
+							<p> 
+								<b>
+	              	<%=link_to read.link , :target=>"_blank" do %>
+										<%=read.title%>
+									<% end %>
+								</b>
+							</p>
+							<p> <%=read.written_in%> . </p>
+						</div>
+					
+					<% end %>
+					
+				</div>
+
+			</div>
+		</div>
+
+	<% end %>
+
+	<div class="white-box box">
+		<div class="row">
+			
+			<div class="col-md-3">
+				<h2> Books and journal articles </h2>
+			</div>
+
+			<div class="col-md-9">
+
+				<div>
+					
+					<% @books.each do |read| %>
+
+					<div class="read">
+						<p> <%=read.author%> (<%=read.year%>) </p>
+						<p> 
+							<b>
+              	<%=link_to read.link , :target=>"_blank" do %>
+									<%=read.title%>
+								<% end %>
+							</b>
+						</p>
+						<p> <%=read.written_in%> . </p>
+					</div>
+					
+					<% end %>
+
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="white-box box">
+		<div class="row">
+			
+			<div class="col-md-3">
+				<h2> Blog posts and news articles </h2>
+			</div>
+
+			<div class="col-md-9">
+
+				<div>
+					
+					<% @blog.each do |read| %>
+
+						<div class="read">
+							<p> <%=read.author%> (<%=read.year%>) </p>
+							<p> 
+								<b>
+	              	<%=link_to read.link , :target=>"_blank" do %>
+										<%=read.title%>
+									<% end %>
+								</b> 
+							</p>
+							<p> <%=read.written_in%> . </p>
+						</div>
+
+					<% end %>
+
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+</div>

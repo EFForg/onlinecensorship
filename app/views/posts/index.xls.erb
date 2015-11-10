@@ -1,0 +1,38 @@
+<table width="100%" cellspacing="2">
+  <tr>
+    <th style="text-align:left; font-weight:bold;">Registered at</th>
+    <th style="text-align:left; font-weight:bold;">Category</th>
+    <th style="text-align:left; font-weight:bold;">Author</th>
+    <th style="text-align:left; font-weight:bold;">Title</th>
+    <th style="text-align:left; font-weight:bold;">Image</th>
+    <th style="text-align:left; font-weight:bold;">Quote</th>
+    <th style="text-align:left; font-weight:bold;">Tags</th>
+    <th style="text-align:left; font-weight:bold;">Image Caption</th>
+    <th style="text-align:left; font-weight:bold;">Side Image</th>
+    <th style="text-align:left; font-weight:bold;">Intro</th>
+    <th style="text-align:left; font-weight:bold;">Description</th>
+    <th style="text-align:left; font-weight:bold;">Featured</th>
+    <th style="text-align:left; font-weight:bold;">Published</th>
+    <th style="text-align:left; font-weight:bold;">Publish Date</th>
+  </tr>
+
+  <% @posts.each do |excel| %>
+    <tr>
+      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;"><%= excel.category.title %></td>
+      <td style="text-align:left;"><%= excel.person.name %></td>
+      <td style="text-align:left;"><%= excel.title %></td>
+      <td style="text-align:left;"><%= root_url.to_s+excel.photo.to_s %></td>
+      <td style="text-align:left;"><%= excel.quote.title %></td>
+      <td style="text-align:left;"><%= excel.tags %></td>
+      <td style="text-align:left;"><%= excel.side_image_caption %></td>
+      <td style="text-align:left;"><%= root_url.to_s+excel.side_image.to_s %></td>
+      <td style="text-align:left;"><%= excel.intro %></td>
+      <td style="text-align:left;"><%= excel.description %></td>
+      <td style="text-align:left;"><%= excel.featured %></td>
+      <td style="text-align:left;"><%= excel.published %></td>
+      <td style="text-align:left;"><%= excel.publish_date %></td>
+    </tr>
+  <% end %>
+
+</table>

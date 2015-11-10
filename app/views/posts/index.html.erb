@@ -1,0 +1,115 @@
+<%
+  meta title: "News and Analysis"
+%>
+
+<section class="dark-blue-bg page-title-wrapper">
+  <div class="container">
+    <h1> News <br/> AND ANALYSIS </h1>   
+  </div>
+</section>
+
+<section class="latest-news news-area">
+  <div class="container">
+
+    <div class="posts-filter-wrapper">
+      <p> Filter by: </p>
+      <div class="row">
+        <div class="col-md-3">
+
+          <div class="select-wrapper">
+            <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span class="btn-placeholder">Type</span>
+              <span class="btn-value"> Type </span>
+              <span class="fa fa-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu category-dropdown" aria-labelledby="post-type" id="filter-post-type">
+              <li>
+                <a data-remote="true" href="/news-and-analysis?category_id=All" title="All">All</a>
+              </li>
+              <% @categories.each do |type| %>
+                <li>
+                  <%=link_to posts_path(category_id: type.id ,platform_id: params[:platform_id],theme_id: params[:theme_id]) ,:title=>type.title , :remote=> true do %>
+                    <%=type.title%>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          
+          <div class="select-wrapper">
+            <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-platform" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span class="btn-placeholder">Platform</span>
+              <span class="btn-value">Platform</span>
+              <span class="fa fa-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu platform-dropdown" aria-labelledby="post-platform">
+              <li>
+                <a data-remote="true" href="/news-and-analysis?platform_id=All" title="All">All</a>
+              </li>
+              <% @platform.each do |type| %>
+                <li>
+                  <%=link_to posts_path(platform_id: type.id,category_id: params[:category_id],theme_id: params[:theme_id]) ,:title=>type.title , :remote=> true do %>
+                    <%=type.title%>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          
+          <div class="select-wrapper">
+            <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-theme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span class="btn-placeholder">Theme</span>
+              <span class="btn-value">Theme</span>
+              <span class="fa fa-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu theme-dropdown" aria-labelledby="post-theme">
+              <li>
+                <a data-remote="true" href="/news-and-analysis?theme_id=All" title="All">All</a>
+              </li>
+              <% @theme.each do |type| %>
+                <li>
+                  <%=link_to posts_path(theme_id: type.id,category_id: params[:category_id] ,platform_id: params[:platform_id]) ,:title=>type.title , :remote=> true do %>
+                    <%=type.title%>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          <div class="search-posts-wrapper">
+            <form class="search-posts">
+              <input type="text" name="tag" value="<%=params[:tag]%>" class="search-field <%= (params[:tag]) ? 'opened' : '' %>">
+              <i class="fa fa-search search-icon"></i>
+              <button type="submit" class="search-submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row posts-append-div">
+      <%= render 'posts' %>
+    </div><!--posts-append-div-->
+
+    <% if @show_all %>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%=link_to posts_path(show_all: "All") ,:title=>"Show more" , :remote=> true do %>
+            <div class="btn btn-primary more-btn hide-more-btn"> Show more </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<div class="modal-body">
+
+  <input type="hidden" id="page_id" name="page_id" value="<%=params[:page_id]%>"/>
+  <% if params[:page_question_id] %>
+    <input type="hidden" id="page_question_id" name="page_question_id" value="<%=params[:page_question_id]%>"/>
+  <% end %>
+
+  <% if @question %>
+    <%= select_tag 'question', options_from_collection_for_select(@questions, :id, :question_title,@question.question_id), {:class=>"form-control",:required => true} %>
+  <% else %>
+    <%= select_tag 'question', options_from_collection_for_select(@questions, :id, :question_title,nil), {:class=>"form-control",:required => true} %>
+  <% end %>
+  
+  <label for="depend_on_question">Depend on question</label>
+  <!-- select the multiselect to select questions only -->
+  <div class="dropdown dropdown-depend_on_question">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+      <% if @question %>
+        <% 
+        # load the related question data
+        question(@question.dependent_on_question)
+        %>
+        <% if @question_details %>
+          <%=@question_details.question_title %>
+        <% end %>
+      <% else %>
+        Select question
+      <% end %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu question_option_dropdown" aria-labelledby="dropdownMenu2">
+      <% @relate_questions.each do |relate_question| %>
+        <li>
+          <%= link_to admin_related_options_path(depend_on_question_id: relate_question.id), remote: true  do %>
+            <%=relate_question.question_title%>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="question_options">
+    <% if @question && @question.question_option_id %>
+      <label for="question_option">Related options</label>
+      <select class="form-control input-sm col-md-10" id="question_option" name="question_option">
+        <option value="">Select related option</option>
+        <% @related_options.each do |option| %>
+          <option value="<%=option.id%>" <% if option.id==@question.question_option_id%>selected <% end %>><%=option.option_title%></option>
+        <% end %>
+      </select>
+      <input type="hidden" name="depend_on_question_id" value="<%=@question_details.id %>">
+    <% end %>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-premiere"  data-dismiss="modal">Cancel</button>
+  <button type="button" class="btn btn-premiere" id="save" data-dismiss="modal">Save</button>
+</div>

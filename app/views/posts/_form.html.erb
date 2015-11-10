@@ -1,0 +1,155 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% 
+  if @post_type_title=="News" 
+    klass="hide"
+  else
+    link_klass="hide"
+  end 
+  %>
+
+  <div class="field">
+    <%= f.label :category_id %> <b>*</b><br>
+    <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :title,@post.category_id) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'} %>
+  </div>
+  <br>
+  <div class="fieldset clearfix">
+    <p class="required"><b> Post platfroms *</b> </p>
+    <% @platfroms.each_with_index do |platfrom , index| %>
+      <div class="checkbox-wrapper">
+      <%= label_tag "platfrom_#{index.to_s}", raw("#{check_box_tag("platfrom[]", platfrom.id, @post.social_media_platforms.include?(platfrom),:id=>"platfrom_"+index.to_s)} #{platfrom.title}") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="fieldset clearfix">
+    <p class="required"><b> Post themes *</b> </p>
+    <% @themes.each_with_index do |theme , index| %>
+      <div class="checkbox-wrapper">
+      <%= label_tag "theme_#{index.to_s}", raw("#{check_box_tag("theme[]", theme.id, @post.posts_themes.include?(theme),:id=>"theme_"+index.to_s)} #{theme.title}") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field image-field">
+
+    <%= f.label :photo, "Thumbnail" %> <b>*</b>
+    <%= f.file_field :photo, :class=>"form-control image-uploader" %>
+
+    <% if params[:action]=="edit" %>
+      <%= image_tag @post.photo(:thumb), :class => "preview-image preview-post-cover-input" %><br>
+    <% else %>
+      <%= image_tag "", :class => "preview-image preview-post-cover-input" %><br>
+    <% end %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :title %> <b>*</b><br>
+    <%= f.text_field :title, required: true, :class=>"form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :intro %> <b>*</b><br>
+    <%= f.text_area :intro, required: true, :class=>"form-control text_area_height" %>
+  </div>
+
+  <div class="field post-field <%=klass%>">
+    <%= f.label :description, "Content" %><br>
+    <%= f.text_area :description, :class=>"form-control ckeditor" %>
+  </div>
+
+  <div class="field post-field <%=klass%> image-field">
+    <%= f.label :side_image %>
+    <%= f.file_field :side_image, :class=>"form-control image-uploader" %>
+    <% if params[:action]=="edit" && @post.side_image.present? %>
+      <%= image_tag @post.side_image.url(:thumb), :class => "preview-image preview-side-image" %>
+    <% else %>
+      <%= image_tag "", :class => "preview-image preview-side-image" %>
+    <% end %> 
+  </div>
+
+  <div class="field post-field <%=klass%>">
+    <%= f.label :side_image_caption %><br>
+    <%= f.text_field :side_image_caption, :class=>"form-control" %>
+  </div>
+
+  <div class="field post-field <%=klass%>">
+    <%= f.label :side_image_link %><br>
+    <%= f.text_field :side_image_link, :class=>"form-control" %>
+    <span class="tip"> Full link, for example: http://www.oc.org/ </span>
+  </div>
+
+  <div class="field post-field <%=klass%>">
+    <%= f.label :person_id ,"Author" %><br>
+    <%= f.select :person_id, options_from_collection_for_select(@people, :id, :name,@post.person_id) ,{:include_blank => true},{:class=> 'form-control input-sm col-md-10'} %>
+  </div>
+
+  <div class="field post-link <%=link_klass%>">
+    <%= f.label :link %> <b>*</b><br>
+    <%= f.text_field :link, :class=>"form-control" %>
+    <span class="tip"> External link: http://www.oc.org/ </span>
+  </div>
+
+  <div class="field post-link <%=link_klass%>">
+    <%= f.label :news_source %> <br>
+    <%= f.text_field :news_source, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags , :class=>"form-control" %>
+    <span class="tip"> Separated by ',' like this: tag1,tag2,tag3 </span>
+  </div>
+
+  <div class="post-field <%=klass%>">
+    <hr>
+    <i class="fa fa-quote-left"></i> <b>Post quote </b><br>
+
+    <div class="field">
+      <%= f.label :quote_author %><br>
+      <%= f.text_field :quote_author, :class=>"form-control post-quote-author" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :quote_text %><br>
+      <%= f.text_area :quote_text, :class=>"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :twitter_text %><br>
+      <%= f.text_area :twitter_text, :class=>"form-control", :maxlength => "99" %>
+      <span class="tip"> Maximun 99 characters, "OC link and @censored" will be appended. </span>
+    </div>
+
+  </div><!--fieldset-->
+
+  <div class="field">
+    <%= f.label :publish_date %><br>
+    <%= f.date_select :publish_date, :order => [:day, :month, :year] %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :pinned %>
+    <%= f.label :pinned , "Pinned to homepage" %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Preview Post", preview_posts_path, remote: true, :class => "post-preview-link post-field load btn btn-primary #{klass}" %>
+    <%= f.submit "Save Post", :class=> "btn btn-primary" %>
+  </div>
+<% end %>
+
+<div class="post-preview">
+</div>

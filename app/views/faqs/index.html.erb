@@ -1,0 +1,35 @@
+<section class="dark-blue-bg page-title-wrapper">
+  <div class="container">
+    <h1> Frequently Asked Questions </h1> 
+  </div>
+</section>
+
+<div class="container faqs-page">
+
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  
+	  <% @faqs.each_with_index do |faq,index| %>
+
+		  <div class="panel">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h2 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=index%>" aria-expanded="true" aria-controls="collapseOne">
+		          <%= faq.question %>
+		          <div class="fa-wrapper">
+			          <i class="fa fa-plus"></i>
+			        </div>
+		        </a>
+		      </h2>
+		    </div>
+		    <div id="collapse_<%=index%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+		        <p><%= faq.answer.html_safe %></p>
+		      </div>
+		    </div>
+		  </div><!--panel-->
+		
+		<% end %>
+
+	</div>
+
+</div>

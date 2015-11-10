@@ -1,0 +1,33 @@
+<%= form_for(@content_management_page) do |f| %>
+  <% if @content_management_page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@content_management_page.errors.count, "error") %> prohibited this content_management_page from being saved:</h2>
+
+      <ul>
+      <% @content_management_page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :page_title, "Title" %><br>
+    <%= f.text_field :page_title, required: true, :class => "form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brief %><br>
+    <%= f.text_area :brief, :class=>"form-control"  %>
+    <p class="tip"> Optional </p>
+  </div>
+
+  <div class="field">
+    <%= f.label :content , "Page Content" %><br>
+    <%= f.text_area :content, required: true , :class=>"form-control ckeditor"  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>

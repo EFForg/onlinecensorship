@@ -1,0 +1,63 @@
+<%= form_for @person do |f| %>
+
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if params[:action]=="edit" %>
+      <%= image_tag @person.photo.url(:thumb) %><br>
+      <%= f.label :photo %>
+      <%= f.file_field :photo, :class=>"form-control" %>
+    <% else %>
+      <%= f.label :photo %>
+      <%= f.file_field :photo, :class=>"form-control" %>
+    <% end %>  
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name , required: true , :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :role  , "Role in project " %><br>
+    <%= f.text_field :role , :class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio , required: true , :class=>"form-control ckeditor" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :advisor %>
+    <%= f.label :advisor , "Advisor" %>
+  </div>
+  <div class="field">
+    <%= f.check_box :team%>
+    <%= f.label :team  , "Team Member " %>
+  </div>
+  <div class="field">
+    <%= f.check_box :author%>
+    <%= f.label :author , "Author" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :theorder %><br>
+    <% if params[:action]=="new" %>
+      <%= f.number_field :theorder, :value => Person.count+1 , :class=>"form-control" %>
+    <% else %>
+      <%= f.number_field :theorder , :class=>"form-control" %>
+    <% end %>
+    <p class="tip"> Optional </p>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit  :class=> "btn btn-primary" %>
+  </div>
+<% end %>

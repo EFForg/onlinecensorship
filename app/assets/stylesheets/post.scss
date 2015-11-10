@@ -1,0 +1,264 @@
+// Colors
+$light-blue: #41dcf5;
+$medium-blue: #4ab2c3;
+$dark-blue: #152f4e;
+
+.post-preview {
+	position: fixed;
+	background: #f4f4f4;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	top: 0;
+	left: 0;
+  display: none;
+  .close-post-preview {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    border: 2px solid;
+    border-radius: 50%;
+    z-index: 99;
+    color: #fff;
+    text-align: center;
+    &:hover {
+      color: #41dcf5;
+      cursor: pointer;
+    }
+  }
+}
+
+.page-content {
+  margin-top: 120px;
+  @media (max-width: 992px) {
+    margin-top: 90px;
+  }
+  &.admin-panel {
+    margin-top: 0;
+  }
+}
+
+// post page
+.post-cover {
+  height: 474px;
+  overflow: hidden;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(22,47,78,0.8);
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.post-wrapper {
+  margin-top: -410px;
+  margin-bottom: 24px;
+  label {
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .post-info {
+    text-transform: uppercase;
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+    margin: 8px 0;
+    a {
+      font-family: 'Work Sans', sans-serif;
+      color: #fff;
+      font-weight: normal;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .post-content {
+    background: #fff;
+    padding: 34px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    min-height: 360px;
+    position: relative;
+  }
+  .seperator {
+    border-bottom: 1px solid #f6f6f6;
+    margin: 32px 0;
+  }
+  .share-post {
+    h5 { 
+      color: $medium-blue; 
+      margin: 14px 0;
+      font-weight: bold;
+    }
+    .btn {
+      margin-right: 18px;
+      margin-bottom: 10px;
+      .fa {
+        color: $medium-blue;
+      }
+    }
+  }
+  .suggested-topics {
+    padding-bottom: 16px;
+    h2 {
+      margin: 0;
+    }
+    label {
+      color: #5c5c5c;
+    }
+  }
+  .post-image {
+    img {
+      width: 100%;
+    }
+    .image-caption {
+      color: $medium-blue;
+      margin: 14px 0;
+      font-family: 'Work Sans', sans-serif;
+    }
+  }
+}
+
+.post-quote {
+  text-align: center;
+  margin-top: 120px;
+  .quote-text-wrapper {
+    position: relative;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bold;
+
+    .quote-text {
+      font-size: 24px;
+      font-family: 'Work Sans', sans-serif;
+      padding: 20px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    &:before {
+      content: '“';
+      left: 0;
+      top: 38px;
+    }
+    &:after {
+      content: '”';
+      right: 0;
+      bottom: -18px;
+    }
+    &:after, &:before {
+      color: $medium-blue;
+      font-size: 144px;
+      position: absolute;
+      opacity: 0.5;
+      z-index: 1;
+      line-height: 36px;
+    }
+
+  }
+  
+  .quote-by {
+    color: $medium-blue;
+    font-size: 18px;
+    font-style: italic;
+  }
+  .quote-share {
+    margin: 12px;
+    display: inline-block;
+    p {
+      color: $medium-blue;
+      font-family: 'Work Sans', sans-serif;
+    }
+    .fa {
+      display: inline-block;
+      font-size: 18px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid;
+      border-radius: 50%;
+      margin: 5px;
+      line-height: 32px;
+      color: $dark-blue;
+      &:hover {
+        color: $medium-blue;
+      }
+    }
+  }
+}
+
+
+.team-member {
+  background-color: #fff;
+  padding: 18px;
+  margin-bottom: 30px;
+  .personal-photo {
+    width: 74px;
+    height: 74px;
+    float: left;
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      background: #ccc;
+    }
+    @media (max-width: 499px){
+      float: none;
+    }
+  }
+  .personal-info {
+    margin-left: 88px;
+    @media (max-width: 499px){
+      margin-left: 0;
+      margin-top: 18px;
+    }
+    h2, h4 {
+      font-weight: 500;
+      color: #1c3f61;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 4px;
+      a {
+        color: #1c3f61;
+        text-transform: capitalize;
+      }
+    }
+    h4 {
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+  }
+  &.advisor {
+    padding: 14px 18px;
+    .personal-info {
+      margin-left: 0;
+    }
+  }
+  &.post-author {
+    background: #f6f6f6;
+    h4 {
+      color: $medium-blue;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.post-preview {
+  h1 {
+    color: #41DCF5;
+  }
+  h1, h2 {
+    margin: 0 !important;
+  }
+}
+
+.preview-image {
+  margin-top: 6px;
+}

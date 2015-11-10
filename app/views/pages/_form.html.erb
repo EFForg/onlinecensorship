@@ -1,0 +1,54 @@
+<%= label_tag :social_media_platform_id,"Social Media Platform" %><br>
+<div class="dropdown platform_dropdown-title">
+  <button class="btn btn-default dropdown-toggle social-media-platforms-pages" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <% if @current_platform %>
+      <%=@current_platform.title%>
+    <% else %>
+      Select Platform
+    <% end %>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu platform_dropdown" aria-labelledby="dropdownMenu1">
+    <% @social_media_platforms.each do |platform| %>
+      <li>
+        <%= link_to pages_path(request_type: "registerd_pages" , social_media_platform_id: platform.id), remote: true, :class => "load" do %>
+          <%=platform.title%>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<br>
+
+<div class="append-frame">
+  <% if @current_platform %>
+    <%=render "registerd_pages" %>
+  <% end %>
+</div>
+
+<span id="myLink">
+  <% if @current_platform %>
+    <a class="link load" data-remote="true" href="/pages?request_type=new_page&social_media_platform_id=<%=@current_platform.id %>" id="add-slide-page" title="Add Page">+ Add Page</a>
+  <% end %>
+</span>
+
+<!-- Questions Popup -->
+<div class="modal fade" id="myQuestionsPopup" role="dialog">
+  <%= form_for(@page , :remote => true ) do |f| %>
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close empty-fields" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please select the questions</h4>
+        </div>
+        
+        <!-- append my ajax reseult -->
+        <div class="modal-data"></div>
+
+      </div>
+      
+    </div><!--modal-dialog-->
+  <% end %>
+</div><!--myQuestionsPopup-->

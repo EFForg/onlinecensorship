@@ -1,0 +1,58 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-users"></i>Person Details
+      </div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+      <div class="col-md-12 details">
+
+        <p>
+          <%= image_tag @person.photo.url(:thumb) %>
+        </p>
+
+        <p>
+          <strong>Name:</strong>
+          <%= @person.name %>
+        </p>
+
+        <p>
+          <strong>Role in project :</strong>
+          <%= @person.role %>
+        </p>
+
+        <p>
+          <strong>Advisor :</strong>
+          <%= @person.advisor %>
+        </p>
+
+        <p>
+          <strong>Team Member:</strong>
+          <%= @person.team %>
+        </p>
+
+        <p>
+          <strong>Author:</strong>
+          <%= @person.author %>
+        </p>
+        
+        <p>
+          <strong>Bio:</strong>
+          <%= @person.bio.html_safe %>
+        </p>
+        
+        <p>
+          <strong>Order:</strong>
+          <%= @person.theorder %>
+        </p>
+        
+        <p>
+          <%= link_to 'Edit', edit_person_path(@person) %> |
+          <%= link_to 'All People', admin_people_path %>
+        </p>
+    
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

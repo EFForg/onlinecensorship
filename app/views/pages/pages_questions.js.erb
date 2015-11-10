@@ -1,0 +1,22 @@
+var content=$('<%= escape_javascript render(:partial => "pages_questions") %>');
+$(".modal-data").html(content).fadeIn(500);
+
+// submit the question popup page
+$(".modal-footer #save").click(function() {
+  // submit the form
+  $("#myQuestionsPopup #new_page").submit();
+	// refresh page
+	location.reload();
+});
+
+// show the selected question
+$(".dropdown li a").click(function() {
+	
+	var selected = $(this).text();
+	var button = $(this).parent().parent().prev();
+	var dropdown = button.parent();
+
+  button.text(selected);
+  dropdown.removeClass("open");
+
+});

@@ -1,0 +1,13 @@
+//  add new pages 
+var category = "<%=params[:category_id]%>";
+var theme = "<%=params[:theme_id]%>";
+var platform = "<%=params[:platform_id]%>";
+
+var content = $('<%= escape_javascript render(:partial => "posts") %>');
+// start loading
+NProgress.start();
+// append the result in the view
+$(".posts-append-div").html(content).fadeIn(500);
+window.history.pushState("", "", "?category_id="+ category+ "&platform_id=" + platform + "&theme_id=" + theme);
+// end loading
+NProgress.done();

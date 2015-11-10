@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  social_media_platform_id: 1
+  page_id: 1
+  question_title: MyString
+  question_type: MyString
+  dependent_option_id: 1
+
+two:
+  social_media_platform_id: 1
+  page_id: 1
+  question_title: MyString
+  question_type: MyString
+  dependent_option_id: 1

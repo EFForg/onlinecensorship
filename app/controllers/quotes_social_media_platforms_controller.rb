@@ -1,0 +1,2 @@
+class QuotesSocialMediaPlatformsController < ApplicationController
+end

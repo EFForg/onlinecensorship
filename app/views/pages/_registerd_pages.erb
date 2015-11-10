@@ -1,0 +1,34 @@
+<!-- used in ajax request -->
+<% @pages.each do |page| %>
+	<div class="field fieldset add-page-fieldset" id="<%=page.id%>">
+		<label class="pull-left">Slider order</label>
+		<input class="form-control pull-left page-order" name="page_theorder[]" type="number" value="<%=page.theorder%>"/>
+		<p class="tip pull-left tip-margin"> Optional</p>
+		<div class="pull-left saved hide" id="save_<%=page.id%>">saved</div>
+		<a data-remote="true" data-confirm="Are you sure?" data-method="delete" href="/pages/<%=page.id%>" rel="nofollow" title="Delete" class="delete-page load">
+			<i class="pull-right fa fa-trash-o icon-margin cursor" title="Delete"></i>
+		</a>
+	    
+	  <%= link_to admin_pages_questions_path(page_id: page.id,page_div: "page-#{page.id.to_s}-registerd-questions"), remote: true  do %>
+			<div class="pull-right btn btn-primary open-popup" data-toggle="modal" data-target="#myQuestionsPopup">Add questions </div>
+		<% end %>
+		
+		<ul id="page-<%=page.id.to_s%>-registerd-questions">
+			<% PageQuestions(page.id)%>
+			<% @registerd_questions.each do |page_question| %>
+				<li id="<%=page_question.id%>">
+					<%=page_question.question.question_title.gsub('{platform}',page.social_media_platform.title)%>
+					
+				  <%= link_to admin_pages_questions_path(page_question_id: page_question.id,page_id: page.id,page_div: "page-#{page.id.to_s}-registerd-questions"), remote: true  do %>
+						<div class="fa fa-pencil" data-toggle="modal" data-target="#myQuestionsPopup"></div>
+					<% end %>
+				 	
+				 	<%= link_to page_question, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" , :class=> "delete-question load",remote: true do %>
+						<i class="fa fa-trash-o"></i>
+				 	<% end %>
+
+				</li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

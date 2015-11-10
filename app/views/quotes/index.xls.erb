@@ -1,0 +1,20 @@
+<table width="100%" cellspacing="2">
+  <tr>
+    <th style="text-align:left; font-weight:bold;">Registered at</th>
+    <th style="text-align:left; font-weight:bold;">Autheor</th>
+    <th style="text-align:left; font-weight:bold;">Font Size</th>
+    <th style="text-align:left; font-weight:bold;">Quote</th>
+    <th style="text-align:left; font-weight:bold;">Featured</th>
+  </tr>
+
+  <% @quotes.each do |excel| %>
+    <tr>
+      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;"><%= excel.author %></td>
+      <td style="text-align:left;"><%= excel.font_size %></td>
+      <td style="text-align:left;"><%= excel.quote %></td>
+      <td style="text-align:left;"><%= excel.featured %></td>
+    </tr>
+  <% end %>
+
+</table>

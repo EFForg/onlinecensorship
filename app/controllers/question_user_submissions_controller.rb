@@ -1,0 +1,2 @@
+class QuestionUserSubmissionsController < ApplicationController
+end

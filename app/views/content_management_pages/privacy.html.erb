@@ -1,0 +1,27 @@
+<% cms_page_content('privacy-policy')%>
+
+<section class="dark-blue-bg page-title-wrapper">
+  <% unless @page.nil? %>
+    <div class="container">
+      <h1> <%= @page.page_title %> </h1>
+
+      <% if @page.brief.present? %>
+
+  	    <div class="row">
+  	    	<div class="col-md-8">
+  			    <p>
+  			    	<%= @page.brief %>
+  			    </p>
+  		    </div>
+  	    </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</section>
+
+<div class="container privacy-page">
+
+  <%=@page.content.html_safe%>
+
+</div>

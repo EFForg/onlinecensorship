@@ -1,0 +1,50 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-newspaper-o"></i>Further Read Details
+    	</div>
+    </div><!--panel-heading-->
+    <div class="panel-body">
+    	<div class="col-md-12 details">
+
+				<p>
+				  <strong>Title:</strong>
+			  	<%= @further_read.title %>
+				</p>
+
+				<p>
+				  <strong>Link:</strong>
+          <%=link_to @further_read.link , :target=>"_blank" do %>
+				  	<%= @further_read.link %>
+				  <% end %>
+				</p>
+
+				<p>
+				  <strong>Author:</strong>
+				  <%= @further_read.author %>
+				</p>
+
+				<p>
+				  <strong>Category:</strong>
+				  <%= @further_read.category %>
+				</p>
+
+				<p>
+				  <strong>Written In:</strong>
+				  <%= @further_read.written_in %>
+				</p>
+
+				<p>
+				  <strong>Year:</strong>
+				  <%= @further_read.year %>
+				</p>
+
+				<p>
+					<%= link_to 'Edit', edit_further_read_path(@further_read) %> |
+					<%= link_to 'All Further Reads', admin_further_reads_path %>
+				</p>
+      </div><!--details-->
+    </div><!--panel-body-->
+  </div><!--content-box-large-->
+</div><!--col-md-12-->

@@ -1,0 +1,116 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-newspaper-o"></i>
+      Listing Posts
+      <% if params[:search] %>
+        Search Result About <%=params[:search]%>
+      <% end %>
+      ( <%=@count%> )
+
+      <div class="pull-right search-wrapper col-md-6">
+        <% @Search_placeholder="Search in title , description" %>
+        <%= render 'home/admin_search' %>
+      </div>
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Post', new_post_path %>
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Export To Excel", posts_path(format: "xls") %>
+      </div>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Category</th>
+          <th>Person</th>
+          <th>Title</th>
+          <th>Published</th>
+          <th>Featured</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @posts.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @posts.each do |post| %>
+            <tr class="show-image">
+              <% if post.category.present? %>
+                <td>
+                  <i class="fa fa-circle" style="color:<%= post.category.color%>"></i>
+                  <%= post.category.title %>
+                </td>
+              <% else %>
+                <td>
+                </td>                
+              <% end %>
+              <td>
+                <% if post.person.present? %>
+                  <%= post.person.name %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.category && post.category.title.downcase=="news" %>
+                  <%=link_to post.link , :target => "_blank" do %>
+                    <%= post.title %>
+                  <% end %>
+                <% else %>
+                  <%= post.title %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.published %>
+                  <%= link_to "Unpublish", post_unpublish_path(post.id) %>
+                <% else %>
+                  <%= link_to "Publish", post_publish_path(post.id) %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.featured %>
+                  <%= link_to "Unfeature", post_unfeatured_path(post.id) %>
+                <% else %>
+                  <%= link_to "Feature", post_featured_path(post.id) %>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <% if post.photo? %>
+                  <div class="main-image"><%= image_tag post.photo(:thumb)%></div>
+                  <div class="backend-icon icon-image" title="Contain image"></div>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <% if post.category && post.category.title.downcase !="news" %>
+                  <%= link_to post, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
+                <% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_post_path(post), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @posts %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

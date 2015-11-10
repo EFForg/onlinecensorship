@@ -1,0 +1,18 @@
+<%= form_for(@subscribe , :remote => true ) do |f| %>
+  <% if @subscribe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscribe.errors.count, "error") %> prohibited this subscribe from being saved:</h2>
+
+      <ul>
+      <% @subscribe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.email_field :email ,required: true , :class=>"email", :placeholder=>"Email" , :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
+  <%= text_field_tag('subscribe[spam_checker]', nil, class: 'spam-checker') %>
+  <%= f.submit "SUBSCRIBE" , :class => "submit-btn" %>
+
+<% end %>

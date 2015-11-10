@@ -1,0 +1,94 @@
+<table width="100%" cellspacing="2">
+  <tr>
+    <th style="text-align:left; font-weight:bold;">Registered at</th>
+    <th style="text-align:left; font-weight:bold;">Name</th>
+    <th style="text-align:left; font-weight:bold;">Email</th>
+    <th style="text-align:left; font-weight:bold;">Country</th>
+    <th style="text-align:left; font-weight:bold;">Platform</th>
+    <th style="text-align:left; font-weight:bold;">Answers</th>
+
+  </tr>
+
+  <% @question_users.each do |excel| %>
+    <tr>
+      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;">
+        <% if excel.name? %> 
+          <%= excel.name %>
+        <% else %>  
+          Anonymous
+        <% end %>
+      </td>
+      <td style="text-align:left;">
+        <% if excel.email? %>
+          <%= excel.email %>
+        <% else %>
+          Anonymous
+        <% end %>
+      </td>
+      <td style="text-align:left;">
+        <% if excel.country.present? %>
+          <%= excel.country.name %>
+        <% else %>
+          Anonymous
+        <% end %>
+      </td>
+      <td style="text-align:left;">
+        <% if excel.question_user_submissions.present? %>
+          <% excel.question_user_submissions.first(1).each do |submission| %>
+            <% if  submission.page.present? && submission.page.social_media_platform.present? %>
+              <%=submission.page.social_media_platform.title%>
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+      <td style="text-align:left;">
+        <ul>
+          <% if excel.question_user_submissions.present? %>
+            <% excel.question_user_submissions.each do |submission| %>
+              <li>
+                <% if  submission.page.present? && submission.page.social_media_platform.present? %>
+                  <b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title)%></b><br>
+                <% end %>
+
+                <% question_type=submission.question_answer.question.question_type%>
+                <%
+                  if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email"
+                %>
+                  <%=submission.question_answer.answer_text%>
+                <% elsif question_type=="upload" %>
+                  <% UploadedFileData(submission.question_answer.uploaded_file_id) %>              
+                  <%= link_to root_url.to_s+"/system/uploads/"+@uploaded_file.title.to_s do %>
+                    Download the file 
+                  <% end %>
+                <% elsif question_type=="select" %>
+                  <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
+                <% elsif question_type=="multi_select" %>
+                  <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
+                  <% @question_answers.each do |option| %>
+                    <ul>
+                      <% if option.other_option_answer %>
+                        <li><%=option.other_option_answer%></li>
+                      <% else %>
+                        <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
+                      <% end %>
+                    </ul>
+                  <% end %>                
+                <% elsif question_type=="countries" %>
+                  <% if submission.question_answer.country.present? %>
+                    <%=submission.question_answer.country.name%>
+                  <% end %>                
+                <% elsif question_type=="languages" %>
+                  <% if submission.question_answer.language.present? %>
+                    <%=submission.question_answer.language.name%>
+                  <% end %>                
+                <% end %>
+              </li>
+            <% end %>
+          <% end %> 
+        </ul>       
+      </td>
+    </tr>
+  <% end %>
+
+</table>

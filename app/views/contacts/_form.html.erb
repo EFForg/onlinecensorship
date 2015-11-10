@@ -1,0 +1,53 @@
+<%= form_for(@contact , :remote => true) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+    <%= f.label :name, "Name *" %>
+    <%= f.text_field :name ,required: true %>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :surname, "Surname *" %>
+    <%= f.text_field :surname ,required: true %>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :email, "Email *" %>
+    <%= f.email_field :email ,required: true , :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :pgp_key %>
+    <%= f.text_field :pgp_key %>
+    <i class="note">Some people use public PGP keys for added security online. If you do not use a PGP key, leave this field blank.</i>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :contacts_topic_id, "Topic *" %>
+    <div class="select-wrapper">
+      <%= f.select :contacts_topic_id, options_from_collection_for_select(@contacts_topics, :id, :name,@contact.contacts_topic_id), {:required => true} %>
+      <span class="fa fa-chevron-down"></span>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <%= f.label :message, "Message *" %>
+    <%= f.text_area :message ,required: true %>
+  </div>
+
+  <%= text_field_tag('contact[spam_checker]', nil, class: 'spam-checker') %>
+ 
+  <div class="col-md-12 centered ">
+    <%= f.submit "SUBMIT", :class=> "btn btn-primary submit-btn" %>
+  </div>
+
+<% end %>
