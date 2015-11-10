@@ -1,5 +1,3 @@
-== README
-
 # Online Censorship #
 Built using:
 - Ruby on Rails version 4.1.2
