@@ -1,1 +1,1 @@
-web: rails s
+web: ./wrapper.sh
