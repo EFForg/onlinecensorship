@@ -80,6 +80,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.paperclip_defaults = {
+    :storage => ENV['attachment_storage'],
+    :s3_host_name => "s3-#{ENV['aws_region']}.amazonaws.com",
+    :s3_protocol => :https,
+    :bucket => ENV['aws_bucket']
+  }
+
+
   # For mailer
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => ENV['smtp_domain'] }

@@ -34,7 +34,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  
+
   # for devise gem mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.paperclip_defaults = {
+    :storage => ENV['attachment_storage'],
+    :s3_host_name => "s3-#{ENV['aws_region']}.amazonaws.com",
+    :s3_protocol => :https,
+    :bucket => ENV['aws_bucket']
+  }
 end
