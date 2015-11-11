@@ -15,7 +15,7 @@ class SocialMediaPlatformsController < ApplicationController
       format.xls {
         @social_media_platforms=SocialMediaPlatform.all
       }
-    end     
+    end
   end
 
   def submit_report

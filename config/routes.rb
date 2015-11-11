@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :contacts , except: :index
   get "/contacts" => "contacts#new"
-  
+
   resources :contacts_topics
 
   resources :pages_questions
@@ -77,8 +77,8 @@ Rails.application.routes.draw do
 
   # for home page
   root 'home#index'
-  get "/thanks" => "questions#submit"
   post "/thanks" => "questions#submit"
+  get '/ty' => 'questions#ty'
 
   # for cms pages
   get "about/who-we-are" => "content_management_pages#who_we_are"
@@ -87,11 +87,11 @@ Rails.application.routes.draw do
   get "privacy-policy" => "content_management_pages#privacy"
 
   # for backend ######
-  get "/admin", :to => redirect("/users/sign_in")  
+  get "/admin", :to => redirect("/users/sign_in")
   get "/admin/dashboard" => "home#dashboard"
 
   get "/admin/countries" => "countries#index"
-  get "/admin/languages" => "languages#index"  
+  get "/admin/languages" => "languages#index"
   get "/admin/social_media_platforms" => "social_media_platforms#index"
   get "/admin/pages_questions" => "pages#pages_questions"
   post "/admin/update_page" =>"pages#update_page"
@@ -104,7 +104,7 @@ Rails.application.routes.draw do
   get "/admin/content_management_pages" => "content_management_pages#index"
   get "/admin/home_fields" => "home_fields#admin"
   get "/admin/categories" => "categories#index"
-  get "/admin/posts_themes" => "posts_themes#index"  
+  get "/admin/posts_themes" => "posts_themes#index"
   get "/admin/quotes" => "quotes#index"
   get "/admin/posts" => "posts#admin"
   get "/admin/further_reads" => "further_reads#admin"
