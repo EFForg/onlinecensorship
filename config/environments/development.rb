@@ -37,13 +37,4 @@ Rails.application.configure do
 
   # for devise gem mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  unless ENV['attachment_storage'].nil? or ENV['attachment_storage'] == 'file'
-    config.paperclip_defaults = {
-      :storage => ENV['attachment_storage'],
-      :s3_host_name => "s3-#{ENV['aws_region']}.amazonaws.com",
-      :s3_protocol => :https,
-      :bucket => ENV['aws_bucket']
-    }
-  end
 end
