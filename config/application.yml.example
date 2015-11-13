@@ -1,3 +1,15 @@
+######################
+# 3rd Party Settings #
+######################
+
+# Grants rails access to bitbucket, where paperclip should be set to upload and link to
+attachment_storage: 'file'  # Choose 's3' for amazon hosting or 'file' for storage on filesystem
+aws_access_key_id: ''
+aws_secret_access_key: ''
+aws_region: 'us-west-1'
+aws_bucket: 'onlinecensorship'
+
+
 #################
 # Mail Settings #
 #################
@@ -10,7 +22,6 @@ smtp_domain: "onlinecensorship.org"
 smtp_authentication: 'login'
 smtp_enable_starttls_auto: "true"
 mailings_from: 'Online Censorship <no-reply@onlinecensorship.org>' # not used
-
 
 
 #######################

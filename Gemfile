@@ -15,6 +15,7 @@ group :assets do
   gem 'turbo-sprockets-rails3' # faster asset compilation
 end
 
+
 gem 'less-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
@@ -53,6 +54,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Manage attachements images
+gem 'aws-sdk-v1'
 gem 'paperclip'
 gem 'rmagick'
 
