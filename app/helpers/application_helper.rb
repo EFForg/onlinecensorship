@@ -24,14 +24,14 @@ module ApplicationHelper
   # return the social media platform "using it in the questionaires notifications system"
   def getSocialMediaPlatform(page_id)
     @platform=Page.where(:id=>page_id).first.social_media_platform.title
-  end 
+  end
 
   # Return the content management page data
   def cms_page_content(page_name)
     # replace the unneeded link parameters
     # page_name=request.original_url.gsub(root_url,"").gsub("resources/","").gsub("about/","")
     # get the page content
-    if ContentManagementPage.where(:page=>page_name).count > 0 
+    if ContentManagementPage.where(:page=>page_name).count > 0
       @page=ContentManagementPage.where(:page=>page_name).first
     end
   end
@@ -41,13 +41,13 @@ module ApplicationHelper
   	@depends_on_question=QuestionOption.where(:id=>option_id).first.question_id
   end
 
-	# add question answer 
+	# add question answer
   def add_question_answer(question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text)
 		@question_answer=QuestionAnswer.new(:question_id=>question_id,:question_user_submission_id=>question_user_id,:uploaded_file_id=>uploaded_file_id,:question_option_id=>question_option_id,:other_option_answer=>other_option_answer ,:country_id=>country_id,:language_id=>language_id,:answer_text=>answer_text)
 		@question_answer.save
   end
 
-  # add question answer 
+  # add question answer
   def UploadedFileData(uploaded_file_id)
     @uploaded_file=UploadedFile.where(:id=>uploaded_file_id).first
   end
@@ -57,7 +57,7 @@ module ApplicationHelper
     if !File.directory?(folder_name)
       Dir.mkdir(folder_name,0700)
     end
-  end  
+  end
 
   # upload file to the server
   def UploadFile(my_file,my_directory)
@@ -76,6 +76,12 @@ module ApplicationHelper
   # get the registerd questions for every page
   def PageQuestions(page_id)
     @registerd_questions=PagesQuestion.where(:page_id =>page_id);
+  end
+
+  def piwiki_tracking_code
+    <<-EOF
+      <noscript><img src="https://anon-stats.eff.org/piwik.php?idsite=SITE_ID&rec=1&action_name=PAGE_TITLE" style="border:0" height="0" width="0" alt="" /></noscript> <div style="height: 0; width: 0" id="anon-stats"></div> <script type="text/javascript"> document.getElementById('anon-stats').innerHTML = '<img src="https://anon-stats.eff.org/piwik.php?idsite=SITE_ID&rec=1&urlref=' + encodeURIComponent(document.referrer) + '&action_name=' + encodeURIComponent(document.title) + '" style="border:0" height="0" width="0" alt="" />'; </script>
+    EOF
   end
 
 end

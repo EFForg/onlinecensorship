@@ -10,7 +10,7 @@
 </head>
 <body class="page-<%= controller_name %>">
 
-  <!-- Fixed navbar -->
+  <!-- Fixed navbar -->application.html.erb
   <nav class="navbar navbar-default navbar-fixed-top <%= controller_name %>-header main-header">
     <div class="container">
       <div class="navbar-header">
@@ -61,7 +61,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <%= image_tag "logo-footer.png", :class => "logo" %> 
+          <%= image_tag "logo-footer.png", :class => "logo" %>
         </div>
         <div class="col-md-3">
           <h5> Follow us </h5>
@@ -94,10 +94,11 @@
       </div>
     </div>
   </footer>
-  
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:700,400' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
 
+  <%= piwiki_tracking_code.html_safe %>
 </body>
 </html>
