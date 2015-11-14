@@ -12,7 +12,7 @@ group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier', '>= 1.3.0'
-  gem 'turbo-sprockets-rails3' # faster asset compilation
+  #gem 'turbo-sprockets-rails3' # faster asset compilation
 end
 
 
