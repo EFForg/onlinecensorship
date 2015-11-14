@@ -27,6 +27,9 @@ module Oc
 
     config.assets.enabled = true
 
+    # Disable automatic generation of test files
+    config.generators.test_framework false
+
     # Enable loading from /lib
     config.autoload_paths += %W(#{config.root}/lib)
 
