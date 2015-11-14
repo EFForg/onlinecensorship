@@ -99,6 +99,6 @@
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:700,400' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
 
-  <%= piwiki_tracking_code.html_safe %>
+  <%= piwiki_tracking_code(23, "#{controller_name}:#{action_name}").html_safe %>
 </body>
 </html>

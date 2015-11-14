@@ -78,9 +78,16 @@ module ApplicationHelper
     @registerd_questions=PagesQuestion.where(:page_id =>page_id);
   end
 
-  def piwiki_tracking_code
+  def piwiki_tracking_code(site_id, page_title)
     <<-EOF
-      <noscript><img src="https://anon-stats.eff.org/piwik.php?idsite=SITE_ID&rec=1&action_name=PAGE_TITLE" style="border:0" height="0" width="0" alt="" /></noscript> <div style="height: 0; width: 0" id="anon-stats"></div> <script type="text/javascript"> document.getElementById('anon-stats').innerHTML = '<img src="https://anon-stats.eff.org/piwik.php?idsite=SITE_ID&rec=1&urlref=' + encodeURIComponent(document.referrer) + '&action_name=' + encodeURIComponent(document.title) + '" style="border:0" height="0" width="0" alt="" />'; </script>
+      <div id="anon-stats">
+        <noscript>
+          <img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;action_name=#{page_title}" style="border:0" alt="" />
+        </noscript>
+        <script>
+          document.getElementById('anon-stats').innerHTML = '<img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;urlref='+encodeURIComponent(document.referrer)+'&amp;action_name=#{page_title}" style="border:0" alt="" />';
+        </script>
+      </div>
     EOF
   end
 
