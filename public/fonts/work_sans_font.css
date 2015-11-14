@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Work Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/work-sans/ElUAY9q6T0Ayx4zWzW63VPY6323mHUZFJMgTvxaG2iE.eot');
+  src: url('/fonts/work-sans/ElUAY9q6T0Ayx4zWzW63VPY6323mHUZFJMgTvxaG2iE.eot?#iefix') format('embedded-opentype'),
+       local('Work Sans'),
+       local('Work-Sans-regular'),
+       url('/fonts/work-sans/ElUAY9q6T0Ayx4zWzW63VJBw1xU1rKptJj_0jans920.woff2') format('woff2'),
+       url('/fonts/work-sans/ElUAY9q6T0Ayx4zWzW63VLO3LdcAZYWl9Si6vvxL-qU.woff') format('woff'),
+       url('/fonts/work-sans/ElUAY9q6T0Ayx4zWzW63VKCWcynf_cDxXwCLxiixG1c.ttf') format('truetype'),
+       url('/fonts/work-sans/font?kit=ElUAY9q6T0Ayx4zWzW63VJbd9NUM7myrQQz30yPaGQ4&skey=a19f1b3d756da88c#WorkSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/work-sans/4udXuXg54JlPEP5iKO5AmXZ2MAKAc2x4R1uOSeegc5U.eot');
+  src: url('/fonts/work-sans/4udXuXg54JlPEP5iKO5AmXZ2MAKAc2x4R1uOSeegc5U.eot?#iefix') format('embedded-opentype'),
+       local('Work Sans Bold'),
+       local('Work-Sans-700'),
+       url('/fonts/work-sans/4udXuXg54JlPEP5iKO5AmRampu5_7CjHW5spxoeN3Vs.woff2') format('woff2'),
+       url('/fonts/work-sans/4udXuXg54JlPEP5iKO5AmaRDOzjiPcYnFooOUGCOsRk.woff') format('woff'),
+       url('/fonts/work-sans/4udXuXg54JlPEP5iKO5AmYnF5uFdDttMLvmWuJdhhgs.ttf') format('truetype'),
+       url('/fonts/work-sans/font?kit=4udXuXg54JlPEP5iKO5AmVlIn5tFQcqMuf-jhyJP0ps&skey=f1df08d30998b725#WorkSans') format('svg');
+}
