@@ -17,6 +17,9 @@
 /tmp
 /public/system
 
+# Assets and stuff
+/public/assets
+
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -25,3 +28,4 @@ Thumbs.db
 
 config/database.yml
 config/application.yml
+
