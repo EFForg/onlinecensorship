@@ -190,9 +190,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbo-sprockets-rails3 (0.2.9)
-      railties (>= 3.1.0)
-      sprockets (>= 2.0.0)
     turbolinks (2.5.3)
       coffee-rails
     twitter-bootstrap-rails (3.2.0)
@@ -240,7 +237,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring (~> 1.3.5)
   therubyracer
-  turbo-sprockets-rails3
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
