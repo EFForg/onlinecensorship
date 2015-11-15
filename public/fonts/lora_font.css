@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Lora';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/lora/rMDaOpSw-8ss9B8Y3bLqyA.eot');
+  src: url('/fonts/lora/rMDaOpSw-8ss9B8Y3bLqyA.eot?#iefix') format('embedded-opentype'),
+       local('Lora'),
+       local('Lora-regular'),
+       url('/fonts/lora/rAXKWvABQNHjPUk26ixVvvesZW2xOQ-xsNqO47m55DA.woff2') format('woff2'),
+       url('/fonts/lora/nAKwuw6_dIh5kwvpj3ShNfesZW2xOQ-xsNqO47m55DA.woff') format('woff'),
+       url('/fonts/lora/4A-myfZX6oDr9CtSTkTGig.ttf') format('truetype'),
+       url('/fonts/lora/font?kit=b9Q3-ov7xEcW76ymki76Ag#Lora') format('svg');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/lora/1HJZfNlOezBHPPwzRKlEcQ.eot');
+  src: url('/fonts/lora/1HJZfNlOezBHPPwzRKlEcQ.eot?#iefix') format('embedded-opentype'),
+       local('Lora Bold'),
+       local('Lora-700'),
+       url('/fonts/lora/mlTYdpdDwCepOR2s5kS2CwLUuEpTyoUstqEm5AMlJo4.woff2') format('woff2'),
+       url('/fonts/lora/-riKkMjQB-Tz3xXCw54paQLUuEpTyoUstqEm5AMlJo4.woff') format('woff'),
+       url('/fonts/lora/rapsGf8n-DpRu9kcmAAciA.ttf') format('truetype'),
+       url('/fonts/lora/font?kit=zqoBbCqeaofBZQ-8-sdxfQ&skey=6a30ff590836b94c#Lora') format('svg');
+}
