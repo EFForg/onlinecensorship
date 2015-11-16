@@ -3,8 +3,10 @@
 %>
 
 <% 
-	# used to show options platform title 
+	# Used to show options platform title 
 	@social_media_platform_title=@social_media_platform.title
+	# Get the pages count
+	pages_count=@social_media_platform.pages.count
 %>
 
 <div class="process row">
@@ -78,58 +80,87 @@
 			</div>
 	  <% end %>
 
-	  <!--  DEMOGRAPHIC QUESTIONS -->
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=@social_media_platform.pages.count+1%>">
+
+		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+1%>" data-id="<%=pages_count+1%>">
 			<div class="slide-page">
 				<div class="row">
 					<div class="col-md-7 notification-text">
 
-					<h2>DEMOGRAPHIC QUESTIONS</h2>
-
-					<p>We would like to gather some additional information about you to get a sense of the impact of content moderation on different communities.</p>
-					<p>Please help us by answering the following
-					optional questions:</p>
+						<p>In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy [<a href="/privacy-policy" target="_blank">link</a>]</p>
 
 					</div>
 				</div>
 
 				<div class="btn-next">
-					<span class="btn btn-report previous active hidden"> Previous </span>
-					<span class="btn btn-report active btn-continue require-user-data" onClick="showSlidePage('page-submit-report','page-<%=@social_media_platform.pages.count+1%>')"> Continue </span>
-					<div  class="btn btn-report active submit-report">No, thanks</div>
+					<span class="btn btn-report previous active"> Previous </span>
+					<span class="btn btn-report next active"> Next </span>
 				</div>
 
 			</div>
 		</div>
 
 	  <!-- data page-->
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-submit-report">
+		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+2%>" data-id="<%=pages_count+2%>">
 			<div class="slide-page">
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-7 question require-answer select" id="question-static-1">
 
-						<div class="input-report dropdown-input">
-							<%= select_tag "user_country",options_from_collection_for_select(@countries,"id","name"),{:class => "require-field user-data", :prompt => "Your Country"}%>
-							<i class="fa fa-chevron-down"></i>
+						<h2> May we contact you to follow up on this report? </h2>
+
+						<div class="input-report select-input radio-select" id="yes">
+							<input class="option" id="op-yes" name="question[static-1]" tabindex="1" type="radio" value="yes">
+							<label class="option" for="op-yes">
+							Yes
+							<i class="fa fa-check"></i>
+							</label> 	
 						</div>
 
-						<%= text_field_tag "user_name",nil, :class => "require-field input-report text-input short-field user-data", :placeholder => "Your Name" %>
+						<div class="input-report select-input radio-select" id="no">
+							<input class="option" id="op-no" name="question[static-1]" tabindex="1" type="radio" value="no">
+							<label class="option" for="op-no">
+							No
+							<i class="fa fa-check"></i>
+							</label> 	
+						</div>
 
-						<%= email_field_tag "user_email",nil, :class => "require-field input-report text-input short-field user-data", :placeholder => "Your Email" , :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
+					</div>
 
 						<%= hidden_field_tag 'platform_id', @social_media_platform.id %>
 					  <%= text_field_tag('spam_checker', nil, class: 'spam-checker') %>
 
-					</div>
 				</div>
 
 				<div class="btn-next">
-					<span class="btn btn-report previous active disable-required" onClick="showSlidePage('page-<%=@social_media_platform.pages.count+1%>','page-submit-report')"> Previous </span>
-					<div  class="btn btn-report submit-report active">SUBMIT</div>
+					<span class="btn btn-report previous active"> Previous </span>
+					<span class="btn btn-report next"> Next </span>
 				</div>
 
 			</div>
 		</div>
   
+		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+3%>" data-id="<%=pages_count+3%>">
+			<div class="slide-page">
+				<div class="row">
+
+					<div class="col-md-7 question depends-question-static-1 depends-option-yes hide long_text" id="question-static-2">
+
+						<h2> 
+							Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details.
+						</h2>
+
+						<textarea class="input-report text-input require-field" id="static_2" name="static_2" placeholder=" Can you please provide us?" tabindex="2"></textarea>
+
+					</div>
+
+				</div>
+
+				<div class="btn-next">
+					<span class="btn btn-report previous active"> Previous </span>
+					<span class="btn btn-report next"> Next </span>
+				</div>
+
+			</div>
+		</div>
+
   <% end %>
 </div>
