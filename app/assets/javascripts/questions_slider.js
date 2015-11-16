@@ -102,7 +102,8 @@ $( document ).ready(function() {
     // answered
     $("#"+question_id).addClass("answered");
     // show related questions
-    showDependsQuestions(question_id,option_id)
+    showDependsQuestions(question_id,option_id);
+    alert(option_id);
     // show next button
     showNextButton(parent_page_id);
   });
