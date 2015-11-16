@@ -103,7 +103,6 @@ $( document ).ready(function() {
     $("#"+question_id).addClass("answered");
     // show related questions
     showDependsQuestions(question_id,option_id);
-    alert(option_id);
     // show next button
     showNextButton(parent_page_id);
   });
@@ -226,8 +225,8 @@ $( document ).ready(function() {
 
 });
 
-// show last silde page
-function showSlidePage(show_div,hide_div){
-  $("#"+hide_div).addClass("hidden").removeClass("current");
-  $("#"+show_div).delay(900).removeClass("hidden").addClass("current");
-}
+// // show last silde page
+// function showSlidePage(show_div,hide_div){
+//   $("#"+hide_div).addClass("hidden").removeClass("current");
+//   $("#"+show_div).delay(900).removeClass("hidden").addClass("current");
+// }

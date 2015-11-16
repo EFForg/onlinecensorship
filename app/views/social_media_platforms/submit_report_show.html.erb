@@ -100,7 +100,7 @@
 			</div>
 		</div>
 
-	  <!-- data page-->
+	  <!-- user data page-->
 		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+2%>" data-id="<%=pages_count+2%>">
 			<div class="slide-page">
 				<div class="row">
@@ -163,5 +163,41 @@
 			</div>
 		</div>
 
+		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+4%>" data-id="<%=pages_count+4%>">
+			<div class="slide-page">
+				<div class="row">
+					<div class="col-md-7 question require-answer select" id="question-static-3">
+
+						<h2> 
+							Would you like us to contact <%=@social_media_platform_title%> about your case? We cannot guarantee a response.
+ 						</h2>
+
+						<div class="input-report select-input radio-select" id="yes-static-3-static-3">
+							<input class="option" id="op-yes-static-3" name="question[static-3]" tabindex="1" type="radio" value="true">
+							<label class="option" for="op-yes-static-3">
+							Yes
+							<i class="fa fa-check"></i>
+							</label> 	
+						</div>
+
+						<div class="input-report select-input radio-select" id="no-static-3">
+							<input class="option" id="op-no-static-3" name="question[static-3]" tabindex="1" type="radio" value="false">
+							<label class="option" for="op-no-static-3">
+							No
+							<i class="fa fa-check"></i>
+							</label> 	
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="btn-next">
+					<span class="btn btn-report previous active"> Previous </span>
+					<span class="btn btn-report next submit-report"> Submit </span>
+				</div>
+
+			</div>
+		</div>
   <% end %>
 </div>

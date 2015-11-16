@@ -49,7 +49,8 @@ class QuestionsController < ApplicationController
     if params[:question]
 
       # insert the user data
-      @question_user = QuestionUser.new(:country_id => params[:user_country], :name => params[:user_name] , :email => params[:user_email])
+      # params[:static_2] is the question that the user can type his email in it in the new approach
+      @question_user = QuestionUser.new(:email => params[:static_2] , :inform_platform => params[:user_country])
       @question_user.save
 
       # get the questions id's and the answers values
@@ -107,11 +108,11 @@ class QuestionsController < ApplicationController
       # Call notify mailer method to notify the admin,
       # which will send the email template located in views/mailer/notify.html.erb
       # notify method need params [user name ,form,data,notification kind, email subject]
-      if params[:user_name] !=""
-        data="<br> <b> Name: </b>"+params[:user_name].to_s+"<br> <b> Email: </b>"+params[:user_email].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
+      if params[:static_2] !=""
+        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
         Mailer.notify(params[:user_name],"submit report",data,"submit_report","OC submit report form notification system")
       else
-        data="<br> <b> Name: </b> Anonymous <br> <b> Email: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
+        data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
         Mailer.notify("Anonymous","submit report",data,"submit_report","[OC notification System] Report Submission")
       end
       ####
