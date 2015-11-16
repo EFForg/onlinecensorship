@@ -1,6 +1,6 @@
 # SocialMediaPlatformst
 #
-# The admin can add social media platforms to allow the visitors to send there issues about it 
+# The admin can add social media platforms to allow the visitors to send there issues about it
 #
 class SocialMediaPlatform < ActiveRecord::Base
 
@@ -20,8 +20,6 @@ class SocialMediaPlatform < ActiveRecord::Base
   # Define attachments
   ## The post photo
   has_attached_file :logo, :styles => { :small => '80x80#'},
-                           :url => "/system/social_logo/:style_:basename_:id.:extension",
-                           :path => ":rails_root/public/system/social_logo/:style_:basename_:id.:extension",
                            :default_url => "/system/:style_default_social_logo.png"
   ## Attachments Validation
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
