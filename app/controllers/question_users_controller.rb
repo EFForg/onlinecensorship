@@ -7,7 +7,7 @@ class QuestionUsersController < ApplicationController
     respond_to do |format|
       # Using it in the backEnd to allow the admin to show and navigate all the model data
       format.html {
-        results=QuestionUser.search(params[:search],'name','email')
+        results=QuestionUser.search(params[:search],'email')
         @question_users=results.page(params[:page])
         @count=results.count
       }
@@ -24,6 +24,6 @@ class QuestionUsersController < ApplicationController
     end
 
     def question_user_params
-      params.require(:question_user).permit(:country_id, :name, :email)
+      params.require(:question_user).permit(:inform_platform, :email)
     end
 end

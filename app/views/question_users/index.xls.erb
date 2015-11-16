@@ -1,10 +1,9 @@
 <table width="100%" cellspacing="2">
   <tr>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
-    <th style="text-align:left; font-weight:bold;">Name</th>
     <th style="text-align:left; font-weight:bold;">Email</th>
-    <th style="text-align:left; font-weight:bold;">Country</th>
     <th style="text-align:left; font-weight:bold;">Platform</th>
+    <th style="text-align:left; font-weight:bold;">Inform Platform</th>
     <th style="text-align:left; font-weight:bold;">Answers</th>
 
   </tr>
@@ -13,22 +12,8 @@
     <tr>
       <td style="text-align:left;"><%= excel.created_at.to_date %></td>
       <td style="text-align:left;">
-        <% if excel.name? %> 
-          <%= excel.name %>
-        <% else %>  
-          Anonymous
-        <% end %>
-      </td>
-      <td style="text-align:left;">
         <% if excel.email? %>
           <%= excel.email %>
-        <% else %>
-          Anonymous
-        <% end %>
-      </td>
-      <td style="text-align:left;">
-        <% if excel.country.present? %>
-          <%= excel.country.name %>
         <% else %>
           Anonymous
         <% end %>
@@ -42,6 +27,9 @@
           <% end %>
         <% end %>
       </td>
+      <td style="text-align:left;">
+        <%= excel.inform_platform %>
+      </td>      
       <td style="text-align:left;">
         <ul>
           <% if excel.question_user_submissions.present? %>
