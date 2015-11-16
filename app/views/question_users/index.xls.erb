@@ -13,9 +13,9 @@
     <tr>
       <td style="text-align:left;"><%= excel.created_at.to_date %></td>
       <td style="text-align:left;">
-        <% if excel.name? %> 
+        <% if excel.name? %>
           <%= excel.name %>
-        <% else %>  
+        <% else %>
           Anonymous
         <% end %>
       </td>
@@ -57,10 +57,7 @@
                 %>
                   <%=submission.question_answer.answer_text%>
                 <% elsif question_type=="upload" %>
-                  <% UploadedFileData(submission.question_answer.uploaded_file_id) %>              
-                  <%= link_to root_url.to_s+"/system/uploads/"+@uploaded_file.title.to_s do %>
-                    Download the file 
-                  <% end %>
+                  <%= file_download_link(@submission) %>
                 <% elsif question_type=="select" %>
                   <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
                 <% elsif question_type=="multi_select" %>
@@ -73,20 +70,20 @@
                         <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
                       <% end %>
                     </ul>
-                  <% end %>                
+                  <% end %>
                 <% elsif question_type=="countries" %>
                   <% if submission.question_answer.country.present? %>
                     <%=submission.question_answer.country.name%>
-                  <% end %>                
+                  <% end %>
                 <% elsif question_type=="languages" %>
                   <% if submission.question_answer.language.present? %>
                     <%=submission.question_answer.language.name%>
-                  <% end %>                
+                  <% end %>
                 <% end %>
               </li>
             <% end %>
-          <% end %> 
-        </ul>       
+          <% end %>
+        </ul>
       </td>
     </tr>
   <% end %>

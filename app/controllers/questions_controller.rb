@@ -70,26 +70,11 @@ class QuestionsController < ApplicationController
           # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
           add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,nil,value)
         elsif question_type=="upload"
-
-          # So they create the Upload File record
-          # then they create a QuestionAnswer record setting the
-          #   question_id
-          #   @question_user_submission.id
-          #   @uploaded_file.id
-
-          # My only path forward is to manually generate an UploadFile
-          # (which shall have a model regarding paperclip)
-
           uploaded_file = params["question"][question_id]
-          # title will be ignored...
           @uf = UploadedFile.create(title: uploaded_file.original_filename,
             question_answer_id: question_id,
             the_file: uploaded_file)
-
           add_question_answer(question_id,@question_user_submission.id,@uf.id,nil,nil,nil,nil,nil)
-
-          @uf.save # why it not work?
-
         elsif question_type=="select"
           # insert the answer data
           # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
@@ -165,23 +150,13 @@ class QuestionsController < ApplicationController
     QuestionOption.where(:question_id => @question.id).destroy_all
 
     # delete the uploaded answer files
-      if @question.question_type=="upload"
+    if @question.question_type=="upload"
+      QuestionAnswer.where(:question_id => @question.id).each do |answer|
 
-        QuestionAnswer.where(:question_id => @question.id).each do |answer|
-
-          ## get my file name
-          file_name=UploadedFile.where(:id =>answer.uploaded_file_id).first.title
-
-          if file_name && File.exist?(file_name)
-            ## delete the file from the server
-            File.delete("public/system/uploads/"+file_name.to_s)
-          end
-
-          ## delete the file from the DB
-          UploadedFile.where(:question_answer_id => answer.id).destroy_all
-
-        end
+        ## delete the record, paperclip will delete the file
+        UploadedFile.where(:question_answer_id => answer.id).destroy_all
       end
+    end
 
     # delete the question answers
     QuestionAnswer.where(:question_id => @question.id).destroy_all

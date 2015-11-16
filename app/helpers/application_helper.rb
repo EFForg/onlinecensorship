@@ -54,9 +54,11 @@ module ApplicationHelper
 		@question_answer.save
   end
 
-  # add question answer
-  def UploadedFileData(uploaded_file_id)
-    @uploaded_file=UploadedFile.where(:id=>uploaded_file_id).first
+  # There was just too much clutter in the view, DRY here
+  def file_download_link(submission)
+    uf = submission.question_answer.uploaded_file
+    return nil if uf.nil? or uf.the_file.nil?
+    link_to "Download the file", uf.the_file.url
   end
 
   # show the multi select options question user answers

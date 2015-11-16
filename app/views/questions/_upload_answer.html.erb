@@ -1,4 +1,1 @@
-<% unless @uploaded_file.nil? %>
-  <% UploadedFileData(@submission.question_answer.uploaded_file_id) %>
-  <%= link_to @uploaded_file.the_file.url do %> Download the file <% end %>
-<%end%>
+<%= file_download_link(@submission) %>

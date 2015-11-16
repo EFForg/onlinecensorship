@@ -1,5 +1,4 @@
 class QuestionUsersController < ApplicationController
-  before_action :set_question_user, only: [:show]
   before_action :authenticate_user!
   layout 'backend'
 
@@ -15,13 +14,16 @@ class QuestionUsersController < ApplicationController
       format.xls {
         @question_users = QuestionUser.all
       }
-    end    
-  end
-  
-  private
-    def set_question_user
-      @question_user = QuestionUser.find(params[:id])
     end
+  end
+
+  def show
+    # an iteration pattern takes place in show.html.erb populating many instance
+    # variables
+    @question_user = QuestionUser.find(params[:id])
+  end
+
+  private
 
     def question_user_params
       params.require(:question_user).permit(:country_id, :name, :email)

@@ -11,9 +11,7 @@ class UploadedFile < ActiveRecord::Base
 	validates :title,:question_answer_id, :presence => true
 
 	has_attached_file :the_file, :styles => { :thumb => '200x200#'},
-                            :url => "/system/uploads/:style_:basename_:id.:extension",
-                            :path => ":rails_root/public/system/uploads/:style_:basename_:id.:extension",
-                            :default_url => "/system/:style_default_people.jpg"
+														default_url: "/images/:style/missing.png"
 
 	## Attachments Validation
   validates_attachment_content_type :the_file, :content_type => /\Aimage\/.*\Z/
