@@ -17,7 +17,7 @@ module Oc
     # config.time_zone = 'Central Time (US & Canada)'
 
     # allow app to integrate with chrome's https safety list https://hstspreload.appspot.com/
-    config.action_dispatch.default_headers.merge!('Strict-Transport-Security' => 'max-age=10886400; includeSubDomains; preload')
+    config.action_dispatch.default_headers.merge!('Strict-Transport-Security' => 'max-age=63072000; includeSubDomains; preload')
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
