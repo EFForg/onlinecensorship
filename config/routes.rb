@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   resources :contacts_topics
   resources :pages_questions
   resources :question_user_submissions
-  resources :uploaded_files
   resources :further_reads
 
   get "resources/further-readings" => "further_reads#index"

@@ -43,29 +43,20 @@ module ApplicationHelper
 
 	# add question answer
   def add_question_answer(question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text)
-		@question_answer=QuestionAnswer.new(:question_id=>question_id,:question_user_submission_id=>question_user_id,:uploaded_file_id=>uploaded_file_id,:question_option_id=>question_option_id,:other_option_answer=>other_option_answer ,:country_id=>country_id,:language_id=>language_id,:answer_text=>answer_text)
+		@question_answer = QuestionAnswer.new(:question_id=>question_id,
+      :question_user_submission_id=>question_user_id,
+      :uploaded_file_id=>uploaded_file_id,
+      :question_option_id=>question_option_id,
+      :other_option_answer=>other_option_answer,
+      :country_id=>country_id,
+      :language_id=>language_id,
+      :answer_text=>answer_text)
 		@question_answer.save
   end
 
   # add question answer
   def UploadedFileData(uploaded_file_id)
     @uploaded_file=UploadedFile.where(:id=>uploaded_file_id).first
-  end
-
-  # create folder
-  def CreateFolder(folder_name)
-    if !File.directory?(folder_name)
-      Dir.mkdir(folder_name,0700)
-    end
-  end
-
-  # upload file to the server
-  def UploadFile(my_file,my_directory)
-    @file_name=my_file.original_filename
-    path = File.join(my_directory,@file_name)
-    File.open(path,"wb") do |file|
-      file.write(my_file.read)
-    end
   end
 
   # show the multi select options question user answers

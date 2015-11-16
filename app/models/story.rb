@@ -1,12 +1,12 @@
 # Story
 #
-# The admin can add stories 
+# The admin can add stories
 #
 class Story < ActiveRecord::Base
 
   # For use search method
   extend Search
-  
+
   # Define attachments
   ## The post photo # min-height: 490px
   has_attached_file :photo, :styles => { :thumb => '352x352#' },

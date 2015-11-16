@@ -70,17 +70,26 @@ class QuestionsController < ApplicationController
           # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
           add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,nil,value)
         elsif question_type=="upload"
-          # create and open the dir
-          folder_path="public/system/uploads"
-          CreateFolder(folder_path)
-          # upload the file
-          UploadFile(value,folder_path)
-          # insert uploaded file data , file_name return from the UploadFile method
-          @uploaded_file = UploadedFile.new(:title =>@file_name,:question_answer_id => question_id)
-          @uploaded_file.save
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,@uploaded_file.id,nil,nil,nil,nil,nil)
+
+          # So they create the Upload File record
+          # then they create a QuestionAnswer record setting the
+          #   question_id
+          #   @question_user_submission.id
+          #   @uploaded_file.id
+
+          # My only path forward is to manually generate an UploadFile
+          # (which shall have a model regarding paperclip)
+
+          uploaded_file = params["question"][question_id]
+          # title will be ignored...
+          @uf = UploadedFile.create(title: uploaded_file.original_filename,
+            question_answer_id: question_id,
+            the_file: uploaded_file)
+
+          add_question_answer(question_id,@question_user_submission.id,@uf.id,nil,nil,nil,nil,nil)
+
+          @uf.save # why it not work?
+
         elsif question_type=="select"
           # insert the answer data
           # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
@@ -196,6 +205,10 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:question_title, :question_type , :other_answer ,:prompt_text, :prompt_link, :required_field ,:placeholder , question_options_attributes: [:id,:question_id,:next_page,:dependent_on_question_id,:option_title,:_destroy])
+      params.require(:question).permit(:question_title, :question_type ,
+        :other_answer ,:prompt_text, :prompt_link, :required_field,
+        :placeholder, :upload_file,
+        question_options_attributes:
+          [:id,:question_id,:next_page,:dependent_on_question_id,:option_title,:_destroy])
     end
 end

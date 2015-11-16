@@ -1,6 +1,6 @@
 # Question
 #
-# The admin can add many questions to any slider page and social media platform 
+# The admin can add many questions to any slider page and social media platform
 #
 class Question < ActiveRecord::Base
   ## DB relations

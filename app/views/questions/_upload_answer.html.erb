@@ -1,2 +1,4 @@
-<% UploadedFileData(@submission.question_answer.uploaded_file_id) %>              
-<%= link_to "../system/uploads/"+@uploaded_file.title.to_s do %> Download the file <% end %>
+<% unless @uploaded_file.nil? %>
+  <% UploadedFileData(@submission.question_answer.uploaded_file_id) %>
+  <%= link_to @uploaded_file.the_file.url do %> Download the file <% end %>
+<%end%>

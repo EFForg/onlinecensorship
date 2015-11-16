@@ -61,13 +61,13 @@ class PostsController < ApplicationController
           @posts = @posts.order(:id => :desc).limit(9).offset(0);
           @show_all=true
         end
-        
+
         # Show the categories in filtering drop down menu
         @categories = Category.all
         @platform=SocialMediaPlatform.all
         @theme=PostsTheme.all
       }
-    end 
+    end
   end
 
   def preview
@@ -124,7 +124,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # Create quote  
+
+    # Create quote
     @quote =Quote.create(:author => post_params["quote_author"], :quote => post_params["quote_text"], :twitter_text => post_params["twitter_text"])
     @quote.save
 
@@ -209,7 +210,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.friendly.find(params[:id])
     end
-    
+
     # using in publish/unpublish and featured/unfeatured methods
     def set_post_id
       @post = Post.find(params[:post_id])

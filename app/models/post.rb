@@ -1,6 +1,6 @@
 # Post
 #
-# The admin can add posts for every category 
+# The admin can add posts for every category
 #
 class Post < ActiveRecord::Base
 
