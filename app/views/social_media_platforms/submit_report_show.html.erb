@@ -16,7 +16,7 @@
 	</div>
 </div>
 
-<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count %>">
+<div class="slider-pages row" data-pagescount="<%= pages_count + 4 %>">
   <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true ) do |f| %>
 		<% @tab_index=0%>
 		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
@@ -193,10 +193,32 @@
 
 				<div class="btn-next">
 					<span class="btn btn-report previous active"> Previous </span>
+					<span class="btn btn-report next"> Next </span>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+5%>" data-id="<%=pages_count+5%>">
+			<div class="slide-page">
+				<div class="row">
+					<div class="col-md-7 notification-text">
+
+						<p>
+							You have completed all of the survey questions. If you would like to revise any of your answers, click previous to move back through the questions. When you are satisfied, hit submit to send your report.
+						</p>
+
+					</div>
+				</div>
+
+				<div class="btn-next">
+					<span class="btn btn-report previous active"> Previous </span>
 					<span class="btn btn-report next submit-report"> Submit </span>
 				</div>
 
 			</div>
 		</div>
+
+
   <% end %>
 </div>
