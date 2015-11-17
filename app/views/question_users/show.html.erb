@@ -10,9 +10,9 @@
 
 				<p>
 				  <strong>Name:</strong>
-				  <% if @question_user.name? %>	
+				  <% if @question_user.name? %>
 				  	<%= @question_user.name %>
-				  <% else %>	
+				  <% else %>
 				  	Anonymous
 				  <% end %>
 				</p>
@@ -25,7 +25,7 @@
 				  	Anonymous
 				  <% end %>
 				</p>
-				
+
 				<p>
 				  <strong>Email:</strong>
 			   	<% if @question_user.email? %>
@@ -46,20 +46,26 @@
 				</p>
 
 				<p>
-				  <strong>Answers:</strong>					  
+				  <strong>Answers:</strong>
 				  <ul>
 						<% if @question_user.question_user_submissions.present? %>
 							<% @question_user.question_user_submissions.each do |submission| %>
-								<li>
-									<b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title)%></b>
-									<% @submission=submission%>
-									<br>
-									<!-- render the answer-->
-		              <%=render 'questions/'+submission.question_answer.question.question_type+'_answer' %>
-			          </li>
+
+                <% if submission.question_answer.respond_to?(:question) and !submission.question_answer.question.nil? %>
+  								<li>
+  									<b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title) %></b>
+  									<% @submission=submission%>
+  									<br>
+  									<!-- render the answer-->
+  		              <%=render 'questions/'+submission.question_answer.question.question_type+'_answer' %>
+  			          </li>
+                <% else %>
+                  <li> ERROR: A QUESTION WAS NIL </li>
+                <% end %>
+
 							<% end %>
-						<% end %>	
-					</ul>				
+						<% end %>
+					</ul>
 				</p>
 
 				<p>
