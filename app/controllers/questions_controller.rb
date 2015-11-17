@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! , except: [:submit, :ty]
-  before_filter :filter_spam , only: [:thanks]
+  before_filter :filter_spam , only: [:submit]
   layout 'backend', except: [:submit, :ty]
 
   def index
@@ -57,69 +57,74 @@ class QuestionsController < ApplicationController
       # get the questions id's and the answers values
       params[:question].each_pair do |question_id,value|
 
-        # get the question page id
-        question_page(question_id,params[:platform_id])
+        # In the new approach we added 3 questions static at the end of the questionnaire so we check here if this question one if them we escape it 
+        if !question_id.include? "static"
 
-        # insert the user submition data
-        @question_user_submission = QuestionUserSubmission.new(:question_user_id => @question_user.id, :page_id => @question_page_id)
-        @question_user_submission.save
+          # get the question page id
+          question_page(question_id,params[:platform_id])
 
-        # get the questions type by ID
-        question_type=question_type(question_id)
-        # set the answer id according to the type
-        if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email"
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,nil,value)
-        elsif question_type=="upload"
-          # create and open the dir
-          folder_path="public/system/uploads"
-          CreateFolder(folder_path)
-          # upload the file
-          UploadFile(value,folder_path)
-          # insert uploaded file data , file_name return from the UploadFile method
-          @uploaded_file = UploadedFile.new(:title =>@file_name,:question_answer_id => question_id)
-          @uploaded_file.save
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,@uploaded_file.id,nil,nil,nil,nil,nil)
-        elsif question_type=="select"
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,nil,value,nil,nil,nil,nil)
-        elsif question_type=="multi_select"
-          # check if there's other answer
-          if params[:"op_#{question_id}"]
-            # insert the other answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-            add_question_answer(question_id,@question_user_submission.id,nil,nil,params[:"other_#{question_id}"],nil,nil,nil)
-          end
-          # the question options
-          params[:question][question_id].each do |multi_value|
+          # insert the user submition data
+          @question_user_submission = QuestionUserSubmission.new(:question_user_id => @question_user.id, :page_id => @question_page_id)
+          @question_user_submission.save
+
+          # get the questions type by ID
+          question_type=question_type(question_id)
+          # set the answer id according to the type
+          if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email"
             # insert the answer data
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-            add_question_answer(question_id,@question_user_submission.id,nil,multi_value,nil,nil,nil,nil)
+            add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,nil,value)
+          elsif question_type=="upload"
+            # create and open the dir
+            folder_path="public/system/uploads"
+            CreateFolder(folder_path)
+            # upload the file
+            UploadFile(value,folder_path)
+            # insert uploaded file data , file_name return from the UploadFile method
+            @uploaded_file = UploadedFile.new(:title =>@file_name,:question_answer_id => question_id)
+            @uploaded_file.save
+            # insert the answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+            add_question_answer(question_id,@question_user_submission.id,@uploaded_file.id,nil,nil,nil,nil,nil)
+          elsif question_type=="select"
+            # insert the answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+            add_question_answer(question_id,@question_user_submission.id,nil,value,nil,nil,nil,nil)
+          elsif question_type=="multi_select"
+            # check if there's other answer
+            if params[:"op_#{question_id}"]
+              # insert the other answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+              add_question_answer(question_id,@question_user_submission.id,nil,nil,params[:"other_#{question_id}"],nil,nil,nil)
+            end
+            # the question options
+            params[:question][question_id].each do |multi_value|
+              # insert the answer data
+              # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+              add_question_answer(question_id,@question_user_submission.id,nil,multi_value,nil,nil,nil,nil)
+            end
+          elsif question_type=="countries"
+            # insert the answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+            add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,value,nil,nil)
+          elsif question_type=="languages"
+            # insert the answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+            add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,value,nil)
           end
-        elsif question_type=="countries"
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,value,nil,nil)
-        elsif question_type=="languages"
-          # insert the answer data
-          # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
-          add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,value,nil)
-        end
 
+        end
+      
       end
 
       # Call notify mailer method to notify the admin,
       # which will send the email template located in views/mailer/notify.html.erb
       # notify method need params [user name ,form,data,notification kind, email subject]
       if params[:static_2] !=""
-        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
-        Mailer.notify(params[:user_name],"submit report",data,"submit_report","OC submit report form notification system")
+        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
+        Mailer.notify("","submit report",data,"submit_report","OC submit report form notification system")
       else
-        data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(@question_page_id).to_s
+        data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
         Mailer.notify("Anonymous","submit report",data,"submit_report","[OC notification System] Report Submission")
       end
       ####
