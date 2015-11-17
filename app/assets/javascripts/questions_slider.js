@@ -167,21 +167,20 @@ $( document ).ready(function() {
       $("#"+parent_page_id).removeClass("current").addClass("hidden");
       // show next page
       $("#"+next_page_id).removeClass("hidden").addClass("current");
-      // update process bar
+      // update progress bar
       if(!el.hasClass("done")) {
-        var fullWidth = $(".process .container").width();
         var pagesCount = $(".slider-pages").data("pagescount");
-        var percenWidth = fullWidth / pagesCount;
         var percentage = (100 / pagesCount) * page_no;
-        $(".process-bar").css({"width": "+="+percenWidth});
         if(percentage > 100) {
           $(".process h1 span").html("100");
+          $(".process-bar").css({"width": "100%"});
         } else {
           $(".process h1 span").html(Math.ceil(percentage));
+          $(".process-bar").css({"width": Math.ceil(percentage) + "%"});
         }
         $(this).addClass("done");
       }
-    }//if
+    }
   });
 
   // move to previous page
