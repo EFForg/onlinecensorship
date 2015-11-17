@@ -18,6 +18,7 @@
 
 # Assets and stuff
 /public/assets
+/public/system
 
 # OS generated files
 .DS_Store
