@@ -58,7 +58,7 @@ module ApplicationHelper
   def file_download_link(submission)
     uf = submission.question_answer.uploaded_file
     return nil if uf.nil? or uf.the_file.nil?
-    link_to "Download the file", uf.the_file.url
+    link_to "Download the file", uf.the_file.expiring_url(600)
   end
 
   # show the multi select options question user answers
