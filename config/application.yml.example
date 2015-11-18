@@ -9,6 +9,9 @@ aws_secret_access_key: ''
 aws_region: 'us-west-1'
 aws_bucket: 'onlinecensorship'
 
+# Modify the below line to use sentury for error logs
+# sentry_dsn: 'https://...'
+
 
 #################
 # Mail Settings #
