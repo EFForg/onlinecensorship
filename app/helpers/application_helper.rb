@@ -23,7 +23,7 @@ module ApplicationHelper
 
   # return the social media platform "using it in the questionaires notifications system"
   def getSocialMediaPlatform(page_id)
-    @platform=Page.where(:id=>page_id).first.social_media_platform.title
+    @platform=SocialMediaPlatform.where(:id=>page_id).first.title
   end
 
   # Return the content management page data

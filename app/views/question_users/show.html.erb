@@ -9,24 +9,6 @@
       <div class="col-md-12 details">
 
 				<p>
-				  <strong>Name:</strong>
-				  <% if @question_user.name? %>
-				  	<%= @question_user.name %>
-				  <% else %>
-				  	Anonymous
-				  <% end %>
-				</p>
-
-				<p>
-				  <strong>Country:</strong>
-				  <% if @question_user.country.present? %>
-				  	<%=@question_user.country.name %>
-				  <% else %>
-				  	Anonymous
-				  <% end %>
-				</p>
-
-				<p>
 				  <strong>Email:</strong>
 			   	<% if @question_user.email? %>
 				  	<%= @question_user.email %>
@@ -43,6 +25,11 @@
 							<% @social_media_platform_id=submission.page.social_media_platform.id%>
 						<% end %>
 					<% end %>
+				</p>
+
+				<p>
+				  <strong>Inform Platform:</strong>
+			  	<%= @question_user.inform_platform %>
 				</p>
 
 				<p>

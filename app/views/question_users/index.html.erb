@@ -27,9 +27,8 @@
       <thead title="Click to short" class="cursor">
         <tr>
           <th>Platform</th>
-          <th>Name</th>
-          <th>Country</th>
           <th>Email</th>
+          <th>Inform Platform</th>
           <th>Answers</th>
         </tr>
       </thead>
@@ -52,26 +51,15 @@
                 <% end %>
               </td>
               <td>
-                <% if question_user.name? %>
-                  <%= question_user.name %>
-                <% else %>
-                  Anonymous
-                <% end %>
-              </td>
-              <td>
-                <% if question_user.country.present? %>
-                  <%=question_user.country.name %>
-                <% else %>
-                  Anonymous
-                <% end %>
-              </td>
-              <td>
                 <% if question_user.email? %>
                   <%= question_user.email %>
                 <% else %>
                   Anonymous
                 <% end %>
               </td>
+              <td>
+                <%= question_user.inform_platform %>
+              </td>              
               <td class="icon-control">
                 <%= link_to question_user, :title => "Show" do %><div class="icon-show"><i class="fa fa-file-text-o"></i></div><% end %>
               </td>
