@@ -111,6 +111,10 @@ input, select, textarea, button {
   padding: 62px 0 200px;
   margin-bottom: 250px;
   position: relative;
+  @media (max-width: 767px) {
+    padding-bottom: 62px;
+    margin-bottom: 0;
+  }
 
   h1 {
     margin-bottom: 24px;
@@ -122,6 +126,10 @@ input, select, textarea, button {
   .owl-carousel {
     position: absolute;
     bottom: -212px;
+    @media (max-width: 767px) {
+      position: relative;
+      bottom: 0;
+    }
     .owl-controls {
       text-align: center;
       margin-top: 10px;
@@ -134,7 +142,7 @@ input, select, textarea, button {
         border-radius: 50%;
         @include transition(all, 0.4s);
         &.active {
-          background: #ccc;
+          background: #aaa;
         }
       }
     }
@@ -1307,6 +1315,9 @@ select {
   margin: 8px;
   background: #fff;
   height: 352px;
+  @media (max-width: 767px) {
+    height: auto;
+  }
   .post-brief {
     height: 148px;
     overflow: hidden;
@@ -1371,7 +1382,7 @@ select {
     @media (max-width: 767px) {
       width: 100%;
       float: left;
-      height: 132px;
+      height: auto;
     }
   }
   .story {
@@ -1383,6 +1394,9 @@ select {
       width: 100%;
       .read-link {
         display: none;
+      }
+      h3 {
+        height: 62px;
       }
     }
     margin-top: 0;
