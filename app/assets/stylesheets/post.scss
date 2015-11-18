@@ -31,9 +31,9 @@ $dark-blue: #152f4e;
 }
 
 .page-content {
-  margin-top: 120px;
+  margin-top: 100px;
   @media (max-width: 992px) {
-    margin-top: 90px;
+    margin-top: 70px;
   }
   &.admin-panel {
     margin-top: 0;
