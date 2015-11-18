@@ -50,6 +50,9 @@ group :development, :test do
   gem 'capistrano-rbenv', '~> 2.0', require: false
 end
 
+# logging
+gem "sentry-raven"
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -57,6 +60,7 @@ end
 gem 'aws-sdk-v1'
 gem 'paperclip'
 gem 'rmagick'
+gem 'aws-s3'
 
 gem 'metamagic'
 
