@@ -224,9 +224,3 @@ $( document ).ready(function() {
   });
 
 });
-
-// // show last silde page
-// function showSlidePage(show_div,hide_div){
-//   $("#"+hide_div).addClass("hidden").removeClass("current");
-//   $("#"+show_div).delay(900).removeClass("hidden").addClass("current");
-// }
