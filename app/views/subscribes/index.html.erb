@@ -26,7 +26,8 @@
     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
       <thead title="Click to short" class="cursor">
         <tr>
-          <th>Email</th>           
+          <th>Email</th> 
+          <th>Confirmed</th>          
           <th></th>
         </tr>
       </thead>
@@ -40,6 +41,7 @@
           <% @subscribes.each do |subscribe| %>
             <tr class="show-image">
               <td><%= subscribe.email %></td>
+              <td><%= subscribe.confirmed %></td>
               <td class="icon-control">
                 <%= link_to subscribe, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
               </td>
