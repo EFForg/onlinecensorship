@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115234304) do
+ActiveRecord::Schema.define(version: 20151118081553) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -218,11 +218,10 @@ ActiveRecord::Schema.define(version: 20151115234304) do
   end
 
   create_table "question_users", force: true do |t|
-    t.integer  "country_id"
-    t.string   "name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "inform_platform", default: false
   end
 
   create_table "questions", force: true do |t|
@@ -285,6 +284,8 @@ ActiveRecord::Schema.define(version: 20151115234304) do
     t.text     "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "confirmation_token"
+    t.boolean  "confirmed",          default: false
   end
 
   create_table "uploaded_files", force: true do |t|
