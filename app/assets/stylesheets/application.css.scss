@@ -58,7 +58,7 @@ input, select, textarea, button {
 }
 .dark-blue-bg {
   background-color: $dark-blue;
-  p { 
+  p {
     color: #fff;
   }
 }
@@ -185,8 +185,8 @@ footer {
   color: #fff;
   padding: 46px 0;
   font-size: 14px;
-  h5 { 
-    color: #fff; 
+  h5 {
+    color: #fff;
     margin: 10px 0;
     font-weight: bold;
   }
@@ -309,7 +309,7 @@ footer {
     }
     .post-brief {
       height: 84px;
-    }    
+    }
   }
   @media (min-width: 992px) and (max-width: 1199px) {
     height: 490px;
@@ -318,7 +318,7 @@ footer {
     }
     .post-brief {
       height: 105px;
-    } 
+    }
   }
 
   h3 {
@@ -339,7 +339,7 @@ footer {
       color: #5c5c5c;
     }
   }
-    
+
   &.quote-box {
     background-color: $dark-blue;
     &:hover {
@@ -404,7 +404,7 @@ footer {
     font-weight: normal;
     margin-top: 32px;
   }
-  margin-bottom: 14px; 
+  margin-bottom: 14px;
   .links {
     margin: 26px 0;
     @media (max-width: 767px) {
@@ -419,7 +419,7 @@ footer {
   }
   .nav-pills {
     margin: 20px 0;
-    display: inline-block; 
+    display: inline-block;
   }
   .text-box {
     position: relative;
@@ -441,11 +441,11 @@ footer {
         width: 100%;
         height: auto;
       }
-    } 
+    }
   }
 }
 
-#advisors .row, 
+#advisors .row,
 #team .row {
   display: flex;
   flex-wrap: wrap;
@@ -647,14 +647,14 @@ footer {
 
 // Posts Filter // contact page
 .posts-filter-wrapper, .contact-page {
-  input[type="text"], 
+  input[type="text"],
   input[type="email"],
   select {
     width: 100%;
     border: 2px solid $dark-blue;
   }
 
-  input[type="text"], 
+  input[type="text"],
   input[type="email"],
   select, textarea {
     margin: 4px 0 20px;
@@ -675,7 +675,7 @@ select {
   cursor: pointer;
 }
 
-// Posts filter 
+// Posts filter
 .posts-filter-wrapper {
   p {
     font-family: 'Work Sans', sans-serif;
@@ -716,7 +716,7 @@ select {
   }
   .search-posts-wrapper {
     text-align: right;
-    
+
     .search-posts {
       position: relative;
       .search-field {
@@ -725,10 +725,10 @@ select {
         @media (max-width: 991px) {
           padding-right: 50px;
           width: 100%;
-        } 
+        }
         &.opened {
           width: 100%;
-        } 
+        }
       }
       .search-icon, .search-submit {
         position: absolute;
@@ -747,7 +747,7 @@ select {
         display: none;
       }
     }
-    
+
   }
 }
 
@@ -815,7 +815,7 @@ select {
           line-height: 30px;
         }
       }
-      
+
       &:hover, &:focus {
         text-decoration: none;
       }
@@ -823,7 +823,7 @@ select {
   }
 }
 
-// further readings 
+// further readings
 .readings-page {
   padding: 14px 0 26px;
   .box {
@@ -1019,7 +1019,7 @@ select {
           .question {
             margin-bottom: 20px;
             &.prompt {
-              
+
               h2 {
                 margin: 0;
                 text-transform: none;
@@ -1422,10 +1422,4 @@ select {
 .spam-checker {
   display:none;
   visibility:hidden;
-}
-
-#anon-stats {
-  position: absolute;
-  width: 100%;
-  bottom: -20px;
 }
