@@ -73,7 +73,7 @@ module ApplicationHelper
 
   def piwiki_tracking_code(site_id, page_title)
     <<-EOF
-      <div id="anon-stats">
+      <div id="anon-stats" style="width:0; height:0;position:absolute;bottom:-20px">
         <noscript>
           <img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;action_name=#{page_title}" style="border:0" alt="" />
         </noscript>
