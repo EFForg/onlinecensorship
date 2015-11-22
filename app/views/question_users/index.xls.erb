@@ -50,7 +50,9 @@
                     Download the file 
                   <% end %>
                 <% elsif question_type=="select" %>
-                  <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
+                    <% if  submission.page.present? && submission.page.social_media_platform.present? %>
+                      <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
+                    <% end %>
                 <% elsif question_type=="multi_select" %>
                   <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
                   <% @question_answers.each do |option| %>
