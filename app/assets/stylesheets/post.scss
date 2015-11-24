@@ -31,9 +31,9 @@ $dark-blue: #152f4e;
 }
 
 .page-content {
-  margin-top: 120px;
+  margin-top: 100px;
   @media (max-width: 992px) {
-    margin-top: 90px;
+    margin-top: 70px;
   }
   &.admin-panel {
     margin-top: 0;
@@ -87,6 +87,15 @@ $dark-blue: #152f4e;
     margin-bottom: 36px;
     min-height: 360px;
     position: relative;
+    font-family: 'Lora';
+    font-size: 16px;
+    line-height: 150%;
+    color: #162F4E;
+    span {
+      font-family: 'Lora' !important;
+      font-size: 16px !important;
+      color: #162F4E !important;
+    }
   }
   .seperator {
     border-bottom: 1px solid #f6f6f6;

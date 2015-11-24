@@ -5,7 +5,7 @@
 class QuestionAnswer < ActiveRecord::Base
 
   ## DB relations
-  has_one :uploaded_file
+  belongs_to :uploaded_file
   belongs_to :language
   belongs_to :country
   has_one :question_user_submission

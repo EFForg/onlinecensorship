@@ -58,7 +58,7 @@ input, select, textarea, button {
 }
 .dark-blue-bg {
   background-color: $dark-blue;
-  p { 
+  p {
     color: #fff;
   }
 }
@@ -111,6 +111,10 @@ input, select, textarea, button {
   padding: 62px 0 200px;
   margin-bottom: 250px;
   position: relative;
+  @media (max-width: 767px) {
+    padding-bottom: 62px;
+    margin-bottom: 0;
+  }
 
   h1 {
     margin-bottom: 24px;
@@ -122,6 +126,10 @@ input, select, textarea, button {
   .owl-carousel {
     position: absolute;
     bottom: -212px;
+    @media (max-width: 767px) {
+      position: relative;
+      bottom: 0;
+    }
     .owl-controls {
       text-align: center;
       margin-top: 10px;
@@ -134,7 +142,7 @@ input, select, textarea, button {
         border-radius: 50%;
         @include transition(all, 0.4s);
         &.active {
-          background: #ccc;
+          background: #aaa;
         }
       }
     }
@@ -177,8 +185,8 @@ footer {
   color: #fff;
   padding: 46px 0;
   font-size: 14px;
-  h5 { 
-    color: #fff; 
+  h5 {
+    color: #fff;
     margin: 10px 0;
     font-weight: bold;
   }
@@ -301,7 +309,7 @@ footer {
     }
     .post-brief {
       height: 84px;
-    }    
+    }
   }
   @media (min-width: 992px) and (max-width: 1199px) {
     height: 490px;
@@ -310,7 +318,7 @@ footer {
     }
     .post-brief {
       height: 105px;
-    } 
+    }
   }
 
   h3 {
@@ -331,7 +339,7 @@ footer {
       color: #5c5c5c;
     }
   }
-    
+
   &.quote-box {
     background-color: $dark-blue;
     &:hover {
@@ -396,7 +404,7 @@ footer {
     font-weight: normal;
     margin-top: 32px;
   }
-  margin-bottom: 14px; 
+  margin-bottom: 14px;
   .links {
     margin: 26px 0;
     @media (max-width: 767px) {
@@ -411,7 +419,7 @@ footer {
   }
   .nav-pills {
     margin: 20px 0;
-    display: inline-block; 
+    display: inline-block;
   }
   .text-box {
     position: relative;
@@ -433,11 +441,11 @@ footer {
         width: 100%;
         height: auto;
       }
-    } 
+    }
   }
 }
 
-#advisors .row, 
+#advisors .row,
 #team .row {
   display: flex;
   flex-wrap: wrap;
@@ -639,14 +647,14 @@ footer {
 
 // Posts Filter // contact page
 .posts-filter-wrapper, .contact-page {
-  input[type="text"], 
+  input[type="text"],
   input[type="email"],
   select {
     width: 100%;
     border: 2px solid $dark-blue;
   }
 
-  input[type="text"], 
+  input[type="text"],
   input[type="email"],
   select, textarea {
     margin: 4px 0 20px;
@@ -667,7 +675,7 @@ select {
   cursor: pointer;
 }
 
-// Posts filter 
+// Posts filter
 .posts-filter-wrapper {
   p {
     font-family: 'Work Sans', sans-serif;
@@ -708,7 +716,7 @@ select {
   }
   .search-posts-wrapper {
     text-align: right;
-    
+
     .search-posts {
       position: relative;
       .search-field {
@@ -717,10 +725,10 @@ select {
         @media (max-width: 991px) {
           padding-right: 50px;
           width: 100%;
-        } 
+        }
         &.opened {
           width: 100%;
-        } 
+        }
       }
       .search-icon, .search-submit {
         position: absolute;
@@ -739,7 +747,7 @@ select {
         display: none;
       }
     }
-    
+
   }
 }
 
@@ -807,7 +815,7 @@ select {
           line-height: 30px;
         }
       }
-      
+
       &:hover, &:focus {
         text-decoration: none;
       }
@@ -815,7 +823,7 @@ select {
   }
 }
 
-// further readings 
+// further readings
 .readings-page {
   padding: 14px 0 26px;
   .box {
@@ -1011,7 +1019,7 @@ select {
           .question {
             margin-bottom: 20px;
             &.prompt {
-              
+
               h2 {
                 margin: 0;
                 text-transform: none;
@@ -1245,7 +1253,7 @@ select {
 
   .btn-report {
     border: 2px solid #fff;
-    width: 140px;
+    width: 138px;
     padding: 8px 18px;
     opacity: 0.5;
     &.btn-continue  {
@@ -1307,6 +1315,9 @@ select {
   margin: 8px;
   background: #fff;
   height: 352px;
+  @media (max-width: 767px) {
+    height: auto;
+  }
   .post-brief {
     height: 148px;
     overflow: hidden;
@@ -1371,7 +1382,7 @@ select {
     @media (max-width: 767px) {
       width: 100%;
       float: left;
-      height: 132px;
+      height: auto;
     }
   }
   .story {
@@ -1383,6 +1394,9 @@ select {
       width: 100%;
       .read-link {
         display: none;
+      }
+      h3 {
+        height: 62px;
       }
     }
     margin-top: 0;

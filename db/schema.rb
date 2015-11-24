@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116145204) do
+ActiveRecord::Schema.define(version: 20151118081553) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -284,6 +284,8 @@ ActiveRecord::Schema.define(version: 20151116145204) do
     t.text     "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "confirmation_token"
+    t.boolean  "confirmed",          default: false
   end
 
   create_table "uploaded_files", force: true do |t|
@@ -291,6 +293,10 @@ ActiveRecord::Schema.define(version: 20151116145204) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "question_answer_id"
+    t.string   "the_file_file_name"
+    t.string   "the_file_content_type"
+    t.integer  "the_file_file_size"
+    t.datetime "the_file_updated_at"
   end
 
   create_table "users", force: true do |t|

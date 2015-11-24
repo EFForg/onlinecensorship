@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
 
   resources :subscribes
+  get "/subscribe_confirmation" => "subscribes#subscribe_confirmation"
+
   resources :people
 
   resources :contacts , except: :index
@@ -27,7 +29,6 @@ Rails.application.routes.draw do
   resources :contacts_topics
   resources :pages_questions
   resources :question_user_submissions
-  resources :uploaded_files
   resources :further_reads
 
   get "resources/further-readings" => "further_reads#index"

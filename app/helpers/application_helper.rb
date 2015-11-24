@@ -43,29 +43,22 @@ module ApplicationHelper
 
 	# add question answer
   def add_question_answer(question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text)
-		@question_answer=QuestionAnswer.new(:question_id=>question_id,:question_user_submission_id=>question_user_id,:uploaded_file_id=>uploaded_file_id,:question_option_id=>question_option_id,:other_option_answer=>other_option_answer ,:country_id=>country_id,:language_id=>language_id,:answer_text=>answer_text)
+		@question_answer = QuestionAnswer.new(:question_id=>question_id,
+      :question_user_submission_id=>question_user_id,
+      :uploaded_file_id=>uploaded_file_id,
+      :question_option_id=>question_option_id,
+      :other_option_answer=>other_option_answer,
+      :country_id=>country_id,
+      :language_id=>language_id,
+      :answer_text=>answer_text)
 		@question_answer.save
   end
 
-  # add question answer
-  def UploadedFileData(uploaded_file_id)
-    @uploaded_file=UploadedFile.where(:id=>uploaded_file_id).first
-  end
-
-  # create folder
-  def CreateFolder(folder_name)
-    if !File.directory?(folder_name)
-      Dir.mkdir(folder_name,0700)
-    end
-  end
-
-  # upload file to the server
-  def UploadFile(my_file,my_directory)
-    @file_name=my_file.original_filename
-    path = File.join(my_directory,@file_name)
-    File.open(path,"wb") do |file|
-      file.write(my_file.read)
-    end
+  # There was just too much clutter in the view, DRY here
+  def file_download_link(submission)
+    uf = submission.question_answer.uploaded_file
+    return nil if uf.nil? or uf.the_file.nil?
+    link_to "Download the file", uf.the_file.expiring_url(600)
   end
 
   # show the multi select options question user answers
@@ -80,7 +73,7 @@ module ApplicationHelper
 
   def piwiki_tracking_code(site_id, page_title)
     <<-EOF
-      <div id="anon-stats">
+      <div id="anon-stats" style="width:0; height:0;position:absolute;bottom:-20px">
         <noscript>
           <img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;action_name=#{page_title}" style="border:0" alt="" />
         </noscript>

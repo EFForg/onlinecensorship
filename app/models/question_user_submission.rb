@@ -12,5 +12,4 @@ class QuestionUserSubmission < ActiveRecord::Base
 
   # Validation
   validates :page_id,:question_user_id, :presence => true
-
 end

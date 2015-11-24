@@ -7,7 +7,7 @@
     </div><!--panel-heading-->
     <div class="panel-body">
       <div class="col-md-12 details">
-				
+
 				<p>
 				  <strong>Email:</strong>
 			   	<% if @question_user.email? %>
@@ -47,10 +47,12 @@
 										<!-- render the answer-->
 			              <%=render 'questions/'+submission.question_answer.question.question_type+'_answer' %>
 				          </li>
+                <% else %>
+                  <li> ERROR: A QUESTION WAS NIL </li>				        
 				        <% end %>
 							<% end %>
-						<% end %>	
-					</ul>				
+						<% end %>
+					</ul>
 				</p>
 
 				<p>

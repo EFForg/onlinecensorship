@@ -2,8 +2,8 @@
   meta title: @social_media_platform.title + "Report Submission"
 %>
 
-<% 
-	# Used to show options platform title 
+<%
+	# used to show options platform title
 	@social_media_platform_title=@social_media_platform.title
 	# Get the pages count
 	pages_count=@social_media_platform.pages.count
@@ -18,33 +18,34 @@
 
 <div class="slider-pages row" data-pagescount="<%= pages_count + 4 %>">
   <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true ) do |f| %>
+    
 		<% @tab_index=0%>
 		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
 			<!--page slides-->
 			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
 				<div class="slide-page">
-					
+
 					<% if page.pages_questions.count > 0 %>
 						<!--page questions-->
 						<div class="row">
 							<% page.pages_questions.each do |page_question| %>
-							
-							 	<% 
+
+							 	<%
 							 		if page_question.dependent_on_question || page_question.question.question_type =="prompt"
 							 			klass='depends-question-'+page_question.dependent_on_question.to_s+' depends-option-'+page_question.question_option_id.to_s+' hide'
 							 		elsif page_question.question.required_field==true
-							 			klass=' require-answer'	
+							 			klass=' require-answer'
 							 		else
-							 			klass=' not-require'								 								 			
+							 			klass=' not-require'
 							 		end
-							 	%> 
+							 	%>
 
 								<div class="col-md-7 question <%=klass%> <%= page_question.question.question_type %>" id="question-<%=page_question.question_id%>">
 
 									<h2><%=page_question.question.question_title.gsub('{platform}',@social_media_platform.title)%></h2>
-									
-		              <% 
-		                # load the question data to use it in the renders pages 
+
+		              <%
+		                # load the question data to use it in the renders pages
 		                @tab_index=@tab_index+1
 		                @question_id=page_question.question.id
 		                @question_prompt_text=page_question.question.prompt_text
@@ -52,13 +53,13 @@
 		                @question_other_answer=page_question.question.other_answer
 		                if page_question.question.placeholder
 		                	@question_placeholder=page_question.question.placeholder.gsub('{platform}',@social_media_platform.title)
-		              	end 
+		              	end
 		                if page_question.question.question_options.present?
 		                  @question_options=page_question.question.question_options
 		                end
 		              %>
 
-	              	<%=render 'questions/'+page_question.question.question_type+'_field' %>
+	              	<%= render partial: 'questions/'+page_question.question.question_type+'_field', locals: { f: f } %>
 
 								</div>
 
@@ -74,7 +75,7 @@
 						<% end %>
 						<span class="btn btn-report next"> Next </span>
 					</div>
-					
+
 				</div>
 
 			</div>
