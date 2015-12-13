@@ -9,217 +9,273 @@
 	pages_count=@social_media_platform.pages.count
 %>
 
+<!--process-->
 <div class="process row">
 	<div class="container">
 		<div class="process-bar"></div>
 		<h1> <%= @social_media_platform.title %> report submission - <span>0</span>% </h1>
 	</div>
-</div>
+</div><!--process-->
 
+<!--slider-pages-->
 <div class="slider-pages row" data-pagescount="<%= pages_count + 4 %>">
-  <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true ) do |f| %>
-    
-		<% @tab_index=0%>
-		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
-			<!--page slides-->
-			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
-				<div class="slide-page">
 
-					<% if page.pages_questions.count > 0 %>
-						<!--page questions-->
-						<div class="row">
-							<% page.pages_questions.each do |page_question| %>
+  <% if ! cookies[:user_still_kid] %>
 
-							 	<%
-							 		if page_question.dependent_on_question || page_question.question.question_type =="prompt"
-							 			klass='depends-question-'+page_question.dependent_on_question.to_s+' depends-option-'+page_question.question_option_id.to_s+' hide'
-							 		elsif page_question.question.required_field==true
-							 			klass=' require-answer'
-							 		else
-							 			klass=' not-require'
-							 		end
-							 	%>
+    <!-- user age -->
+    <div class="col-md-12 slide-page-wrapper" id="page-0" data-id="0">
+  		<div class="slide-page">
+  			<div class="row">
+  				<div class="col-md-7">
 
-								<div class="col-md-7 question <%=klass%> <%= page_question.question.question_type %>" id="question-<%=page_question.question_id%>">
+  					<h2> How old are you??</h2>
 
-									<h2><%=page_question.question.question_title.gsub('{platform}',@social_media_platform.title)%></h2>
+          	<div class="input-report select-input radio-select">
+            	<input class="option" id="over-13" tabindex="4" type="radio">
+            	<label class="option" for="over-13">
+            		Over 13 years
+            		<i class="fa fa-check"></i>
+              </label>
+            </div>
 
-		              <%
-		                # load the question data to use it in the renders pages
-		                @tab_index=@tab_index+1
-		                @question_id=page_question.question.id
-		                @question_prompt_text=page_question.question.prompt_text
-		                @question_prompt_link=page_question.question.prompt_link
-		                @question_other_answer=page_question.question.other_answer
-		                if page_question.question.placeholder
-		                	@question_placeholder=page_question.question.placeholder.gsub('{platform}',@social_media_platform.title)
-		              	end
-		                if page_question.question.question_options.present?
-		                  @question_options=page_question.question.question_options
-		                end
-		              %>
+          	<div class="input-report select-input radio-select">
+            	<input class="option" id="under-13" tabindex="4" type="radio" >
+            	<label class="option" for="under-13">
+            		Under 13 years
+            		<i class="fa fa-check"></i>
+              </label>
+            </div>
 
-	              	<%= render partial: 'questions/'+page_question.question.question_type+'_field', locals: { f: f } %>
+  				</div>
 
-								</div>
+  			</div>
 
-							<% end %>
+  		</div>
 
-						</div>
-					<% end %>
+  	</div><!-- user age -->
+
+    <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true ) do |f| %>
+  		<% @tab_index=0%>
+  		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
+  			<!--page slides-->
+  			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page hidden' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
+  				<div class="slide-page">
+
+  					<% if page.pages_questions.count > 0 %>
+  						<!--page questions-->
+  						<div class="row">
+  							<% page.pages_questions.each do |page_question| %>
+
+                  <%
+                  if page_question.dependent_on_question || page_question.question.question_type =="prompt"
+                    klass='depends-question-'+page_question.dependent_on_question.to_s+' depends-option-'+page_question.question_option_id.to_s+' hide'
+                  elsif page_question.question.required_field==true
+                    klass=' require-answer'
+                  else
+                    klass=' not-require'
+                  end
+                  %>
+
+  								<div class="col-md-9 question <%=klass%> <%= page_question.question.question_type %>" id="question-<%=page_question.question_id%>">
+
+  									<h2><%=page_question.question.question_title.gsub('{platform}',@social_media_platform.title)%></h2>
+
+  		              <%
+  		                # load the question data to use it in the renders pages
+  		                @tab_index=@tab_index+1
+  		                @question_id=page_question.question.id
+  		                @question_prompt_text=page_question.question.prompt_text
+  		                @question_prompt_link=page_question.question.prompt_link
+  		                @question_other_answer=page_question.question.other_answer
+  		                if page_question.question.placeholder
+  		                	@question_placeholder=page_question.question.placeholder.gsub('{platform}',@social_media_platform.title)
+  		              	end
+  		                if page_question.question.question_options.present?
+  		                  @question_options=page_question.question.question_options
+  		                end
+  		              %>
+
+  	              	<%= render partial: 'questions/'+page_question.question.question_type+'_field', locals: { f: f } %>
+
+  								</div>
+
+  							<% end %>
+
+  						</div>
+  					<% end %>
 
 
-					<div class="btn-next">
-						<% if i > 0 %>
-							<span class="btn btn-report previous active"> Previous </span>
-						<% end %>
-						<span class="btn btn-report next"> Next </span>
-					</div>
+  					<div class="btn-next">
+  						<% if i > 0 %>
+  							<span class="btn btn-report previous active"> Previous </span>
+  						<% end %>
+  						<span class="btn btn-report next"> Next </span>
+  					</div>
 
-				</div>
+  				</div>
 
-			</div>
-	  <% end %>
+  			</div>
+  	  <% end %>
 
 
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+1%>" data-id="<%=pages_count+1%>">
-			<div class="slide-page">
-				<div class="row">
-					<div class="col-md-7 notification-text">
+  		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+1%>" data-id="<%=pages_count+1%>">
+  			<div class="slide-page">
+  				<div class="row">
+  					<div class="col-md-7 notification-text">
 
-						<p>In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy [<a href="/privacy-policy" target="_blank">link</a>]</p>
+  						<p>In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy [<a href="/privacy-policy" target="_blank">link</a>]</p>
 
-					</div>
-				</div>
+  					</div>
+  				</div>
 
-				<div class="btn-next">
-					<span class="btn btn-report previous active"> Previous </span>
-					<span class="btn btn-report next active"> Next </span>
-				</div>
+  				<div class="btn-next">
+  					<span class="btn btn-report previous active"> Previous </span>
+  					<span class="btn btn-report next active"> Next </span>
+  				</div>
 
-			</div>
-		</div>
+  			</div>
+  		</div>
 
-	  <!-- user data page-->
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+2%>" data-id="<%=pages_count+2%>">
-			<div class="slide-page">
-				<div class="row">
-					<div class="col-md-7 question require-answer select" id="question-static-1">
+  	  <!-- user data page-->
+  		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+2%>" data-id="<%=pages_count+2%>">
+  			<div class="slide-page">
+  				<div class="row">
+  					<div class="col-md-7 question require-answer select" id="question-static-1">
 
-						<h2> May we contact you to follow up on this report? </h2>
+  						<h2> May we contact you to follow up on this report? </h2>
 
-						<div class="input-report select-input radio-select" id="yes">
-							<input class="option" id="op-yes" name="question[static-1]" tabindex="1" type="radio" value="yes">
-							<label class="option" for="op-yes">
-							Yes
-							<i class="fa fa-check"></i>
-							</label> 	
-						</div>
+  						<div class="input-report select-input radio-select" id="yes">
+  							<input class="option" id="op-yes" name="question[static-1]" tabindex="1" type="radio" value="yes">
+  							<label class="option" for="op-yes">
+  							Yes
+  							<i class="fa fa-check"></i>
+  							</label>
+  						</div>
 
-						<div class="input-report select-input radio-select" id="no">
-							<input class="option" id="op-no" name="question[static-1]" tabindex="1" type="radio" value="no">
-							<label class="option" for="op-no">
-							No
-							<i class="fa fa-check"></i>
-							</label> 	
-						</div>
+  						<div class="input-report select-input radio-select" id="no">
+  							<input class="option" id="op-no" name="question[static-1]" tabindex="1" type="radio" value="no">
+  							<label class="option" for="op-no">
+  							No
+  							<i class="fa fa-check"></i>
+  							</label>
+  						</div>
 
-					</div>
+  					</div>
 
-						<%= hidden_field_tag 'platform_id', @social_media_platform.id %>
-					  <%= text_field_tag('spam_checker', nil, class: 'spam-checker') %>
+  						<%= hidden_field_tag 'platform_id', @social_media_platform.id %>
+  					  <%= text_field_tag('spam_checker', nil, class: 'spam-checker') %>
 
-				</div>
+  				</div>
 
-				<div class="btn-next">
-					<span class="btn btn-report previous active"> Previous </span>
-					<span class="btn btn-report next"> Next </span>
-				</div>
+  				<div class="btn-next">
+  					<span class="btn btn-report previous active"> Previous </span>
+  					<span class="btn btn-report next"> Next </span>
+  				</div>
 
-			</div>
-		</div>
-  
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+3%>" data-id="<%=pages_count+3%>">
-			<div class="slide-page">
-				<div class="row">
+  			</div>
+  		</div>
 
-					<div class="col-md-7 question depends-question-static-1 depends-option-yes hide long_text" id="question-static-2">
+  		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+3%>" data-id="<%=pages_count+3%>">
+  			<div class="slide-page">
+  				<div class="row">
 
-						<h2> 
-							Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details.
-						</h2>
+  					<div class="col-md-7 question depends-question-static-1 depends-option-yes hide long_text" id="question-static-2">
 
-						<textarea class="input-report text-input require-field" id="static_2" name="static_2" placeholder=" Can you please provide us?" tabindex="2"></textarea>
+  						<h2>
+  							Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details.
+  						</h2>
 
-					</div>
+  						<textarea class="input-report text-input require-field" id="static_2" name="static_2" placeholder=" Can you please provide us?" tabindex="2"></textarea>
 
-				</div>
+  					</div>
 
-				<div class="btn-next">
-					<span class="btn btn-report previous active"> Previous </span>
-					<span class="btn btn-report next"> Next </span>
-				</div>
+  				</div>
 
-			</div>
-		</div>
+  				<div class="btn-next">
+  					<span class="btn btn-report previous active"> Previous </span>
+  					<span class="btn btn-report next"> Next </span>
+  				</div>
 
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+4%>" data-id="<%=pages_count+4%>">
-			<div class="slide-page">
-				<div class="row">
-					<div class="col-md-7 question require-answer select" id="question-static-3">
+  			</div>
+  		</div>
 
-						<h2> 
-							Would you like us to contact <%=@social_media_platform_title%> about your case? We cannot guarantee a response.
- 						</h2>
+  		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+4%>" data-id="<%=pages_count+4%>">
+  			<div class="slide-page">
+  				<div class="row">
+  					<div class="col-md-7 question require-answer select" id="question-static-3">
 
-						<div class="input-report select-input radio-select" id="yes-static-3">
-							<input class="option" id="op-yes-static-3" name="static_3" tabindex="1" type="radio" value="true">
-							<label class="option" for="op-yes-static-3">
-							Yes
-							<i class="fa fa-check"></i>
-							</label> 	
-						</div>
+  						<h2>
+  							Would you like us to contact <%=@social_media_platform_title%> about your case? We cannot guarantee a response.
+              </h2>
 
-						<div class="input-report select-input radio-select" id="no-static-3">
-							<input class="option" id="op-no-static-3" name="static_3" tabindex="1" type="radio" value="false">
-							<label class="option" for="op-no-static-3">
-							No
-							<i class="fa fa-check"></i>
-							</label> 	
-						</div>
+  						<div class="input-report select-input radio-select" id="yes-static-3">
+  							<input class="option" id="op-yes-static-3" name="static_3" tabindex="1" type="radio" value="true">
+  							<label class="option" for="op-yes-static-3">
+  							Yes
+  							<i class="fa fa-check"></i>
+  							</label>
+  						</div>
 
-					</div>
+  						<div class="input-report select-input radio-select" id="no-static-3">
+  							<input class="option" id="op-no-static-3" name="static_3" tabindex="1" type="radio" value="false">
+  							<label class="option" for="op-no-static-3">
+  							No
+  							<i class="fa fa-check"></i>
+  							</label>
+  						</div>
 
-				</div>
+  					</div>
 
-				<div class="btn-next">
-					<span class="btn btn-report previous active"> Previous </span>
-					<span class="btn btn-report next"> Next </span>
-				</div>
+  				</div>
 
-			</div>
-		</div>
+  				<div class="btn-next">
+  					<span class="btn btn-report previous active"> Previous </span>
+  					<span class="btn btn-report next"> Next </span>
+  				</div>
 
-		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+5%>" data-id="<%=pages_count+5%>">
-			<div class="slide-page">
-				<div class="row">
-					<div class="col-md-7 notification-text">
+  			</div>
+  		</div>
 
-						<p>
-							You have completed all of the survey questions. If you would like to revise any of your answers, click previous to move back through the questions. When you are satisfied, hit submit to send your report.
-						</p>
+  		<div class="col-md-12 slide-page-wrapper hidden" id="page-<%=pages_count+5%>" data-id="<%=pages_count+5%>">
+  			<div class="slide-page">
+  				<div class="row">
+  					<div class="col-md-7 notification-text">
 
-					</div>
-				</div>
+  						<p>
+  							You have completed all of the survey questions. If you would like to revise any of your answers, click previous to move back through the questions. When you are satisfied, hit submit to send your report.
+  						</p>
 
-				<div class="btn-next">
-					<span class="btn btn-report previous active"> Previous </span>
-					<span class="btn btn-report next submit-report"> Submit </span>
-				</div>
+  					</div>
+  				</div>
 
-			</div>
-		</div>
+  				<div class="btn-next">
+  					<span class="btn btn-report previous active"> Previous </span>
+  					<span class="btn btn-report next submit-report"> Submit </span>
+  				</div>
 
+  			</div>
+  		</div>
+
+    <% end %>
 
   <% end %>
-</div>
+
+  <!-- kids message-->
+  <div class="col-md-12 slide-page-wrapper kids <% if !cookies[:user_still_kid]%>hidden<% end %>" id="page-0" data-id="0">
+    <div class="slide-page">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>We are sorry</h2>
+          <p>
+            We are sorry, but at this time we cannot accept reports from users aged 13 and under.
+          </p>
+
+          <a href="<%=root_path%>">
+            <span class="btn btn-report active">Go Home</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div><!-- kids-->
+
+</div><!--slider-pages-->
