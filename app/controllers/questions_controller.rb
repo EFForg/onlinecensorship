@@ -50,14 +50,22 @@ class QuestionsController < ApplicationController
 
       # insert the user data
       # params[:static_2] is the question that the user can type his email in it in the new approach
+<<<<<<< HEAD
+      # params[:static_3] is the question that the user can select if he want to inform the patform about his case or not 
+=======
       # params[:static_3] is the question that the user can select if he want to inform the patform about his case or not
+>>>>>>> master
       @question_user = QuestionUser.new(:email => params[:static_2] , :inform_platform => params[:static_3])
       @question_user.save
 
       # get the questions id's and the answers values
       params[:question].each_pair do |question_id,value|
 
+<<<<<<< HEAD
+        # In the new approach we added 3 questions static at the end of the questionnaire so we check here if this question one if them we escape it 
+=======
         # In the new approach we added 3 questions static at the end of the questionnaire so we check here if this question one if them we escape it
+>>>>>>> master
         if !question_id.include? "static"
 
           # get the question page id
@@ -75,11 +83,25 @@ class QuestionsController < ApplicationController
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
             add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,nil,value)
           elsif question_type=="upload"
+<<<<<<< HEAD
+            # create and open the dir
+            folder_path="public/system/uploads"
+            CreateFolder(folder_path)
+            # upload the file
+            UploadFile(value,folder_path)
+            # insert uploaded file data , file_name return from the UploadFile method
+            @uploaded_file = UploadedFile.new(:title =>@file_name,:question_answer_id => question_id)
+            @uploaded_file.save
+            # insert the answer data
+            # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
+            add_question_answer(question_id,@question_user_submission.id,@uploaded_file.id,nil,nil,nil,nil,nil)
+=======
             uploaded_file = params["question"][question_id]
             @uf = UploadedFile.create(title: uploaded_file.original_filename,
               question_answer_id: question_id,
               the_file: uploaded_file)
             add_question_answer(question_id,@question_user_submission.id,@uf.id,nil,nil,nil,nil,nil)
+>>>>>>> master
           elsif question_type=="select"
             # insert the answer data
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
@@ -106,9 +128,14 @@ class QuestionsController < ApplicationController
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
             add_question_answer(question_id,@question_user_submission.id,nil,nil,nil,nil,value,nil)
           end
+<<<<<<< HEAD
+=======
 
         end
+>>>>>>> master
 
+        end
+      
       end
 
       # Call notify mailer method to notify the admin,
