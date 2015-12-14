@@ -1,5 +1,24 @@
 $( document ).ready(function() {
 
+  // enable the questionnaire
+  $("#over-13").click(function(){
+    // hide the question
+    $("#page-0").hide();
+    // show the questionnaire
+    $("#page-1").fadeIn(300).removeClass("hidden");
+  });
+
+  //disable the questionnaire for kids
+  $("#under-13").click(function(){
+    // hide the question and the form
+    $("#page-0").hide();
+    $("#report").hide();
+    // create cookie
+    document.cookie="user_still_kid=still under 13 years";
+    // show the notification message
+    $(".kids").fadeIn(300).removeClass("hidden");
+  });
+
   // close report
   $(".close-report").click(function(){
     $(".close-popup-wrapper").fadeIn(300, function(){
@@ -14,7 +33,7 @@ $( document ).ready(function() {
 
   // Show the notification message
   function showNotification(element,question_id,condition){
-    if(condition==false){        
+    if(condition==false){
       element.next(".error-wrapper").find("span").fadeIn();
       // remove the answer class
       $("#"+question_id).removeClass("answered");
@@ -42,9 +61,9 @@ $( document ).ready(function() {
   function showNextButton(slide_page_id){
     // check if the user fill all the required fields in the slider page
     if($("#"+slide_page_id+" .slide-page .row > .answered").length >= $("#"+slide_page_id+" .slide-page .row > .require-answer").length){
-      $("#"+slide_page_id+" .next").addClass("active"); 
+      $("#"+slide_page_id+" .next").addClass("active");
     }else{
-      $("#"+slide_page_id+" .next").removeClass("active");   
+      $("#"+slide_page_id+" .next").removeClass("active");
     }//if
   }
 
@@ -82,7 +101,7 @@ $( document ).ready(function() {
           $("#"+question_id).addClass("answered");
         }
       }else{
-        $("#"+question_id).removeClass("answered"); 
+        $("#"+question_id).removeClass("answered");
       }
 
       // show next button
@@ -97,7 +116,7 @@ $( document ).ready(function() {
     var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
     var question_id=el.parents(".question").attr("id");
     // for styling the selected
-    $("#" + question_id + " .selected").removeClass("selected");    
+    $("#" + question_id + " .selected").removeClass("selected");
     el.addClass("selected");
     // answered
     $("#"+question_id).addClass("answered");
@@ -111,7 +130,7 @@ $( document ).ready(function() {
   $(".select-input.multi-select label").click(function(){
     var el=$(this);
     var el_parent = el.parent();
-    var parent_page_id=el.parents(".slide-page-wrapper").attr("id");    
+    var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
     var option_id=el.attr("for");
     var question_id=el.parents(".question").attr("id");
     if( el_parent.hasClass("selected")){
@@ -185,9 +204,9 @@ $( document ).ready(function() {
 
   // move to previous page
   $(".previous").click(function(){
-    var el=$(this);  
+    var el=$(this);
     var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
-    var previous_page_id=el.parents(".slide-page-wrapper").prev().attr("id"); 
+    var previous_page_id=el.parents(".slide-page-wrapper").prev().attr("id");
 
     // check if the next page contains questions
     if ($("#"+previous_page_id+" .slide-page .row > .require-answer").length < 1 && $("#"+previous_page_id+" .slide-page .row > .notification-text").length < 1 && $("#"+previous_page_id+" .slide-page .row > .not-require").length < 1){
