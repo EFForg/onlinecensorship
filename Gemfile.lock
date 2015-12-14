@@ -36,6 +36,12 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
@@ -71,6 +77,7 @@ GEM
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
     commonjs (0.2.7)
+    debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -221,6 +228,8 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk-v1
+  better_errors
+  binding_of_caller
   bourbon
   capistrano (~> 3.3.0)
   capistrano-bundler (~> 1.1)
