@@ -21,8 +21,10 @@
 				  <strong>Platform:</strong>
 					<% if @question_user.question_user_submissions.present? %>
 						<% @question_user.question_user_submissions.first(1).each do |submission| %>
-							<%=submission.page.social_media_platform.title%>
-							<% @social_media_platform_id=submission.page.social_media_platform.id%>
+              <% if submission.page.present? && submission.page.social_media_platform.present? %>
+  							<%=submission.page.social_media_platform.title%>
+  							<% @social_media_platform_id=submission.page.social_media_platform.id%>
+              <% end %>
 						<% end %>
 					<% end %>
 				</p>
@@ -37,19 +39,19 @@
 				  <ul>
 						<% if @question_user.question_user_submissions.present? %>
 							<% @question_user.question_user_submissions.each do |submission| %>
-
-                <% if submission.question_answer.respond_to?(:question) and !submission.question_answer.question.nil? %>
-  								<li>
-  									<b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title) %></b>
-  									<% @submission=submission%>
-  									<br>
-  									<!-- render the answer-->
-  		              <%=render 'questions/'+submission.question_answer.question.question_type+'_answer' %>
-  			          </li>
-                <% else %>
-                  <li> ERROR: A QUESTION WAS NIL </li>
+                <% if submission.page.present? && submission.page.social_media_platform.present? %>
+                  <% if submission.question_answer.respond_to?(:question) and !submission.question_answer.question.nil? %>
+    								<li>
+    									<b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title) %></b>
+    									<% @submission=submission%>
+    									<br>
+    									<!-- render the answer-->
+    		              <%=render 'questions/'+submission.question_answer.question.question_type+'_answer' %>
+    			          </li>
+                  <% else %>
+                    <li> ERROR: A QUESTION WAS NIL </li>
+                  <% end %>
                 <% end %>
-
 							<% end %>
 						<% end %>
 					</ul>

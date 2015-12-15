@@ -50,6 +50,8 @@
                 <% elsif question_type=="upload" %>
                   <%= file_download_link(submission) %>
                 <% elsif question_type=="select" %>
+                  <%# the commented out section might be better to use instead of my unless statment.  Idk, I can't tell. -TheNotary %>
+                  <%# if  submission.page.present? && submission.page.social_media_platform.present? %>
                   <% unless submission.question_answer.question_option.nil? ||
                     submission.page.nil? ||
                     submission.question_answer.question_option.nil? ||
