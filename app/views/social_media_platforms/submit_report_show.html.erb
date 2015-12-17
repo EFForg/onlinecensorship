@@ -7,6 +7,12 @@
 	@social_media_platform_title=@social_media_platform.title
 	# Get the pages count
 	pages_count=@social_media_platform.pages.count
+  # check the cookies
+  if cookies[:user_still_kid]
+    klass="hidden"
+  else
+    klass=""
+  end
 %>
 
 <!--process-->
@@ -18,44 +24,77 @@
 </div><!--process-->
 
 <!--slider-pages-->
-<div class="slider-pages row" data-pagescount="<%= pages_count + 4 %>">
+<div class="slider-pages row">
 
-  <% if ! cookies[:user_still_kid] %>
+  <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
 
-    <!-- user age -->
-    <div class="col-md-12 slide-page-wrapper" id="page-0" data-id="0">
-  		<div class="slide-page">
-  			<div class="row">
-  				<div class="col-md-7">
+    <% if ! cookies[:user_still_kid] %>
 
-  					<h2> How old are you??</h2>
+      <!-- user age -->
+      <div class="col-md-12 slide-page-wrapper" id="page-0" data-id="0">
+    		<div class="slide-page">
+    			<div class="row">
+    				<div class="col-md-7" id="user_age">
 
-          	<div class="input-report select-input radio-select">
-            	<input class="option" id="over-13" tabindex="4" type="radio">
-            	<label class="option" for="over-13">
-            		Over 13 years
-            		<i class="fa fa-check"></i>
-              </label>
-            </div>
+    					<h2> How old are you??</h2>
 
-          	<div class="input-report select-input radio-select">
-            	<input class="option" id="under-13" tabindex="4" type="radio" >
-            	<label class="option" for="under-13">
-            		Under 13 years
-            		<i class="fa fa-check"></i>
-              </label>
-            </div>
+              <div class="input-report select-input radio-select">
+              	<input class="option" id="over-45" name="user_age" tabindex="1" type="radio" value="45+">
+              	<label class="option" for="over-45">
+              		Over 45 years
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
 
-  				</div>
+              <div class="input-report select-input radio-select">
+              	<input class="option" id="over-36-45" name="user_age" tabindex="2" type="radio" value="36-45">
+              	<label class="option" for="over-36-45">
+              		36-45
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
 
-  			</div>
+              <div class="input-report select-input radio-select">
+              	<input class="option" id="over-26-35" name="user_age" tabindex="3" type="radio" value="26-35">
+              	<label class="option" for="over-26-35">
+              		26-35
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
 
-  		</div>
+              <div class="input-report select-input radio-select">
+              	<input class="option" id="over-19-25" name="user_age" tabindex="4" type="radio" value="19-25">
+              	<label class="option" for="over-19-25">
+              		19-25
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
 
-  	</div><!-- user age -->
+              <div class="input-report select-input radio-select">
+              	<input class="option" id="over-13-18" name="user_age" tabindex="5" type="radio" value="13-18">
+              	<label class="option" for="over-13-18">
+              		13-18
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
 
-    <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true ) do |f| %>
-  		<% @tab_index=0%>
+            	<div class="input-report select-input radio-select">
+              	<input class="option" id="under-13" name="user_age" tabindex="6" type="radio" >
+              	<label class="option" for="under-13">
+              		Under 13 years
+              		<i class="fa fa-check"></i>
+                </label>
+              </div>
+
+    				</div>
+
+    			</div>
+
+    		</div>
+
+    	</div><!-- user age -->
+
+      <% @tab_index=0%>
   		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
   			<!--page slides-->
   			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page hidden' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">

@@ -10,7 +10,7 @@
 
 				<p>
 				  <strong>Email:</strong>
-			   	<% if @question_user.email? %>
+          <% if @question_user.email? %>
 				  	<%= @question_user.email %>
 				  <% else %>
 				  	Anonymous
@@ -27,6 +27,11 @@
               <% end %>
 						<% end %>
 					<% end %>
+				</p>
+
+        <p>
+				  <strong>Age:</strong>
+			  	<%= @question_user.age %>
 				</p>
 
 				<p>

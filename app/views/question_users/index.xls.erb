@@ -2,6 +2,7 @@
   <tr>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
     <th style="text-align:left; font-weight:bold;">Email</th>
+    <th style="text-align:left; font-weight:bold;">Age</th>
     <th style="text-align:left; font-weight:bold;">Platform</th>
     <th style="text-align:left; font-weight:bold;">Inform Platform</th>
     <th style="text-align:left; font-weight:bold;">Answers</th>
@@ -17,6 +18,9 @@
         <% else %>
           Anonymous
         <% end %>
+      </td>
+      <td style="text-align:left;">
+        <%= excel.age %>
       </td>
       <td style="text-align:left;">
         <% if excel.question_user_submissions.present? %>

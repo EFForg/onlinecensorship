@@ -48,7 +48,9 @@
               <td>
                 <% if question.pages.present? %>
                   <% question.pages.each do |page|%>
-                    <div class="<%= page.social_media_platform.font_awesome_style %>" style="float:left;color:<%=page.social_media_platform.color%>"></div> 
+                    <% if page.social_media_platform.present? && page.social_media_platform.font_awesome_style? %>
+                      <div class="<%= page.social_media_platform.font_awesome_style %>" style="float:left;color:<%=page.social_media_platform.color%>"></div>
+                    <% end %>
                   <% end %>
                 <% end %>
               </td>
