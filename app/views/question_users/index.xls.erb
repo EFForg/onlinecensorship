@@ -2,6 +2,7 @@
   <tr>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
     <th style="text-align:left; font-weight:bold;">Email</th>
+    <th style="text-align:left; font-weight:bold;">Age</th>
     <th style="text-align:left; font-weight:bold;">Platform</th>
     <th style="text-align:left; font-weight:bold;">Inform Platform</th>
     <th style="text-align:left; font-weight:bold;">Answers</th>
@@ -19,6 +20,9 @@
         <% end %>
       </td>
       <td style="text-align:left;">
+        <%= excel.age %>
+      </td>
+      <td style="text-align:left;">
         <% if excel.question_user_submissions.present? %>
           <% excel.question_user_submissions.first(1).each do |submission| %>
             <% if  submission.page.present? && submission.page.social_media_platform.present? %>
@@ -29,7 +33,7 @@
       </td>
       <td style="text-align:left;">
         <%= excel.inform_platform %>
-      </td>      
+      </td>
       <td style="text-align:left;">
         <ul>
           <% if excel.question_user_submissions.present? %>

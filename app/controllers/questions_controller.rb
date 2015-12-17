@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
       # insert the user data
       # params[:static_2] is the question that the user can type his email in it in the new approach
       # params[:static_3] is the question that the user can select if he want to inform the patform about his case or not
-      @question_user = QuestionUser.new(:email => params[:static_2] , :inform_platform => params[:static_3])
+      @question_user = QuestionUser.new(:email => params[:static_2] , :inform_platform => params[:static_3] ,:age=> params[:user_age])
       @question_user.save
 
       # get the questions id's and the answers values

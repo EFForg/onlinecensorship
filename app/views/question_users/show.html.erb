@@ -10,7 +10,7 @@
 
 				<p>
 				  <strong>Email:</strong>
-			   	<% if @question_user.email? %>
+          <% if @question_user.email? %>
 				  	<%= @question_user.email %>
 				  <% else %>
 				  	Anonymous
@@ -25,6 +25,11 @@
 							<% @social_media_platform_id=submission.page.social_media_platform.id%>
 						<% end %>
 					<% end %>
+				</p>
+
+        <p>
+				  <strong>Age:</strong>
+			  	<%= @question_user.age %>
 				</p>
 
 				<p>
