@@ -56,6 +56,7 @@ module ApplicationHelper
 
   # There was just too much clutter in the view, DRY here
   def file_download_link(submission)
+    return nil if submission.question_answer.nil?
     uf = submission.question_answer.uploaded_file
     return nil if uf.nil? or uf.the_file.nil?
     link_to "Download the file", uf.the_file.expiring_url(600)

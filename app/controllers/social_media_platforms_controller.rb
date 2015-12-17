@@ -51,7 +51,8 @@ class SocialMediaPlatformsController < ApplicationController
 
   def destroy
     # Unpublish all the related posts
-    Post.where(:social_media_platform_id=>@social_media_platform.id).update_all(:published => false)
+    @posts=Post.joins(:social_media_platforms).where('posts_social_media_platforms.social_media_platform_id' => @social_media_platform.id)
+    @posts.update_all(:published => false)
     # Delete the category
     @social_media_platform.destroy
     redirect_to admin_social_media_platforms_url, notice: 'The social platform was successfully destroyed.'

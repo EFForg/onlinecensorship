@@ -44,6 +44,8 @@ gem 'puma', '~> 2.14'
 # gem 'capistrano-rails', group: :development
 group :development, :test do
   gem 'pry'
+  gem 'better_errors'
+  gem "binding_of_caller"
   gem 'capistrano', '~> 3.3.0', require: false
   gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
