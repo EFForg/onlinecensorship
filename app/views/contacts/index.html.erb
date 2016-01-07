@@ -14,7 +14,7 @@
         <%= render 'home/admin_search' %>
       </div>
     </div><!--panel-title-->
-    <br>
+    <p><%= @unreplied_count %> unreplied messages </p>
     <div class="sub-links col-md-12">
       <i class="fa fa-file-excel-o"></i>
       <%= link_to "Export To Excel", contacts_path(format: "xls") %>
@@ -29,8 +29,9 @@
           <th>Name</th>
           <th>Surname</th>
           <th>Email</th>
-          <th>Pgp key</th>
-          <th>Topic</th>            
+          <th>Topic</th>   
+          <th>Replied?</th>
+          <th>Replied By</th>          
           <th></th>
           <th></th>
         </tr>
@@ -47,12 +48,13 @@
               <td><%= contact.name %></td>
               <td><%= contact.surname %></td>
               <td><%= contact.email %></td>
-              <td><%= contact.pgp_key %></td>
               <td>
                 <% if contact.contacts_topic.present? %>
                   <%=contact.contacts_topic.name %>
                 <% end %>
               </td>
+              <td><%= contact.replied %></td>
+              <td><%= contact.replied_by %></td>
               <td class="icon-control">
                 <%= link_to contact, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
               </td>

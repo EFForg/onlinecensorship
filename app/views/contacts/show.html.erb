@@ -40,6 +40,21 @@
           <%= @contact.message %>
         </p>
 
+        <br/>
+
+        <p>
+          <strong>Replied?</strong>
+          <%= @contact.replied %>
+        </p>
+
+        <p>
+          <strong>Replied By:</strong>
+          <%= @contact.replied_by %>
+          <%= link_to "Edit", edit_contact_path(@contact), :title => "Edit" %>
+        </p>
+
+        <br/>
+
         <p>
           <%= link_to 'All Messages', admin_contacts_path %>
         </p>
