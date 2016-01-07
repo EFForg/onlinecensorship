@@ -1,0 +1,63 @@
+<div class="col-md-12 col-sm-7 col-xs-12 no-padding">
+  <div class="content-box-large">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <i class="fa fa-pencil-square-o"></i>Editing Message
+      </div>
+    </div>
+    <div class="panel-body">
+      
+    	<%= form_for(@contact) do |f| %>
+			  <% if @contact.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+			      <ul>
+			      <% @contact.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			  <div>
+			    <p><%= @contact.name %></p>
+			  </div>
+
+			  <div>
+			    <p><%= @contact.email %></p>
+			  </div>
+
+			  <div>
+			    <p><%= @contact.message %></p>
+			  </div>
+
+			  <div>
+			    <%= f.label :replied, "Replied?" %>
+			    <%= f.radio_button :replied, true %>
+		      <%= f.label :replied_true, "Yes" %>
+		      <%= f.radio_button :replied, false %>
+		      <%= f.label :replied_false, "No" %>
+			  </div>
+
+			  <div>
+			    <%= f.label :replied_by, "Replied By" %>
+			    <%= f.text_field :replied_by %>
+			  </div>
+			 
+			  <div>
+			    <%= f.submit "Edit", :class=> "btn btn-primary submit-btn" %>
+			  </div>
+
+			  <div>
+			    <p>Updated at: <%= @contact.updated_at.to_date %></p>
+			  </div>
+
+			<% end %>
+
+			<br/>
+      <div>
+      	<p><%= link_to 'All Messages', admin_contacts_path %></p>
+      </div>
+    </div>
+  </div>
+</div>

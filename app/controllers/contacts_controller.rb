@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:new , :create]
+  before_action :authenticate_user!, except: [:new, :create]
   before_filter :filter_spam , only: [:create]
   layout 'backend', except: [:new]
 
@@ -8,7 +8,8 @@ class ContactsController < ApplicationController
     # Using it in the backEnd to allow the admin to show and navigate all the model data
     results=Contact.search(params[:search],'name','surname','email','pgp_key','message')
     @contacts=results.page(params[:page])
-    @count=results.count     
+    @count=results.count
+    @unreplied_count = results.where(replied: false).count    
   end
 
   def new
@@ -43,6 +44,16 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     redirect_to admin_contacts_url, notice: 'The message was successfully destroyed.'
+  end
+
+  def edit
+  end
+
+  def update
+    @contact.replied = params[:contact][:replied]
+    @contact.replied_by = params[:contact][:replied_by]
+    @contact.save
+    redirect_to admin_contacts_url, notice: 'Message was successfully updated.'
   end
 
   private
