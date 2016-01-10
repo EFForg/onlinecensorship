@@ -92,7 +92,7 @@ meta og: {
                   <% end %>
                 <% end %>
               </h3>
-              <p class="post-brief"><%=story.brief.to_s[0..160] %>...</p>
+              <p class="post-brief"><%= story.brief.truncate(163) %></p>
               <% if story.external_link? %>
                 <%= link_to "READ THE STORY", story.external_link, target: "_blank", :class => "read-link more-link" %>
               <% else %>
