@@ -54,7 +54,8 @@ $(document).ready(function(){
       center: true,
       loop: true,
       autoplay: true,
-      autoplaySpeed: 800,
+      autoplaySpeed: 1000,
+      autoplayTimeout: 7000,
       autoplayHoverPause: true,
       dots: true
     });
