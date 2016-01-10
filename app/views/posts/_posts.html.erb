@@ -57,7 +57,7 @@
                 <% end %>
               </h5>
               <h6><%=post.publish_date%></h6>
-              <p class="post-brief"><%=post.intro.to_s[0..160] %>...</p>
+              <p class="post-brief"><%= post.intro.truncate(163) %></p>
               <hr>
               <label class="post-tags">
                 <% if post.tags?%>
@@ -129,7 +129,7 @@
               <% end %>
             </h5>
           <h6><%=post.publish_date %></h6>
-          <p class="post-brief"><%=post.intro.to_s[0..160] %>...</p>
+          <p class="post-brief"><%= post.intro.truncate(163) %></p>
           <hr>
           <label class="post-tags">
             <% if post.tags?%>
