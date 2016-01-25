@@ -7,7 +7,7 @@
     </div><!--panel-heading-->
     <div class="panel-body">
       <div class="col-md-12 details">
-        
+
         <p>
           <strong>Name:</strong>
           <%= @contact.name %>
@@ -38,6 +38,11 @@
         <p>
           <strong>Message:</strong>
           <%= @contact.message %>
+        </p>
+
+        <p>
+          <strong>Created at:</strong>
+          <%= @contact.created_at.to_formatted_s(:long_ordinal) %>
         </p>
 
         <br/>

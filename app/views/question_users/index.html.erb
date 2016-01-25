@@ -30,6 +30,7 @@
           <th>Email</th>
           <th>Age</th>
           <th>Inform Platform</th>
+          <th>Created at</th>
           <th>Answers</th>
         </tr>
       </thead>
@@ -64,6 +65,7 @@
               <td>
                 <%= question_user.inform_platform %>
               </td>
+              <td><%= question_user.created_at.to_formatted_s(:long_ordinal) %></td>
               <td class="icon-control">
                 <%= link_to question_user, :title => "Show" do %><div class="icon-show"><i class="fa fa-file-text-o"></i></div><% end %>
               </td>

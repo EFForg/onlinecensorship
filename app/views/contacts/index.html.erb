@@ -29,9 +29,10 @@
           <th>Name</th>
           <th>Surname</th>
           <th>Email</th>
-          <th>Topic</th>   
+          <th>Topic</th>
           <th>Replied?</th>
-          <th>Replied By</th>          
+          <th>Replied By</th>
+          <th>Created at</th>
           <th></th>
           <th></th>
         </tr>
@@ -55,6 +56,7 @@
               </td>
               <td><%= contact.replied %></td>
               <td><%= contact.replied_by %></td>
+              <td><%= contact.created_at.to_formatted_s(:long_ordinal) %></td>
               <td class="icon-control">
                 <%= link_to contact, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
               </td>
