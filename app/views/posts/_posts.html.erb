@@ -35,7 +35,7 @@
 
                 <h3>
                   <% if post.category && post.category.title.downcase=="news" %>
-                    <%=link_to post.link , :target => "_blank" do %>
+                    <%=link_to post.link ,:title=>post.title , :target => "_blank" do %>
                       <%=post.title %>
                     <% end %>
                   <% else %>
@@ -154,7 +154,7 @@
 
           <h3>
             <% if post.category && post.category.title.downcase=="news" %>
-              <%=link_to post.link , :target => "_blank" do %>
+              <%=link_to post.link ,:title=>post.title , :target => "_blank" do %>
                 <%=post.title %>
               <% end %>
             <% else %>
