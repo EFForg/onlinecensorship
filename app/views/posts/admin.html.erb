@@ -33,6 +33,7 @@
           <th>Title</th>
           <th>Published</th>
           <th>Featured</th>
+          <th>Pinned</th>
           <th></th>
           <th></th>
           <th></th>
@@ -55,7 +56,7 @@
                 </td>
               <% else %>
                 <td>
-                </td>                
+                </td>
               <% end %>
               <td>
                 <% if post.person.present? %>
@@ -83,6 +84,13 @@
                   <%= link_to "Unfeature", post_unfeatured_path(post.id) %>
                 <% else %>
                   <%= link_to "Feature", post_featured_path(post.id) %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.pinned %>
+                  <%= link_to "Unpinned", post_unpinned_path(post.id) %>
+                <% else %>
+                  <%= link_to "Pinned", post_pinned_path(post.id) %>
                 <% end %>
               </td>
               <td class="icon-control">

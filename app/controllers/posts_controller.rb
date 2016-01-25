@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_post_id, only: [:publish, :unpublish, :featured, :unfeatured]
+  before_action :set_post_id, only: [:publish, :unpublish, :featured, :unfeatured , :pinned , :unpinned]
   before_action :authenticate_user! , except: [:index,:author,:show]
   layout 'backend', except: [:index,:author,:show]
 
@@ -99,6 +99,20 @@ class PostsController < ApplicationController
     @post.featured = false
     @post.save
     redirect_to post_path(@post), notice: 'The post was successfully unfeatured.'
+  end
+
+  def pinned
+    # pinned the post "Allow the admin to fix the post from the backEnd"
+    @post.pinned = true
+    @post.save
+    redirect_to post_path(@post), notice: 'The post was successfully pinned.'
+  end
+
+  def unpinned
+    # unpinned the post "Allow the admin to remove the fixed post from the backEnd"
+    @post.pinned = false
+    @post.save
+    redirect_to post_path(@post), notice: 'The post was successfully unpinned.'
   end
 
   def show
