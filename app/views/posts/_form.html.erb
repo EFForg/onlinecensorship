@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <% 
-  if @post_type_title=="News" 
+  <%
+  if @post_type_title=="News"
     klass="hide"
   else
     link_klass="hide"
-  end 
+  end
   %>
 
   <div class="field">
@@ -44,13 +44,11 @@
 
   <div class="field image-field">
 
-    <%= f.label :photo, "Thumbnail" %> <b>*</b>
+    <%= f.label :photo, "Thumbnail" %>
     <%= f.file_field :photo, :class=>"form-control image-uploader" %>
 
-    <% if params[:action]=="edit" %>
+    <% if params[:action]=="edit" && @post.photo_file_name  %>
       <%= image_tag @post.photo(:thumb), :class => "preview-image preview-post-cover-input" %><br>
-    <% else %>
-      <%= image_tag "", :class => "preview-image preview-post-cover-input" %><br>
     <% end %>
 
   </div>
@@ -59,7 +57,7 @@
     <%= f.label :title %> <b>*</b><br>
     <%= f.text_field :title, required: true, :class=>"form-control" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :intro %> <b>*</b><br>
     <%= f.text_area :intro, required: true, :class=>"form-control text_area_height" %>
@@ -77,7 +75,7 @@
       <%= image_tag @post.side_image.url(:thumb), :class => "preview-image preview-side-image" %>
     <% else %>
       <%= image_tag "", :class => "preview-image preview-side-image" %>
-    <% end %> 
+    <% end %>
   </div>
 
   <div class="field post-field <%=klass%>">

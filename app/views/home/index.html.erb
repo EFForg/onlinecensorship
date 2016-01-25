@@ -123,68 +123,118 @@ meta og: {
 
       <% if @featured_post %>
 
-        <div class="col-md-8">
-          <div class="news-box featured-post clearfix">
-            <div class="col-md-6 col-no-padding">
-              <div class="image-wrapper">
-                <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                  <%=link_to @featured_post.link , :target => "_blank" do %>
-                    <%=image_tag @featured_post.photo(:thumb) %>
-                  <% end %>
-                <% else %>
-                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
-                    <%=image_tag @featured_post.photo(:thumb) %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
+        <% if @featured_post.photo_file_name %>
 
-            <div class="col-md-6 col-no-padding">
-              <div class="post-content">
-
-                <% if @featured_post.category.present? %>
-                  <i class="fa fa-circle" style="color: <%= @featured_post.category.color %>"></i>
-                  <label class="category"><%= @featured_post.category.title %></label>
-                <% end %>
-
-                <h3>
+          <div class="col-md-8">
+            <div class="news-box featured-post clearfix">
+              <div class="col-md-6 col-no-padding">
+                <div class="image-wrapper">
                   <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
                     <%=link_to @featured_post.link , :target => "_blank" do %>
-                      <%=@featured_post.title %>
+                      <%=image_tag @featured_post.photo(:thumb) %>
                     <% end %>
                   <% else %>
                     <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
-                      <%=@featured_post.title %>
+                      <%=image_tag @featured_post.photo(:thumb) %>
                     <% end %>
                   <% end %>
-                </h3>
+                </div>
+              </div>
 
-                <h5>
-                  <% if @featured_post.person_id? %>
-                    <% if @featured_post.person.present? %>
-                      <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
-                        <%= @featured_post.person.name %>
+              <div class="col-md-6 col-no-padding">
+                <div class="post-content">
+
+                  <% if @featured_post.category.present? %>
+                    <i class="fa fa-circle" style="color: <%= @featured_post.category.color %>"></i>
+                    <label class="category"><%= @featured_post.category.title %></label>
+                  <% end %>
+
+                  <h3>
+                    <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
+                      <%=link_to @featured_post.link , :target => "_blank" do %>
+                        <%=@featured_post.title %>
+                      <% end %>
+                    <% else %>
+                      <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                        <%=@featured_post.title %>
                       <% end %>
                     <% end %>
-                  <% elsif @featured_post.news_source? %>
-                    <%=@featured_post.news_source%>
+                  </h3>
+
+                  <h5>
+                    <% if @featured_post.person_id? %>
+                      <% if @featured_post.person.present? %>
+                        <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                          <%= @featured_post.person.name %>
+                        <% end %>
+                      <% end %>
+                    <% elsif @featured_post.news_source? %>
+                      <%=@featured_post.news_source%>
+                    <% end %>
+                  </h5>
+                  <h6><%=@featured_post.publish_date%></h6>
+                  <p class="post-brief"><%=@featured_post.intro.truncate(163) %></p>
+                  <hr>
+                  <label class="post-tags">
+                    <% if @featured_post.tags?%>
+                      <% @featured_post.tags.split(/,/).each do |tag| %>
+                        <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                      <% end %>
+                    <% end %>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        <% else %>
+
+          <div class="col-md-4">
+            <div class="news-box">
+
+              <% if @featured_post.category.present? %>
+                <i class="fa fa-circle" style="color: <%= @featured_post.category.color %>"></i>
+                <label class="category"> <%= @featured_post.category.title %> </label>
+              <% end %>
+
+              <h3>
+                <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
+                  <%=link_to @featured_post.link , :target => "_blank" do %>
+                    <%=@featured_post.title %>
                   <% end %>
-                </h5>
-                <h6><%=@featured_post.publish_date%></h6>
-                <p class="post-brief"><%=@featured_post.intro.truncate(163) %></p>
-                <hr>
-                <label class="post-tags">
-                  <% if @featured_post.tags?%>
-                    <% @featured_post.tags.split(/,/).each do |tag| %>
-                      <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                <% else %>
+                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                    <%=@featured_post.title %>
+                  <% end %>
+                <% end %>
+              </h3>
+
+              <h5>
+                <% if @featured_post.person_id? %>
+                  <% if @featured_post.person.present? %>
+                    <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                      <%= @featured_post.person.name %>
                     <% end %>
                   <% end %>
-                </label>
-              </div>
+                <% elsif @featured_post.news_source? %>
+                  <%=@featured_post.news_source%>
+                <% end %>
+              </h5>
+              <h6><%=@featured_post.publish_date %></h6>
+              <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
+              <hr>
+              <label class="post-tags">
+                <% if @featured_post.tags?%>
+                  <% @featured_post.tags.split(/,/).each do |tag| %>
+                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                  <% end %>
+                <% end %>
+              </label>
             </div>
-
           </div>
-        </div>
+
+        <% end %>
 
       <% end %>
 

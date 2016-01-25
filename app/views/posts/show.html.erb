@@ -10,12 +10,14 @@ meta og: {
 
 <div class="post-cover">
 	<div class="overlay"></div>
-	<%= image_tag @post.photo.url %>
+  <% if @post.photo_file_name %>
+    <%= image_tag @post.photo.url %>
+  <% end %>
 </div>
 
 <div class="container">
 	<div class="post-wrapper">
-		
+
 		<div class="row">
 			<div class="col-md-7">
 				<% if @post.category.present? %>
@@ -24,13 +26,13 @@ meta og: {
 			  <% end %>
 				<h1> <%= @post.title %> </h1>
 				<p class="post-info">
-					by 
+					by
 					<% if @post.person.present? %>
             <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
               <%= @post.person.name %>
-            <% end %> |  
-					<% end%> 
-					<%= @post.publish_date %> | 
+            <% end %> |
+					<% end%>
+					<%= @post.publish_date %> |
 					<% if @post.tags? %>
             <% @post.tags.split(/,/).each do |tag| %>
               <%= link_to posts_path(tag: tag) do %><%="#"+tag.to_s%><% end %>
@@ -59,7 +61,7 @@ meta og: {
 				</div>
 			</div>
 		<% end %>
-		
+
 
 		<div class="post-content">
 			<div class="row">
@@ -77,14 +79,14 @@ meta og: {
 										<%= image_tag @post.side_image %>
 									<% end %>
 								<% else %>
-									<%= image_tag @post.side_image %>								
+									<%= image_tag @post.side_image %>
 								<% end %>
 								<p class="image-caption">
 									<%= @post.side_image_caption %>
 								</p>
 							</div>
 						<% end %>
-						
+
 						<% if @post.quote_text.present? %>
 							<div class="post-quote">
 								<div class="quote-text-wrapper">
@@ -119,7 +121,7 @@ meta og: {
 		  				</div>
 		  				<div class="personal-info">
 		  					<h4> ABOUT THE AUTHOR </h4>
-		  					<h2> 
+		  					<h2>
 			            <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
 			              <%= @post.person.name %>
 			            <% end %>
@@ -135,7 +137,7 @@ meta og: {
 				<div class="col-md-7">
 					<div class="share-post">
 						<h5> Share on </h5>
-						
+
 						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> Twitter </a><!--
 
         --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> Facebook </a>
@@ -158,12 +160,12 @@ meta og: {
 		        <div class="news-box">
 		          <i class="fa fa-circle news-dot" style="color:<%= p.category.color%>"></i>
 		          <label class="category"> <%= p.category.title %> </label>
-		          <h3> 
+		          <h3>
                 <%=link_to post_path(p),:title=>p.title do %>
 		          		<%= p.title %>
 		          	<% end %>
 		          </h3>
-		          <h5> 
+		          <h5>
 		          	<% if p.person.present?%>
 		          		<%=link_to author_path(id: p.person),:title=>p.person.name do %>
 		          			<%= p.person.name %>
