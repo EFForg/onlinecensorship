@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_story_id, only: [:publish,:unpublish]
+  before_action :set_story_id, only: [:publish]
   before_action :authenticate_user! , except: [:show]
   layout 'backend', except: [:show]
 
@@ -16,21 +16,13 @@ class StoriesController < ApplicationController
       format.xls {
         @stories = Story.all
       }
-    end      
+    end
   end
 
   def publish
-    # publish the story "Allow the admin to publish the story from the backEnd"
-    @story.published = true
-    @story.save
+    # publish the story "Allow the admin to publish/unpublish the story from the backEnd"
+    ReverseField(@story,"published")
     redirect_to admin_stories_url , notice: 'The story was successfully published.'
-  end
-
-  def unpublish
-    # Unpublish the story "Allow the admin to unpublish the story from the backEnd"
-    @story.published = false
-    @story.save
-    redirect_to admin_stories_url , notice: 'The story was successfully unpublished.'
   end
 
   def show

@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
-  before_action :set_quote_id, only: [:featured,:unfeatured]
+  before_action :set_quote_id, only: [:featured]
   before_action :authenticate_user!
   layout 'backend'
 
@@ -16,21 +16,13 @@ class QuotesController < ApplicationController
       format.xls {
         @quotes = Quote.all
       }
-    end 
-  end
-  
-  def featured
-    # featured the quote "Allow the admin to fix the quote from the backEnd"
-    @quote.featured = true
-    @quote.save
-    redirect_to admin_quotes_url , notice: 'The quote was successfully featured.'
+    end
   end
 
-  def unfeatured
-    # unfeatured the quote "Allow the admin to remove the fixed quote from the backEnd"
-    @quote.featured = false
-    @quote.save
-    redirect_to admin_quotes_url , notice: 'The quote was successfully unfeatured.'
+  def featured
+    # featured the quote "Allow the admin to fix/unfix the quote from the backEnd"
+    ReverseField(@quote,"featured")
+    redirect_to admin_quotes_url , notice: 'The quote was successfully featured.'
   end
 
   def new
