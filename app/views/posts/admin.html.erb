@@ -88,9 +88,9 @@
               </td>
               <td>
                 <% if post.pinned %>
-                  <%= link_to "Unpinned", post_unpinned_path(post.id) %>
+                  <%= link_to "Unpinned", post_pinned_path(post.id), method: :put %>
                 <% else %>
-                  <%= link_to "Pinned", post_pinned_path(post.id) %>
+                  <%= link_to "Pinned", post_pinned_path(post.id), method: :put %>
                 <% end %>
               </td>
               <td class="icon-control">

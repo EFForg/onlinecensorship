@@ -52,8 +52,7 @@ Rails.application.routes.draw do
     get :unpublish
     get :featured
     get :unfeatured
-    get :pinned
-    get :unpinned
+    put :pinned
     collection do
       get :preview
     end

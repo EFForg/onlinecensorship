@@ -103,16 +103,8 @@ class PostsController < ApplicationController
 
   def pinned
     # pinned the post "Allow the admin to fix the post from the backEnd"
-    @post.pinned = true
-    @post.save
+    ReverseField(@post,"pinned")
     redirect_to post_path(@post), notice: 'The post was successfully pinned.'
-  end
-
-  def unpinned
-    # unpinned the post "Allow the admin to remove the fixed post from the backEnd"
-    @post.pinned = false
-    @post.save
-    redirect_to post_path(@post), notice: 'The post was successfully unpinned.'
   end
 
   def show
