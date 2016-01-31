@@ -48,15 +48,20 @@ meta og: {
 				<div class="col-md-12">
 					<%= link_to "Edit", edit_post_path(@post), :title => "Edit Post" %> |
 					<% if @post.published %>
-	          <%= link_to "Unpublish", post_unpublish_path(@post.id) %>
+	          <%= link_to "Unpublish", post_publish_path(@post.id), method: :put %>
 	        <% else %>
-	          <%= link_to "Publish", post_publish_path(@post.id) %>
+	          <%= link_to "Publish", post_publish_path(@post.id), method: :put %>
 	        <% end %> |
-	        <% if @post.featured %>
-	          <%= link_to "Unfeature", post_unfeatured_path(@post.id) %>
-	        <% else %>
-	          <%= link_to "Feature", post_featured_path(@post.id) %>
-	        <% end %> |
+          <% if @post.featured %>
+            <%= link_to "Unfeature", post_featured_path(@post.id), method: :put %>
+          <% else %>
+            <%= link_to "Feature", post_featured_path(@post.id), method: :put %>
+          <% end %> |
+          <% if @post.pinned %>
+            <%= link_to "Unpinned", post_pinned_path(@post.id), method: :put %>
+          <% else %>
+            <%= link_to "Pinned", post_pinned_path(@post.id), method: :put %>
+          <% end %> |
 	        <%= link_to "Manage posts", admin_posts_path(), :title => "Manage Posts" %>
 				</div>
 			</div>

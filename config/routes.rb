@@ -48,10 +48,8 @@ Rails.application.routes.draw do
   resources :social_media_platforms
 
   resources :posts, path: 'news-and-analysis' do
-    get :publish
-    get :unpublish
-    get :featured
-    get :unfeatured
+    put :publish
+    put :featured
     put :pinned
     collection do
       get :preview
