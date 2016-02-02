@@ -24,14 +24,14 @@ class Post < ActiveRecord::Base
   # Define attachments
   ## The post photo # min-height: 490px
   has_attached_file :photo, :styles => { :thumb => '375x490#' },
-                           :default_url => "/system/:style_default_post_image.jpg"
+                           :default_url => "/:style_default_post_image.jpg"
   ## Attachments Validation
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :photo, :less_than => 1.megabyte
 
   ## The side image validation
   has_attached_file :side_image,
-                           :default_url => "/system/default_post_side_image.jpg"
+                           :default_url => "/default_post_side_image.jpg"
 
   validates_attachment_content_type :side_image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :side_image, :less_than => 1.megabyte
