@@ -305,7 +305,7 @@ footer {
   @media (min-width: 1200px) {
     height: 438px;
     h3 {
-      height: 93px;
+      height: 150px;
     }
     .post-brief {
       height: 84px;
@@ -314,7 +314,7 @@ footer {
   @media (min-width: 992px) and (max-width: 1199px) {
     height: 490px;
     h3 {
-      height: 124px;
+      height: 150px;
     }
     .post-brief {
       height: 105px;
@@ -329,6 +329,10 @@ footer {
         text-decoration: none;
       }
     }
+  }
+
+  h5 {
+    margin-top: 25px !important;
   }
 
   .post-tags {
