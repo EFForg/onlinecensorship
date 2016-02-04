@@ -45,19 +45,19 @@ body {
   transition: color 0.5s ease;
 }
 
-.navbar-default .navbar-nav>.open>a, 
-.navbar-default .navbar-nav>.open>a:focus, 
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
   background-color: transparent;
 }
 
-.navbar-default .navbar-nav>li>a:focus, 
+.navbar-default .navbar-nav>li>a:focus,
 .navbar-default .navbar-nav>li>a:hover {
     color: #4AB2C3!important;
     background-color: transparent;
 }
 
-.container .jumbotron, 
+.container .jumbotron,
 .container-fluid .jumbotron {
   border-radius: 0px;
   background-color: #162F4E;
@@ -131,7 +131,7 @@ h2{
 }
 
 h3{
-  font-size: 24px;
+  font-size: 23px; // 24px 
   color: #162F4E;
   line-height: 130%;
   font-weight: bold;
@@ -159,7 +159,7 @@ h5{
   color: #162F4E;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 3px solid #4AB2C3; 
+  border-bottom: 3px solid #4AB2C3;
   transition: color 0.5s ease;
   margin-right: 30px;
   padding-bottom: 2px;
@@ -317,7 +317,7 @@ h5 a:hover{
 	.navbar-toggle {
     border-color: transparent;
     padding-top: 30px;
-	} 
+	}
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
@@ -352,7 +352,7 @@ h5 a:hover{
         background-color: transparent;
       }
     }
-    
+
   }
 }
 
@@ -382,7 +382,7 @@ h5 a:hover{
 	// }
 }
 
-/* Small Devices, Phones */ 
+/* Small Devices, Phones */
 @media only screen and (max-width : 767px) {
   .container .jumbotron, .container-fluid .jumbotron {
     border-radius: 0px;
@@ -420,7 +420,7 @@ h5 a:hover{
   }
 }
 
-/* Extra Small Devices, Phones */ 
+/* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   h2 {
     font-size: 21px;

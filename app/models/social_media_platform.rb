@@ -20,7 +20,7 @@ class SocialMediaPlatform < ActiveRecord::Base
   # Define attachments
   ## The post photo
   has_attached_file :logo, :styles => { :small => '80x80#'},
-                           :default_url => "/system/:style_default_social_logo.png"
+                           :default_url => "/:style_default_social_logo.png"
   ## Attachments Validation
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :logo, :less_than => 1.megabyte

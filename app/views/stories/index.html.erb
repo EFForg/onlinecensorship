@@ -48,9 +48,9 @@
               <td><%= story.title %></td>
               <td>
                 <% if story.published %>
-                  <%= link_to "Unpublish", story_unpublish_path(story.id) %>
+                  <%= link_to "Unpublish", story_publish_path(story.id),method: :put %>
                 <% else %>
-                  <%= link_to "Publish", story_publish_path(story.id) %>
+                  <%= link_to "Publish", story_publish_path(story.id),method: :put %>
                 <% end %>
               </td>
               <td class="icon-control">

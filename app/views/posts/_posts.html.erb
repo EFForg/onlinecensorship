@@ -2,81 +2,128 @@
 <% if posts_count > 0 %>
 
   <% j = 0 %>
-  
+
   <% @posts.each_with_index do |post, i| %>
 
-    <% 
+    <%
     # Show the first post with image
-    if i == 0 
+    if i == 0
     %>
-      
-      <div class="col-md-8">
-        <div class="news-box featured-post clearfix">
-          <div class="col-md-6 col-no-padding">
-            <div class="image-wrapper">
-              <% if post.category && post.category.title.downcase=="news" %>
-                <%=link_to post.link , :target => "_blank" do %>
-                  <%=image_tag post.photo(:thumb) %>
-                <% end %>
-              <% else %>
-                <%=link_to post_path(post),:title=>post.title do %>
-                  <%=image_tag post.photo(:thumb) %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        
-          <div class="col-md-6 col-no-padding">
-            <div class="post-content">
-              <% if post.category.present? %>
-                <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
-                <label class="category"><%= post.category.title %></label>
-              <% end %>
-                                    
-              <h3> 
+      <% if post.photo_file_name %>
+        <div class="col-md-8">
+          <div class="news-box featured-post clearfix">
+            <div class="col-md-6 col-no-padding">
+              <div class="image-wrapper">
                 <% if post.category && post.category.title.downcase=="news" %>
                   <%=link_to post.link , :target => "_blank" do %>
-                    <%=post.title %>
+                    <%=image_tag post.photo(:thumb) %>
                   <% end %>
                 <% else %>
                   <%=link_to post_path(post),:title=>post.title do %>
-                    <%=post.title %>
+                    <%=image_tag post.photo(:thumb) %>
                   <% end %>
                 <% end %>
-              </h3>
+              </div>
+            </div>
 
-              <h5>
-                <% if post.person_id? %>
-                  <% if post.person.present? %>
-                    <%=link_to author_path(id: post.person),:title=>post.person.name do %>
-                      <%= post.person.name %>
+            <div class="col-md-6 col-no-padding">
+              <div class="post-content">
+                <% if post.category.present? %>
+                  <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
+                  <label class="category"><%= post.category.title %></label>
+                <% end %>
+
+                <h3>
+                  <% if post.category && post.category.title.downcase=="news" %>
+                    <%=link_to post.link ,:title=>post.title , :target => "_blank" do %>
+                      <%=post.title %>
+                    <% end %>
+                  <% else %>
+                    <%=link_to post_path(post),:title=>post.title do %>
+                      <%=post.title %>
                     <% end %>
                   <% end %>
-                <% elsif post.news_source? %>
-                  <%=post.news_source%>
+                </h3>
+
+                <h5>
+                  <% if post.person_id? %>
+                    <% if post.person.present? %>
+                      <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+                        <%= post.person.name %>
+                      <% end %>
+                    <% end %>
+                  <% elsif post.news_source? %>
+                    <%=post.news_source%>
+                  <% end %>
+                </h5>
+                <h6><%=post.publish_date%></h6>
+                <p class="post-brief"><%= post.intro.truncate(163) %></p>
+                <hr>
+                <label class="post-tags">
+                  <% if post.tags?%>
+                    <% post.tags.split(/,/).each do |tag| %>
+                      <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                    <% end %>
+                  <% end %>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      <% else %>
+
+        <div class="col-md-4">
+          <div class="news-box">
+            <% if post.category.present? %>
+              <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
+              <label class="category"> <%= post.category.title %> </label>
+            <% end %>
+
+            <h3>
+              <% if post.category && post.category.title.downcase=="news" %>
+                <%=link_to post.link , :target => "_blank" do %>
+                  <%=post.title %>
                 <% end %>
-              </h5>
-              <h6><%=post.publish_date%></h6>
-              <p class="post-brief"><%= post.intro.truncate(163) %></p>
-              <hr>
-              <label class="post-tags">
-                <% if post.tags?%>
-                  <% post.tags.split(/,/).each do |tag| %>
-                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+              <% else %>
+                <%=link_to post_path(post),:title=>post.title do %>
+                  <%=post.title %>
+                <% end %>
+              <% end %>
+            </h3>
+
+            <h5>
+              <% if post.person_id? %>
+                <% if post.person.present? %>
+                  <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+                    <%= post.person.name %>
                   <% end %>
                 <% end %>
-              </label>
-            </div>
+              <% elsif post.news_source? %>
+                <%=post.news_source%>
+              <% end %>
+            </h5>
+            <h6><%=post.publish_date %></h6>
+            <p class="post-brief"><%= post.intro.truncate(163) %></p>
+            <hr>
+            <label class="post-tags">
+              <% if post.tags?%>
+                <% post.tags.split(/,/).each do |tag| %>
+                  <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+                <% end %>
+              <% end %>
+            </label>
           </div>
-
         </div>
-      </div>
+
+      <% end %>
 
       <% if posts_count < 3 %>
         <% if @quotes[0] %>
           <div class="col-md-4">
             <div class="news-box quote-box dark-blue-bg">
-              
+
               <div class="post-quote">
                 <div class="quote-text-wrapper">
                   <p class="quote-text" style="font-size: <%= @quotes[j].font_size.to_s%>px;"> <%= @quotes[j].quote %> </p>
@@ -93,7 +140,7 @@
 
             </div>
           </div>
-        <% end %>      
+        <% end %>
       <% end %>
 
     <% else %>
@@ -104,10 +151,10 @@
             <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
             <label class="category"> <%= post.category.title %> </label>
           <% end %>
-          
+
           <h3>
             <% if post.category && post.category.title.downcase=="news" %>
-              <%=link_to post.link , :target => "_blank" do %>
+              <%=link_to post.link ,:title=>post.title , :target => "_blank" do %>
                 <%=post.title %>
               <% end %>
             <% else %>
@@ -118,16 +165,16 @@
           </h3>
 
           <h5>
-              <% if post.person_id? %>
-                <% if post.person.present? %>
-                  <%=link_to author_path(id: post.person),:title=>post.person.name do %>
-                    <%= post.person.name %>
-                  <% end %>
+            <% if post.person_id? %>
+              <% if post.person.present? %>
+                <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+                  <%= post.person.name %>
                 <% end %>
-              <% elsif post.news_source? %>
-                <%=post.news_source%>
               <% end %>
-            </h5>
+            <% elsif post.news_source? %>
+              <%=post.news_source%>
+            <% end %>
+          </h5>
           <h6><%=post.publish_date %></h6>
           <p class="post-brief"><%= post.intro.truncate(163) %></p>
           <hr>
@@ -141,7 +188,7 @@
         </div>
       </div>
 
-      <% 
+      <%
       # Show quote every 3 posts
       if @quotes.count > 0 && i%3 == 0
       %>
@@ -149,7 +196,7 @@
         <% if @quotes[j] %>
           <div class="col-md-4">
             <div class="news-box quote-box dark-blue-bg">
-              
+
               <div class="post-quote">
                 <div class="quote-text-wrapper">
                   <p class="quote-text" style="font-size: <%= @quotes[j].font_size.to_s%>px;"> <%= @quotes[j].quote %> </p>

@@ -3,16 +3,14 @@ Rails.application.routes.draw do
   resources :notifications
 
   resources :stories do
-    get :publish
-    get :unpublish
+    put :publish
   end
 
   resources :posts_themes
   resources :home_fields
 
   resources :quotes do
-    get :featured
-    get :unfeatured
+    put :featured
   end
 
   get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
@@ -48,10 +46,9 @@ Rails.application.routes.draw do
   resources :social_media_platforms
 
   resources :posts, path: 'news-and-analysis' do
-    get :publish
-    get :unpublish
-    get :featured
-    get :unfeatured
+    put :publish
+    put :featured
+    put :pinned
     collection do
       get :preview
     end

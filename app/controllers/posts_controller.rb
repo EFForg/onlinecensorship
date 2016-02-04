@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_post_id, only: [:publish, :unpublish, :featured, :unfeatured]
+  before_action :set_post_id, only: [:publish, :featured , :pinned]
   before_action :authenticate_user! , except: [:index,:author,:show]
   layout 'backend', except: [:index,:author,:show]
 
@@ -74,31 +74,21 @@ class PostsController < ApplicationController
   end
 
   def publish
-    # publish the post "Allow the admin to publish the post from the backEnd"
-    @post.published = true
-    @post.save
-    redirect_to post_path(@post), notice: 'The post was successfully published.'
-  end
-
-  def unpublish
-    # Unpublish the post "Allow the admin to unpublish the post from the backEnd"
-    @post.published = false
-    @post.save
+    # Unpublish the post "Allow the admin to publish/unpublish the post from the backEnd"
+    ReverseField(@post,"published")
     redirect_to post_path(@post), notice: 'The post was successfully unpublished.'
   end
 
   def featured
-    # featured the post "Allow the admin to fix the post from the backEnd"
-    @post.featured = true
-    @post.save
+    # featured the post "Allow the admin to fix/unfix the post from the backEnd"
+    ReverseField(@post,"featured")
     redirect_to post_path(@post), notice: 'The post was successfully featured.'
   end
 
-  def unfeatured
-    # unfeatured the post "Allow the admin to remove the fixed post from the backEnd"
-    @post.featured = false
-    @post.save
-    redirect_to post_path(@post), notice: 'The post was successfully unfeatured.'
+  def pinned
+    # pinned the post "Allow the admin to fix/unfix the post from the backEnd"
+    ReverseField(@post,"pinned")
+    redirect_to post_path(@post), notice: 'The post was successfully pinned.'
   end
 
   def show

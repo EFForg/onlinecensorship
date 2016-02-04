@@ -33,6 +33,7 @@
           <th>Title</th>
           <th>Published</th>
           <th>Featured</th>
+          <th>Pinned</th>
           <th></th>
           <th></th>
           <th></th>
@@ -55,7 +56,7 @@
                 </td>
               <% else %>
                 <td>
-                </td>                
+                </td>
               <% end %>
               <td>
                 <% if post.person.present? %>
@@ -73,16 +74,23 @@
               </td>
               <td>
                 <% if post.published %>
-                  <%= link_to "Unpublish", post_unpublish_path(post.id) %>
+                  <%= link_to "Unpublish", post_publish_path(post.id), method: :put %>
                 <% else %>
-                  <%= link_to "Publish", post_publish_path(post.id) %>
+                  <%= link_to "Publish", post_publish_path(post.id), method: :put %>
                 <% end %>
               </td>
               <td>
                 <% if post.featured %>
-                  <%= link_to "Unfeature", post_unfeatured_path(post.id) %>
+                  <%= link_to "Unfeature", post_featured_path(post.id), method: :put %>
                 <% else %>
-                  <%= link_to "Feature", post_featured_path(post.id) %>
+                  <%= link_to "Feature", post_featured_path(post.id), method: :put %>
+                <% end %>
+              </td>
+              <td>
+                <% if post.pinned %>
+                  <%= link_to "Unpinned", post_pinned_path(post.id), method: :put %>
+                <% else %>
+                  <%= link_to "Pinned", post_pinned_path(post.id), method: :put %>
                 <% end %>
               </td>
               <td class="icon-control">

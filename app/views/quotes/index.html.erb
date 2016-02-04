@@ -18,7 +18,7 @@
         <i class="fa fa-pencil-square-o"></i>
         <%= link_to 'New Quote', new_quote_path %>
         <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Export To Excel", quotes_path(format: "xls") %>  
+        <%= link_to "Export To Excel", quotes_path(format: "xls") %>
       </div>
     </div><!--panel-title-->
     <br>
@@ -49,9 +49,9 @@
               <td><%= quote.font_size %></td>
               <td>
                 <% if quote.featured %>
-                  <%= link_to "Unfeatured", quote_unfeatured_path(quote.id) %>
+                  <%= link_to "Unfeatured", quote_featured_path(quote.id), method: :put %>
                 <% else %>
-                  <%= link_to "Featured", quote_featured_path(quote.id) %>
+                  <%= link_to "Featured", quote_featured_path(quote.id), method: :put %>
                 <% end %>
               </td>
               <td class="icon-control">

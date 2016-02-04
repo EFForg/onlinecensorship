@@ -12,7 +12,7 @@ class UploadedFile < ActiveRecord::Base
 
 	has_attached_file :the_file, :styles => { :thumb => '200x200#'},
 														s3_permissions: :private,
-														default_url: "/images/:style/missing.png"
+														default_url: "/missing.png"
 
 	## Attachments Validation
   validates_attachment_content_type :the_file, :content_type => /\Aimage\/.*\Z/
