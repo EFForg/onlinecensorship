@@ -194,11 +194,3 @@ $(document).ready(function(){
 function PushLink(Url){
   window.history.pushState("Online Censorship","Online Censorship",Url);
 }
-
-// image tip
-$(".featured-post .image-wrapper").mouseover(function(){
-  $(".featured-post .image-tip").fadeIn();
-});
-$(".featured-post .image-wrapper").mouseout(function(){
-  $(".featured-post .image-tip").fadeOut("slow");
-});

@@ -274,6 +274,12 @@ footer {
   .image-wrapper {
     overflow: hidden;
     height: 438px;
+
+    &:hover {
+      .image-tip {
+        bottom: 0;
+      }
+    }
     @media (max-width: 991px) {
       max-height: 510px;
       img {
@@ -289,10 +295,10 @@ footer {
       width: 100%;
       padding: 15px 10px;
       position: absolute;
-      bottom: 0;
-      background-color: #152F4E;
-      display: none;
+      background-color: $dark-blue;
+      bottom: -50px;
       color: #fff;
+      @include transition(bottom,0.3s);
       a {
         color: #fff
       }
