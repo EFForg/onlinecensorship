@@ -34,6 +34,11 @@ class PostsController < ApplicationController
       # using it in the backEnd and in the frontEnd posts page
       format.any(:js, :html) {
         @posts=Post.where(:published=>true)
+        # featured post
+        @featured_post = @posts.where(:featured=>true).first
+        # all posts without the feature post
+        @unfeatured_post=@posts.where.not(:id => @featured_post.id)
+
         @quotes = Quote.where(:featured=>true)
 
         if params[:category_id] !=nil && params[:category_id] !="" && params[:category_id] != "All" && params[:category_id] != "false"
@@ -51,14 +56,19 @@ class PostsController < ApplicationController
         end
 
         # Show all posts without limitation
-        if params[:category_id] || params[:platform_id] || params[:theme_id] || params[:show_all]
-          @posts = @posts
+        if params[:category_id] || params[:platform_id] || params[:theme_id]
+          @posts =  @posts
+          # hide the big block
+          @featured_post = nil
+        elsif  params[:show_all]
+          # to disable duplicate the feature post
+          @posts =  @unfeatured_post
         # Search by tags
         elsif params[:tag]
           @posts = @posts.where("title LIKE ? OR description like ? OR intro like ? OR tags like ? OR side_image_caption like ?", "%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%")
         else
-          # Start only with 8 posts
-          @posts = @posts.order(:id => :desc).limit(9).offset(0);
+          # Start only with 10 posts
+          @posts = @unfeatured_post.order(:id => :desc).limit(10).offset(0);
           @show_all=true
         end
 
