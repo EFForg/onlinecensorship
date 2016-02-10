@@ -18,7 +18,7 @@
         <i class="fa fa-pencil-square-o"></i>
         <%= link_to 'New Posts theme', new_posts_theme_path %>
         <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Export To Excel", posts_themes_path(format: "xls") %>           
+        <%= link_to "Export To Excel", posts_themes_path(format: "xls") %>
       </div>
     </div><!--panel-title-->
     <br>
@@ -47,8 +47,8 @@
                 <%= posts_theme.title %>
               </td>
               <td>
-                <% if posts_theme.posts.present? %>
-                  <%= posts_theme.posts.count %>               
+                <% if posts_theme.posts_posts_themes.present? %>
+                  <%= posts_theme.posts_posts_themes.count %>               
                 <% end %>
               </td>
               <td class="icon-control">
