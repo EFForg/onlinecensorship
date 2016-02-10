@@ -46,11 +46,15 @@
           <% @stories.each do |story| %>
             <tr class="show-image">
               <td><%= story.title %></td>
-              <td>
+              <td class="icon-control">
                 <% if story.published %>
-                  <%= link_to "Unpublish", story_publish_path(story.id),method: :put %>
+                  <%= link_to story_publish_path(story.id),method: :put  ,:title => "Click to Unpublish" do %>
+                    <i class="fa fa-check"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to "Publish", story_publish_path(story.id),method: :put %>
+                  <%= link_to story_publish_path(story.id),method: :put  ,:title => "Click to Publish" do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
                 <% end %>
               </td>
               <td class="icon-control">
