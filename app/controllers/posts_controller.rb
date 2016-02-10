@@ -207,6 +207,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:category_id, :title, :description, :photo ,:person_id ,:publish_date ,:intro,:tags ,:side_image_caption ,:side_image,:published ,:link ,:slug ,:featured ,:side_image_link ,:quote_author ,:quote_text ,:twitter_text ,:news_source ,:pinned)
+      params.require(:post).permit(:category_id, :title, :description, :photo ,:person_id ,:publish_date ,:intro,:tags ,:side_image_caption ,:side_image,:published ,:link ,:slug ,:featured ,:side_image_link ,:quote_author ,:quote_text ,:twitter_text ,:news_source ,:pinned ,:image_link ,:image_author_name , :image_author_link , :cc_license)
     end
 end

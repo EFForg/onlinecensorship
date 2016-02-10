@@ -54,6 +54,26 @@
   </div>
 
   <div class="field">
+    <%= f.label :image_link %><br>
+    <%= f.text_field :image_link, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_author_name %><br>
+    <%= f.text_field :image_author_name, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_author_link %><br>
+    <%= f.text_field :image_author_link, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cc_license %><br>
+    <%= f.text_field :cc_license, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :title %> <b>*</b><br>
     <%= f.text_field :title, required: true, :class=>"form-control" %>
   </div>
