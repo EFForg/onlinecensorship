@@ -72,25 +72,37 @@
                   <%= post.title %>
                 <% end %>
               </td>
-              <td>
+              <td class="icon-control">
                 <% if post.published %>
-                  <%= link_to "Unpublish", post_publish_path(post.id), method: :put %>
+                <%= link_to post_publish_path(post.id), method: :put,:title => "Click to Unpublish" do %>
+                    <i class="fa fa-check"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to "Publish", post_publish_path(post.id), method: :put %>
+                  <%= link_to post_publish_path(post.id), method: :put,:title => "Click to Publish" do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
                 <% end %>
               </td>
-              <td>
+              <td class="icon-control">
                 <% if post.featured %>
-                  <%= link_to "Unfeature", post_featured_path(post.id), method: :put %>
+                  <%= link_to post_featured_path(post.id), method: :put ,:title => "Click to Unfeature" do %>
+                    <i class="fa fa-check"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to "Feature", post_featured_path(post.id), method: :put %>
+                  <%= link_to post_featured_path(post.id), method: :put ,:title => "Click to Feature" do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
                 <% end %>
               </td>
-              <td>
+              <td class="icon-control">
                 <% if post.pinned %>
-                  <%= link_to "Unpinned", post_pinned_path(post.id), method: :put %>
+                  <%= link_to post_pinned_path(post.id), method: :put ,:title => "Click to Unpinned" do %>
+                    <i class="fa fa-check"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to "Pinned", post_pinned_path(post.id), method: :put %>
+                  <%= link_to post_pinned_path(post.id), method: :put ,:title => "Click to Pinned" do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
                 <% end %>
               </td>
               <td class="icon-control">
