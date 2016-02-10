@@ -47,11 +47,15 @@
             <tr class="show-image">
               <td><%= quote.author %></td>
               <td><%= quote.font_size %></td>
-              <td>
+              <td class="icon-control">
                 <% if quote.featured %>
-                  <%= link_to "Unfeatured", quote_featured_path(quote.id), method: :put %>
+                  <%= link_to quote_featured_path(quote.id), method: :put ,:title => "Click to Unfeature" do %>
+                    <i class="fa fa-check"></i>
+                  <% end %>
                 <% else %>
-                  <%= link_to "Featured", quote_featured_path(quote.id), method: :put %>
+                  <%= link_to quote_featured_path(quote.id), method: :put ,:title => "Click to Feature" do %>
+                    <i class="fa fa-times"></i>
+                  <% end %>
                 <% end %>
               </td>
               <td class="icon-control">
