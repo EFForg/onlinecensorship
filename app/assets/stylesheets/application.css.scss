@@ -284,6 +284,19 @@ footer {
     @media (min-width: 992px) and (max-width: 1199px) {
       height: 490px;
     }
+
+    .image-tip {
+      width: 100%;
+      padding: 15px 10px;
+      position: absolute;
+      bottom: 0;
+      background-color: #152F4E;
+      display: none;
+      color: #fff;
+      a {
+        color: #fff
+      }
+    }
   }
   .post-content {
     padding: 30px;

@@ -62,7 +62,7 @@ $(document).ready(function(){
 
   }
 
-  // Accordion 
+  // Accordion
   $("#accordion .panel").click(function(event){
     if( $(this).find(".collapsing").length > 0)
       return false;
@@ -94,7 +94,7 @@ $(document).ready(function(){
 
   // main nav hover
   if( $(window).width() > 767 ) {
-    $("#navbar .dropdown").hover( 
+    $("#navbar .dropdown").hover(
       function() {
         $("#navbar .dropdown-menu").hide();
         $(this).find(".dropdown-menu").show();
@@ -138,7 +138,7 @@ $(document).ready(function(){
   });
 
   // for home headline
-  // making words the same length, to move smothly with each others 
+  // making words the same length, to move smothly with each others
   if($(".cd-words-wrapper").length > 0) {
     $(".cd-words-wrapper i:contains('/')").css({"display":"inline-block","width":0, "opacity": 0});
   }
@@ -174,7 +174,7 @@ $(document).ready(function(){
         $(this).attr("href", href);
       }
     });
-  }); 
+  });
 
   // change posts theme filter params
   $("#post-theme").click(function(){
@@ -194,3 +194,11 @@ $(document).ready(function(){
 function PushLink(Url){
   window.history.pushState("Online Censorship","Online Censorship",Url);
 }
+
+// image tip
+$(".featured-post .image-wrapper").mouseover(function(){
+  $(".featured-post .image-tip").fadeIn();
+});
+$(".featured-post .image-wrapper").mouseout(function(){
+  $(".featured-post .image-tip").fadeOut("slow");
+});
