@@ -23,7 +23,7 @@
                     <%=image_tag post.photo(:thumb) %>
                   <% end %>
                 <% end %>
-                <% if post.image_link != nil && post.image_author_name !="" && post.cc_license !="" %>
+                <% if post.image_link != "" && post.image_author_name !="" && post.cc_license !="" %>
                   <div class="image-tip">
                     <a href="<%=post.image_link%>" target="_blank">Image</a>
                     by <a href="<%=post.image_author_link%>" target="_blank"><%=post.image_author_name%></a>
