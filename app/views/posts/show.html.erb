@@ -10,9 +10,9 @@ meta og: {
 
 <div class="post-cover">
 	<div class="overlay"></div>
-  <% if @post.photo_file_name %>
-    <%= image_tag @post.photo.url %>
-  <% end %>
+	<% if @post.photo_file_name %>
+		<%= image_tag @post.photo.url %>
+	<% end %>
 </div>
 
 <div class="container">
@@ -28,24 +28,24 @@ meta og: {
 				<p class="post-info">
 					by
 					<% if @post.person.present? %>
-            <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
-              <%= @post.person.name %>
-            <% end %> |
+						<%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
+							<%= @post.person.name %>
+						<% end %> |
 					<% end%>
 					<%= @post.publish_date %> |
 					<% if @post.tags? %>
-            <% @post.tags.split(/,/).each do |tag| %>
-              <%= link_to posts_path(tag: tag) do %><%="#"+tag.to_s%><% end %>
-            <% end %>
-          <% end %>
+						<% @post.tags.split(/,/).each do |tag| %>
+							<%= link_to posts_path(tag: tag) do %><%="#"+tag.to_s%><% end %>
+						<% end %>
+					<% end %>
 				</p>
-        <% if @post.image_link != "" && @post.image_author_name !="" && @post.cc_license !="" %>
-          <p class="post-info">
-            <a href="<%=@post.image_link%>" target="_blank">Image</a>
-            by <a href="<%=@post.image_author_link%>" target="_blank"><%=@post.image_author_name%></a>
-            <a href="<%=@post.cc_license%>" target="_blank">CC license</a>
-          </p>
-        <% end %>
+				<% if @post.image_link != "" && @post.image_author_name !="" && @post.cc_license !="" %>
+					<p class="post-info">
+						<a href="<%=@post.image_link%>" target="_blank">Image</a>
+						by <a href="<%=@post.image_author_link%>" target="_blank"><%=@post.image_author_name%></a>
+						<a href="<%=@post.cc_license%>" target="_blank">CC license</a>
+					</p>
+				<% end %>
 			</div>
 		</div>
 
@@ -55,21 +55,21 @@ meta og: {
 				<div class="col-md-12">
 					<%= link_to "Edit", edit_post_path(@post), :title => "Edit Post" %> |
 					<% if @post.published %>
-	          <%= link_to "Unpublish", post_publish_path(@post.id), method: :put %>
-	        <% else %>
-	          <%= link_to "Publish", post_publish_path(@post.id), method: :put %>
-	        <% end %> |
-          <% if @post.featured %>
-            <%= link_to "Unfeature", post_featured_path(@post.id), method: :put %>
-          <% else %>
-            <%= link_to "Feature", post_featured_path(@post.id), method: :put %>
-          <% end %> |
-          <% if @post.pinned %>
-            <%= link_to "Unpinned", post_pinned_path(@post.id), method: :put %>
-          <% else %>
-            <%= link_to "Pinned", post_pinned_path(@post.id), method: :put %>
-          <% end %> |
-	        <%= link_to "Manage posts", admin_posts_path(), :title => "Manage Posts" %>
+						<%= link_to "Unpublish", post_publish_path(@post.id), method: :put %>
+					<% else %>
+						<%= link_to "Publish", post_publish_path(@post.id), method: :put %>
+					<% end %> |
+					<% if @post.featured %>
+						<%= link_to "Unfeature", post_featured_path(@post.id), method: :put %>
+					<% else %>
+						<%= link_to "Feature", post_featured_path(@post.id), method: :put %>
+					<% end %> |
+					<% if @post.pinned %>
+						<%= link_to "Unpinned", post_pinned_path(@post.id), method: :put %>
+					<% else %>
+						<%= link_to "Pinned", post_pinned_path(@post.id), method: :put %>
+					<% end %> |
+					<%= link_to "Manage posts", admin_posts_path(), :title => "Manage Posts" %>
 				</div>
 			</div>
 		<% end %>
@@ -150,9 +150,9 @@ meta og: {
 					<div class="share-post">
 						<h5> Share on </h5>
 
-						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> Twitter </a><!--
+						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> Twitter </a>
 
-        --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> Facebook </a>
+						<a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> Facebook </a>
 
         	</div>
 				</div>
