@@ -36,8 +36,10 @@ class PostsController < ApplicationController
         @posts=Post.where(:published=>true)
         # featured post
         @featured_post = @posts.where(:featured=>true).first
-        # all posts without the feature post
-        @unfeatured_post=@posts.where.not(:id => @featured_post.id)
+        # all posts without the feature posts
+        if @featured_post
+          @unfeatured_posts=@posts.where.not(:id => @featured_post.id)
+        end
 
         @quotes = Quote.where(:featured=>true)
 
@@ -62,13 +64,15 @@ class PostsController < ApplicationController
           @featured_post = nil
         elsif  params[:show_all]
           # to disable duplicate the feature post
-          @posts =  @unfeatured_post
+          @posts =  @unfeatured_posts
         # Search by tags
         elsif params[:tag]
           @posts = @posts.where("title LIKE ? OR description like ? OR intro like ? OR tags like ? OR side_image_caption like ?", "%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%")
         else
           # Start only with 10 posts
-          @posts = @unfeatured_post.order(:id => :desc).limit(10).offset(0);
+          if @unfeatured_posts
+            @posts = @unfeatured_posts.order(:id => :desc).limit(10).offset(0);
+          end
           @show_all=true
         end
 
