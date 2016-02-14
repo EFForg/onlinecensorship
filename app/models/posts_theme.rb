@@ -5,9 +5,8 @@
 class PostsTheme < ActiveRecord::Base
 
   ## DB relations
-  has_many :posts
+  has_and_belongs_to_many :posts
   has_many :quotes
-  has_many :posts_posts_themes
 
   # For use search method
   extend Search
