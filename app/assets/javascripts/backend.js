@@ -160,6 +160,27 @@ $( document ).ready(function() {
     readURL(this,$(this).next(".preview-image"));
   });
 
+
+  // checked icon hover
+  $(".check").hover(function(e) {
+    $(this).removeClass("fa-check");
+    $(this).addClass("fa-times");
+  });
+  $(".check").mouseout(function(e) {
+    $(this).removeClass("fa-times");
+    $(this).addClass("fa-check");
+  });
+
+  // uncheck icon hover
+  $(".uncheck").hover(function(e) {
+    $(this).removeClass("fa-times");
+    $(this).addClass("fa-check");
+  });
+  $(".uncheck").mouseout(function(e) {
+    $(this).removeClass("fa-check");
+    $(this).addClass("fa-times");
+  });
+
 });
 
 function readURL(input, preview) {
