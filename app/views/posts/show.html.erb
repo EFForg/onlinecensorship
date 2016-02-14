@@ -39,6 +39,13 @@ meta og: {
             <% end %>
           <% end %>
 				</p>
+        <% if @post.image_link != "" && @post.image_author_name !="" && @post.cc_license !="" %>
+          <p class="post-info">
+            <a href="<%=@post.image_link%>" target="_blank">Image</a>
+            by <a href="<%=@post.image_author_link%>" target="_blank"><%=@post.image_author_name%></a>
+            <a href="<%=@post.cc_license%>" target="_blank">CC license</a>
+          </p>
+        <% end %>
 			</div>
 		</div>
 

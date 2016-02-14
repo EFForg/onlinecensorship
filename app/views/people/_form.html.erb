@@ -16,11 +16,13 @@
     <% if params[:action]=="edit" %>
       <%= image_tag @person.photo.url(:thumb) %><br>
       <%= f.label :photo %>
-      <%= f.file_field :photo, :class=>"form-control" %>
+      <%= f.file_field :photo, :class=>"form-control" ,:onchange => "fileUploader('1',this)" %>
     <% else %>
       <%= f.label :photo %>
-      <%= f.file_field :photo, :class=>"form-control" %>
-    <% end %>  
+      <%= f.file_field :photo, :class=>"form-control" ,:onchange => "fileUploader('1',this)" %>
+    <% end %>
+    <div class="tip error_message"></div>
+    <div class="tip">Maximum size 1MB</div>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -56,7 +58,7 @@
     <% end %>
     <p class="tip"> Optional </p>
   </div>
-  
+
   <div class="actions">
     <%= f.submit  :class=> "btn btn-primary" %>
   </div>
