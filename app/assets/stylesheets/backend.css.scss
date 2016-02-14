@@ -26,7 +26,7 @@ $paging:#F9F9F9;             // usually used in paging background #F9F9F9
 $nav-color: #7B7C7C;        // usually used in nav bar #7B7C7C
 $gray-color: #E1DDDC;      // usually used in buttons color and footer texts #E1DDDC
 $link-blue:#428bca;       // usually used in links #428bca
-$icons-links:#4F4F4F;    // usually used in controller icons links #4F4F4F
+$icons-links:#818181;    // usually used in controller icons links #4F4F4F
 
 #error_explanation {
   h2 {
@@ -37,7 +37,7 @@ $icons-links:#4F4F4F;    // usually used in controller icons links #4F4F4F
     padding: 5px 25px;
     border-radius: 4px;
     border:solid 1px $red-color;
-    li {  
+    li {
       color:$red-color;
     }//li
   }//ul
@@ -50,7 +50,7 @@ $icons-links:#4F4F4F;    // usually used in controller icons links #4F4F4F
 
 .login-container {
   margin-top: 30px !important;
-  padding: 10px; 
+  padding: 10px;
   border: 1px $gray-color  solid;
   border-radius: 10px;
 
@@ -70,10 +70,10 @@ $icons-links:#4F4F4F;    // usually used in controller icons links #4F4F4F
   }
 }
 
-html,body { 
-  height: 100%; 
-  margin: 0px; 
-  padding: 0px; 
+html,body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .cursor {
@@ -176,8 +176,9 @@ table {
   .icon-control {
     width:20px;
     text-align:center;
+    font-size: 17px;
 
-    a{ color:$icons-links;}
+    a , i { color:$icons-links;}
   }
 
   .backend-icon {
@@ -267,12 +268,12 @@ label{
 }
 
 .questions-options-fields {
-  
+
   .option-field {
     float:left;
     width:100% !important;
   }
-  
+
   .option-controlle {
     float:right;
     margin:-85px 0 0 0;
@@ -369,7 +370,7 @@ label{
   left: 30%;
 }
 
-.dropdown-toggle { 
+.dropdown-toggle {
   width:100% !important;
   text-align:left !important;
   background-color:$white-color;
@@ -396,7 +397,7 @@ label{
 
 
 .add-page-fieldset {
-  
+
   height:auto !important;
 
   .page-order {
@@ -418,7 +419,7 @@ label{
     padding: 3px;
     height: 30px;
   }
-  
+
   .icon-margin {
     margin: 8px 0px 0px 5px;
     height: 31px;
@@ -494,14 +495,14 @@ label{
     }
   }//statistics
 }
-@media (min-width: 992px) { /*Tablet*/  
+@media (min-width: 992px) { /*Tablet*/
   .statistics {
     li {
       margin:0 5px;
       width:48%;
     }
   }//statistics
-} 
+}
 @media (min-width: 1200px) { /*PC*/
   .statistics {
     li {

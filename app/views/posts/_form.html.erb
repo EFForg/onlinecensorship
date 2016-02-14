@@ -46,6 +46,7 @@
 
     <%= f.label :photo, "Thumbnail" %>
     <%= f.file_field :photo, :class=>"form-control image-uploader" %>
+    <div class="tip">Maximum size 1MB</div>
 
     <% if params[:action]=="edit" && @post.photo_file_name  %>
       <%= image_tag @post.photo(:thumb), :class => "preview-image preview-post-cover-input" %><br>
@@ -91,6 +92,7 @@
   <div class="field post-field <%=klass%> image-field">
     <%= f.label :side_image %>
     <%= f.file_field :side_image, :class=>"form-control image-uploader" %>
+    <div class="tip">Maximum size 1MB</div>
     <% if params[:action]=="edit" && @post.side_image.present? %>
       <%= image_tag @post.side_image.url(:thumb), :class => "preview-image preview-side-image" %>
     <% else %>
