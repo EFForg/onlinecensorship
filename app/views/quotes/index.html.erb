@@ -50,11 +50,11 @@
               <td class="icon-control">
                 <% if quote.featured %>
                   <%= link_to quote_featured_path(quote.id), method: :put ,:title => "Click to Unfeature" do %>
-                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check check"></i>
                   <% end %>
                 <% else %>
                   <%= link_to quote_featured_path(quote.id), method: :put ,:title => "Click to Feature" do %>
-                    <i class="fa fa-times"></i>
+                    <i class="fa fa-times uncheck"></i>
                   <% end %>
                 <% end %>
               </td>

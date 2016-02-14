@@ -36,7 +36,7 @@ $( document ).ready(function() {
       $('.other-option').removeClass("hide");
       $('.questions-options-fields').removeClass("hide");
       $(".placeholder-field").addClass("hide");
-      $('.placeholder-field').removeClass("show");    
+      $('.placeholder-field').removeClass("show");
       $(".prompt-field").addClass("hide");
     }else if ($(this).val()=="select"){
       $('.other-option').addClass("hide");
@@ -47,7 +47,7 @@ $( document ).ready(function() {
     }else if ($(this).val()=="prompt"){
       $('.prompt-field').removeClass("hide");
       $(".placeholder-field").addClass("hide");
-      $('.placeholder-field').removeClass("show");      
+      $('.placeholder-field').removeClass("show");
       $('.other-option').addClass("hide");
       $('.questions-options-fields').addClass("hide");
     }else if($(this).val()=="text" || $(this).val()=="email" || $(this).val()=="url" || $(this).val()=="long_text"){
@@ -78,7 +78,7 @@ $( document ).ready(function() {
       compiled_template;
 
   $('#add-option').click(function() {
-    // get the social media id 
+    // get the social media id
     var social_media_platform_id = $('#add-option').attr('data-child');
     compiled_textarea = $(template.replace(/INDEX/g, index));
     $(".append-frame").append(compiled_textarea);
@@ -86,7 +86,7 @@ $( document ).ready(function() {
     // End loading
     NProgress.done();
   });
-  
+
   // Hide the deleted page fieldset
   $(".delete-page").click(function() {
     $(this).parents(".fieldset").fadeOut(500);
@@ -110,8 +110,8 @@ $( document ).ready(function() {
     .done(function(html) {
       // show saving notification
       $("#save_"+el_id).removeClass('hide').delay(2000).queue(function(){
-        $(this).addClass('hide'); 
-      }); 
+        $(this).addClass('hide');
+      });
     });
   });
 
@@ -123,7 +123,7 @@ $( document ).ready(function() {
       $(".post-link").removeClass("hide");
     }else{
       $(".post-field").removeClass('hide');
-      $(".post-link").addClass("hide");      
+      $(".post-link").addClass("hide");
     }
   });
 
@@ -158,6 +158,27 @@ $( document ).ready(function() {
   // upload file preview
   $(".image-uploader").change(function(){
     readURL(this,$(this).next(".preview-image"));
+  });
+
+
+  // checked icon hover
+  $(".check").hover(function(e) {
+    $(this).removeClass("fa-check");
+    $(this).addClass("fa-times");
+  });
+  $(".check").mouseout(function(e) {
+    $(this).removeClass("fa-times");
+    $(this).addClass("fa-check");
+  });
+
+  // uncheck icon hover
+  $(".uncheck").hover(function(e) {
+    $(this).removeClass("fa-times");
+    $(this).addClass("fa-check");
+  });
+  $(".uncheck").mouseout(function(e) {
+    $(this).removeClass("fa-check");
+    $(this).addClass("fa-times");
   });
 
 });

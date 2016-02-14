@@ -49,11 +49,11 @@
               <td class="icon-control">
                 <% if story.published %>
                   <%= link_to story_publish_path(story.id),method: :put  ,:title => "Click to Unpublish" do %>
-                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check check"></i>
                   <% end %>
                 <% else %>
                   <%= link_to story_publish_path(story.id),method: :put  ,:title => "Click to Publish" do %>
-                    <i class="fa fa-times"></i>
+                    <i class="fa fa-times uncheck"></i>
                   <% end %>
                 <% end %>
               </td>
