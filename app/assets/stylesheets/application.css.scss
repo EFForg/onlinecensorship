@@ -286,6 +286,11 @@ footer {
         width: 100%;
         height: auto;
       }
+
+      .image-tip {
+        bottom: 0 !important;
+      }
+
     }
     @media (min-width: 992px) and (max-width: 1199px) {
       height: 490px;
