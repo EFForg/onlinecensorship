@@ -35,7 +35,7 @@ class PostsController < ApplicationController
       format.any(:js, :html) {
         @posts=Post.where(:published=>true)
         # featured post
-        @featured_post = @posts.where(:featured=>true).first
+        @featured_post = @posts.where(:featured=>true).last
         # all posts without the feature posts
         if @featured_post
           @unfeatured_posts=@posts.where.not(:id => @featured_post.id)
@@ -90,19 +90,19 @@ class PostsController < ApplicationController
   def publish
     # Unpublish the post "Allow the admin to publish/unpublish the post from the backEnd"
     ReverseField(@post,"published")
-    redirect_to post_path(@post), notice: 'The post was successfully unpublished.'
+    redirect_to admin_posts_path(), notice: 'The post was successfully unpublished.'
   end
 
   def featured
     # featured the post "Allow the admin to fix/unfix the post from the backEnd"
     ReverseField(@post,"featured")
-    redirect_to post_path(@post), notice: 'The post was successfully featured.'
+    redirect_to admin_posts_path(), notice: 'The post was successfully featured.'
   end
 
   def pinned
     # pinned the post "Allow the admin to fix/unfix the post from the backEnd"
     ReverseField(@post,"pinned")
-    redirect_to post_path(@post), notice: 'The post was successfully pinned.'
+    redirect_to admin_posts_path(), notice: 'The post was successfully pinned.'
   end
 
   def show
