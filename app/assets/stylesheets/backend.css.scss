@@ -86,7 +86,10 @@ html,body {
 
 .no-padding {padding:0px !important;}
 
-.tip {color: #aaa;}
+.tip {
+  color: #aaa;
+  a {color: #aaa;}
+}
 
 .dropdown-menu {
   width:100%;

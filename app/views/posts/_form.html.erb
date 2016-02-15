@@ -56,7 +56,8 @@
 
   <div class="field">
     <%= f.label :image_link %><br>
-    <%= f.text_field :image_link, :class=>"form-control" %>
+    <%= f.text_field :image_link, :class=>"form-control" , :placeholder =>"http://"%>
+    <div class="tip">Full link such as : http://www.onlinecensorship.org</div>
   </div>
 
   <div class="field">
@@ -66,12 +67,14 @@
 
   <div class="field">
     <%= f.label :image_author_link %><br>
-    <%= f.text_field :image_author_link, :class=>"form-control" %>
+    <%= f.text_field :image_author_link, :class=>"form-control" , :placeholder =>"http://" %>
+    <div class="tip">Full link such as : http://www.onlinecensorship.org</div>
   </div>
 
   <div class="field">
-    <%= f.label :cc_license %><br>
-    <%= f.text_field :cc_license, :class=>"form-control" %>
+    <%= f.label :cc_license , "CC license link " %><br>
+    <%= f.text_field :cc_license, :class=>"form-control" , :placeholder =>"http://" %>
+    <div class="tip">Full link such as : http://www.onlinecensorship.org</div>
   </div>
 
   <div class="field">
