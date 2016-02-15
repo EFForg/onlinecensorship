@@ -169,6 +169,16 @@
     <%= f.label :pinned , "Pinned to homepage" %>
   </div>
 
+  <div class="field">
+    <%= f.check_box :featured %>
+    <%= f.label :featured , "Featured the post" %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :published %>
+    <%= f.label :published , "Publish the post" %>
+  </div>
+
   <div class="actions">
     <%= link_to "Preview Post", preview_posts_path, remote: true, :class => "post-preview-link post-field load btn btn-primary #{klass}" %>
     <%= f.submit "Save Post", :class=> "btn btn-primary" %>
