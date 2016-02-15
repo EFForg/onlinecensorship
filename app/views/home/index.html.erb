@@ -138,6 +138,13 @@ meta og: {
                       <%=image_tag @featured_post.photo(:thumb) %>
                     <% end %>
                   <% end %>
+                  <% if @featured_post.image_link !="" && @featured_post.image_author_name !="" && @featured_post.cc_license !="" %>
+                    <div class="image-tip">
+                      <a href="<%=@featured_post.image_link%>" target="_blank">Image</a>
+                      by <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
+                      <a href="<%=@featured_post.cc_license%>" target="_blank">CC license</a>
+                    </div><!--image-tip-->
+                  <% end %>
                 </div>
               </div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202145555) do
+ActiveRecord::Schema.define(version: 20160210100315) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -163,6 +163,10 @@ ActiveRecord::Schema.define(version: 20160202145555) do
     t.text     "twitter_text"
     t.string   "news_source"
     t.boolean  "pinned",                  default: false
+    t.string   "image_link"
+    t.string   "image_author_name"
+    t.string   "image_author_link"
+    t.string   "cc_license"
   end
 
   create_table "posts_posts_themes", force: true do |t|

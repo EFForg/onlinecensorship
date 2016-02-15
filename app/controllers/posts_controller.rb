@@ -34,6 +34,13 @@ class PostsController < ApplicationController
       # using it in the backEnd and in the frontEnd posts page
       format.any(:js, :html) {
         @posts=Post.where(:published=>true)
+        # featured post
+        @featured_post = @posts.where(:featured=>true).first
+        # all posts without the feature posts
+        if @featured_post
+          @unfeatured_posts=@posts.where.not(:id => @featured_post.id)
+        end
+
         @quotes = Quote.where(:featured=>true)
 
         if params[:category_id] !=nil && params[:category_id] !="" && params[:category_id] != "All" && params[:category_id] != "false"
@@ -51,14 +58,21 @@ class PostsController < ApplicationController
         end
 
         # Show all posts without limitation
-        if params[:category_id] || params[:platform_id] || params[:theme_id] || params[:show_all]
-          @posts = @posts
+        if params[:category_id] || params[:platform_id] || params[:theme_id]
+          @posts =  @posts
+          # hide the big block
+          @featured_post = nil
+        elsif  params[:show_all]
+          # to disable duplicate the feature post
+          @posts =  @unfeatured_posts
         # Search by tags
         elsif params[:tag]
           @posts = @posts.where("title LIKE ? OR description like ? OR intro like ? OR tags like ? OR side_image_caption like ?", "%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%","%#{params[:tag]}%")
         else
-          # Start only with 8 posts
-          @posts = @posts.order(:id => :desc).limit(9).offset(0);
+          # Start only with 10 posts
+          if @unfeatured_posts
+            @posts = @unfeatured_posts.order(:id => :desc).limit(10).offset(0);
+          end
           @show_all=true
         end
 
@@ -207,6 +221,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:category_id, :title, :description, :photo ,:person_id ,:publish_date ,:intro,:tags ,:side_image_caption ,:side_image,:published ,:link ,:slug ,:featured ,:side_image_link ,:quote_author ,:quote_text ,:twitter_text ,:news_source ,:pinned)
+      params.require(:post).permit(:category_id, :title, :description, :photo ,:person_id ,:publish_date ,:intro,:tags ,:side_image_caption ,:side_image,:published ,:link ,:slug ,:featured ,:side_image_link ,:quote_author ,:quote_text ,:twitter_text ,:news_source ,:pinned ,:image_link ,:image_author_name , :image_author_link , :cc_license)
     end
 end

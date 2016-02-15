@@ -45,12 +45,33 @@
   <div class="field image-field">
 
     <%= f.label :photo, "Thumbnail" %>
-    <%= f.file_field :photo, :class=>"form-control image-uploader" %>
-
+    <%= f.file_field :photo, :class=>"form-control image-uploader" ,:onchange => "fileUploader('1',this)" %>
+    <div class="tip error_message"></div>
+    <div class="tip">Maximum size 1MB</div>
     <% if params[:action]=="edit" && @post.photo_file_name  %>
       <%= image_tag @post.photo(:thumb), :class => "preview-image preview-post-cover-input" %><br>
     <% end %>
 
+  </div>
+
+  <div class="field">
+    <%= f.label :image_link %><br>
+    <%= f.text_field :image_link, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_author_name %><br>
+    <%= f.text_field :image_author_name, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_author_link %><br>
+    <%= f.text_field :image_author_link, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cc_license %><br>
+    <%= f.text_field :cc_license, :class=>"form-control" %>
   </div>
 
   <div class="field">
@@ -70,7 +91,9 @@
 
   <div class="field post-field <%=klass%> image-field">
     <%= f.label :side_image %>
-    <%= f.file_field :side_image, :class=>"form-control image-uploader" %>
+    <%= f.file_field :side_image, :class=>"form-control image-uploader" ,:onchange => "fileUploader('1',this)"%>
+    <div class="tip error_message"></div>
+    <div class="tip">Maximum size 1MB</div>
     <% if params[:action]=="edit" && @post.side_image.present? %>
       <%= image_tag @post.side_image.url(:thumb), :class => "preview-image preview-side-image" %>
     <% else %>

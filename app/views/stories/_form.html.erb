@@ -12,37 +12,36 @@
   <% end %>
 
   <div class="field image-field">
-
-    <%= f.label :photo, "Thumbnail" %> <b>*</b>
-    <%= f.file_field :photo, :class=>"form-control" %>
-
     <% if params[:action]=="edit" %>
       <br><%= image_tag @story.photo(:thumb) %><br>
     <% end %>
-
+    <%= f.label :photo, "Thumbnail" %> <b>*</b>
+    <%= f.file_field :photo, :class=>"form-control" ,:onchange => "fileUploader('1',this)" %>
+    <div class="tip error_message"></div>
+    <div class="tip">Maximum size 1MB</div>
   </div>
-  
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title , required: true, :class=>"form-control" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :brief %><br>
     <%= f.text_area :brief , required: true, :class=>"form-control" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content , :class=>"form-control ckeditor" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :external_link %><br>
     <%= f.text_field :external_link , :class=>"form-control" %>
     <span class="tip"> Full link: http://www.oc.org/ </span>
   </div>
-  
+
   <div class="field">
     <%= f.check_box :published %>
     <%= f.label :published %><br>
