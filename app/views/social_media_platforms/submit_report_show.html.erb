@@ -24,7 +24,7 @@
 </div><!--process-->
 
 <!--slider-pages-->
-<div class="slider-pages row">
+<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count %>">
 
   <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
 
