@@ -24,7 +24,7 @@
 </div><!--process-->
 
 <!--slider-pages-->
-<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count %>">
+<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count+4 %>">
 
   <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
 
@@ -185,7 +185,7 @@
 
   						<div class="input-report select-input radio-select" id="yes">
   							<input class="option" id="op-yes" name="question[static-1]" tabindex="1" type="radio" value="yes">
-  							<label class="option" for="op-yes">
+  							<label class="option increase-count" for="op-yes">
   							Yes
   							<i class="fa fa-check"></i>
   							</label>
@@ -193,7 +193,7 @@
 
   						<div class="input-report select-input radio-select" id="no">
   							<input class="option" id="op-no" name="question[static-1]" tabindex="1" type="radio" value="no">
-  							<label class="option" for="op-no">
+  							<label class="option un-increase-count" for="op-no">
   							No
   							<i class="fa fa-check"></i>
   							</label>

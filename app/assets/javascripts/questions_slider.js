@@ -241,10 +241,22 @@ $( document ).ready(function() {
     $(".current .previous").click();
   });
 
-});
+  // increase the progress bar sliders number
+  $(".increase-count").click(function(){
+    if (!$(".slider-pages").hasClass('increased')){
+      var slider_pages=parseInt($(".slider-pages").attr("data-pagescount"));
+      $(".slider-pages").attr("data-pagescount", slider_pages+1);
+      $(".slider-pages").addClass("increased");
+    }
+  });
+  $(".un-increase-count").click(function(){
+    if ($(".slider-pages").hasClass("increased")){
+      var slider_pages=parseInt($(".slider-pages").attr("data-pagescount"));
+      $(".slider-pages").attr("data-pagescount", slider_pages-1);
+      $(".slider-pages").removeClass("increased");
+    }
+  });
 
-// // show last silde page
-// function showSlidePage(show_div,hide_div){
-//   $("#"+hide_div).addClass("hidden").removeClass("current");
-//   $("#"+show_div).delay(900).removeClass("hidden").addClass("current");
-// }
+
+
+});
