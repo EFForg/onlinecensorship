@@ -39,6 +39,16 @@
 			  	<%= @question_user.inform_platform %>
 				</p>
 
+        <p>
+				  <strong>Contact with the user:</strong>
+          <% if @question_user.contact !=nil  %>
+            <%= @question_user.contact %>
+          <% else %>
+            false
+          <% end %>
+        </p>
+
+
 				<p>
 				  <strong>Answers:</strong>
 				  <ul>
