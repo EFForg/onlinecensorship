@@ -9,6 +9,7 @@ class QuestionUsersController < ApplicationController
         results=QuestionUser.search(params[:search],'email')
         @question_users=results.page(params[:page])
         @count=results.count
+        @social_media_platforms = SocialMediaPlatform.all
       }
       # Using it to export excel file
       format.xls {

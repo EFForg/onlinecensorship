@@ -13,10 +13,12 @@
         <%= render 'home/admin_search' %>
       </div>
       <br>
-      <div class="sub-links col-md-12">
-        <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Export To Excel", question_users_path(format: "xls") %>
-      </div>
+      <% @social_media_platforms.each do |platform| %>
+        <div class="export col-md-2">
+          <i class="fa fa-file-excel-o"></i>
+          <%= link_to platform.title, question_users_path(format: "xls",platform: platform.id) %>
+        </div>
+      <% end %>
       <br>
     </div><!--panel-title-->
     <br>
