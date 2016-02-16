@@ -1,93 +1,82 @@
 <table width="100%" cellspacing="2">
   <tr>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
-    <th style="text-align:left; font-weight:bold;">Email</th>
     <th style="text-align:left; font-weight:bold;">Age</th>
     <th style="text-align:left; font-weight:bold;">Platform</th>
-    <th style="text-align:left; font-weight:bold;">Inform Platform</th>
-    <th style="text-align:left; font-weight:bold;">Answers</th>
-
+    <% @questions.each do |question| %>
+      <th style="text-align:left; font-weight:bold;"><%=question%></th>
+    <% end %>
+    <th style="text-align:left; font-weight:bold;">May we contact you to follow up on this report? </th>
+    <th style="text-align:left; font-weight:bold;">Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details. </th>
+    <th style="text-align:left; font-weight:bold;">Would you like us to contact the platform about your case? We cannot guarantee a response. </th>
   </tr>
 
-  <% @question_users.each do |excel| %>
+  <% @question_users.each do |user| %>
     <tr>
-      <td style="text-align:left;"><%= excel.created_at.to_date %></td>
+      <td style="text-align:left;"><%= user.created_at.to_date %></td>
       <td style="text-align:left;">
-        <% if excel.email? %>
-          <%= excel.email %>
+        <%= user.age %>
+      </td>
+      <td style="text-align:left;">
+        <%= @platform.title %>
+      </td>
+
+      <% if user.question_user_submissions.present? %>
+        <% user.question_user_submissions.each do |submission| %>
+          <td style="text-align:left;">
+            <% question_type=submission.question_answer.question.question_type %>
+            <% if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email" %>
+              <%=submission.question_answer.answer_text%>
+            <% elsif question_type=="upload" %>
+              <%= file_download_link(submission) %>
+            <% elsif question_type=="select" %>
+              <% unless submission.question_answer.question_option.nil? ||
+                submission.page.nil? ||
+                submission.question_answer.question_option.nil? ||
+                submission.question_answer.nil? %>
+                <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
+              <% end %>
+            <% elsif question_type=="multi_select" %>
+              <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
+              <% @question_answers.each do |option| %>
+                <ul>
+                  <% if option.other_option_answer %>
+                    <li><%=option.other_option_answer%></li>
+                  <% else %>
+                    <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <% elsif question_type=="countries" %>
+              <% if submission.question_answer.country.present? %>
+                <%=submission.question_answer.country.name%>
+              <% end %>
+            <% elsif question_type=="languages" %>
+              <% if submission.question_answer.language.present? %>
+                <%=submission.question_answer.language.name%>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      <% end %>
+
+      <td style="text-align:left;">
+        <%= user.inform_platform %>
+      </td>
+      <td style="text-align:left;">
+        <% if user.email? %>
+          <%= user.email %>
         <% else %>
           Anonymous
         <% end %>
       </td>
       <td style="text-align:left;">
-        <%= excel.age %>
-      </td>
-      <td style="text-align:left;">
-        <% if excel.question_user_submissions.present? %>
-          <% excel.question_user_submissions.first(1).each do |submission| %>
-            <% if  submission.page.present? && submission.page.social_media_platform.present? %>
-              <%=submission.page.social_media_platform.title%>
-            <% end %>
-          <% end %>
+        <% if user.contact !=nil  %>
+          <%= user.contact %>
+        <% else %>
+          false
         <% end %>
-      </td>
-      <td style="text-align:left;">
-        <%= excel.inform_platform %>
-      </td>
-      <td style="text-align:left;">
-        <ul>
-          <% if excel.question_user_submissions.present? %>
-            <% excel.question_user_submissions.each do |submission| %>
-              <li>
-                <% if submission.page.present? &&
-                  submission.question_answer.present? &&
-                  submission.page.social_media_platform.present? %>
-                  <b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title)%></b><br>
-                <% end %>
-
-                <% next if submission.question_answer.nil? %>
-                <% question_type=submission.question_answer.question.question_type%>
-                <%
-                  if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email"
-                %>
-                  <%=submission.question_answer.answer_text%>
-                <% elsif question_type=="upload" %>
-                  <%= file_download_link(submission) %>
-                <% elsif question_type=="select" %>
-                  <%# the commented out section might be better to use instead of my unless statment.  Idk, I can't tell. -TheNotary %>
-                  <%# if  submission.page.present? && submission.page.social_media_platform.present? %>
-                  <% unless submission.question_answer.question_option.nil? ||
-                    submission.page.nil? ||
-                    submission.question_answer.question_option.nil? ||
-                    submission.question_answer.nil? %>
-                    <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
-                  <% end %>
-                <% elsif question_type=="multi_select" %>
-                  <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
-                  <% @question_answers.each do |option| %>
-                    <ul>
-                      <% if option.other_option_answer %>
-                        <li><%=option.other_option_answer%></li>
-                      <% else %>
-                        <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                <% elsif question_type=="countries" %>
-                  <% if submission.question_answer.country.present? %>
-                    <%=submission.question_answer.country.name%>
-                  <% end %>
-                <% elsif question_type=="languages" %>
-                  <% if submission.question_answer.language.present? %>
-                    <%=submission.question_answer.language.name%>
-                  <% end %>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
       </td>
     </tr>
   <% end %>
-
 </table>
