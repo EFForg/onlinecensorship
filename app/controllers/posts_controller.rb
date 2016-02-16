@@ -35,7 +35,7 @@ class PostsController < ApplicationController
       format.any(:js, :html) {
         @posts=Post.where(:published=>true)
         # featured post
-        @featured_post = @posts.where(:featured=>true).last
+        @featured_post = @posts.where(:featured=>true).first
         # all posts without the feature posts
         if @featured_post
           @unfeatured_posts=@posts.where.not(:id => @featured_post.id)
