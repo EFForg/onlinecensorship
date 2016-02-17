@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210100315) do
+ActiveRecord::Schema.define(version: 20160216124447) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 20160210100315) do
     t.datetime "updated_at"
     t.boolean  "inform_platform", default: false
     t.string   "age"
+    t.boolean  "contact"
   end
 
   create_table "questions", force: true do |t|

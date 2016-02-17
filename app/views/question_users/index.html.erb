@@ -13,10 +13,12 @@
         <%= render 'home/admin_search' %>
       </div>
       <br>
-      <div class="sub-links col-md-12">
-        <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Export To Excel", question_users_path(format: "xls") %>
-      </div>
+      <% @social_media_platforms.each do |platform| %>
+        <div class="export col-md-2">
+          <i class="fa fa-file-excel-o"></i>
+          <%= link_to platform.title, question_users_path(format: "xls",platform: platform.id) %>
+        </div>
+      <% end %>
       <br>
     </div><!--panel-title-->
     <br>
@@ -30,6 +32,7 @@
           <th>Email</th>
           <th>Age</th>
           <th>Inform Platform</th>
+          <th>Contact with the user</th>
           <th>Created at</th>
           <th>Answers</th>
         </tr>
@@ -64,6 +67,13 @@
               </td>
               <td>
                 <%= question_user.inform_platform %>
+              </td>
+              <td>
+                <% if question_user.contact !=nil  %>
+                  <%= question_user.contact %>
+                <% else %>
+                  false
+                <% end %>
               </td>
               <td><%= question_user.created_at.to_formatted_s(:long_ordinal) %></td>
               <td class="icon-control">
