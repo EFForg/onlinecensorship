@@ -24,36 +24,38 @@
       <% if user.question_user_submissions.present? %>
         <% user.question_user_submissions.each do |submission| %>
           <td style="text-align:left;">
-            <% question_type=submission.question_answer.question.question_type %>
-            <% if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email" %>
-              <%=submission.question_answer.answer_text%>
-            <% elsif question_type=="upload" %>
-              <%= file_download_link(submission) %>
-            <% elsif question_type=="select" %>
-              <% unless submission.question_answer.question_option.nil? ||
-                submission.page.nil? ||
-                submission.question_answer.question_option.nil? ||
-                submission.question_answer.nil? %>
-                <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
-              <% end %>
-            <% elsif question_type=="multi_select" %>
-              <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
-              <% @question_answers.each do |option| %>
-                <ul>
-                  <% if option.other_option_answer %>
-                    <li><%=option.other_option_answer%></li>
-                  <% else %>
-                    <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
-                  <% end %>
-                </ul>
-              <% end %>
-            <% elsif question_type=="countries" %>
-              <% if submission.question_answer.country.present? %>
-                <%=submission.question_answer.country.name%>
-              <% end %>
-            <% elsif question_type=="languages" %>
-              <% if submission.question_answer.language.present? %>
-                <%=submission.question_answer.language.name%>
+            <% if submission.question_answer.present? && submission.question_answer.question.present? %>
+              <% question_type=submission.question_answer.question.question_type %>
+              <% if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email" %>
+                <%=submission.question_answer.answer_text%>
+              <% elsif question_type=="upload" %>
+                <%= file_download_link(submission) %>
+              <% elsif question_type=="select" %>
+                <% unless submission.question_answer.question_option.nil? ||
+                  submission.page.nil? ||
+                  submission.question_answer.question_option.nil? ||
+                  submission.question_answer.nil? %>
+                  <%=submission.question_answer.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%>
+                <% end %>
+              <% elsif question_type=="multi_select" %>
+                <% showMultiOptionsAnswers(submission.question_answer.question.id,submission.id) %>
+                <% @question_answers.each do |option| %>
+                  <ul>
+                    <% if option.other_option_answer %>
+                      <li><%=option.other_option_answer%></li>
+                    <% else %>
+                      <li><%=option.question_option.option_title.gsub('{platform}',submission.page.social_media_platform.title)%></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              <% elsif question_type=="countries" %>
+                <% if submission.question_answer.country.present? %>
+                  <%=submission.question_answer.country.name%>
+                <% end %>
+              <% elsif question_type=="languages" %>
+                <% if submission.question_answer.language.present? %>
+                  <%=submission.question_answer.language.name%>
+                <% end %>
               <% end %>
             <% end %>
           </td>

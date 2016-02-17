@@ -30,9 +30,17 @@ class QuestionUsersController < ApplicationController
 
         @question_users.each do |question_user|
           question_user.question_user_submissions.each do |submission|
-            #  the questions
-            question = submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title)
-            @questions << question unless @questions.include?(question)
+            if submission.page.present?
+              platfrom=submission.page.social_media_platform.title
+            else
+              platfrom="platfrom"
+            end
+
+            if submission.question_answer.present? && submission.question_answer.question.present?
+              #  the questions
+              current_question = submission.question_answer.question.question_title.gsub('{platform}',platfrom)
+              @questions << current_question unless @questions.include?(current_question)
+            end
           end
         end
       }
