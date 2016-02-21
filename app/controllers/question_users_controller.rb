@@ -11,6 +11,7 @@ class QuestionUsersController < ApplicationController
         @count=results.count
         @social_media_platforms = SocialMediaPlatform.all
       }
+
       # Using it to export excel file
       format.xls {
 
