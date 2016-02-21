@@ -8,13 +8,14 @@
     <div class="panel-body">
       <div class="col-md-12 details">
 
-				<p>
-				  <strong>Email:</strong>
-          <% if @question_user.email? %>
-				  	<%= @question_user.email %>
-				  <% else %>
-				  	Anonymous
-				  <% end %>
+        <p>
+				  <strong>Registered at:</strong>
+			  	<%= @question_user.created_at.to_date %>
+				</p>
+
+        <p>
+				  <strong>Age:</strong>
+			  	<%= @question_user.age %>
 				</p>
 
 				<p>
@@ -28,26 +29,6 @@
 						<% end %>
 					<% end %>
 				</p>
-
-        <p>
-				  <strong>Age:</strong>
-			  	<%= @question_user.age %>
-				</p>
-
-				<p>
-				  <strong>Inform Platform:</strong>
-			  	<%= @question_user.inform_platform %>
-				</p>
-
-        <p>
-				  <strong>Contact with the user:</strong>
-          <% if @question_user.contact !=nil  %>
-            <%= @question_user.contact %>
-          <% else %>
-            false
-          <% end %>
-        </p>
-
 
 				<p>
 				  <strong>Answers:</strong>
@@ -70,6 +51,29 @@
 							<% end %>
 						<% end %>
 					</ul>
+				</p>
+
+        <p>
+				  <strong>May we contact you to follow up on this report?:</strong>
+          <% if @question_user.contact !=nil  %>
+            <%= @question_user.contact %>
+          <% else %>
+            false
+          <% end %>
+        </p>
+        
+        <p>
+				  <strong>Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details:</strong>
+          <% if @question_user.email? %>
+				  	<%= @question_user.email %>
+				  <% else %>
+				  	Anonymous
+				  <% end %>
+				</p>
+
+        <p>
+				  <strong>Would you like us to contact the platform about your case? We cannot guarantee a response.</strong>
+			  	<%= @question_user.inform_platform %>
 				</p>
 
 				<p>
