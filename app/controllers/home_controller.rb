@@ -33,7 +33,10 @@ class HomeController < ApplicationController
 
   # Error page
   def error
-
+    respond_to do |format|
+      format.html { }
+      format.all { redirect_to root_path }
+    end
   end
 
 end
