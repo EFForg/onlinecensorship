@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+  # return the question answer
+  def question_answer(question_id,question_user_submission_id)
+    @answer=QuestionAnswer.where(:question_id =>question_id).where(:question_user_submission_id =>question_user_submission_id).first
+  end
+
+  # return the question user submission id
+  def question_user_submission(question_user_id,page_id)
+    @question_user_submission=QuestionUserSubmission.where(:question_user_id =>question_user_id).where(:page_id =>page_id).first
+  end
+
   # Reverse the boolean field value " true / false "
   def ReverseField(object,field)
     object.update_attribute("#{field}",!object["#{field}"])
