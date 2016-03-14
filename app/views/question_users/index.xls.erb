@@ -45,8 +45,8 @@
           <% elsif question_type=="upload" %>
             <%= file_download_link(@question_user_submission) %>
           <% elsif question_type=="select" %>
-            <% if @answer != nil && @answer.question_option.present?%>
-              <%=@answer.question_option.option_title.gsub('{platform}',@platform.title)%>
+            <% if @question_user_submission.question_answer.question_option.present? && @question_user_submission.question_answer.present? %>
+              <%=@question_user_submission.question_answer.question_option.option_title %>
             <% end %>
           <% elsif question_type=="multi_select" %>
             <% showMultiOptionsAnswers(@answer.question_id,@question_user_submission.id) %>
