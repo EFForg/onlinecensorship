@@ -49,8 +49,10 @@
               <%=@question_user_submission.question_answer.question_option.option_title %>
             <% end %>
           <% elsif question_type=="multi_select" %>
-            <% showMultiOptionsAnswers(@answer.question_id,@question_user_submission.id) %>
-            <% if @question_answers.count >0 %>
+            <% if @answer.question_id %>
+              <% showMultiOptionsAnswers(@answer.question_id,@question_user_submission.id) %>
+            <% end %>
+            <% if @question_answers.count > 0 %>
               <% @question_answers.each do |option| %>
                 <ul>
                   <% if option.other_option_answer %>
