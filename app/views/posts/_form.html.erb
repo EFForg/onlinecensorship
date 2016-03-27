@@ -12,10 +12,10 @@
   <% end %>
 
   <%
-  if @post_type_title=="News"
-    klass="hide"
+  if @post_type_title == "News"
+    klass = "hide"
   else
-    link_klass="hide"
+    link_klass = "hide"
   end
   %>
 
@@ -159,6 +159,13 @@
 
   </div><!--fieldset-->
 
+  <div class="field image-field <%=klass%>">
+    <%= f.label :pdf, "PDF" %>
+    <%= f.file_field :pdf, :class=>"form-control image-uploader" ,:onchange => "fileUploader('200',this)" %>
+    <div class="tip error_message"></div>
+    <div class="tip">Maximum size 100MB</div>
+  </div>
+
   <div class="field">
     <%= f.label :publish_date %><br>
     <%= f.date_select :publish_date, :order => [:day, :month, :year] %>
@@ -171,7 +178,7 @@
 
   <div class="field">
     <%= f.check_box :featured %>
-    <%= f.label :featured , "Featured the post" %>
+    <%= f.label :featured , "Feature the post" %>
   </div>
 
   <div class="field">

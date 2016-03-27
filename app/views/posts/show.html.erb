@@ -145,6 +145,14 @@ meta og: {
 				</div>
 			<% end %>
 
+			<% if @post.pdf? %>
+				<div class="row">
+					<div class="col-md-7">
+						<%= link_to "Download as PDF", @post.pdf.url, :class => "btn btn-default", :target => "_blank" %>
+					</div>
+				</div>
+			<% end %>
+
 			<div class="row">
 				<div class="col-md-7">
 					<div class="share-post">

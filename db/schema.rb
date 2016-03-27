@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216124447) do
+ActiveRecord::Schema.define(version: 20160327081612) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -167,6 +167,10 @@ ActiveRecord::Schema.define(version: 20160216124447) do
     t.string   "image_author_name"
     t.string   "image_author_link"
     t.string   "cc_license"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
   end
 
   create_table "posts_posts_themes", force: true do |t|
@@ -229,7 +233,7 @@ ActiveRecord::Schema.define(version: 20160216124447) do
     t.datetime "updated_at"
     t.boolean  "inform_platform", default: false
     t.string   "age"
-    t.boolean  "contact"
+    t.boolean  "contact",         default: true
   end
 
   create_table "questions", force: true do |t|
