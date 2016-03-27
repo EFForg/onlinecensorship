@@ -36,6 +36,13 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :side_image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :side_image, :less_than => 1.megabyte
 
+  ## Analysis downloadable pdf
+  has_attached_file :pdf
+
+  ## Attachments Validation
+  validates_attachment_content_type :pdf, content_type: ['image/jpeg', 'image/png', 'application/pdf']
+  validates_attachment_size :pdf, :less_than => 100.megabyte
+
   # Validation
   validates :title,:intro,:category_id, :presence => true
 
