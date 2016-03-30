@@ -119,6 +119,14 @@ meta og: {
 
 			</div>
 
+			<% if @post.pdf? %>
+				<div class="row">
+					<div class="col-md-7">
+						<br/><%= link_to "Download PDF", @post.pdf.url, :class => "btn btn-default", :target => "_blank" %>
+					</div>
+				</div>
+			<% end %>
+
 			<div class="seperator">
 			</div>
 
@@ -141,14 +149,6 @@ meta og: {
 		  					<div> <%= @post.person.bio.html_safe %> </div>
 		  				</div>
 						</div>
-					</div>
-				</div>
-			<% end %>
-
-			<% if @post.pdf? %>
-				<div class="row">
-					<div class="col-md-7">
-						<%= link_to "Download as PDF", @post.pdf.url, :class => "btn btn-default", :target => "_blank" %>
 					</div>
 				</div>
 			<% end %>
