@@ -40,8 +40,8 @@ class Post < ActiveRecord::Base
   has_attached_file :pdf
 
   ## Attachments Validation
-  validates_attachment_content_type :pdf, content_type: ['image/jpeg', 'image/png', 'application/pdf']
-  validates_attachment_size :pdf, :less_than => 100.megabyte
+  # validates_attachment_content_type :pdf, content_type: ['image/jpeg', 'image/png', 'application/pdf']
+  # validates_attachment_size :pdf, :less_than => 100.megabyte
 
   # Validation
   validates :title,:intro,:category_id, :presence => true
