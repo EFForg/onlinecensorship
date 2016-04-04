@@ -3,22 +3,23 @@ class HomeController < ApplicationController
   before_action :authenticate_user! , only: [:dashboard]
 
   def index
-    @home_fields=HomeField.last
-    @all_posts=Post.where(:published=>true)
-    @featured_post = @all_posts.where(:featured=>true).first
+    @home_fields = HomeField.last
+    @all_posts = Post.where(:published=>true).order("id DESC")
+    # binding.pry
+    @featured_post = Post.where(:published=>true).where(:featured=>true).order("updated_at DESC").first
     if @featured_post
       # show only the pinned posts and disable reviewing the featured post
-      @posts = @all_posts.where.not(:id => @featured_post.id).where(:pinned=>true)
+      @posts = @all_posts.where.not(:id => @featured_post.id).where(:pinned=>true).limit(7)
     else
       # show only the pinned posts
-      @posts = @all_posts.where(:pinned=>true)
+      @posts = @all_posts.where(:pinned=>true).limit(9)
     end
     @stories = Story.where(:published=>true)
   end
 
   # BackEnd dashboard
   def dashboard
-    posts = Post.all
+    posts = Post.all.order("id DESC")
     @latest_posts = posts.where(published: true).limit(5)
     @draft_posts = posts.where(published: false).limit(5)
     @pinned_posts = posts.where(published: true).where(pinned: true).limit(5)

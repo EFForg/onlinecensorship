@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   # change the id order
-  default_scope { order("id DESC") }
+  # default_scope { order("id DESC") }
 
   # Define attachments
   ## The post photo # min-height: 490px

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     # Admin method
     # we using it in the backEnd to allow the admin to show and navigate all the model data
     ######################################################################
-    results=Post.search(params[:search],'title','description')
+    results=Post.search(params[:search],'title','description').order("id DESC")
     @posts=results.page(params[:page])
     @count=results.count
   end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     # we using it in the frontEnd to allow the user to show all the author posts
     ######################################################################
     @person = Person.friendly.find(params[:id])
-    @posts=Post.where(:person_id=>@person.id)
+    @posts = Post.where(:person_id=>@person.id).order("id DESC")
   end
 
   def index
@@ -28,12 +28,12 @@ class PostsController < ApplicationController
 
       # Using it to export excel file
       format.xls {
-        @posts=Post.all
+        @posts = Post.all.order("id DESC")
       }
 
       # using it in the backEnd and in the frontEnd posts page
       format.any(:js, :html) {
-        @posts=Post.where(:published=>true)
+        @posts = Post.where(:published=>true).order("id DESC")
         # featured post
         @featured_post = @posts.where(:featured=>true).first
         # all posts without the feature posts
@@ -130,7 +130,7 @@ class PostsController < ApplicationController
   def create
 
     # Create quote
-    @quote =Quote.create(:author => post_params["quote_author"], :quote => post_params["quote_text"], :twitter_text => post_params["twitter_text"])
+    @quote = Quote.create(:author => post_params["quote_author"], :quote => post_params["quote_text"], :twitter_text => post_params["twitter_text"])
     @quote.save
 
     @post = Post.new(post_params)
