@@ -57,7 +57,11 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  devise_for :users
+  devise_for :users, :skip => [:registrations]                                        
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'            
+  end
 
   # for home page
   root 'home#index'

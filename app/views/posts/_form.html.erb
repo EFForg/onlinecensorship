@@ -171,20 +171,27 @@
     <%= f.date_select :publish_date, :order => [:day, :month, :year] %>
   </div>
 
+  <br/>
+
   <div class="field">
     <%= f.check_box :pinned %>
     <%= f.label :pinned , "Pinned to homepage" %>
+    <div class="tip">Check this if you want this post to appear on homepage.</div>
   </div>
 
   <div class="field">
     <%= f.check_box :featured %>
     <%= f.label :featured , "Feature the post" %>
+    <div class="tip">Recent featured post appears on top left of homepage (even if it's not pinned) and N&A page with a photo.</div>
   </div>
 
   <div class="field">
     <%= f.check_box :published %>
     <%= f.label :published , "Publish the post" %>
+    <div class="tip">We show only published posts to the end user.</div>
   </div>
+
+  <br/>
 
   <div class="actions">
     <%= link_to "Preview Post", preview_posts_path, remote: true, :class => "post-preview-link post-field load btn btn-primary #{klass}" %>
