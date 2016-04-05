@@ -55,13 +55,12 @@ $icons-links:#818181;    // usually used in controller icons links #4F4F4F
   border-radius: 10px;
 
   h2 {
-    width:33% !important;
     color: $nav-color;
     text-align: center;
   }
 
   input[type="text"] ,input[type="email"] , input[type="password"] , input[type="submit"]{
-    width:33% !important;
+    width: 100% !important;
   }
 
   .notice-area {
