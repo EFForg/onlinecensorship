@@ -31,23 +31,23 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= t(:about) %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li> <%= link_to "What we do", about_what_we_do_path %> </li>
-              <li> <%= link_to "Who we are", about_who_we_are_path %> </li>
-              <li> <%= link_to "Faqs", about_faqs_path %> </li>
+              <li> <%= link_to t(:what_we_do), about_what_we_do_path %> </li>
+              <li> <%= link_to t(:who_we_are), about_who_we_are_path %> </li>
+              <li> <%= link_to t(:faqs), about_faqs_path %> </li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= t(:resources) %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li> <%= link_to "News & Analysis", posts_path %> </li>
-              <li> <%= link_to "How to appeal", resources_how_to_appeal_path %> </a></li>
-              <li> <%= link_to "Further readings", resources_further_readings_path %> </li>
+              <li> <%= link_to t(:news_analysis), posts_path %> </li>
+              <li> <%= link_to t(:how_to_appeal), resources_how_to_appeal_path %> </a></li>
+              <li> <%= link_to t(:further_readings), resources_further_readings_path %> </li>
               <!--<li><a href="#">Getting involved</a></li>-->
             </ul>
           </li>
-          <li> <%= link_to "Submit Report", submit_report_path %> </li>
+          <li> <%= link_to t(:submit_report), submit_report_path %> </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -64,7 +64,7 @@
           <%= image_tag "logo-footer.png", :class => "logo" %>
         </div>
         <div class="col-md-3">
-          <h5> Follow us </h5>
+          <h5> <%= t(:follow_us) %> </h5>
           <div class="social-links">
             <a href="https://www.twitter.com/censored" target="_blank"> <i class="fa fa-twitter"></i>@censored</a>
             <a href="https://www.facebook.com/OnlineCensorship" target="_blank"> <i class="fa fa-facebook"></i>onlinecensorship.org</a>
@@ -75,23 +75,23 @@
               <%= render 'subscribes/form' %>
             </div>
             <div class="form-confirmation">
-              <p> Thank you. </p>
+              <p> <%= t(:thank_you) %> </p>
             </div>
 
           </div>
         </div>
         <div class="col-md-2 col-md-offset-1">
-          <h5> Share on </h5>
-          <a href="http://twitter.com/home?status=Has your picture/page/account been censored? Submit your report <%= root_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-twitter"></i> Twitter </a><!--
+          <h5> <%= t(:share_on) %> </h5>
+          <a href="http://twitter.com/home?status=Has your picture/page/account been censored? Submit your report <%= root_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-twitter"></i> <%= t(:twitter) %> </a><!--
 
-        --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= root_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-facebook"></i> Facebook </a>
+        --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= root_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-facebook"></i> <%= t(:facebook) %> </a>
         </div>
         <div class="col-md-2 col-md-offset-1">
           <h5> &nbsp; </h5>
-          <%= link_to "Contact us", contacts_path, :class => "btn btn-footer" %>
-          <%= link_to "Privacy policy", privacy_policy_path, :class => "btn btn-footer" %>
+          <%= link_to t(:contact_us), contacts_path, :class => "btn btn-footer" %>
+          <%= link_to t(:privacy_policy), privacy_policy_path, :class => "btn btn-footer" %>
           <div class="centered license">
-            <a href="http://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Public License</a>
+            <a href="http://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><%= t(:public_license) %></a>
           </div>
         </div>
       </div>

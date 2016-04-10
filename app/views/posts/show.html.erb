@@ -107,9 +107,9 @@ meta og: {
 								<p class="quote-by"> <%= @post.quote_author %> </p>
 
 								<div class="quote-share">
-									<p> SHARE IT </p>
+									<p> <%= t(:share_it) %> </p>
 									<!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
-									<a href="http://twitter.com/home?status=<%= @post.twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+									<a href="http://twitter.com/home?status=<%= @post.twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
 									<!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
 								</div>
 							</div>
@@ -140,7 +140,7 @@ meta og: {
 		  					<% end %>
 		  				</div>
 		  				<div class="personal-info">
-		  					<h4> ABOUT THE AUTHOR </h4>
+		  					<h4> <%= t(:about_the_author) %> </h4>
 		  					<h2>
 			            <%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
 			              <%= @post.person.name %>
@@ -156,11 +156,11 @@ meta og: {
 			<div class="row">
 				<div class="col-md-7">
 					<div class="share-post">
-						<h5> Share on </h5>
+						<h5> <%= t(:share_on) %> </h5>
 
-						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> Twitter </a>
+						<a href="http://twitter.com/home?status=<%= @post.title %> : <%= request.original_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-twitter"></i> <%= t(:twitter) %> </a>
 
-						<a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> Facebook </a>
+						<a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<%= @post.title %>&p[url]=<%= request.original_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-default"> <i class="fa fa-facebook"></i> <%= t(:facebook) %> </a>
 
         	</div>
 				</div>
@@ -170,7 +170,7 @@ meta og: {
 
 
 		<div class="suggested-topics">
-			<h2> SUGGESTED READINGS </h2>
+			<h2> <%= t(:suggested_readings) %> </h2>
 
 			<div class="row">
 

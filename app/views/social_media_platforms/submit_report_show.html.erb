@@ -1,5 +1,5 @@
 <%
-  meta title: @social_media_platform.title + "Report Submission"
+  meta title: @social_media_platform.title + t(:report_submission)
 %>
 
 <%
@@ -19,7 +19,7 @@
 <div class="process row">
 	<div class="container">
 		<div class="process-bar"></div>
-		<h1> <%= @social_media_platform.title %> report submission - <span>0</span>% </h1>
+		<h1> <%= @social_media_platform.title %> <%= t(:report_submission) %> - <span>0</span>% </h1>
 	</div>
 </div><!--process-->
 
@@ -36,12 +36,12 @@
     			<div class="row">
     				<div class="col-md-7" id="user_age">
 
-    					<h2> How old are you??</h2>
+    					<h2> <%= t(:how_old_are_you) %> </h2>
 
               <div class="input-report select-input radio-select">
               	<input class="option" id="over-45" name="user_age" tabindex="1" type="radio" value="45+">
               	<label class="option" for="over-45">
-              		Over 45 years
+              		<%= t(:over_45_years) %> 
               		<i class="fa fa-check"></i>
                 </label>
               </div>
@@ -81,7 +81,7 @@
             	<div class="input-report select-input radio-select">
               	<input class="option" id="under-13" name="user_age" tabindex="6" type="radio" >
               	<label class="option" for="under-13">
-              		Under 13 years
+              		<%= t(:under_13_years) %> 
               		<i class="fa fa-check"></i>
                 </label>
               </div>
@@ -146,9 +146,9 @@
 
   					<div class="btn-next">
   						<% if i > 0 %>
-  							<span class="btn btn-report previous active"> Previous </span>
+  							<span class="btn btn-report previous active"> <%= t(:previous) %>  </span>
   						<% end %>
-  						<span class="btn btn-report next"> Next </span>
+  						<span class="btn btn-report next"> <%= t(:next) %>  </span>
   					</div>
 
   				</div>
@@ -162,14 +162,14 @@
   				<div class="row">
   					<div class="col-md-7 notification-text">
 
-  						<p>In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy [<a href="/privacy-policy" target="_blank">link</a>]</p>
+  						<p> <%= t(:report_intro) %> [<a href="/privacy-policy" target="_blank"><%= t(:link) %></a>]</p>
 
   					</div>
   				</div>
 
   				<div class="btn-next">
-  					<span class="btn btn-report previous active"> Previous </span>
-  					<span class="btn btn-report next active"> Next </span>
+  					<span class="btn btn-report previous active"> <%= t(:previous) %> </span>
+  					<span class="btn btn-report next active"> <%= t(:next) %> </span>
   				</div>
 
   			</div>
@@ -181,7 +181,7 @@
   				<div class="row">
   					<div class="col-md-7 question require-answer select" id="question-static-1">
 
-  						<h2> May we contact you to follow up on this report? </h2>
+  						<h2> <%= t(:may_we_contact_you) %> </h2>
 
   						<div class="input-report select-input radio-select" id="yes">
   							<input class="option" id="op-yes" name="static_1" tabindex="1" type="radio" value="true">
@@ -207,8 +207,8 @@
   				</div>
 
   				<div class="btn-next">
-  					<span class="btn btn-report previous active"> Previous </span>
-  					<span class="btn btn-report next"> Next </span>
+  					<span class="btn btn-report previous active"> <%= t(:previous) %> </span>
+  					<span class="btn btn-report next"> <%= t(:mext) %> </span>
   				</div>
 
   			</div>
@@ -221,7 +221,7 @@
   					<div class="col-md-7 question depends-question-static-1 depends-option-yes hide long_text" id="question-static-2">
 
   						<h2>
-  							Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details.
+  							<%= t(:provide_us_with_your_email) %>
   						</h2>
 
   						<textarea class="input-report text-input require-field" id="static_2" name="static_2" placeholder=" Can you please provide us?" tabindex="2"></textarea>
@@ -231,8 +231,8 @@
   				</div>
 
   				<div class="btn-next">
-  					<span class="btn btn-report previous active"> Previous </span>
-  					<span class="btn btn-report next"> Next </span>
+  					<span class="btn btn-report previous active"> <%= t(:previous) %> </span>
+  					<span class="btn btn-report next"> <%= t(:next) %> </span>
   				</div>
 
   			</div>
@@ -244,13 +244,13 @@
   					<div class="col-md-7 question require-answer select" id="question-static-3">
 
   						<h2>
-  							Would you like us to contact <%=@social_media_platform_title%> about your case? We cannot guarantee a response.
+                <%= t(:would_you_like_to_contact) %> <%=@social_media_platform_title%> <%= t(:about_your_case) %>
               </h2>
 
   						<div class="input-report select-input radio-select" id="yes-static-3">
   							<input class="option" id="op-yes-static-3" name="static_3" tabindex="1" type="radio" value="true">
   							<label class="option" for="op-yes-static-3">
-  							Yes
+  							 <%= t(:yes) %>
   							<i class="fa fa-check"></i>
   							</label>
   						</div>
@@ -258,7 +258,7 @@
   						<div class="input-report select-input radio-select" id="no-static-3">
   							<input class="option" id="op-no-static-3" name="static_3" tabindex="1" type="radio" value="false">
   							<label class="option" for="op-no-static-3">
-  							No
+  							 <%= t(:no) %>
   							<i class="fa fa-check"></i>
   							</label>
   						</div>
@@ -268,8 +268,8 @@
   				</div>
 
   				<div class="btn-next">
-  					<span class="btn btn-report previous active"> Previous </span>
-  					<span class="btn btn-report next"> Next </span>
+  					<span class="btn btn-report previous active"> <%= t(:previous) %> </span>
+  					<span class="btn btn-report next"> <%= t(:next) %> </span>
   				</div>
 
   			</div>
@@ -281,15 +281,15 @@
   					<div class="col-md-7 notification-text">
 
   						<p>
-  							You have completed all of the survey questions. If you would like to revise any of your answers, click previous to move back through the questions. When you are satisfied, hit submit to send your report.
+                <%= t(:report_completion_message) %>
   						</p>
 
   					</div>
   				</div>
 
   				<div class="btn-next">
-  					<span class="btn btn-report previous active"> Previous </span>
-  					<span class="btn btn-report next submit-report"> Submit </span>
+  					<span class="btn btn-report previous active"> <%= t(:previous) %> </span>
+  					<span class="btn btn-report next submit-report"> <%= t(:submit) %> </span>
   				</div>
 
   			</div>
@@ -304,13 +304,13 @@
     <div class="slide-page">
       <div class="row">
         <div class="col-md-12">
-          <h2>We are sorry</h2>
+          <h2> <%= t(:we_are_sorry) %> </h2>
           <p>
-            We are sorry, but at this time we cannot accept reports from users aged 13 and under.
+            <%= t(:we_are_sorry_text) %>
           </p>
 
           <a href="<%=root_path%>">
-            <span class="btn btn-report active">Go Home</span>
+            <span class="btn btn-report active"> <%= t(:go_home) %>  </span>
           </a>
         </div>
       </div>

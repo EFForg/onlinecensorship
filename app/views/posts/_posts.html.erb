@@ -21,9 +21,9 @@
               <% end %>
               <% if @featured_post.image_link.present? && @featured_post.image_author_name.present? && @featured_post.cc_license.present? %>
                 <div class="image-tip">
-                  <a href="<%=@featured_post.image_link%>" target="_blank">Image</a>
-                  by <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
-                  <a href="<%=@featured_post.cc_license%>" target="_blank">CC license</a>
+                  <a href="<%=@featured_post.image_link%>" target="_blank"><%= t(:image) %></a>
+                  <%= t(:by) %> <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
+                  <a href="<%=@featured_post.cc_license%>" target="_blank"><%= t(:cc_license) %></a>
                 </div><!--image-tip-->
               <% end %>
             </div>
@@ -141,9 +141,9 @@
               <p class="quote-by"> <%= @quotes[j].author %> </p>
 
               <div class="quote-share">
-                <p> SHARE IT </p>
+                <p> <%= t(:share_it) %> </p>
                 <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
-                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
                 <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
               </div>
             </div>
@@ -212,9 +212,9 @@
               <p class="quote-by"> <%= @quotes[j].author %> </p>
 
               <div class="quote-share">
-                <p> SHARE IT </p>
+                <p> <%= t(:share_it) %> </p>
                 <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
-                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
                 <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
               </div>
             </div>
@@ -228,13 +228,12 @@
     <% end %>
 
 
-
   <% end %>
 
 <% else %>
 <div class="col-md-12">
   <div class="news-box no-results">
-    <h3>No Results!</h3>
+    <h3> <%= t(:no_results) %> </h3>
   </div>
 </div>
 <% end %>

@@ -94,9 +94,9 @@ meta og: {
               </h3>
               <p class="post-brief"><%= story.brief.truncate(163) %></p>
               <% if story.external_link? %>
-                <%= link_to "READ THE STORY", story.external_link, target: "_blank", :class => "read-link more-link" %>
+                <%= link_to t(:read_story), story.external_link, target: "_blank", :class => "read-link more-link" %>
               <% else %>
-                <%= link_to "READ THE STORY", story_path(story), :class => "read-link more-link" %>
+                <%= link_to t(:read_story), story_path(story), :class => "read-link more-link" %>
               <% end %>
             </div>
 
@@ -115,7 +115,7 @@ meta og: {
 
     <div class="row">
       <div class="col-md-12">
-        <h1> LATEST NEWS AND ANALYSIS </h1>
+        <h1> <%= t(:latest_news_analysis) %> </h1>
       </div>
     </div>
 
@@ -140,9 +140,9 @@ meta og: {
                   <% end %>
                   <% if @featured_post.image_link.present? && @featured_post.image_author_name.present? && @featured_post.cc_license.present? %>
                     <div class="image-tip">
-                      <a href="<%=@featured_post.image_link%>" target="_blank">Image</a>
-                      by <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
-                      <a href="<%=@featured_post.cc_license%>" target="_blank">CC license</a>
+                      <a href="<%=@featured_post.image_link%>" target="_blank"><%= t(:image) %></a>
+                      <%= t(:by) %> <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
+                      <a href="<%=@featured_post.cc_license%>" target="_blank"><%= t(:cc_license) %></a>
                     </div><!--image-tip-->
                   <% end %>
                 </div>
@@ -298,7 +298,7 @@ meta og: {
     <div class="row">
       <div class="col-md-12 centered">
         <%= link_to posts_path do %>
-          <div class="btn btn-default more-btn white-btn"> More News and Analysis </div>
+          <div class="btn btn-default more-btn white-btn"> <%= t(:more_news_analysis) %> </div>
         <% end %>
       </div>
     </div>

@@ -1,78 +1,93 @@
 Rails.application.routes.draw do
 
-  resources :notifications
+  scope '/(:locale)', :locale => /en|ar/ do
 
-  resources :stories do
-    put :publish
+    root 'home#index'
+
+    # for cms pages
+    get "about/who-we-are" => "content_management_pages#who_we_are"
+    get "about/what-we-do" => "content_management_pages#what_we_do"
+    get "resources/how-to-appeal" => "content_management_pages#appeal"
+    get "privacy-policy" => "content_management_pages#privacy"
+    get "about/faqs" => "faqs#index"
+
+    get "resources/further-readings" => "further_reads#index"
+
+    # for errors
+    match "/404" =>  "home#error", via: [ :get, :post, :patch, :delete ]
+    match "/500" =>  "home#error", via: [ :get, :post, :patch, :delete ]
+    match "/422" =>  "home#error", via: [ :get, :post, :patch, :delete ]
+    match "*path" => "home#error", via: [ :get, :post, :patch, :delete ]
+
   end
+    get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
+    get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
 
-  resources :posts_themes
-  resources :home_fields
+    resources :notifications
 
-  resources :quotes do
-    put :featured
-  end
-
-  get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
-  get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
-
-  resources :subscribes
-  get "/subscribe_confirmation" => "subscribes#subscribe_confirmation"
-
-  resources :people
-
-  resources :contacts , except: :index
-  get "/contacts" => "contacts#new"
-
-  resources :contacts_topics
-  resources :pages_questions
-  resources :question_user_submissions
-  resources :further_reads
-
-  get "resources/further-readings" => "further_reads#index"
-
-  resources :faqs
-
-  get "about/faqs" => "faqs#index"
-
-  resources :content_management_pages
-  resources :question_answers
-  resources :question_options
-  resources :languages
-  resources :countries
-  resources :question_users
-  resources :questions
-  resources :pages
-  resources :social_media_platforms
-
-  resources :posts, path: 'news-and-analysis' do
-    put :publish
-    put :featured
-    put :pinned
-    collection do
-      get :preview
+    resources :stories do
+      put :publish
     end
-  end
-  get "/author/:id" => "posts#author", :as => "author"
 
-  resources :categories
+    resources :posts_themes
+    resources :home_fields
 
-  devise_for :users, :skip => [:registrations]                                        
-  as :user do
-    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
-    put 'users' => 'devise/registrations#update', :as => 'user_registration'            
-  end
+    resources :quotes do
+      put :featured
+    end
 
-  # for home page
-  root 'home#index'
-  post "/thanks" => "questions#submit"
-  get '/ty' => 'questions#ty'
+    resources :subscribes
+    get "/subscribe_confirmation" => "subscribes#subscribe_confirmation"
 
-  # for cms pages
-  get "about/who-we-are" => "content_management_pages#who_we_are"
-  get "about/what-we-do" => "content_management_pages#what_we_do"
-  get "resources/how-to-appeal" => "content_management_pages#appeal"
-  get "privacy-policy" => "content_management_pages#privacy"
+    resources :people
+
+    resources :contacts , except: :index
+    get "/contacts" => "contacts#new"
+
+    resources :contacts_topics
+    resources :pages_questions
+    resources :question_user_submissions
+
+    resources :further_reads
+
+    resources :faqs
+
+    resources :content_management_pages
+    resources :question_answers
+    resources :question_options
+    resources :languages
+    resources :countries
+    resources :question_users
+    resources :questions
+    resources :pages
+    resources :social_media_platforms
+
+    resources :posts, path: 'news-and-analysis' do
+      put :publish
+      put :featured
+      put :pinned
+      collection do
+        get :preview
+      end
+    end
+    get "/author/:id" => "posts#author", :as => "author"
+
+    resources :categories
+
+    devise_for :users, :skip => [:registrations]                                        
+    as :user do
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'            
+    end
+
+    # for home page
+    
+    post "/thanks" => "questions#submit"
+    get '/ty' => 'questions#ty'
+
+  # end
+
+  
 
   # for backend ######
   get "/admin", :to => redirect("/users/sign_in")
@@ -103,10 +118,4 @@ Rails.application.routes.draw do
   get "/admin/contacts" => "contacts#index"
   get "/admin/notifications" => "notifications#index"
 
-
-  # for errors
-  match "/404" =>  "home#error", via: [ :get, :post, :patch, :delete ]
-  match "/500" =>  "home#error", via: [ :get, :post, :patch, :delete ]
-  match "/422" =>  "home#error", via: [ :get, :post, :patch, :delete ]
-  match "*path" => "home#error", via: [ :get, :post, :patch, :delete ]
 end
