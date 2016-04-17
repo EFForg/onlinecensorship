@@ -36,6 +36,8 @@ class PostsController < ApplicationController
         @posts = Post.where(:published=>true).order("id DESC")
         # featured post
         @featured_post = @posts.where(:featured=>true).first
+
+        # binding.pry
         # all posts without the feature posts
         if @featured_post
           @unfeatured_posts=@posts.where.not(:id => @featured_post.id)

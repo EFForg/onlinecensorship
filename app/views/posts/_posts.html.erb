@@ -15,7 +15,7 @@
                   <%=image_tag @featured_post.photo(:thumb) %>
                 <% end %>
               <% else %>
-                <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                <%=link_to @featured_post, :title=>@featured_post.title do %>
                   <%=image_tag @featured_post.photo(:thumb) %>
                 <% end %>
               <% end %>
@@ -42,7 +42,7 @@
                     <%=@featured_post.title %>
                   <% end %>
                 <% else %>
-                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                  <%=link_to @featured_post,:title=>@featured_post.title do %>
                     <%=@featured_post.title %>
                   <% end %>
                 <% end %>
@@ -51,7 +51,7 @@
               <h5>
                 <% if @featured_post.person_id? %>
                   <% if @featured_post.person.present? %>
-                    <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                    <%=link_to author_path(@featured_post.person),:title=>@featured_post.person.name do %>
                       <%= @featured_post.person.name %>
                     <% end %>
                   <% end %>
@@ -90,7 +90,7 @@
                 <%=@featured_post.title %>
               <% end %>
             <% else %>
-              <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+              <%=link_to @featured_post, :title => @featured_post.title do %>
                 <%=@featured_post.title %>
               <% end %>
             <% end %>
@@ -99,7 +99,7 @@
           <h5>
             <% if @featured_post.person_id? %>
               <% if @featured_post.person.present? %>
-                <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                <%=link_to author_path(@featured_post.person),:title=>@featured_post.person.name do %>
                   <%= @featured_post.person.name %>
                 <% end %>
               <% end %>
@@ -166,7 +166,7 @@
               <%=post.title %>
             <% end %>
           <% else %>
-            <%=link_to post_path(post),:title=>post.title do %>
+            <%=link_to post, :title => post.title do %>
               <%=post.title %>
             <% end %>
           <% end %>
@@ -175,7 +175,7 @@
         <h5>
           <% if post.person_id? %>
             <% if post.person.present? %>
-              <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+              <%=link_to author_path(post.person),:title=>post.person.name do %>
                 <%= post.person.name %>
               <% end %>
             <% end %>

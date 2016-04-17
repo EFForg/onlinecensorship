@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327081612) do
+ActiveRecord::Schema.define(version: 20160410151432) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -133,6 +133,30 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.integer  "theorder"
     t.string   "slug"
   end
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",            null: false
+    t.string   "locale",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.text     "intro"
+    t.string   "tags"
+    t.string   "side_image_caption"
+    t.string   "quote_author"
+    t.text     "quote_text"
+    t.text     "twitter_text"
+    t.string   "news_source"
+    t.string   "image_author_name"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.string   "pdf_file_size"
+    t.string   "pdf_updated_at"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "category_id"

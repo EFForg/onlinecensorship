@@ -24,6 +24,7 @@ module Oc
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :ar]
     config.i18n.fallbacks = true
+    I18n.enforce_available_locales = true
 
     # Add the fonts path
     config.assets.paths << "#{Rails.root}/app/assets/fonts"

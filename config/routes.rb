@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
 
-  scope '/(:locale)', :locale => /en|ar/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
 
     root 'home#index'
+
+    resources :posts, path: 'news-and-analysis' do
+      put :publish
+      put :featured
+      put :pinned
+      collection do
+        get :preview
+      end
+    end
+
+  end
+    
+    
 
     # for cms pages
     get "about/who-we-are" => "content_management_pages#who_we_are"
@@ -17,9 +30,16 @@ Rails.application.routes.draw do
     match "/404" =>  "home#error", via: [ :get, :post, :patch, :delete ]
     match "/500" =>  "home#error", via: [ :get, :post, :patch, :delete ]
     match "/422" =>  "home#error", via: [ :get, :post, :patch, :delete ]
-    match "*path" => "home#error", via: [ :get, :post, :patch, :delete ]
+    # match "*path" => "home#error", via: [ :get, :post, :patch, :delete ]
 
-  end
+    
+
+    get "/admin/posts" => "posts#admin"
+
+    
+
+  
+
     get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
     get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
 
@@ -62,14 +82,7 @@ Rails.application.routes.draw do
     resources :pages
     resources :social_media_platforms
 
-    resources :posts, path: 'news-and-analysis' do
-      put :publish
-      put :featured
-      put :pinned
-      collection do
-        get :preview
-      end
-    end
+    
     get "/author/:id" => "posts#author", :as => "author"
 
     resources :categories
@@ -109,7 +122,7 @@ Rails.application.routes.draw do
   get "/admin/categories" => "categories#index"
   get "/admin/posts_themes" => "posts_themes#index"
   get "/admin/quotes" => "quotes#index"
-  get "/admin/posts" => "posts#admin"
+  
   get "/admin/further_reads" => "further_reads#admin"
   get "/admin/stories" => "stories#index"
   get "/admin/faqs" => "faqs#admin"
