@@ -1,10 +1,10 @@
 <%
-  meta title: "Contact us"
+  meta title: t(:contact_us)
 %>
 
 <section class="dark-blue-bg page-title-wrapper">
   <div class="container">
-    <h1> Contact us </h1>
+    <h1> <%= t(:contact_us) %> </h1>
   </div>
 </section>
 
@@ -16,7 +16,7 @@
 
         <div class="form-wrapper"> 
         
-          <p> Drop us a line if you want to contact us </p>
+          <p> <%= t(:drop_a_line) %> </p>
 
           <div class="row">
             <%= render 'form' %>
@@ -26,8 +26,8 @@
 
         <div class="form-confirmation">
 
-          <h2> Thank you. </h2>
-          <p> Thanks for contacting us, we'll get back to you soon. </p>
+          <h2> <%= t(:thank_you) %> </h2>
+          <p> <%= t(:thank_you_contact) %> </p>
 
         </div>
 

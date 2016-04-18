@@ -7,4 +7,6 @@ class HomeField < ActiveRecord::Base
   # Validation
   validates :what_oc_title, :what_oc_text, :appeal_text, :appeal_btn_text ,:submit_btn_text , :presence => true
 
+  translates :slogan, :what_oc_title, :what_oc_text, :appeal_text, :appeal_btn_text, :submit_btn_text
+
 end

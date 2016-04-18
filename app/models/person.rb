@@ -25,4 +25,6 @@ class Person < ActiveRecord::Base
   # Validation
   validates :name, :bio, :presence => true
 
+  translates :name, :bio, :role
+
 end

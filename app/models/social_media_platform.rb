@@ -28,5 +28,6 @@ class SocialMediaPlatform < ActiveRecord::Base
   # Validation
   validates :title,:color,:font_awesome_style, :presence => true
 
+  translates :title
 
 end

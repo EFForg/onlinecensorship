@@ -10,4 +10,6 @@ class ContentManagementPage < ActiveRecord::Base
   # Validation
   validates :page_title, :content, :presence => true
 
+  translates :content, :brief, :page_title
+
 end

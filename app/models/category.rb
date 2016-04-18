@@ -13,4 +13,6 @@ class Category < ActiveRecord::Base
   # Validation
   validates :title,:color, :presence => true
 
+  translates :title
+
 end

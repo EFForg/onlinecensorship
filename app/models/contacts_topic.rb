@@ -13,4 +13,6 @@ class ContactsTopic < ActiveRecord::Base
   # Validation
   validates :name, :presence => true
 
+  translates :name
+
 end

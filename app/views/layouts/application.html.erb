@@ -82,7 +82,7 @@
         </div>
         <div class="col-md-2 col-md-offset-1">
           <h5> <%= t(:share_on) %> </h5>
-          <a href="http://twitter.com/home?status=Has your picture/page/account been censored? Submit your report <%= root_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-twitter"></i> <%= t(:twitter) %> </a><!--
+          <a href="http://twitter.com/home?status=<%= t(:tweet) %> <%= root_url %> - via @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-twitter"></i> <%= t(:twitter) %> </a><!--
 
         --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= root_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-facebook"></i> <%= t(:facebook) %> </a>
         </div>

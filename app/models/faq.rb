@@ -8,6 +8,8 @@ class Faq < ActiveRecord::Base
   extend Search
 
   # Validation
-  validates :question,:answer, :presence => true
+  validates :question, :answer, :presence => true
+
+  translates :question, :answer
 
 end
