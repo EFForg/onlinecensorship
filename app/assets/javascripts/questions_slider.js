@@ -5,7 +5,7 @@ $( document ).ready(function() {
     // hide the question
     $("#page-0").hide();
     // show the questionnaire
-    $("#page-1").fadeIn(300).removeClass("hidden");
+    $("#page-1").fadeIn(300).removeClass("hidden").css("display","table");
   });
 
   //disable the questionnaire for kids
@@ -16,7 +16,7 @@ $( document ).ready(function() {
     // create cookie
     document.cookie="user_still_kid=still under 13 years";
     // show the notification message
-    $(".kids").fadeIn(300).removeClass("hidden");
+    $(".kids").fadeIn(300).removeClass("hidden").css("display","table");;
   });
 
   // close report

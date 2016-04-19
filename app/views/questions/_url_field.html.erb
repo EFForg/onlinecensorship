@@ -1,5 +1,5 @@
 <%= text_field_tag "question[#{@question_id}]","",:placeholder=>@question_placeholder ,:require=>true,:class=>" require-field input-report text-input url-field" , :tabindex => @tab_index %>
 
 <div class="error-wrapper">
-	<span class="error-message">Wrong URL format</span>
+	<span class="error-message"> <%= t(:wrong_url) %> </span>
 </div>

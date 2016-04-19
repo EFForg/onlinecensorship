@@ -14,10 +14,10 @@
 	<div class="input-report select-input multi-select">
 	  <input class="option" id="op_<%=@question_id%>" name="op_<%=@question_id%>" type="checkbox" value="other">
 	  <label class="option other-option" for="op_<%=@question_id%>">
-	  	Other
+	  	<%= t(:other) %>
 	  	<i class="fa fa-check"></i>
 		</label>
-		<input type="text" name="other_<%=@question_id%>" id="other_<%=@question_id%>" class="other-option-input" placeholder="Write here">
+		<input type="text" name="other_<%=@question_id%>" id="other_<%=@question_id%>" class="other-option-input" placeholder="<%= t(:write_here) %>">
 	</div>
 
 <% end %>

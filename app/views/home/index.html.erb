@@ -10,25 +10,50 @@ meta og: {
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h3 class="cd-headline letters type">
-          <span>Has your</span>
-          <span class="cd-words-wrapper">
-            <b class="is-visible" style="opacity: 1;"><i class="in">a</i><i class="out">c</i><i class="out">c</i><i class="out">o</i><i class="out">u</i><i class="out">n</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">o</i><i class="out">s</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">h</i><i class="out">o</i><i class="out">t</i><i class="out">o</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">l</i><i class="out">i</i><i class="out">n</i><i class="out">k</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">a</i><i class="out">m</i><i class="out">p</i><i class="out">a</i><i class="out">i</i><i class="out">g</i><i class="out">n</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-          </span>
-        </h3><h3 class="cd-headline letters type">
-          <span>been</span>
-          <span class="cd-words-wrapper">
-            <b class="is-visible" style="opacity: 1;"><i class="in">s</i><i class="out">u</i><i class="out">s</i><i class="out">p</i><i class="out">e</i><i class="out">n</i><i class="out">d</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">e</i><i class="out">n</i><i class="out">s</i><i class="out">o</i><i class="out">r</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">t</i><i class="out">a</i><i class="out">k</i><i class="out">e</i><i class="out">n</i><i class="out"> </i><i class="out">d</i><i class="out">o</i><i class="out">w</i><i class="out">n</i><i class="out">?</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">r</i><i class="out">e</i><i class="out">m</i><i class="out">o</i><i class="out">v</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            <b class="is-hidden" style="opacity: 1;"><i class="out">b</i><i class="out">a</i><i class="out">n</i><i class="out">n</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-          </span>
-        </h3>
+
+        <% if locale == :en %>
+          <h3 class="cd-headline letters type">
+            <span> Has your</span>
+            <span class="cd-words-wrapper">
+              <b class="is-visible" style="opacity: 1;"><i class="in">a</i><i class="out">c</i><i class="out">c</i><i class="out">o</i><i class="out">u</i><i class="out">n</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">o</i><i class="out">s</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">h</i><i class="out">o</i><i class="out">t</i><i class="out">o</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">l</i><i class="out">i</i><i class="out">n</i><i class="out">k</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">a</i><i class="out">m</i><i class="out">p</i><i class="out">a</i><i class="out">i</i><i class="out">g</i><i class="out">n</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+            </span>
+          </h3><h3 class="cd-headline letters type">
+            <span>been</span>
+            <span class="cd-words-wrapper">
+              <b class="is-visible" style="opacity: 1;"><i class="in">s</i><i class="out">u</i><i class="out">s</i><i class="out">p</i><i class="out">e</i><i class="out">n</i><i class="out">d</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">e</i><i class="out">n</i><i class="out">s</i><i class="out">o</i><i class="out">r</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">t</i><i class="out">a</i><i class="out">k</i><i class="out">e</i><i class="out">n</i><i class="out"> </i><i class="out">d</i><i class="out">o</i><i class="out">w</i><i class="out">n</i><i class="out">?</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">r</i><i class="out">e</i><i class="out">m</i><i class="out">o</i><i class="out">v</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">b</i><i class="out">a</i><i class="out">n</i><i class="out">n</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+            </span>
+          </h3>
+        <% elsif locale == :ar %>
+          <h3 class="cd-headline letters type">
+            <span> هل تم </span>
+            <span class="cd-words-wrapper">
+              <b class="is-visible" style="opacity: 1;"><i class="in">ت</i><i class="out">ع</i><i class="out">ط</i><i class="out">ي</i><i class="out">ل</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">م</i><i class="out">ر</i><i class="out">ا</i><i class="out">ق</i><i class="out">ب</i><i class="out">ة</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">ح</i><i class="out">ذ</i><i class="out">ف</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">إ</i><i class="out">ز</i><i class="out">ا</i><i class="out">ل</i><i class="out">ة</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">ح</i><i class="out">ظ</i><i class="out">ر</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+            </span>
+          </h3><h3 class="cd-headline letters type">
+            <span class="cd-words-wrapper">
+              <b class="is-visible" style="opacity: 1;"><i class="in">ح</i><i class="out">س</i><i class="out">ا</i><i class="out">ب</i><i class="out">ك</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">م</i><i class="out">ن</i><i class="out">ش</i><i class="out">و</i><i class="out">ر</i><i class="out">ك</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">ص</i><i class="out">و</i><i class="out">ر</i><i class="out">ت</i><i class="out">ك</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">ر</i><i class="out">ا</i><i class="out">ب</i><i class="out">ط</i><i class="out">ك</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+              <b class="is-hidden" style="opacity: 1;"><i class="out">ح</i><i class="out">م</i><i class="out">ل</i><i class="out">ت</i><i class="out">ك</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
+            </span>
+            <span>؟</span>
+          </h3>
+        <% else %>
+          <h3> ha sido censurado </h3><h3> su foto? </h3>
+        <% end %>
 
         <div class="row">
           <p class="col-md-9">
