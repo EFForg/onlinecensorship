@@ -108,3 +108,23 @@ en:
   other: "Other"
   write_here: "Write here"
   wrong_email: "Wrong email format"
+
+  date:
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%b %e %Y'
+      short: ! '%e %b'

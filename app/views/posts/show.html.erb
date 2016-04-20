@@ -26,13 +26,13 @@ meta og: {
 			  <% end %>
 				<h1> <%= @post.title %> </h1>
 				<p class="post-info">
-					by
+					<%= t(:by) %>
 					<% if @post.person.present? %>
 						<%=link_to author_path(id: @post.person),:title=>@post.person.name do %>
 							<%= @post.person.name %>
 						<% end %> |
 					<% end%>
-					<%= @post.publish_date %> |
+					<%= l(@post.publish_date, :format => :long, :locale => locale) %> |
 					<% if @post.tags? %>
 						<% @post.tags.split(/,/).each do |tag| %>
 							<%= link_to posts_path(tag: tag) do %><%="#"+tag.to_s%><% end %>
@@ -192,7 +192,7 @@ meta og: {
 		          		<% end %>
 		          	<% end %>
 		          </h5>
-		          <h6> <%= p.publish_date %> </h6>
+		          <h6> <%= l(p.publish_date, :format => :long, :locale => locale) %> </h6>
 		          <p class="post-brief"> <%= p.intro.truncate(160) %> <p>
 		          <hr>
 		          <label class="post-tags">

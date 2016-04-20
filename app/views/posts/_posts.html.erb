@@ -59,7 +59,7 @@
                   <%=@featured_post.news_source%>
                 <% end %>
               </h5>
-              <h6><%=@featured_post.publish_date%></h6>
+              <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
               <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
               <hr>
               <label class="post-tags">
@@ -107,7 +107,7 @@
               <%=@featured_post.news_source%>
             <% end %>
           </h5>
-          <h6><%=@featured_post.publish_date %></h6>
+          <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
           <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
           <hr>
           <label class="post-tags">
@@ -183,7 +183,7 @@
             <%=post.news_source%>
           <% end %>
         </h5>
-        <h6><%=post.publish_date %></h6>
+        <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
         <p class="post-brief"><%= post.intro.truncate(163) %></p>
         <hr>
         <label class="post-tags">

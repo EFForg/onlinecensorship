@@ -531,3 +531,12 @@ label{
 .export {
   margin: 10px 0px !important;
 }
+
+.admin-language-switcher {
+  margin: 8px 0;
+  font-size: 16px;
+  a span.active {
+    color: #333;
+    font-weight: bold;
+  }
+}
