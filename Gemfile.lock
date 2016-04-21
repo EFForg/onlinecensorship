@@ -93,6 +93,14 @@ GEM
       thor (~> 0.14)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    globalize (4.0.2)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
+    globalize-versioning (0.1.0)
+      activemodel (>= 3.2.0, < 5)
+      activerecord (>= 3.2.0, < 5)
+      globalize (>= 3.0.4, < 6)
+      paper_trail (~> 3.0.0)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.13)
@@ -130,6 +138,9 @@ GEM
       mini_portile (~> 0.6.0)
     nprogress-rails (0.1.6.7)
     orm_adapter (0.5.0)
+    paper_trail (3.0.9)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -240,6 +251,8 @@ DEPENDENCIES
   devise
   figaro
   friendly_id (~> 5.0.0)
+  globalize (~> 4.0.1)
+  globalize-versioning (~> 0.1.0)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

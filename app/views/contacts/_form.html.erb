@@ -11,28 +11,28 @@
   <% end %>
 
   <div class="col-md-6">
-    <%= f.label :name, "Name *" %>
+    <%= f.label :name, t(:name) + " *" %>
     <%= f.text_field :name ,required: true %>
   </div>
 
   <div class="col-md-6">
-    <%= f.label :surname, "Surname *" %>
+    <%= f.label :surname, t(:surname) + " *" %>
     <%= f.text_field :surname ,required: true %>
   </div>
 
   <div class="col-md-6">
-    <%= f.label :email, "Email *" %>
+    <%= f.label :email, t(:email) + " *" %>
     <%= f.email_field :email ,required: true , :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
   </div>
 
   <div class="col-md-6">
-    <%= f.label :pgp_key %>
+    <%= f.label :pgp_key, t(:pgp_key) %>
     <%= f.text_field :pgp_key %>
-    <i class="note">Some people use public PGP keys for added security online. If you do not use a PGP key, leave this field blank.</i>
+    <i class="note"> <%= t(:pgp_note) %></i>
   </div>
 
   <div class="col-md-6">
-    <%= f.label :contacts_topic_id, "Topic *" %>
+    <%= f.label :contacts_topic_id, t(:topic) + " *" %>
     <div class="select-wrapper">
       <%= f.select :contacts_topic_id, options_from_collection_for_select(@contacts_topics, :id, :name,@contact.contacts_topic_id), {:required => true} %>
       <span class="fa fa-chevron-down"></span>
@@ -40,14 +40,14 @@
   </div>
 
   <div class="col-md-12">
-    <%= f.label :message, "Message *" %>
+    <%= f.label :message, t(:message) + " *" %>
     <%= f.text_area :message ,required: true %>
   </div>
 
   <%= text_field_tag('contact[spam_checker]', nil, class: 'spam-checker') %>
  
   <div class="col-md-12 centered ">
-    <%= f.submit "SUBMIT", :class=> "btn btn-primary submit-btn" %>
+    <%= f.submit t(:submit), :class=> "btn btn-primary submit-btn" %>
   </div>
 
 <% end %>

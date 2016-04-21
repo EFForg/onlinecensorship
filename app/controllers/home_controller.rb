@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @all_posts = Post.where(:published=>true).order("id DESC")
     # binding.pry
     @featured_post = Post.where(:published=>true).where(:featured=>true).order("updated_at DESC").first
+    # binding.pry
     if @featured_post
       # show only the pinned posts and disable reviewing the featured post
       @posts = @all_posts.where.not(:id => @featured_post.id).where(:pinned=>true).limit(7)

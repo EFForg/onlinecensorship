@@ -1,0 +1,130 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  empty_table: "No data yet!"
+  need_login: "You have to be logged in"
+  read_story: "READ THE STORY"
+  latest_news_analysis: "LATEST NEWS AND ANALYSIS"
+  image: "Image"
+  by: "by"
+  cc_license: "CC License"
+  more_news_analysis: "More News and Analysis"
+  thank_you: "Thank you."
+  follow_us: "Follow us"
+  share_on: "Share on"
+  facebook: "Facebook"
+  twitter: "Twitter"
+  youtube: "Youtube"
+  google: "Google+"
+  instagram: "instagram"
+  flickr: "Flickr"
+  public_license: "Public License"
+  privacy_policy: "Privacy Policy"
+  contact_us: "Contact us"
+  email: "Email"
+  subscribe: "Subscribe"
+  about: "Acerca de"
+  what_we_do: "What we do"
+  who_we_are: "Who we are"
+  resources: "Recursos"
+  news_analysis: "News & Analysis"
+  how_to_appeal: "How to Appeal"
+  further_readings: "Further Readings"
+  submit_report: "Enviar reporte"
+  faqs: "FAQs"
+  our_team: "Our Team"
+  our_advisors: "Our Advisors"
+  frequently_asked_questions: "Frequently Asked Questions"
+  featured_reads: "Featured Reads"
+  books_and_journal_articles: "Books and Journal Articles"
+  blog_posts_and_news_articles: "Blog Posts and News Articles"
+  news_and_analysis: "News <br/> and Analysis"
+  filter_by: "Filter by:"
+  type: "Type"
+  all: "All"
+  platform: "Platform"
+  theme: "Theme"
+  show_more: "Show more"
+  share_it: "SHARE IT"
+  no_results: "No Results!"
+  about_the_author: "ABOUT THE AUTHOR"
+  suggested_readings: "SUGGESTED READINGS"
+  on_which_platform: "On which platform has your content been blocked?"
+  report_submission: "Report Submission"
+  previous: "Previous"
+  next: "Next"
+  submit: "Submit"
+  go_home: "Go home"
+  we_are_sorry: "We are sorry"
+  we_are_sorry_text: "We are sorry, but at this time we cannot accept reports from users aged 13 and under."
+  report_completion_message: "You have completed all of the survey questions. If you would like to revise any of your answers, click previous to move back through the questions. When you are satisfied, hit submit to send your report."
+  answer_yes: "Yes"
+  answer_no: "No"
+  would_you_like_to_contact: "Would you like us to contact"
+  about_your_case: "about your case? We cannot guarantee a response."
+  provide_us_with_your_email: "Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details."
+  may_we_contact_you: "May we contact you to follow up on this report?"
+  how_old_are_you: "How old are you?"
+  over_45_years: "Over 45 years"
+  under_13_years: "Under 13 years"
+  report_intro: "In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy"
+  link: "link"
+  submit_confirmation: "The form has been submitted successfully."
+  quit: "Do you really want to quit?"
+  error_page: "Error Page!"
+  error_page_message: "Sorry the page you are looking for is not found."
+  drop_a_line: "Drop us a line if you want to contact us"
+  thank_you_contact: "Thanks for contacting us, we'll get back to you soon."
+  posts: "Posts"
+  name: "Name"
+  surname: "Surname"
+  pgp_key: "PGP Key"
+  pgp_note: "Some people use public PGP keys for added security online. If you do not use a PGP key, leave this field blank."
+  topic: "Topic"
+  message: "Message"
+  tweet: "Has your picture/page/account been censored? Submit your report"
+  website_description: "If you feel that your content or account has been erroneously or unjustly removed from a social media platform, submit a report and let us know."
+  wrong_url: "Wrong URL Format"
+  wrong_image: "This must be a valid image (jpeg, png, or gif) file."
+  other: "Other"
+  write_here: "Write here"
+  wrong_email: "Wrong email format"
+
+  date:
+    abbr_month_names:
+    -
+    - Ene
+    - Feb
+    - Mar
+    - Abr
+    - May
+    - Jun
+    - Jul
+    - Ago
+    - Sep
+    - Oct
+    - Nov
+    - Dic
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%b %e %Y'
+      short: ! '%e %b'

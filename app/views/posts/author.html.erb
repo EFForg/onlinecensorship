@@ -1,10 +1,10 @@
 <%
-  meta title: "#{@person.name} Posts"
+  meta title: "#{@person.name} | " + t(:posts)
 %>
 
 <section class="dark-blue-bg page-title-wrapper">
   <div class="container">
-    <h1> <%=@person.name%> Posts </h1>
+    <h1> <%= @person.name %> | <%= t(:posts) %> </h1>
   </div>
 </section>
 
@@ -64,7 +64,7 @@
                       <%=post.news_source%>
                     <% end %>
                   </h5>
-                  <h6><%=post.publish_date%></h6>
+                  <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
                   <p class="post-brief"><%= post.intro.truncate(163) %></p>
                   <hr>
                   <label class="post-tags">
@@ -113,7 +113,7 @@
                   &nbsp;&nbsp;
                 <% end %>
               </h5>
-              <h6><%=post.publish_date %></h6>
+              <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
               <p class="post-brief"><%= post.intro.truncate(163) %></p>
               <hr>
               <label class="post-tags">

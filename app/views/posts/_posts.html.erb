@@ -15,15 +15,15 @@
                   <%=image_tag @featured_post.photo(:thumb) %>
                 <% end %>
               <% else %>
-                <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                <%=link_to @featured_post, :title=>@featured_post.title do %>
                   <%=image_tag @featured_post.photo(:thumb) %>
                 <% end %>
               <% end %>
               <% if @featured_post.image_link.present? && @featured_post.image_author_name.present? && @featured_post.cc_license.present? %>
                 <div class="image-tip">
-                  <a href="<%=@featured_post.image_link%>" target="_blank">Image</a>
-                  by <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
-                  <a href="<%=@featured_post.cc_license%>" target="_blank">CC license</a>
+                  <a href="<%=@featured_post.image_link%>" target="_blank"><%= t(:image) %></a>
+                  <%= t(:by) %> <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
+                  <a href="<%=@featured_post.cc_license%>" target="_blank"><%= t(:cc_license) %></a>
                 </div><!--image-tip-->
               <% end %>
             </div>
@@ -42,7 +42,7 @@
                     <%=@featured_post.title %>
                   <% end %>
                 <% else %>
-                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+                  <%=link_to @featured_post,:title=>@featured_post.title do %>
                     <%=@featured_post.title %>
                   <% end %>
                 <% end %>
@@ -51,7 +51,7 @@
               <h5>
                 <% if @featured_post.person_id? %>
                   <% if @featured_post.person.present? %>
-                    <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                    <%=link_to author_path(@featured_post.person),:title=>@featured_post.person.name do %>
                       <%= @featured_post.person.name %>
                     <% end %>
                   <% end %>
@@ -59,7 +59,7 @@
                   <%=@featured_post.news_source%>
                 <% end %>
               </h5>
-              <h6><%=@featured_post.publish_date%></h6>
+              <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
               <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
               <hr>
               <label class="post-tags">
@@ -90,7 +90,7 @@
                 <%=@featured_post.title %>
               <% end %>
             <% else %>
-              <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
+              <%=link_to @featured_post, :title => @featured_post.title do %>
                 <%=@featured_post.title %>
               <% end %>
             <% end %>
@@ -99,7 +99,7 @@
           <h5>
             <% if @featured_post.person_id? %>
               <% if @featured_post.person.present? %>
-                <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
+                <%=link_to author_path(@featured_post.person),:title=>@featured_post.person.name do %>
                   <%= @featured_post.person.name %>
                 <% end %>
               <% end %>
@@ -107,7 +107,7 @@
               <%=@featured_post.news_source%>
             <% end %>
           </h5>
-          <h6><%=@featured_post.publish_date %></h6>
+          <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
           <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
           <hr>
           <label class="post-tags">
@@ -141,9 +141,9 @@
               <p class="quote-by"> <%= @quotes[j].author %> </p>
 
               <div class="quote-share">
-                <p> SHARE IT </p>
+                <p> <%= t(:share_it) %> </p>
                 <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
-                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
                 <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
               </div>
             </div>
@@ -166,7 +166,7 @@
               <%=post.title %>
             <% end %>
           <% else %>
-            <%=link_to post_path(post),:title=>post.title do %>
+            <%=link_to post, :title => post.title do %>
               <%=post.title %>
             <% end %>
           <% end %>
@@ -175,7 +175,7 @@
         <h5>
           <% if post.person_id? %>
             <% if post.person.present? %>
-              <%=link_to author_path(id: post.person),:title=>post.person.name do %>
+              <%=link_to author_path(post.person),:title=>post.person.name do %>
                 <%= post.person.name %>
               <% end %>
             <% end %>
@@ -183,7 +183,7 @@
             <%=post.news_source%>
           <% end %>
         </h5>
-        <h6><%=post.publish_date %></h6>
+        <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
         <p class="post-brief"><%= post.intro.truncate(163) %></p>
         <hr>
         <label class="post-tags">
@@ -212,9 +212,9 @@
               <p class="quote-by"> <%= @quotes[j].author %> </p>
 
               <div class="quote-share">
-                <p> SHARE IT </p>
+                <p> <%= t(:share_it) %> </p>
                 <!-- <a href=""> <i class="fa fa-facebook"></i> </a> -->
-                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="Tweet this"> <i class="fa fa-twitter"></i> </a>
+                <a href="http://twitter.com/home?status=<%= @quotes[j].twitter_text %> <%= root_url %> @censored" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
                 <!-- <a href=""> <i class="fa fa-google-plus"></i> </a> -->
               </div>
             </div>
@@ -228,13 +228,12 @@
     <% end %>
 
 
-
   <% end %>
 
 <% else %>
 <div class="col-md-12">
   <div class="news-box no-results">
-    <h3>No Results!</h3>
+    <h3> <%= t(:no_results) %> </h3>
   </div>
 </div>
 <% end %>

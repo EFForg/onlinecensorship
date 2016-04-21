@@ -1,0 +1,144 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ar:
+  empty_table: "لا يوجد نتائج"
+  need_login: "يجب عليك تسجيل الدخول"
+  read_story: "اقرأ القصة"
+  latest_news_analysis: "اخر الأخبار والتحليلات"
+  image: "الصورة"
+  by: "بواسطة"
+  cc_license: "رخصة المشاع الابداعي"
+  more_news_analysis: "المزيد من الأخبار والتحليلات"
+  thank_you: "شكرا لك."
+  follow_us: "تابعنا"
+  share_on: "انشر في"
+  facebook: "فيسبوك"
+  twitter: "تويتر"
+  youtube: "يوتيوب"
+  google: "جوجل بلس"
+  instagram: "انستاغرام"
+  flickr: "فليكر"
+  public_license: "الرخصة العامة"
+  privacy_policy: "سياسة الخصوصية"
+  contact_us: "اتصل بنا"
+  email: "البريد الالكتروني"
+  subscribe: "اشترك"
+  about: "عن"
+  what_we_do: "ماذا نعمل"
+  who_we_are: "من نحن"
+  resources: "مصادر"
+  news_analysis: "أخبار و تحليلات"
+  how_to_appeal: "كيفية المطالبة"
+  further_readings: "قراءات أخرى"
+  submit_report: "تقديم تقرير"
+  faqs: "أسئلة شائعة"
+  our_team: "فريق العمل"
+  our_advisors: "المستشارين"
+  frequently_asked_questions: " الاسئلة الشائعة"
+  featured_reads: "القراءات المميزة"
+  books_and_journal_articles: "الكتب والمقالات الصحفية"
+  blog_posts_and_news_articles: "المدونات والمقالات الاخبارية"
+  news_and_analysis: "الأخبار <br/> و التحليلات"
+  filter_by: "تصنيف:"
+  type: "النوع"
+  all: "الكل"
+  platform: "المنصة"
+  theme: "الموضوع"
+  show_more: "عرض الكل"
+  share_it: "انشر"
+  no_results: "لا يوجد نتائج!"
+  about_the_author: "عن الكاتب"
+  suggested_readings: "قراءات مقترحة"
+  on_which_platform: "من اي منصة تم حجب المحتوى الخاص بك؟"
+  report_submission: "تقديم تقرير"
+  previous: "السابق"
+  next: "التالي"
+  submit: "ارسال"
+  go_home: "العودة للرئيسية"
+  we_are_sorry: "نحن اسفون"
+  we_are_sorry_text: "نأسف، في هذه الفترة لا نستقبل تقارير ممن أعمارهم ١٣ سنة أو أقل."
+  report_completion_message: "لقد أتممت كل أسئلة التقرير. اذا أردت مراجعة اجاباتك, اضغط السابق للرجوع للأسئلة. عندما تتأكد من اجاباتك, اضغط ارسال لارسال التقرير."
+  would_you_like_to_contact: "هل تريد أن نتواصل مع"
+  about_your_case: "للاستفسار عن حالتك? لا يمكننا ضمان الاستجابة."
+  provide_us_with_your_email: "يرجى تزويدنا بعنوان بريدك الالكتروني حتى نتمكن من المتابعة معك. إذا كنت تستخدم البريد المشفر، يرجى تزويدنا بالمفتاح العام الخاص بك حتى نتمكن من التواصل بشكل آمن. إذا كنت تفضل وسيلة أخرى للاتصال، يرجى تحديدها وتقديم تفاصيل الاتصال."
+  may_we_contact_you: "هل بإمكاننا الاتصال بك للمتابعة عن هذا التقرير؟"
+  how_old_are_you: "ما هو عمرك؟"
+  over_45_years: "اكبر من 45 سنة"
+  under_13_years: "أقل من 13 سنة"
+  report_intro: "بالإضافة لجمع بيانات عن عمليات إزالة المحتوى، قد نرغب في تسليط الضوء على حالات معينة لتوضيح قضية، أو إدراجها في تحليل الاتجاه العام. إن الإجابة عن الأسئلة هي اختيارية بمعظمها، وهي متوافقة مع سياسة الخصوصية"
+  link: "رابط"
+  submit_confirmation: "تم تقديم التقرير بنجاح."
+  quit: "هل تريد الخروج؟"
+  error_page: "خطأ!"
+  error_page_message: "الصفحة المطلوبة غير موجودة."
+  drop_a_line: "ارسل لنا رسالة هنا للتواصل"
+  thank_you_contact: "شكرا لاتصالك بنا، سنرد عليك قريبا."
+  posts: "المقالات"
+  name: "الاسم"
+  surname: "اسم العائلة"
+  pgp_key: "PGP مفتاح الامان"
+  pgp_note: "بعض الاشخاص يستعملون مفتاح امان للتراسل، اذا لا تستعمله اتركه فارغا."
+  topic: "الموضوع"
+  message: "نص الرسالة"
+  tweet: "هل تم حذف ضورتك، صفحتك، حسابك من مواقع التواصل الاجتماعي؟ قدّم تقرير"
+  website_description: "عن الموقع بالعربي"
+  answer_yes: "نعم"
+  answer_no: "لا"
+  wrong_url: "رابط خاطئ"
+  wrong_image: "يجب أن يكون نوع الصورة (jpeg, png, gif)"
+  other: "غير ذلك"
+  write_here: "أكتب هنا"
+  wrong_email: "البريد الالكتروني خاطئ"
+
+  date:
+    abbr_month_names:
+    -
+    - يناير
+    - فبراير
+    - مارس
+    - ابريل
+    - مايو
+    - يونيو
+    - يوليو
+    - اغسطس
+    - سبتمبر
+    - اكتوبر
+    - نوفمبر
+    - ديسمبر
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %e %Y'
+      short: ! '%e %b'
+    month_names:
+    -
+    - يناير
+    - فبراير
+    - مارس
+    - ابريل
+    - مايو
+    - يونيو
+    - يوليو
+    - اغسطس
+    - سبتمبر
+    - اكتوبر
+    - نوفمبر
+    - ديسمبر

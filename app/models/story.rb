@@ -18,4 +18,6 @@ class Story < ActiveRecord::Base
   # Validation
   validates :title,:brief, :presence => true
 
+  translates :title, :brief, :content
+
 end

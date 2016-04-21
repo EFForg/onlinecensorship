@@ -64,6 +64,10 @@ gem 'paperclip'
 gem 'rmagick'
 gem 'aws-s3'
 
+# translation
+gem 'globalize', '~> 4.0.1'
+gem 'globalize-versioning', '~> 0.1.0'
+
 gem 'metamagic'
 
 # Manage authentication

@@ -58,6 +58,7 @@
 
         <div class="col-md-3 col-sm-5 col-xs-12">
           <div class="col-md-12 col-sm-12 col-xs-12">
+
             <div class="sidebar content-box" style="display: block;">
               <ul class="nav">
                 <!-- Main menu -->
@@ -332,6 +333,17 @@
               <%= notice %>
             </div>
           <% end %>
+          <div class="admin-language-switcher">
+            <%= link_to :locale => :en do %>
+              <span class="<%= locale == :en ? 'active' : '' %>"> En </span>
+            <% end %> |
+            <%= link_to :locale => :es do %>
+              <span class="<%= locale == :es ? 'active' : '' %>"> Esp </span>
+            <% end %> |
+            <%= link_to :locale => :ar do %>
+              <span class="<%= locale == :ar ? 'active' : '' %>"> Ar </span>
+            <% end %>
+          </div>
           <%= yield %>
         </div><!--col-md-9-->
 

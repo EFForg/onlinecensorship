@@ -17,4 +17,6 @@ class Quote < ActiveRecord::Base
   # Validation
   validates :author,:font_size,:quote, :presence => true
 
+  translates :author, :quote, :twitter_text
+
 end

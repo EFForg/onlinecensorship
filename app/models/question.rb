@@ -21,4 +21,6 @@ class Question < ActiveRecord::Base
   # Validation
   validates :question_title,:question_type, :presence => true
 
+  translates :question_title, :prompt_text, :prompt_link, :placeholder
+
 end

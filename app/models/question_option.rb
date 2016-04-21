@@ -14,4 +14,6 @@ class QuestionOption < ActiveRecord::Base
   # Validation
   validates :option_title, :presence => true
 
+  translates :option_title
+
 end

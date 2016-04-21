@@ -1,10 +1,10 @@
 <%
-  meta title: "News and Analysis"
+  meta title: t(:news_analysis)
 %>
 
 <section class="dark-blue-bg page-title-wrapper">
   <div class="container">
-    <h1> News <br/> AND ANALYSIS </h1>   
+    <h1> <%= raw t(:news_and_analysis) %> </h1>   
   </div>
 </section>
 
@@ -12,19 +12,19 @@
   <div class="container">
 
     <div class="posts-filter-wrapper">
-      <p> Filter by: </p>
+      <p> <%= t(:filter_by) %> </p>
       <div class="row">
         <div class="col-md-3">
 
           <div class="select-wrapper">
             <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <span class="btn-placeholder">Type</span>
-              <span class="btn-value"> Type </span>
+              <span class="btn-placeholder"> <%= t(:type) %> </span>
+              <span class="btn-value"> <%= t(:type) %> </span>
               <span class="fa fa-chevron-down"></span>
             </button>
             <ul class="dropdown-menu category-dropdown" aria-labelledby="post-type" id="filter-post-type">
               <li>
-                <a data-remote="true" href="/news-and-analysis?category_id=All" title="All">All</a>
+                <a data-remote="true" href="/news-and-analysis?category_id=All" title="All"> <%= t(:all) %> </a>
               </li>
               <% @categories.each do |type| %>
                 <li>
@@ -41,13 +41,13 @@
           
           <div class="select-wrapper">
             <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-platform" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <span class="btn-placeholder">Platform</span>
-              <span class="btn-value">Platform</span>
+              <span class="btn-placeholder"><%= t(:platform) %></span>
+              <span class="btn-value"><%= t(:platform) %></span>
               <span class="fa fa-chevron-down"></span>
             </button>
             <ul class="dropdown-menu platform-dropdown" aria-labelledby="post-platform">
               <li>
-                <a data-remote="true" href="/news-and-analysis?platform_id=All" title="All">All</a>
+                <a data-remote="true" href="/news-and-analysis?platform_id=All" title="All"><%= t(:all) %></a>
               </li>
               <% @platform.each do |type| %>
                 <li>
@@ -64,13 +64,13 @@
           
           <div class="select-wrapper">
             <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-theme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <span class="btn-placeholder">Theme</span>
-              <span class="btn-value">Theme</span>
+              <span class="btn-placeholder"><%= t(:theme) %></span>
+              <span class="btn-value"><%= t(:theme) %></span>
               <span class="fa fa-chevron-down"></span>
             </button>
             <ul class="dropdown-menu theme-dropdown" aria-labelledby="post-theme">
               <li>
-                <a data-remote="true" href="/news-and-analysis?theme_id=All" title="All">All</a>
+                <a data-remote="true" href="/news-and-analysis?theme_id=All" title="All"><%= t(:all) %></a>
               </li>
               <% @theme.each do |type| %>
                 <li>
@@ -105,7 +105,7 @@
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
           <%=link_to posts_path(show_all: "All") ,:title=>"Show more" , :remote=> true do %>
-            <div class="btn btn-primary more-btn hide-more-btn"> Show more </div>
+            <div class="btn btn-primary more-btn hide-more-btn"> <%= t(:show_more) %> </div>
           <% end %>
         </div>
       </div>

@@ -3,4 +3,4 @@
 	<%= file_field_tag "question[#{@question_id}]",:require=>true ,:class=>"require-field", :tabindex => @tab_index  %>
 </div>
 
-<span class="uploaded-filename"> This must be a valid image (jpeg, png, or gif) file. </span>
+<span class="uploaded-filename"> <%= t(:wrong_image) %> </span>

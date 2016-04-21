@@ -10,4 +10,6 @@ class FurtherRead < ActiveRecord::Base
   # Validation
   validates :title, :category ,:author ,:link, :presence => true
 
+  translates :title, :author, :written_in
+
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :subscribe
+  before_action :set_locale
 
 	# Include the helper method 
   include ApplicationHelper
@@ -15,6 +16,14 @@ class ApplicationController < ActionController::Base
   # Define the subscribe model to all the pages
   def subscribe
     @subscribe = Subscribe.new
+  end
+
+  def default_url_options(options={})
+    { :locale => I18n.locale == I18n.default_locale ? nil : I18n.locale  }
+  end
+  
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
 end

@@ -7,7 +7,7 @@
   <% favicon_link_tag '/favicon.ico'%>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
-<body class="page-<%= controller_name %> report-slider">
+<body class="page-<%= controller_name %> report-slider <%= locale %>">
 
 	<div class="close-report">
 		<i class="fa fa-times"></i>
@@ -25,10 +25,10 @@
   <div class="close-popup-wrapper">
     <div class="close-popup">
       <div class="close-popup-content">
-        <p>Do you really want to quit?</p>
+        <p><%= t(:quit) %></p>
         <div>
-          <a href="#" class="btn btn-report close-popup-link"> No </a>
-          <%= link_to "Yes", submit_report_path, :class => "btn btn-report" %>
+          <a href="#" class="btn btn-report close-popup-link"> <%= t(:answer_no) %> </a>
+          <%= link_to t(:answer_yes), submit_report_path, :class => "btn btn-report" %>
         </div>
       </div>
     </div>

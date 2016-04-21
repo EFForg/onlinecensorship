@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :posts_themes, through: :posts_posts_themes
   has_and_belongs_to_many :social_media_platforms, through: :posts_social_media_platforms
 
+  translates :title, :description, :intro, :tags, :side_image_caption, :quote_author, :quote_text, :twitter_text, :news_source, :image_author_name, :pdf_file_name, :pdf_content_type, :pdf_file_size, :pdf_updated_at, :fallbacks_for_empty_translations => true
 
   # For use search method
   extend Search

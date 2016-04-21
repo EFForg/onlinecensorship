@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <%= f.email_field :email ,required: true , :class=>"email", :placeholder=>"Email" , :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
+  <%= f.email_field :email, required: true , :class=>"email", :placeholder => t(:email), :pattern => "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" %>
   <%= text_field_tag('subscribe[spam_checker]', nil, class: 'spam-checker') %>
-  <%= f.submit "SUBSCRIBE" , :class => "submit-btn" %>
+  <%= f.submit t(:subscribe), :class => "submit-btn" %>
 
 <% end %>

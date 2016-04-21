@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327081612) do
+ActiveRecord::Schema.define(version: 20160418133435) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "category_translations", force: true do |t|
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+  add_index "category_translations", ["locale"], name: "index_category_translations_on_locale", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "name"
@@ -33,11 +44,35 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.string   "replied_by"
   end
 
+  create_table "contacts_topic_translations", force: true do |t|
+    t.integer  "contacts_topic_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "contacts_topic_translations", ["contacts_topic_id"], name: "index_contacts_topic_translations_on_contacts_topic_id", using: :btree
+  add_index "contacts_topic_translations", ["locale"], name: "index_contacts_topic_translations_on_locale", using: :btree
+
   create_table "contacts_topics", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "content_management_page_translations", force: true do |t|
+    t.integer  "content_management_page_id", null: false
+    t.string   "locale",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
+    t.text     "brief"
+    t.string   "page_title"
+  end
+
+  add_index "content_management_page_translations", ["content_management_page_id"], name: "index_283c67b9d2b42ce6584b9a0ba821f2fee92dc77d", using: :btree
+  add_index "content_management_page_translations", ["locale"], name: "index_content_management_page_translations_on_locale", using: :btree
 
   create_table "content_management_pages", force: true do |t|
     t.string   "page"
@@ -54,6 +89,29 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "updated_at"
   end
 
+  create_table "country_translations", force: true do |t|
+    t.integer  "country_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "country_translations", ["country_id"], name: "index_country_translations_on_country_id", using: :btree
+  add_index "country_translations", ["locale"], name: "index_country_translations_on_locale", using: :btree
+
+  create_table "faq_translations", force: true do |t|
+    t.integer  "faq_id",     null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "question"
+    t.text     "answer"
+  end
+
+  add_index "faq_translations", ["faq_id"], name: "index_faq_translations_on_faq_id", using: :btree
+  add_index "faq_translations", ["locale"], name: "index_faq_translations_on_locale", using: :btree
+
   create_table "faqs", force: true do |t|
     t.text     "question"
     t.text     "answer"
@@ -61,6 +119,19 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "further_read_translations", force: true do |t|
+    t.integer  "further_read_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "author"
+    t.string   "written_in"
+  end
+
+  add_index "further_read_translations", ["further_read_id"], name: "index_further_read_translations_on_further_read_id", using: :btree
+  add_index "further_read_translations", ["locale"], name: "index_further_read_translations_on_locale", using: :btree
 
   create_table "further_reads", force: true do |t|
     t.string   "title"
@@ -74,6 +145,22 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.integer  "the_order"
   end
 
+  create_table "home_field_translations", force: true do |t|
+    t.integer  "home_field_id",   null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "slogan"
+    t.string   "what_oc_title"
+    t.text     "what_oc_text"
+    t.text     "appeal_text"
+    t.string   "appeal_btn_text"
+    t.string   "submit_btn_text"
+  end
+
+  add_index "home_field_translations", ["home_field_id"], name: "index_home_field_translations_on_home_field_id", using: :btree
+  add_index "home_field_translations", ["locale"], name: "index_home_field_translations_on_locale", using: :btree
+
   create_table "home_fields", force: true do |t|
     t.text     "slogan"
     t.string   "what_oc_title"
@@ -84,6 +171,17 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "updated_at"
     t.string   "submit_btn_text"
   end
+
+  create_table "language_translations", force: true do |t|
+    t.integer  "language_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "language_translations", ["language_id"], name: "index_language_translations_on_language_id", using: :btree
+  add_index "language_translations", ["locale"], name: "index_language_translations_on_locale", using: :btree
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -133,6 +231,43 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.integer  "theorder"
     t.string   "slug"
   end
+
+  create_table "person_translations", force: true do |t|
+    t.integer  "person_id",  null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "bio"
+    t.text     "role"
+  end
+
+  add_index "person_translations", ["locale"], name: "index_person_translations_on_locale", using: :btree
+  add_index "person_translations", ["person_id"], name: "index_person_translations_on_person_id", using: :btree
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",            null: false
+    t.string   "locale",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.text     "intro"
+    t.string   "tags"
+    t.string   "side_image_caption"
+    t.string   "quote_author"
+    t.text     "quote_text"
+    t.text     "twitter_text"
+    t.string   "news_source"
+    t.string   "image_author_name"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.string   "pdf_file_size"
+    t.string   "pdf_updated_at"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "category_id"
@@ -187,6 +322,17 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "updated_at"
   end
 
+  create_table "posts_theme_translations", force: true do |t|
+    t.integer  "posts_theme_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "posts_theme_translations", ["locale"], name: "index_posts_theme_translations_on_locale", using: :btree
+  add_index "posts_theme_translations", ["posts_theme_id"], name: "index_posts_theme_translations_on_posts_theme_id", using: :btree
+
   create_table "posts_themes", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -213,12 +359,37 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.string   "other_option_answer"
   end
 
+  create_table "question_option_translations", force: true do |t|
+    t.integer  "question_option_id", null: false
+    t.string   "locale",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "option_title"
+  end
+
+  add_index "question_option_translations", ["locale"], name: "index_question_option_translations_on_locale", using: :btree
+  add_index "question_option_translations", ["question_option_id"], name: "index_question_option_translations_on_question_option_id", using: :btree
+
   create_table "question_options", force: true do |t|
     t.integer  "question_id"
     t.string   "option_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "question_translations", force: true do |t|
+    t.integer  "question_id",    null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "question_title"
+    t.string   "prompt_text"
+    t.string   "prompt_link"
+    t.text     "placeholder"
+  end
+
+  add_index "question_translations", ["locale"], name: "index_question_translations_on_locale", using: :btree
+  add_index "question_translations", ["question_id"], name: "index_question_translations_on_question_id", using: :btree
 
   create_table "question_user_submissions", force: true do |t|
     t.integer  "question_user_id"
@@ -248,6 +419,19 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.string   "placeholder"
   end
 
+  create_table "quote_translations", force: true do |t|
+    t.integer  "quote_id",     null: false
+    t.string   "locale",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "author"
+    t.text     "quote"
+    t.text     "twitter_text"
+  end
+
+  add_index "quote_translations", ["locale"], name: "index_quote_translations_on_locale", using: :btree
+  add_index "quote_translations", ["quote_id"], name: "index_quote_translations_on_quote_id", using: :btree
+
   create_table "quotes", force: true do |t|
     t.string   "author"
     t.text     "quote"
@@ -264,6 +448,17 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "social_media_platform_translations", force: true do |t|
+    t.integer  "social_media_platform_id", null: false
+    t.string   "locale",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "social_media_platform_translations", ["locale"], name: "index_social_media_platform_translations_on_locale", using: :btree
+  add_index "social_media_platform_translations", ["social_media_platform_id"], name: "index_09379ecb3055166365c9619341e09b593d47e89c", using: :btree
 
   create_table "social_media_platforms", force: true do |t|
     t.string   "title"
@@ -291,6 +486,19 @@ ActiveRecord::Schema.define(version: 20160327081612) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
+
+  create_table "story_translations", force: true do |t|
+    t.integer  "story_id",   null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "brief"
+    t.text     "content"
+  end
+
+  add_index "story_translations", ["locale"], name: "index_story_translations_on_locale", using: :btree
+  add_index "story_translations", ["story_id"], name: "index_story_translations_on_story_id", using: :btree
 
   create_table "subscribes", force: true do |t|
     t.text     "email"

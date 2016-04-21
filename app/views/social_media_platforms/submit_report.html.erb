@@ -1,5 +1,5 @@
 <%
-  meta title: "Submit Report"
+  meta title: t(:submit_report)
 %>
 
 <% cms_page_content('submit-report') %>
@@ -21,7 +21,7 @@
 
 	<div class="white-box">
 		<div class="centered">
-			<h2> On which platform has your content been blocked? </h2>
+			<h2> <%= t(:on_which_platform) %> </h2>
 			<div class="clearfix platforms-wrapper">
 				<% @platforms.each do |platform| %>
 					<div class="col-md-2 col-sm-2 col-xs-4">

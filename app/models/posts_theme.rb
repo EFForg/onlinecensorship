@@ -14,4 +14,6 @@ class PostsTheme < ActiveRecord::Base
   # Validation
   validates :title, :presence => true
 
+  translates :title
+
 end
