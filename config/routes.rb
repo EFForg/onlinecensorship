@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'feed' => 'posts#feed'
+
     # for cms pages
     get "about/who-we-are" => "content_management_pages#who_we_are"
     get "about/what-we-do" => "content_management_pages#what_we_do"

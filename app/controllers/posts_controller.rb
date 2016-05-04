@@ -86,6 +86,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def feed
+    @posts = Post.where(:published=>true).order("id DESC")
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   def preview
   end
 
