@@ -28,11 +28,11 @@ xml.rss :version => "2.0" do
         text = article.description
 
         if article.photo.exists?
-            image_url = article.photo.url(:thumb)
+            image_url = article.photo.url
             image_tag = "
-                <p><img src='" + image_url +  "' alt='" + article.title + "' title='" + article.title + "' /></p>
+                <p><img src='" + image_url +  "' alt='" + article.title + "' title='" + article.title + "' /></p><br/>
               "
-            text = text.sub('{image}', image_tag)
+            text = image_tag + text
         end
         xml.description "<p>" + text + "</p>"
 
