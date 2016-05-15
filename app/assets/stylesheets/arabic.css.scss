@@ -90,7 +90,10 @@ body.ar {
   }
   .more-link, h5 a {
     margin-right: 0;
-    margin-left: 30px;
+    // margin-left: 30px;
+  }
+  .news-box {
+    direction: ltr;
   }
   .posts-filter-wrapper .select-wrapper .btn,
   .dropdown-menu {
