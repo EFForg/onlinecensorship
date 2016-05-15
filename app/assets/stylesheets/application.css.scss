@@ -57,6 +57,14 @@ input, select, textarea, button {
   }
 }
 
+// @media (max-width: 767px) {
+//   .dropdown-menu {
+//     display: none;
+//     position: relative;
+//     float: none;
+//   }
+// }
+
 .dotted-bg, .home-header {
   background: image-url("header-bg.png") repeat;
 }
