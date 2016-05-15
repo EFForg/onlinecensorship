@@ -108,6 +108,8 @@ ar:
   other: "غير ذلك"
   write_here: "أكتب هنا"
   wrong_email: "البريد الالكتروني خاطئ"
+  choose_file: "اختر الملف"
+  provide_us: ""
 
   date:
     abbr_month_names:

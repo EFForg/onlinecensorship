@@ -108,6 +108,8 @@ en:
   other: "Other"
   write_here: "Write here"
   wrong_email: "Wrong email format"
+  choose_file: "Choose File"
+  provide_us: "Can you please provide us?"
 
   date:
     abbr_month_names:
