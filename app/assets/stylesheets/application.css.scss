@@ -92,6 +92,12 @@ input, select, textarea, button {
       height: 32px;
     }
     font-weight: normal;
+    .dark-blue-bg {
+      color: #fff;
+      display: inline-block;
+      min-width: 172px;
+      padding: 10px 10px 0;
+    }
   }
   .action {
     @media (min-width: 992px) {
