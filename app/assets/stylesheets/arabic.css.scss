@@ -95,6 +95,9 @@ body.ar {
   .news-box {
     direction: ltr;
   }
+  .story .news-box {
+    direction: rtl;
+  }
   .posts-filter-wrapper .select-wrapper .btn,
   .dropdown-menu {
     text-align: right;
