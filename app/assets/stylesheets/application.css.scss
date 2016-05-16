@@ -17,6 +17,7 @@
  *= require headline
  *= require post
  *= require owl.carousel
+ *= require arabic
  */
 
 @import "bourbon";
@@ -56,6 +57,14 @@ input, select, textarea, button {
   }
 }
 
+// @media (max-width: 767px) {
+//   .dropdown-menu {
+//     display: none;
+//     position: relative;
+//     float: none;
+//   }
+// }
+
 .dotted-bg, .home-header {
   background: image-url("header-bg.png") repeat;
 }
@@ -91,6 +100,12 @@ input, select, textarea, button {
       height: 32px;
     }
     font-weight: normal;
+    .dark-blue-bg {
+      color: #fff;
+      display: inline-block;
+      min-width: 172px;
+      padding: 10px 10px 0;
+    }
   }
   .action {
     @media (min-width: 992px) {
@@ -1459,110 +1474,4 @@ select {
 .spam-checker {
   display:none;
   visibility:hidden;
-}
-
-body.ar {
-  direction: rtl;
-  .navbar-right {
-    float: left !important;
-  }
-  .navbar-header {
-    float: right;
-  }
-  .navbar-nav>li {
-    float: right;
-  }
-  @media (min-width: 992px) {
-    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
-      float: right;
-    }
-  }
-  .intro .action {
-    text-align: left;
-    .fa-arrow-right:before {
-      content: "\f060";
-    }
-  }
-  .appeal {
-    .col-md-offset-2 {
-      margin: 0;
-      width: 100%;
-    }
-  }
-  .owl-carousel {
-    direction: ltr;
-  }
-  .share-btn {
-    text-align: right !important;
-  }
-  .more-link, h5 a {
-    margin-right: 0;
-    margin-left: 30px;
-  }
-  .posts-filter-wrapper .select-wrapper .btn,
-  .dropdown-menu {
-    text-align: right;
-  }
-  .posts-filter-wrapper .select-wrapper .fa {
-    left: 0;
-    right: auto;
-  }
-  footer .subscribe-form form {
-    padding-left: 50px;
-    padding-right: 0;
-    .submit-btn {
-      right: auto;
-      left: 0;
-    }
-  }
-  .about-page .nav-pills {
-    padding: 0;
-  }
-  .nav-pills>li {
-    float: right;
-  }
-  .team-member .personal-photo {
-    float: right;
-  }
-  .team-member .personal-info {
-    margin-right: 88px;
-    margin-left: 0;
-  }
-  .faqs-page .panel-title a {
-    padding: 24px 15px 24px 76px;
-    .fa-wrapper {
-      right: auto;
-      left: 15px;
-    }
-  }
-  .contact-page .select-wrapper .fa {
-    right: auto;
-    left: 16px;
-  }
-  &.report-slider {
-    .other-option-input {
-      padding-right: 34px;
-    }
-    .nav-btns, .close-report {
-      right: auto;
-      left: 20px;
-    }
-    .input-report.dropdown-input {
-      direction: ltr;
-    }
-  }
-  @media (min-width: 992px) {
-    .col-md-offset-4 {
-      margin-left: 0;
-      margin-right: 33.33333333%;
-    }
-    .col-md-offset-6 {
-      margin-left: 0;
-      margin-right: 50%;
-    }
-    .about-page .text-box .post-content {
-      padding-left: 30px;
-      padding-right: 0;
-    }
-  }
 }
