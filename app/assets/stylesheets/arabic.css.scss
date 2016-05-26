@@ -17,7 +17,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+body.es {
+  footer .btn {
+    min-width: 100%;
+    width: auto;
+  }
+}
 body.ar {
   font-family: "arabic", tahoma;
   direction: rtl;
@@ -34,6 +39,17 @@ body.ar {
     font-family: "arabic";
     span {
       font-family: "arabic" !important;
+    }
+  }
+
+  .about-oc h1 {
+    line-height: 54px;
+  }
+
+  .intro h3 {
+    height: 90px;
+    .dark-blue-bg {
+      padding: 10px;
     }
   }
 
@@ -91,6 +107,9 @@ body.ar {
   .more-link, h5 a {
     margin-right: 0;
     // margin-left: 30px;
+  }
+  .more-link {
+    margin-left: 30px;
   }
   .news-box {
     direction: ltr;
