@@ -376,10 +376,16 @@ h5 a:hover{
 	  letter-spacing: 1px;
 	  margin-bottom: 0px;
 	}
-
 	// h1 {
 	//   text-align: center;
 	// }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .nav>li>a {
+    padding: 10px;
+    font-size: 12px;
+  }
 }
 
 /* Small Devices, Phones */
