@@ -5,15 +5,24 @@ class HomeController < ApplicationController
   def index
     @home_fields = HomeField.last
     @all_posts = Post.where(:published=>true).order("id DESC")
-    # binding.pry
-    @featured_post = Post.where(:published=>true).where(:featured=>true).order("updated_at DESC").first
-    # binding.pry
-    if @featured_post
-      # show only the pinned posts and disable reviewing the featured post
-      @posts = @all_posts.where.not(:id => @featured_post.id).where(:pinned=>true).limit(7)
+
+    if I18n.locale != :en
+      @translated_posts = Post.with_translations(I18n.locale).where(:published=>true).order("id DESC").limit(7)
+      @other_posts = Post.where(:published=>true).order("id DESC").where(:pinned=>true).limit(7)
+      #@all_posts = @translated_posts + @other_posts
+      posts = @translated_posts + @other_posts
+      @posts = posts.uniq
     else
-      # show only the pinned posts
-      @posts = @all_posts.where(:pinned=>true).limit(9)
+      # binding.pry
+      @featured_post = Post.where(:published=>true).where(:featured=>true).order("updated_at DESC").first
+      # binding.pry
+      if @featured_post
+        # show only the pinned posts and disable reviewing the featured post
+        @posts = @all_posts.where.not(:id => @featured_post.id).where(:pinned=>true).limit(7)
+      else
+        # show only the pinned posts
+        @posts = @all_posts.where(:pinned=>true).limit(9)
+      end
     end
     @stories = Story.where(:published=>true)
   end

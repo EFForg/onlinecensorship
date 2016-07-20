@@ -78,6 +78,14 @@ class PostsController < ApplicationController
           @show_all=true
         end
 
+        if I18n.locale != :en
+          @translated_posts = Post.with_translations(I18n.locale).where(:published=>true).order("id DESC").limit(7)
+          @other_posts = Post.where(:published=>true).order("id DESC").where(:pinned=>true).limit(7)
+          #@all_posts = @translated_posts + @other_posts
+          posts = @translated_posts + @other_posts
+          @posts = posts.uniq
+        end
+
         # Show the categories in filtering drop down menu
         @categories = Category.all
         @platform=SocialMediaPlatform.all
