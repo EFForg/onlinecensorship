@@ -79,7 +79,9 @@ meta og: {
 			<div class="row">
 
 					<div class="col-md-7">
-						<%= @post.description.html_safe %>
+						<% if @post.description %>
+							<%= @post.description.html_safe %>
+						<% end %>
 					</div>
 
 					<div class="col-md-5">
@@ -146,7 +148,11 @@ meta og: {
 			              <%= @post.person.name %>
 			            <% end %>
 		  					</h2>
-		  					<div> <%= @post.person.bio.html_safe %> </div>
+		  					<div>
+		  						<% if @post.person.bio %> 
+		  							<%= @post.person.bio.html_safe %>
+		  						<% end %>
+		  					</div>
 		  				</div>
 						</div>
 					</div>

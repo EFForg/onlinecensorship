@@ -25,7 +25,11 @@ xml.rss :version => "2.0" do
         xml.link "https://www.onlinecensorship.org/news-and-analysis/" + article.id.to_s
         xml.guid article.id
 
-        text = article.description
+        if article.description
+          text = article.description
+        else
+          text = ""
+        end
 
         if article.photo.exists?
             image_url = article.photo.url
