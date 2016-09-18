@@ -26,7 +26,7 @@ xml.rss :version => "2.0" do
         xml.guid article.id
 
         if article.description
-          text = article.description
+          text = strip_tags(article.description)
         else
           text = ""
         end
