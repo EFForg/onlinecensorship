@@ -23,8 +23,9 @@ body.es {
     width: auto;
   }
 }
-.ar-font, body.ar a {
+.ar-font a, body.ar a {
   font-family: "arabic", tahoma;
+  letter-spacing: 0;
 }
 body.ar {
   font-family: "arabic", tahoma;
