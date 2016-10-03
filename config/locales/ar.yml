@@ -110,6 +110,7 @@ ar:
   wrong_email: "البريد الالكتروني خاطئ"
   choose_file: "اختر الملف"
   provide_us: ""
+  RSS_Feed: "تغذية RSS"
 
   date:
     abbr_month_names:

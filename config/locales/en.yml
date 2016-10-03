@@ -110,6 +110,7 @@ en:
   wrong_email: "Wrong email format"
   choose_file: "Choose File"
   provide_us: "Can you please provide us?"
+  RSS_Feed: "RSS Feed"
 
   date:
     abbr_month_names:
