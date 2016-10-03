@@ -10,7 +10,7 @@
 </head>
 <body class="page-<%= controller_name %> <%= locale %>">
 
-  <!-- Fixed navbar -->application.html.erb
+  <!-- Fixed navbar -->
   <nav class="navbar navbar-default navbar-fixed-top <%= controller_name %>-header main-header">
     <div class="container">
       <div class="navbar-header">
@@ -54,7 +54,7 @@
              <ul class="dropdown-menu">
                <li> <%= link_to "En", :locale => :en %> </li>
                <li> <%= link_to "Esp", :locale => :es %> </li>
-               <!-- <li> <= link_to "عربي", :locale => :ar > </li> -->
+               <li> <%= link_to "عربي", :locale => :ar, :class => "ar-font" %> </li>
              </ul>
           </li>
         </ul>
