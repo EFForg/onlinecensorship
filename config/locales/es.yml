@@ -111,6 +111,7 @@ es:
   choose_file: "Elige archivo"
   provide_us: ""
   RSS_Feed: "RSS"
+  twitter_handle: "@censored"
 
   date:
     abbr_month_names:
