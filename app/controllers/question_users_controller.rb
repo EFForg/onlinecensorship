@@ -12,6 +12,11 @@ class QuestionUsersController < ApplicationController
         @social_media_platforms = SocialMediaPlatform.all
       }
 
+      format.csv {
+        @submissions = QuestionUser.all
+        send_data @submissions.to_csv
+      }
+
       # Using it to export excel file
       format.xls {
 
