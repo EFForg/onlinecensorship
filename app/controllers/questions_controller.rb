@@ -8,9 +8,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       # Using it in the backEnd to allow the admin to show and navigate all the model data
       format.html {
-        results=Question.search(params[:search],'question_title')
-        @questions=results.page(params[:page])
-        @count=results.count
+        results = Question.search(params[:search],'question_title')
+        @questions = results.page(params[:page])
+        @count = results.count
       }
       # Using it to export excel file
       format.xls {
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     # Related Question method
     # we use it in the backEnd to get all the questions related with one option
     ######################################################################
-    @questions=Question.where(:social_media_platform_id => params[:social_media_platform_id])
+    @questions = Question.where(:social_media_platform_id => params[:social_media_platform_id])
     render :layout => false
   end
 
