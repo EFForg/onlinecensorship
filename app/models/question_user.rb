@@ -18,7 +18,7 @@ class QuestionUser < ActiveRecord::Base
 	  CSV.generate(options) do |csv|
 	    csv << column_names
 	    all.each do |submission|
-	      csv << product.attributes.values_at(*column_names)
+	      csv << submission.attributes.values_at(*column_names)
 	    end
 	  end
 	end

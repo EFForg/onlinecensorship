@@ -5,7 +5,7 @@
 class SocialMediaPlatform < ActiveRecord::Base
 
   ## DB relations
-  has_many :pages
+  # has_many :pages
   has_many :posts
   has_many :quotes
 

@@ -17,7 +17,7 @@
 			<% PageQuestions(page.id)%>
 			<% @registerd_questions.each do |page_question| %>
 				<li id="<%=page_question.id%>">
-					<%=page_question.question.question_title.gsub('{platform}',page.social_media_platform.title)%>
+					<%= page_question.question.question_title %>
 					
 				  <%= link_to admin_pages_questions_path(page_question_id: page_question.id,page_id: page.id,page_div: "page-#{page.id.to_s}-registerd-questions"), remote: true  do %>
 						<div class="fa fa-pencil" data-toggle="modal" data-target="#myQuestionsPopup"></div>

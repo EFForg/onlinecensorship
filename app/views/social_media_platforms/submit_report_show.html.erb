@@ -6,7 +6,7 @@
 	# used to show options platform title
 	@social_media_platform_title=@social_media_platform.title
 	# Get the pages count
-	pages_count=@social_media_platform.pages.count
+	pages_count = @pages.count
   # check the cookies
   if cookies[:user_still_kid]
     klass="hidden"
@@ -24,7 +24,7 @@
 </div><!--process-->
 
 <!--slider-pages-->
-<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count+4 %>">
+<div class="slider-pages row" data-pagescount="<%= @pages.count+4 %>">
 
   <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
 
@@ -95,7 +95,7 @@
     	</div><!-- user age -->
 
       <% @tab_index=0%>
-  		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
+  		<% @pages.each_with_index do |page, i| %>
   			<!--page slides-->
   			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page hidden' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
   				<div class="slide-page">

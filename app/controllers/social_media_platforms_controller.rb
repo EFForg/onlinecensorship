@@ -25,6 +25,7 @@ class SocialMediaPlatformsController < ApplicationController
   def  submit_report_show
     @countries=Country.order("name ASC")
     @languages=Language.order("name ASC")
+    @pages = Page.order(:theorder => :asc)
     render :layout => "report"
   end
 
