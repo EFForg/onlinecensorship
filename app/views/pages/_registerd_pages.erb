@@ -1,7 +1,7 @@
 <!-- used in ajax request -->
 <% @pages.each do |page| %>
 	<div class="field fieldset add-page-fieldset" id="<%=page.id%>">
-		<label class="pull-left">Slider order</label>
+		<label class="pull-left">Page Order</label>
 		<input class="form-control pull-left page-order" name="page_theorder[]" type="number" value="<%=page.theorder%>"/>
 		<p class="tip pull-left tip-margin"> Optional</p>
 		<div class="pull-left saved hide" id="save_<%=page.id%>">saved</div>

@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # return the question answer
   def question_answer(question_id,question_user_submission_id)
-    @answer=QuestionAnswer.where(:question_id =>question_id).where(:question_user_submission_id =>question_user_submission_id).first
+    @answer = QuestionAnswer.where(:question_id => question_id).where(:question_user_submission_id => question_user_submission_id).first
   end
 
   # return the question user submission id
@@ -26,12 +26,12 @@ module ApplicationHelper
   end
 
   # return the question page
-  def question_page(question_id,platform_id)
+  def question_page(question_id)
     Question.find(question_id).pages_questions.each do |question_page|
       if question_page.page.present?
-        if question_page.page.social_media_platform_id == platform_id.to_i
-          @question_page_id=question_page.page_id
-        end
+        # if question_page.page.social_media_platform_id == platform_id.to_i
+        @question_page_id = question_page.page_id
+        # end
       end
     end
   end

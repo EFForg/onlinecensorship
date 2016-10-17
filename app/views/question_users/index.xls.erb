@@ -2,9 +2,8 @@
   <tr>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
     <th style="text-align:left; font-weight:bold;">Age</th>
-    <th style="text-align:left; font-weight:bold;">Platform</th>
     <% @questions.each do |question| %>
-      <th style="text-align:left; font-weight:bold;"><%=question.question_title.gsub('{platform}',@platform.title)%></th>
+      <th style="text-align:left; font-weight:bold;"><%= question.question_title %></th>
     <% end %>
     <th style="text-align:left; font-weight:bold;">May we contact you to follow up on this report? </th>
     <th style="text-align:left; font-weight:bold;">Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details. </th>
@@ -15,7 +14,6 @@
     <tr>
       <td><%= user.created_at.to_date %></td>
       <td><%= user.age %></td>
-      <td><%= @platform.title %></td>
       <% @questions.each do |question| %>
         <td>
           <%
@@ -24,7 +22,7 @@
           # question_user_id = user.id
 
           # get the question_page_id
-          question_page(question.id,@platform.id)
+          question_page(question.id)
 
           # get the question_user_submission_id
           question_user_submission(user.id,@question_page_id)
@@ -34,21 +32,21 @@
           # get the answer
           if @question_user_submission.present? && question.present?
             question_answer(question.id,@question_user_submission.id)
-            question_type=question.question_type
+            question_type = question.question_type
           end
           # show the question answer according to the type
           %>
-          <% if question_type=="text" || question_type=="long_text" || question_type=="url" || question_type=="email" %>
+          <% if question_type == "text" || question_type == "long_text" || question_type == "url" || question_type == "email" %>
             <% if @answer != nil && @answer.answer_text.present?  %>
               <%=@answer.answer_text%>
             <% end %>
-          <% elsif question_type=="upload" %>
+          <% elsif question_type == "upload" %>
             <%= file_download_link(@question_user_submission) %>
-          <% elsif question_type=="select" %>
+          <% elsif question_type == "select" %>
             <% if @question_user_submission.question_answer.question_option.present? && @question_user_submission.question_answer.present? %>
               <%=@question_user_submission.question_answer.question_option.option_title %>
             <% end %>
-          <% elsif question_type=="multi_select" %>
+          <% elsif question_type == "multi_select" %>
             <% if @answer %>
               <% showMultiOptionsAnswers(@answer.question_id,@question_user_submission.id) %>
             <% end %>
@@ -58,20 +56,20 @@
                   <% if option.other_option_answer %>
                     <li><%=option.other_option_answer%></li>
                   <% else %>
-                    <li><%=option.question_option.option_title.gsub('{platform}',@platform.title)%></li>
+                    <li><%= option.question_option.option_title %></li>
                   <% end %>
                 </ul>
               <% end %>
             <% else %>
               no answer
             <% end %>
-          <% elsif question_type=="countries" %>
-            <% if @answer.country.present? %>
-              <%=@answer.country.name%>
+          <% elsif question_type == "countries" %>
+            <% if @answer != nil && @answer.country.present? %>
+              <%= @answer.country.name %>
             <% end %>
           <% elsif question_type=="languages" %>
-            <% if @answer.language.present? %>
-              <%=@answer.language.name%>
+            <% if @answer != nil && @answer.language.present? %>
+              <%= @answer.language.name %>
             <% end %>
           <% end %>
         </td>

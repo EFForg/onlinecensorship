@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def index
     if params[:request_type]=="registerd_pages"    
       # We using it to get the registerd pages for the selected platform by ajax request in backEnd
-      @pages=Page.order(:theorder => :asc);
+      @pages = Page.order(:theorder => :asc);
       render :layout => false
     else
       # We using it to add pages by ajax from the backEnd

@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
         if !question_id.include? "static"
 
           # get the question page id
-          question_page(question_id,params[:platform_id])
+          question_page(question_id)
 
           # insert the user submition data
           @question_user_submission = QuestionUserSubmission.new(:question_user_id => @question_user.id, :page_id => @question_page_id)

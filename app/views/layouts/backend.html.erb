@@ -63,6 +63,52 @@
               <ul class="nav">
                 <!-- Main menu -->
 
+                <li>
+                  <i class="fa fa-sliders"></i>
+                  <%= link_to 'Questionaire', new_page_path %>
+                </li>
+
+                <li class="submenu">
+                  <a href="#">
+                    <i class="fa fa-question"></i> Questions
+                    <span class="caret pull-right"></span>
+                  </a>
+                  <!-- Sub menu -->
+                  <ul>
+                    <li>
+                      <i class="fa fa-pencil-square-o"></i>
+                      <%= link_to 'Add New', new_question_path %>
+                    </li>
+                    <li>
+                      <i class="fa fa-check-square-o"></i>
+                      <%= link_to 'Manage', admin_questions_path %>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <i class="fa fa-user"></i>
+                  <%= link_to 'Users Submissions ', admin_question_users_path %>
+                </li>
+
+                <li class="submenu">
+                  <a href="#">
+                    <i class="fa fa-facebook-square"></i> Social Media Platforms
+                    <span class="caret pull-right"></span>
+                  </a>
+                  <!-- Sub menu -->
+                  <ul>
+                    <li>
+                      <i class="fa fa-pencil-square-o"></i>
+                      <%= link_to 'Add New', new_social_media_platform_path %>
+                    </li>
+                    <li>
+                      <i class="fa fa-check-square-o"></i>
+                      <%= link_to 'Manage', admin_social_media_platforms_path %>
+                    </li>
+                  </ul>
+                </li>
+
                 <li class="submenu">
                   <a href="#">
                     <i class="fa fa-globe"></i> Countries
@@ -99,51 +145,6 @@
                   </ul>
                 </li>
 
-                <li class="submenu">
-                  <a href="#">
-                    <i class="fa fa-question"></i> Questions
-                    <span class="caret pull-right"></span>
-                  </a>
-                  <!-- Sub menu -->
-                  <ul>
-                    <li>
-                      <i class="fa fa-pencil-square-o"></i>
-                      <%= link_to 'Add New', new_question_path %>
-                    </li>
-                    <li>
-                      <i class="fa fa-check-square-o"></i>
-                      <%= link_to 'Manage', admin_questions_path %>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="submenu">
-                  <a href="#">
-                    <i class="fa fa-facebook-square"></i> Social Media Platforms
-                    <span class="caret pull-right"></span>
-                  </a>
-                  <!-- Sub menu -->
-                  <ul>
-                    <li>
-                      <i class="fa fa-pencil-square-o"></i>
-                      <%= link_to 'Add New', new_social_media_platform_path %>
-                    </li>
-                    <li>
-                      <i class="fa fa-check-square-o"></i>
-                      <%= link_to 'Manage', admin_social_media_platforms_path %>
-                    </li>
-                  </ul>
-                </li>
-
-                <li>
-                  <i class="fa fa-sliders"></i>
-                  <%= link_to 'Questionaires', new_page_path %>
-                </li>
-
-                <li>
-                  <i class="fa fa-user"></i>
-                  <%= link_to 'Users Submissions ', admin_question_users_path %>
-                </li>
               </ul>
             </div><!--sidebar-->
           </div><!--col-md-3-->
