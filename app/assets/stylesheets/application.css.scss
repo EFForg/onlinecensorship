@@ -1289,6 +1289,11 @@ select {
             color: #fff;
           }
         }
+        &.selected:hover {
+          .fa-check:before {
+            content: "\f00d";
+          }
+        }
       }
     }
 
