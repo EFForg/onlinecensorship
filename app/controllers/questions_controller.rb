@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     # Related Question method
     # we use it in the backEnd to get all the questions related with one option
     ######################################################################
-    @questions = Question.where(:social_media_platform_id => params[:social_media_platform_id])
+    @questions = Question.all
     render :layout => false
   end
 
@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
     # Related Options method
     # we use it in the backEnd to get all the options related with question
     ######################################################################
-    @related_options=QuestionOption.where(:question_id => params[:depend_on_question_id])
+    @related_options = QuestionOption.where(:question_id => params[:depend_on_question_id])
     render :layout => false
   end
 
@@ -50,8 +50,8 @@ class QuestionsController < ApplicationController
 
       # insert the user data
       # params[:static_2] is the question that the user can type his email in it in the new approach
-      # params[:static_3] is the question that the user can select if he want to inform the patform about his case or not
-      @question_user = QuestionUser.new(:contact => params[:static_1] ,:email => params[:static_2] , :inform_platform => params[:static_3] ,:age=> params[:user_age])
+      # params[:static_3] is the question that the user can select if accept to use his submission in a case study or not
+      @question_user = QuestionUser.new(:contact => params[:static_1], :email => params[:static_2], :case_study => params[:static_3], :age => params[:user_age])
       @question_user.save
 
       # get the questions id's and the answers values
@@ -116,7 +116,7 @@ class QuestionsController < ApplicationController
       # notify method need params [user name ,form,data,notification kind, email subject]
       if params[:static_2] !=""
         data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
-        Mailer.notify("","submit report",data,"submit_report","OC submit report form notification system")
+        Mailer.notify("","submit report",data,"submit_report","[OC notification System] Report Submission")
       else
         data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
         Mailer.notify("Anonymous","submit report",data,"submit_report","[OC notification System] Report Submission")

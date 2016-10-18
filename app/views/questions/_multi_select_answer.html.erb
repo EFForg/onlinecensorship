@@ -4,7 +4,7 @@
 		<% if option.other_option_answer %>
 			<li><%=option.other_option_answer%></li>
 		<% else %>
-			<li><%=option.question_option.option_title.gsub('{platform}',@submission.page.social_media_platform.title)%></li>
+			<li><%=option.question_option.option_title %> <!-- .gsub('{platform}',@submission.page.social_media_platform.title) --></li>
 		<% end %>
 	</ul>
 <% end %>
