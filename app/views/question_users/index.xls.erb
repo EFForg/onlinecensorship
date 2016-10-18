@@ -1,5 +1,6 @@
 <table width="100%" cellspacing="2" border="1">
   <tr>
+    <th style="text-align:left; font-weight:bold;">ID</th>
     <th style="text-align:left; font-weight:bold;">Registered at</th>
     <th style="text-align:left; font-weight:bold;">Age</th>
     <% @questions.each do |question| %>
@@ -12,6 +13,7 @@
 
   <% @question_users.each do |user| %>
     <tr>
+      <td><%= user.id %></td>
       <td><%= user.created_at.to_date %></td>
       <td><%= user.age %></td>
       <% @questions.each do |question| %>
