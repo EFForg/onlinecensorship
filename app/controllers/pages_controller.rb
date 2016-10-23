@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy , :update_page]
+  before_action :set_page, only: [:show, :edit, :update, :destroy , :update_page, :update_message]
   before_action :authenticate_user!
   layout 'backend'
 
@@ -19,7 +19,11 @@ class PagesController < ApplicationController
 
   def update_page
     # We using it to update pages order number by ajax from the backEnd
-    @update=@page.update_attributes(:theorder=> params[:theorder])
+    @update = @page.update_attributes(:theorder=> params[:theorder])
+  end
+
+  def update_message
+    @update = @page.update_attributes(:message=> params[:message])
   end
 
   def new
@@ -75,6 +79,6 @@ class PagesController < ApplicationController
     end
 
     def page_params
-      params.require(:page).permit(:social_media_platform_id,:theorder)
+      params.require(:page).permit(:social_media_platform_id,:theorder, :message)
     end
 end

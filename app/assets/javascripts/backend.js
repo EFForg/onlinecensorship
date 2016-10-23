@@ -115,6 +115,21 @@ $( document ).ready(function() {
     });
   });
 
+  $(document).on("click", '.save-page', function() {
+    var el_id = $(this).parents(".fieldset").attr("id");
+    $.ajax({
+      method: "POST",
+      url: "/admin/update_message",
+      data: { id: el_id, message: $(this).prev().val()}
+    })
+    .done(function(html) {
+      // show saving notification
+      $("#save_"+el_id).removeClass('hide').delay(2000).queue(function(){
+        $(this).addClass('hide');
+      });
+    });
+  });
+
   // Show/hide post links
   $("#post_category_id").change(function() {
     var category_title=$("#post_category_id option:selected").text();

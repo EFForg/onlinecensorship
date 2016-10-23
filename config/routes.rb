@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     get "/admin/social_media_platforms" => "social_media_platforms#index"
     get "/admin/pages_questions" => "pages#pages_questions"
     post "/admin/update_page" =>"pages#update_page"
+    post "/admin/update_message" =>"pages#update_message"
     get "/admin/questions" => "questions#index"
     get "/admin/related_questions" => "questions#related_questions"
     get "/admin/related_options" => "questions#related_options"

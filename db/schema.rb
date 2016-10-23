@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018103841) do
+ActiveRecord::Schema.define(version: 20161023142142) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20161018103841) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "theorder"
+    t.text     "message"
   end
 
   create_table "pages_questions", force: true do |t|

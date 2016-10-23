@@ -540,3 +540,12 @@ label{
     font-weight: bold;
   }
 }
+
+.save-page {
+  color: $link-blue;
+  display: inline;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
