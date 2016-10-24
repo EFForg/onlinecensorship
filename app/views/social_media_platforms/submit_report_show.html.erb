@@ -100,7 +100,7 @@
   			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page hidden' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
   				<div class="slide-page">
 
-            <p> <%= page.message %> </p>
+            <div class="col-md-7 col-no-padding"> <p><%= page.message %></p> </div>
 
   					<% if page.pages_questions.count > 0 %>
   						<!--page questions-->
