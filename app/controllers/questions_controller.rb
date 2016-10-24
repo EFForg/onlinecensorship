@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
       # insert the user data
       # params[:static_2] is the question that the user can type his email in it in the new approach
       # params[:static_3] is the question that the user can select if accept to use his submission in a case study or not
-      @question_user = QuestionUser.new(:contact => params[:static_1], :email => params[:static_2], :case_study => params[:static_3], :age => params[:user_age])
+      @question_user = QuestionUser.new(:contact => params[:static_1], :email => params[:static_2], :case_study => params[:static_3], :age => params[:user_age], :language => I18n.locale)
       @question_user.save
 
       # get the questions id's and the answers values
