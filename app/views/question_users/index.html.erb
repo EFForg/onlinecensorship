@@ -27,10 +27,10 @@
       <thead title="Click to short" class="cursor">
         <tr>
           <th>ID</th>
+          <th>Language</th>
           <th>Email</th>
           <th>Age</th>
-          <th>Inform Platform</th>
-          <th>Contact with the user</th>
+          <th>Contact user?</th>
           <th>Created at</th>
           <th>Answers</th>
         </tr>
@@ -48,6 +48,9 @@
                 <%= question_user.id %>
               </td>
               <td>
+                <%= question_user.language %>
+              </td>
+              <td>
                 <% if question_user.email? %>
                   <%= question_user.email %>
                 <% else %>
@@ -56,9 +59,6 @@
               </td>
               <td>
                 <%= question_user.age %>
-              </td>
-              <td>
-                <%= question_user.inform_platform %>
               </td>
               <td>
                 <% if question_user.contact !=nil  %>
