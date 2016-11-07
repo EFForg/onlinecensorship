@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107073554) do
+ActiveRecord::Schema.define(version: 20161107080602) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -245,6 +245,19 @@ ActiveRecord::Schema.define(version: 20161107073554) do
 
   add_index "person_translations", ["locale"], name: "index_person_translations_on_locale", using: :btree
   add_index "person_translations", ["person_id"], name: "index_person_translations_on_person_id", using: :btree
+
+  create_table "platform_link_translations", force: true do |t|
+    t.integer  "platform_link_id", null: false
+    t.string   "locale",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "platform_name"
+    t.string   "help_link"
+    t.string   "support_link"
+  end
+
+  add_index "platform_link_translations", ["locale"], name: "index_platform_link_translations_on_locale", using: :btree
+  add_index "platform_link_translations", ["platform_link_id"], name: "index_platform_link_translations_on_platform_link_id", using: :btree
 
   create_table "platform_links", force: true do |t|
     t.string   "platform_name"

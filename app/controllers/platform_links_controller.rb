@@ -39,11 +39,11 @@ class PlatformLinksController < ApplicationController
   end
 
   private
-    def set_posts_theme
+    def set_platform_link
       @platform_link = PlatformLink.find(params[:id])
     end
 
-    def posts_theme_params
+    def platform_link_params
       params.require(:platform_link).permit(:platform_name, :support_link, :help_link)
     end
 end
