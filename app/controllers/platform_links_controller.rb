@@ -1,0 +1,2 @@
+class PlatformLinksController < ApplicationController
+end
