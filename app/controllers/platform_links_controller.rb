@@ -14,6 +14,11 @@ class PlatformLinksController < ApplicationController
 
   def new
     @platform_link = PlatformLink.new
+    @platforms = Question.where(question_type: "platform_select").first().question_options()
+  end
+
+  def edit
+    @platforms = Question.where(question_type: "platform_select").first().question_options()
   end
 
   def create

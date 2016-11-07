@@ -119,7 +119,7 @@
 
   								<div class="col-md-9 question <%=klass%> <%= page_question.question.question_type %>" id="question-<%=page_question.question_id%>">
 
-  									<h2><%=page_question.question.question_title.gsub('{platform}',@social_media_platform.title)%></h2>
+  									<h2><%= page_question.question.question_title.html_safe %></h2>
 
   		              <%
   		                # load the question data to use it in the renders pages
@@ -129,7 +129,7 @@
   		                @question_prompt_link=page_question.question.prompt_link
   		                @question_other_answer=page_question.question.other_answer
   		                if page_question.question.placeholder
-  		                	@question_placeholder=page_question.question.placeholder.gsub('{platform}',@social_media_platform.title)
+  		                	@question_placeholder=page_question.question.placeholder
   		              	end
   		                if page_question.question.question_options.present?
   		                  @question_options=page_question.question.question_options

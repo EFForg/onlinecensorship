@@ -1,3 +1,8 @@
-<%=link_to @question_prompt_link ,:target=>"_blank" do %>
-	<%=@question_prompt_text%>
-<%end%>
+<% @links = PlatformLink.all %>
+<% @links.each do |link| %>
+	<div class="<%= link.platform_name.downcase %>-support-link support-link hide">
+		<%= link_to link.support_link, :target=>"_blank" do %>
+			<%= @question_prompt_text %>
+		<%end%>
+	</div>
+<% end %>

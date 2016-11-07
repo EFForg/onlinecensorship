@@ -110,7 +110,7 @@ $( document ).ready(function() {
   );
 
   // radio select
-  $(".select-input.radio-select").click(function(){
+  $(".select-input.radio-select, .platform_select .other-option-input").click(function(){
     var el=$(this);
     var option_id=el.attr("id");
     var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
@@ -125,6 +125,20 @@ $( document ).ready(function() {
     // show next button
     showNextButton(parent_page_id);
   });
+
+  $(".platform_select .platform-select").click(function(){
+    var selectedPlatform = $('.platform_select .selected label').text().trim().toLowerCase();
+    console.log(selectedPlatform);
+    $(".question h2").each(function(index) {
+      //$(this).html( $(this).html().replace('{platform}',selectedPlatform) );
+      // console.log($(this));
+      $(this).find("b.platform").html( selectedPlatform );
+    });
+    $(".support-link").addClass("hide");
+    $("."+selectedPlatform+"-support-link").removeClass("hide");
+  });
+
+  
 
   // multi select
   $(".select-input.multi-select label").click(function(){

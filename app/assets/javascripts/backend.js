@@ -32,7 +32,7 @@ $( document ).ready(function() {
 
   // show the questions options
 	$('#question_question_type').on('change', function() {
-	  if($(this).val()=="multi_select"){
+	  if($(this).val()=="multi_select" || $(this).val()=="platform_select"){
       $('.other-option').removeClass("hide");
       $('.questions-options-fields').removeClass("hide");
       $(".placeholder-field").addClass("hide");
