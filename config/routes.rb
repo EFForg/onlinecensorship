@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :platform_links
-
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
 
     root 'home#index'
@@ -39,6 +37,7 @@ Rails.application.routes.draw do
       put :publish
     end
 
+    resources :platform_links
     resources :posts_themes
     resources :categories
     resources :social_media_platforms
@@ -83,6 +82,7 @@ Rails.application.routes.draw do
     get "/admin/categories" => "categories#index"
     get "/admin/posts_themes" => "posts_themes#index"
     get "/admin/quotes" => "quotes#index"
+    get "/admin/platform_links" => "platform_links#index"
     
     get "/admin/further_reads" => "further_reads#admin"
     get "/admin/faqs" => "faqs#admin"

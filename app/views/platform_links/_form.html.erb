@@ -1,0 +1,31 @@
+<%= form_for(@platform_link) do |f| %>
+  <% if @platform_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@platform_link.errors.count, "error") %> prohibited this platform link from being saved:</h2>
+      <ul>
+      <% @platform_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :platform_name %><br>
+    <%= f.text_field :platform_name, required: true , :class=> "form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :help_link %><br>
+    <%= f.text_field :help_link, required: true , :class=> "form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :support_link %><br>
+    <%= f.text_field :platform_link, required: true , :class=> "form-control"  %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>
