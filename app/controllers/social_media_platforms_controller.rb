@@ -1,5 +1,5 @@
 class SocialMediaPlatformsController < ApplicationController
-  before_action :set_social_media_platform, only: [:submit_report_show ,:show, :edit, :update, :destroy]
+  before_action :set_social_media_platform, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! , except: [:submit_report ,:submit_report_show]
   layout 'backend', except: [:submit_report ,:submit_report_show]
 
@@ -22,7 +22,7 @@ class SocialMediaPlatformsController < ApplicationController
     @platforms=SocialMediaPlatform.all
   end
 
-  def  submit_report_show
+  def submit_report_show
     @countries=Country.order("name ASC")
     @languages=Language.order("name ASC")
     @pages = Page.order(:theorder => :asc)

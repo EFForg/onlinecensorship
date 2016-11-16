@@ -3,7 +3,7 @@
 	<div class="input-report select-input multi-select" id="<%=check_button.id%>">
 	  <%=check_box_tag @question_id,check_button.id,false,:id=>"op-"+check_button.id.to_s,:name=>"question[#{@question_id}][]",:class=>"option" %>
 	  <%= label_tag "op-"+check_button.id.to_s, :class => "option" , :tabindex => @tab_index  do %>
-	  	<%= check_button.option_title.gsub('{platform}',@social_media_platform_title) %>
+	  	<%= check_button.option_title %>
 	  	<i class="fa fa-check"></i>
 	  <% end %>
 	</div>

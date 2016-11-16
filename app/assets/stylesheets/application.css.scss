@@ -1484,3 +1484,15 @@ select {
   display:none;
   visibility:hidden;
 }
+
+.start-survey {
+  margin-top: 12px;
+}
+
+.btn-white {
+  color: #fff;
+  border: 2px solid #fff !important;
+  &:hover {
+    background: #fff;
+  }
+}

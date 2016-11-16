@@ -8,36 +8,19 @@
   <% unless @page.nil? %>
     <div class="container">
       <h1> <%= @page.page_title %>  </h1>
-       <div class="row">
-      	<div class="col-md-7">
-  		    <p> <%= @page.brief %> </p>
-  	    </div>
-       </div>
+			<div class="row">
+				<div class="col-md-7">
+				  <p> <%= @page.brief %> </p>
+				</div>
+			</div>
+			<div class="start-survey">
+				<%= link_to t(:Get_Started), submit_report_show_path, :class => "btn btn-white" %>
+			</div>
     </div>
   <% end %>
 </section>
 
 <div class="container submit-page">
-
-	<div class="white-box">
-		<div class="centered">
-			<h2> <%= t(:on_which_platform) %> </h2>
-			<div class="clearfix platforms-wrapper">
-				<% @platforms.each do |platform| %>
-					<div class="col-md-2 col-sm-2 col-xs-4">
-						<%= link_to submit_report_show_path( platform ) do %>
-							<div class="platform">
-								<div class="platform-details">
-									<i class="<%= platform.font_awesome_style %>"></i>
-									<h4><%= platform.title %></h4>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
 
   <% unless @page.nil? %>
     <%= @page.content.html_safe %>

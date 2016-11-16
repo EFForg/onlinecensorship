@@ -115,10 +115,10 @@ class QuestionsController < ApplicationController
       # which will send the email template located in views/mailer/notify.html.erb
       # notify method need params [user name ,form,data,notification kind, email subject]
       if params[:static_2] !=""
-        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
+        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br/>"
         Mailer.notify("","submit report",data,"submit_report","[OC notification System] Report Submission")
       else
-        data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
+        data="<br> <b> User data: </b> Anonymous <br/>"
         Mailer.notify("Anonymous","submit report",data,"submit_report","[OC notification System] Report Submission")
       end
       ####

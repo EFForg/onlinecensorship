@@ -56,7 +56,13 @@ Rails.application.routes.draw do
     get "/contacts" => "contacts#new"
 
     get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
-    get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
+    get "/submit" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
+    get "/submit-report/facebook", :to => redirect("/submit")
+    get "/submit-report/twitter", :to => redirect("/submit")
+    get "/submit-report/flickr", :to => redirect("/submit")
+    get "/submit-report/youtube", :to => redirect("/submit")
+    get "/submit-report/google", :to => redirect("/submit")
+    get "/submit-report/instagram", :to => redirect("/submit")
 
     get "/admin/stories" => "stories#index"
     get "/admin/posts" => "posts#admin"

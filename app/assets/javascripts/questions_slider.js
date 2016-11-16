@@ -128,15 +128,29 @@ $( document ).ready(function() {
 
   $(".platform_select .platform-select").click(function(){
     var selectedPlatform = $('.platform_select .selected label').text().trim().toLowerCase();
+
+    $(".support-link").addClass("hide");
+    
+    if(selectedPlatform == "other") {
+      selectedPlatform = "'Platform'";
+      // $(".prompt").css("display","none !important");
+    } else {
+      $("."+selectedPlatform+"-support-link").removeClass("hide");
+    }
     console.log(selectedPlatform);
+
     $(".question h2").each(function(index) {
-      //$(this).html( $(this).html().replace('{platform}',selectedPlatform) );
-      // console.log($(this));
       $(this).find("b.platform").html( selectedPlatform );
     });
-    $(".support-link").addClass("hide");
-    $("."+selectedPlatform+"-support-link").removeClass("hide");
   });
+
+  $(".platform_select .other-option-input").bind("keyup", (function() {
+      selectedPlatform = $(this).val();
+      $(".question h2").each(function(index) {
+        $(this).find("b.platform").html( selectedPlatform );
+      });
+    })
+  );
 
   
 
@@ -270,7 +284,5 @@ $( document ).ready(function() {
       $(".slider-pages").removeClass("increased");
     }
   });
-
-
 
 });
