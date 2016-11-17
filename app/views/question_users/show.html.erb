@@ -32,7 +32,9 @@
 				  <strong>Answers:</strong>
 				  <ul>
 						<% if @question_user.question_user_submissions.present? %>
-							<% @question_user.question_user_submissions.each do |submission| %>
+							
+              <% @question_user.question_user_submissions.each do |submission| %>
+                
                 <% if submission.page.present? %>
                   <% if submission.question_answer.respond_to?(:question) and !submission.question_answer.question.nil? %>
     								<li>
@@ -47,6 +49,7 @@
                   <% end %>
                 <% end %>
 							<% end %>
+
 						<% end %>
 					</ul>
 				</p>

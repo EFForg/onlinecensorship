@@ -111,6 +111,8 @@ $( document ).ready(function() {
 
   // radio select
   $(".select-input.radio-select, .platform_select .other-option-input").click(function(){
+    // $(".platform_select input[type=checkbox]:checked").removeAttr('checked');
+    // $(this).find("input[type=checkbox]").prop('checked', true);
     var el=$(this);
     var option_id=el.attr("id");
     var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
