@@ -24,7 +24,7 @@
 <!--slider-pages-->
 <div class="slider-pages row" data-pagescount="<%= @pages.count+4 %>">
 
-  <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
+  <%= form_tag("/thanks", id: "report", method: "post", :authenticity_token => true, :enctype =>"multipart/form-data", multipart: true, class: klass ) do |f| %>
 
     <% if ! cookies[:user_still_kid] %>
 

@@ -87,7 +87,6 @@ class QuestionsController < ApplicationController
           elsif question_type=="multi_select" || question_type=="platform_select"
             # check if there's other answer
             if params[:"other_#{question_id}"] != ""
-              binding.pry
               # insert the other answer data
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
               add_question_answer(question_id,@question_user_submission.id,nil,nil,params[:"other_#{question_id}"],nil,nil,nil)
