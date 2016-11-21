@@ -135,9 +135,11 @@ $( document ).ready(function() {
     
     if(selectedPlatform == "other") {
       selectedPlatform = "'Platform'";
-      // $(".prompt").css("display","none !important");
+      $(".prompt").addClass("hide");
+      $(".prompt h2").css("color","#152f4e");
     } else {
       $("."+selectedPlatform+"-support-link").removeClass("hide");
+      $(".prompt h2").css("color","#41DCF5");
     }
     console.log(selectedPlatform);
 
