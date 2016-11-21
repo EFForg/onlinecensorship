@@ -1,8 +1,7 @@
 var request_type= "<%=params[:request_type]%>";
-var platform_id= "<%=params[:social_media_platform_id]%>";
 var content;
 
-if(request_type=="new_page"){
+if(request_type == "new_page"){
   //  Add new pages 
   content = $('<%= escape_javascript render(:partial => "add_page") %>');
   // Append the result in the view
@@ -13,12 +12,12 @@ if(request_type=="new_page"){
   content = $('<%= escape_javascript render(:partial => "registerd_pages") %>');
   // show the add slide page link
   $('#myLink').removeClass("hide");
-  var my_link='<a class="link" data-remote="true" href="/pages?request_type=new_page&social_media_platform_id='+platform_id+'" id="add-slide-page" title="Add Page">+ Add Page</a>';
+  var my_link='<a class="link" data-remote="true" href="/pages?request_type=new_page" id="add-slide-page" title="Add Page">+ Add Page</a>';
   $("#myLink").html(my_link);
   // append result to the view
   $(".append-frame").html(content).fadeIn(500);
   // push state
-  window.history.pushState("Administration Panel", "Administration Panel","?platform="+platform_id);
+  window.history.pushState("Administration Panel", "Administration Panel","");
 
   NProgress.done();
 }

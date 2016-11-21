@@ -112,6 +112,7 @@ en:
   provide_us: "Can you please provide us?"
   RSS_Feed: "RSS Feed"
   twitter_handle: "@censored"
+  may_we_use_your_case: "May we use your case as a public case study? (We will remove publicly identifying information)"
 
   date:
     abbr_month_names:

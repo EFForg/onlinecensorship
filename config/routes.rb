@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
     root 'home#index'
 
+    get '/maintenance' => "home#maintenance"
+
     resources :posts, path: 'news-and-analysis' do
       put :publish
       put :featured
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
       put :publish
     end
 
+    resources :platform_links
     resources :posts_themes
     resources :categories
     resources :social_media_platforms
@@ -55,7 +58,13 @@ Rails.application.routes.draw do
     get "/contacts" => "contacts#new"
 
     get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
-    get "/submit-report/:id" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
+    get "/submit" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
+    get "/submit-report/facebook", :to => redirect("/submit")
+    get "/submit-report/twitter", :to => redirect("/submit")
+    get "/submit-report/flickr", :to => redirect("/submit")
+    get "/submit-report/youtube", :to => redirect("/submit")
+    get "/submit-report/google", :to => redirect("/submit")
+    get "/submit-report/instagram", :to => redirect("/submit")
 
     get "/admin/stories" => "stories#index"
     get "/admin/posts" => "posts#admin"
@@ -69,6 +78,7 @@ Rails.application.routes.draw do
     get "/admin/social_media_platforms" => "social_media_platforms#index"
     get "/admin/pages_questions" => "pages#pages_questions"
     post "/admin/update_page" =>"pages#update_page"
+    post "/admin/update_message" =>"pages#update_message"
     get "/admin/questions" => "questions#index"
     get "/admin/related_questions" => "questions#related_questions"
     get "/admin/related_options" => "questions#related_options"
@@ -80,6 +90,7 @@ Rails.application.routes.draw do
     get "/admin/categories" => "categories#index"
     get "/admin/posts_themes" => "posts_themes#index"
     get "/admin/quotes" => "quotes#index"
+    get "/admin/platform_links" => "platform_links#index"
     
     get "/admin/further_reads" => "further_reads#admin"
     get "/admin/faqs" => "faqs#admin"

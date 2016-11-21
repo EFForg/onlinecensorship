@@ -1,8 +1,15 @@
 <div class="field fieldset add-page-fieldset" id="<%=@last_id%>">
-	<label class="pull-left">Slider order</label>
-	<input class="form-control pull-left page-order" name="page_theorder[]" type="number" />
-	<p class="tip pull-left tip-margin"> Optional</p>
-	<div class="pull-left saved hide" id="save_<%=@last_id%>">saved</div>
+	<div>
+		<label class="pull-left">Message</label><br/>
+		<textarea class="form-control" id="page_message" name="page[message]"></textarea>
+		<p class="save-page"> Save </p>
+	</div>
+	<div>
+		<label class="pull-left">Page Order</label>
+		<input class="form-control pull-left page-order" name="page_theorder[]" type="number" />
+		<p class="tip pull-left tip-margin"> Optional</p>
+		<div class="pull-left saved hide" id="save_<%=@last_id%>">saved</div>
+	</div>
 	<a data-remote="true" data-confirm="Are you sure?" data-method="delete" href="/pages/<%=@last_id%>" rel="nofollow" title="Delete" class="delete-page">
 		<i class="pull-right fa fa-trash-o icon-margin cursor" title="Delete"></i>
 	</a>

@@ -110,7 +110,9 @@ $( document ).ready(function() {
   );
 
   // radio select
-  $(".select-input.radio-select").click(function(){
+  $(".select-input.radio-select, .platform_select .other-option-input").click(function(){
+    // $(".platform_select input[type=checkbox]:checked").removeAttr('checked');
+    // $(this).find("input[type=checkbox]").prop('checked', true);
     var el=$(this);
     var option_id=el.attr("id");
     var parent_page_id=el.parents(".slide-page-wrapper").attr("id");
@@ -125,6 +127,36 @@ $( document ).ready(function() {
     // show next button
     showNextButton(parent_page_id);
   });
+
+  $(".platform_select .platform-select").click(function(){
+    var selectedPlatform = $('.platform_select .selected label').text().trim().toLowerCase();
+
+    $(".support-link").addClass("hide");
+    
+    if(selectedPlatform == "other") {
+      selectedPlatform = "'Platform'";
+      $(".prompt").addClass("hide");
+      $(".prompt h2").css("color","#152f4e");
+    } else {
+      $("."+selectedPlatform+"-support-link").removeClass("hide");
+      $(".prompt h2").css("color","#41DCF5");
+    }
+    console.log(selectedPlatform);
+
+    $(".question h2").each(function(index) {
+      $(this).find("b.platform").html( selectedPlatform );
+    });
+  });
+
+  $(".platform_select .other-option-input").bind("keyup", (function() {
+      selectedPlatform = $(this).val();
+      $(".question h2").each(function(index) {
+        $(this).find("b.platform").html( selectedPlatform );
+      });
+    })
+  );
+
+  
 
   // multi select
   $(".select-input.multi-select label").click(function(){
@@ -256,7 +288,5 @@ $( document ).ready(function() {
       $(".slider-pages").removeClass("increased");
     }
   });
-
-
 
 });

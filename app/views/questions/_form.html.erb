@@ -14,13 +14,13 @@
   <div class="field">
     <%= f.label :question_title, "Question text" %><br>
     <%= f.text_field :question_title  , required: true , :class=>"form-control" %>
-    <span class="tip"> If you need to use the platform title please use this hash {platform} enstead of typing the real name </span><br>
+    <span class="tip"> If you need to use the platform title please use this hash {platform} instead of typing the real name </span><br>
     <span class="tip"> for example : Type your {platform} link account </span>
   </div>
 
   <div class="field">
     <%= f.label :question_type %><br>
-    <%= f.select :question_type, options_for_select([["Text","text"],["Email","email"],["URL","url"],["Prompt","prompt"],["Long Text","long_text"],["Upload File","upload"],["Select","select"],["Multi Select","multi_select"],["Countries","countries"],["Languages","languages"]],@question.question_type) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'}%>
+    <%= f.select :question_type, options_for_select([["Text","text"],["Email","email"],["URL","url"],["Prompt","prompt"],["Long Text","long_text"],["Upload File","upload"],["Select","select"],["Multi Select","multi_select"],["Platform Select","platform_select"],["Countries","countries"],["Languages","languages"]],@question.question_type) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'}%>
   </div>
 
   <% 
@@ -40,14 +40,14 @@
   <br>
 
   <% 
-  if @question.question_type=="select" || @question.question_type=="multi_select" 
+  if @question.question_type=="select" || @question.question_type=="multi_select" || @question.question_type=="platform_select"
     klass=""
   else
     klass="hide"
   end
   %>
 
-  <div class="special-fields questions-options-fields <%=klass %> clearfix">
+  <div class="special-fields questions-options-fields <%= klass %> clearfix">
 
     <div class="append-frame">
       <%= f.fields_for :question_options do |option| %>
@@ -66,16 +66,16 @@
     </div><!--append-frame-->
     
     <% 
-    if @question.question_type=="multi_select"
-      other_klass=""
+    if @question.question_type == "multi_select" || @question.question_type=="platform_select"
+      other_klass = ""
     else
-      other_klass="hide"
+      other_klass = "hide"
     end 
     %>
   
     <div class="field other-option <%=other_klass%>">
       <%= f.check_box :other_answer %>
-      <%= f.label :other_answer , "Has other answer ?!" %>
+      <%= f.label :other_answer, "Has other answer?!" %>
     </div>
 
     <br/>
@@ -84,24 +84,18 @@
 
   </div><!--questions-options-fields-->
 
-  <div class="special-fields prompt-field <% if @question.question_type !="prompt" %> hide <% end %> clearfix">
+  <div class="special-fields prompt-field <% if @question.question_type != "prompt" %> hide <% end %> clearfix">
 
     <div class="field">
-      <%= f.label :prompt_text , "Prompt link text" %><br>
-      <%= f.text_field :prompt_text , :class=>"form-control" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :prompt_link %><br>
-      <%= f.text_field :prompt_link , :class=>"form-control" %>
-      <span class="tip"> for example : http://www.visualizingimpact.org</span>
+      <%= f.label :prompt_text, "Prompt link text" %><br>
+      <%= f.text_field :prompt_text, :class => "form-control" %>
     </div>
 
   </div><!--questions-options-fields-->
 
   <div class="field">
     <%= f.check_box :required_field %>
-    <%= f.label :required_field , "required question ?!" %>
+    <%= f.label :required_field, "required question?!" %>
   </div>
 
   <div class="actions">

@@ -6,23 +6,27 @@ class QuestionUsersController < ApplicationController
     respond_to do |format|
       # Using it in the backEnd to allow the admin to show and navigate all the model data
       format.html {
-        results=QuestionUser.search(params[:search],'email')
-        @question_users=results.page(params[:page])
-        @count=results.count
-        @social_media_platforms = SocialMediaPlatform.all
+        results = QuestionUser.search(params[:search],'email')
+        @question_users = results.page(params[:page])
+        @count = results.count
+      }
+
+      format.csv {
+        @submissions = QuestionUser.all
+        send_data @submissions.to_csv
       }
 
       # Using it to export excel file
       format.xls {
 
-        # Get the platform
-        @platform = SocialMediaPlatform.where(:id=>params[:platform]).first
+        # Get report pages
+        @pages = Page.order(:theorder => :asc);
 
         @question_users = []
         @questions = []
         @question_user_submissions = []
-        # Get the platform pages
-        @platform.pages.each do |page|
+
+        @pages.each do |page|
           # Get the users
           if page.question_user_submissions.present?
             page.question_user_submissions.each do |submission|

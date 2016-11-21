@@ -13,12 +13,10 @@
         <%= render 'home/admin_search' %>
       </div>
       <br>
-      <% @social_media_platforms.each do |platform| %>
-        <div class="export col-md-2">
-          <i class="fa fa-file-excel-o"></i>
-          <%= link_to platform.title, question_users_path(format: "xls",platform: platform.id) %>
-        </div>
-      <% end %>
+      <div class="export">
+        <i class="fa fa-file-excel-o"></i>
+        <%= link_to "Download Submissions", question_users_path(format: "xls") %>
+      </div>
       <br>
     </div><!--panel-title-->
     <br>
@@ -28,11 +26,11 @@
     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
       <thead title="Click to short" class="cursor">
         <tr>
-          <th>Platform</th>
+          <th>ID</th>
+          <th>Language</th>
           <th>Email</th>
           <th>Age</th>
-          <th>Inform Platform</th>
-          <th>Contact with the user</th>
+          <th>Contact user?</th>
           <th>Created at</th>
           <th>Answers</th>
         </tr>
@@ -47,13 +45,10 @@
            <% @question_users.each do |question_user| %>
             <tr class="show-image">
               <td>
-                <% if question_user.question_user_submissions.present? %>
-                  <% question_user.question_user_submissions.first(1).each do |submission| %>
-                    <% if submission.page.present? && submission.page.social_media_platform.present? %>
-                     <div class="<%= submission.page.social_media_platform.font_awesome_style %>" style="color:<%=submission.page.social_media_platform.color%>" title="<%=submission.page.social_media_platform.title%>"></div>
-                    <% end %>
-                  <% end %>
-                <% end %>
+                <%= question_user.id %>
+              </td>
+              <td>
+                <%= question_user.language %>
               </td>
               <td>
                 <% if question_user.email? %>
@@ -64,9 +59,6 @@
               </td>
               <td>
                 <%= question_user.age %>
-              </td>
-              <td>
-                <%= question_user.inform_platform %>
               </td>
               <td>
                 <% if question_user.contact !=nil  %>

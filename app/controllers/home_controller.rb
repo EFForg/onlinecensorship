@@ -50,4 +50,7 @@ class HomeController < ApplicationController
     end
   end
 
+  def maintenance
+  end
+
 end

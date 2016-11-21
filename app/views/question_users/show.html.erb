@@ -9,6 +9,16 @@
       <div class="col-md-12 details">
 
         <p>
+          <strong>ID:</strong>
+          <%= @question_user.id %>
+        </p>
+
+        <p>
+          <strong>Language:</strong>
+          <%= @question_user.language %>
+        </p>
+
+        <p>
 				  <strong>Registered at:</strong>
 			  	<%= @question_user.created_at.to_date %>
 				</p>
@@ -19,26 +29,16 @@
 				</p>
 
 				<p>
-				  <strong>Platform:</strong>
-					<% if @question_user.question_user_submissions.present? %>
-						<% @question_user.question_user_submissions.first(1).each do |submission| %>
-              <% if submission.page.present? && submission.page.social_media_platform.present? %>
-  							<%=submission.page.social_media_platform.title%>
-  							<% @social_media_platform_id=submission.page.social_media_platform.id%>
-              <% end %>
-						<% end %>
-					<% end %>
-				</p>
-
-				<p>
 				  <strong>Answers:</strong>
 				  <ul>
 						<% if @question_user.question_user_submissions.present? %>
-							<% @question_user.question_user_submissions.each do |submission| %>
-                <% if submission.page.present? && submission.page.social_media_platform.present? %>
+							
+              <% @question_user.question_user_submissions.each do |submission| %>
+                
+                <% if submission.page.present? %>
                   <% if submission.question_answer.respond_to?(:question) and !submission.question_answer.question.nil? %>
     								<li>
-    									<b><%=submission.question_answer.question.question_title.gsub('{platform}',submission.page.social_media_platform.title) %></b>
+    									<b><%=submission.question_answer.question.question_title %></b>
     									<% @submission=submission%>
     									<br>
     									<!-- render the answer-->
@@ -49,6 +49,7 @@
                   <% end %>
                 <% end %>
 							<% end %>
+
 						<% end %>
 					</ul>
 				</p>

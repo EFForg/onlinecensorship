@@ -32,7 +32,7 @@ $( document ).ready(function() {
 
   // show the questions options
 	$('#question_question_type').on('change', function() {
-	  if($(this).val()=="multi_select"){
+	  if($(this).val()=="multi_select" || $(this).val()=="platform_select"){
       $('.other-option').removeClass("hide");
       $('.questions-options-fields').removeClass("hide");
       $(".placeholder-field").addClass("hide");
@@ -106,6 +106,21 @@ $( document ).ready(function() {
       method: "POST",
       url: "/admin/update_page",
       data: { id: el_id, theorder: $(this).val()}
+    })
+    .done(function(html) {
+      // show saving notification
+      $("#save_"+el_id).removeClass('hide').delay(2000).queue(function(){
+        $(this).addClass('hide');
+      });
+    });
+  });
+
+  $(document).on("click", '.save-page', function() {
+    var el_id = $(this).parents(".fieldset").attr("id");
+    $.ajax({
+      method: "POST",
+      url: "/admin/update_message",
+      data: { id: el_id, message: $(this).prev().val()}
     })
     .done(function(html) {
       // show saving notification

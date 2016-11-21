@@ -8,9 +8,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       # Using it in the backEnd to allow the admin to show and navigate all the model data
       format.html {
-        results=Question.search(params[:search],'question_title')
-        @questions=results.page(params[:page])
-        @count=results.count
+        results = Question.search(params[:search],'question_title')
+        @questions = results.page(params[:page])
+        @count = results.count
       }
       # Using it to export excel file
       format.xls {
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     # Related Question method
     # we use it in the backEnd to get all the questions related with one option
     ######################################################################
-    @questions=Question.where(:social_media_platform_id => params[:social_media_platform_id])
+    @questions = Question.all
     render :layout => false
   end
 
@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
     # Related Options method
     # we use it in the backEnd to get all the options related with question
     ######################################################################
-    @related_options=QuestionOption.where(:question_id => params[:depend_on_question_id])
+    @related_options = QuestionOption.where(:question_id => params[:depend_on_question_id])
     render :layout => false
   end
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
   def submit
     ######################################################################
     # Submit method
-    # the thanks page that appear to the visitors after answer the social media questions
+    # the thanks page that appears to the visitors after answering the survey questions
     ######################################################################
 
     return unless params[:question]
@@ -50,8 +50,8 @@ class QuestionsController < ApplicationController
 
       # insert the user data
       # params[:static_2] is the question that the user can type his email in it in the new approach
-      # params[:static_3] is the question that the user can select if he want to inform the patform about his case or not
-      @question_user = QuestionUser.new(:contact => params[:static_1] ,:email => params[:static_2] , :inform_platform => params[:static_3] ,:age=> params[:user_age])
+      # params[:static_3] is the question that the user can select if accept to use his submission in a case study or not
+      @question_user = QuestionUser.new(:contact => params[:static_1], :email => params[:static_2], :case_study => params[:static_3], :age => params[:user_age], :language => I18n.locale)
       @question_user.save
 
       # get the questions id's and the answers values
@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
         if !question_id.include? "static"
 
           # get the question page id
-          question_page(question_id,params[:platform_id])
+          question_page(question_id)
 
           # insert the user submition data
           @question_user_submission = QuestionUserSubmission.new(:question_user_id => @question_user.id, :page_id => @question_page_id)
@@ -84,9 +84,9 @@ class QuestionsController < ApplicationController
             # insert the answer data
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
             add_question_answer(question_id,@question_user_submission.id,nil,value,nil,nil,nil,nil)
-          elsif question_type=="multi_select"
+          elsif question_type=="multi_select" || question_type=="platform_select"
             # check if there's other answer
-            if params[:"op_#{question_id}"]
+            if params[:"other_#{question_id}"] != ""
               # insert the other answer data
             # add_question_answer needed params [question_id,question_user_id,uploaded_file_id,question_option_id,other_option_answer,country_id,language_id,answer_text]
               add_question_answer(question_id,@question_user_submission.id,nil,nil,params[:"other_#{question_id}"],nil,nil,nil)
@@ -115,10 +115,10 @@ class QuestionsController < ApplicationController
       # which will send the email template located in views/mailer/notify.html.erb
       # notify method need params [user name ,form,data,notification kind, email subject]
       if params[:static_2] !=""
-        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
-        Mailer.notify("","submit report",data,"submit_report","OC submit report form notification system")
+        data="<br> <b> User data: </b>"+params[:static_2].to_s+"<br/>"
+        Mailer.notify("","submit report",data,"submit_report","[OC notification System] Report Submission")
       else
-        data="<br> <b> User data: </b> Anonymous <br> <b> Platform: </b>"+getSocialMediaPlatform(params[:platform_id]).to_s
+        data="<br> <b> User data: </b> Anonymous <br/>"
         Mailer.notify("Anonymous","submit report",data,"submit_report","[OC notification System] Report Submission")
       end
       ####
@@ -188,7 +188,7 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:question_title, :question_type ,
-        :other_answer ,:prompt_text, :prompt_link, :required_field,
+        :other_answer ,:prompt_text, :required_field,
         :placeholder, :upload_file,
         question_options_attributes:
           [:id,:question_id,:next_page,:dependent_on_question_id,:option_title,:_destroy])

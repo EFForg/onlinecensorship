@@ -1,12 +1,10 @@
 <%
-  meta title: @social_media_platform.title + t(:report_submission)
+  meta title: t(:report_submission)
 %>
 
 <%
-	# used to show options platform title
-	@social_media_platform_title=@social_media_platform.title
 	# Get the pages count
-	pages_count=@social_media_platform.pages.count
+	pages_count = @pages.count
   # check the cookies
   if cookies[:user_still_kid]
     klass="hidden"
@@ -19,14 +17,14 @@
 <div class="process row">
 	<div class="container">
 		<div class="process-bar"></div>
-		<h1> <%= @social_media_platform.title %> | <%= t(:report_submission) %> - <span>0</span>% </h1>
+		<h1> <%= t(:report_submission) %> - <span>0</span>% </h1>
 	</div>
 </div><!--process-->
 
 <!--slider-pages-->
-<div class="slider-pages row" data-pagescount="<%= @social_media_platform.pages.count+4 %>">
+<div class="slider-pages row" data-pagescount="<%= @pages.count+4 %>">
 
-  <%= form_tag("/thanks", id: "report", method: "post", :enctype =>"multipart/form-data" , multipart: true , class: klass ) do |f| %>
+  <%= form_tag("/thanks", id: "report", method: "post", :authenticity_token => true, :enctype =>"multipart/form-data", multipart: true, class: klass ) do |f| %>
 
     <% if ! cookies[:user_still_kid] %>
 
@@ -95,10 +93,12 @@
     	</div><!-- user age -->
 
       <% @tab_index=0%>
-  		<% @social_media_platform.pages.order(:theorder => :asc).each_with_index do |page, i| %>
+  		<% @pages.each_with_index do |page, i| %>
   			<!--page slides-->
   			<div class="col-md-12 slide-page-wrapper <%= i == 0 ? 'current first_page hidden' : 'hidden' %>" id="page-<%=i+1%>" data-id="<%=i+1%>">
   				<div class="slide-page">
+
+            <div class="col-md-7 col-no-padding"> <p><%= page.message %></p> </div>
 
   					<% if page.pages_questions.count > 0 %>
   						<!--page questions-->
@@ -117,7 +117,7 @@
 
   								<div class="col-md-9 question <%=klass%> <%= page_question.question.question_type %>" id="question-<%=page_question.question_id%>">
 
-  									<h2><%=page_question.question.question_title.gsub('{platform}',@social_media_platform.title)%></h2>
+  									<h2><%= page_question.question.question_title.html_safe %></h2>
 
   		              <%
   		                # load the question data to use it in the renders pages
@@ -127,7 +127,7 @@
   		                @question_prompt_link=page_question.question.prompt_link
   		                @question_other_answer=page_question.question.other_answer
   		                if page_question.question.placeholder
-  		                	@question_placeholder=page_question.question.placeholder.gsub('{platform}',@social_media_platform.title)
+  		                	@question_placeholder=page_question.question.placeholder
   		              	end
   		                if page_question.question.question_options.present?
   		                  @question_options=page_question.question.question_options
@@ -201,7 +201,7 @@
 
   					</div>
 
-  						<%= hidden_field_tag 'platform_id', @social_media_platform.id %>
+  						<%# hidden_field_tag 'platform_id', @social_media_platform.id %>
   					  <%= text_field_tag('spam_checker', nil, class: 'spam-checker') %>
 
   				</div>
@@ -244,7 +244,7 @@
   					<div class="col-md-7 question require-answer select" id="question-static-3">
 
   						<h2>
-                <%= t(:would_you_like_to_contact) %> <%=@social_media_platform_title%> <%= t(:about_your_case) %>
+                <%= t(:may_we_use_your_case) %>
               </h2>
 
   						<div class="input-report select-input radio-select" id="yes-static-3">

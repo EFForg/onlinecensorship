@@ -1,6 +1,6 @@
 <% @question_options.each_with_index do |check_button,index| %> 
 
-	<div class="input-report select-input multi-select" id="<%=check_button.id%>">
+	<div class="input-report select-input radio-select platform-select" id="<%=check_button.id%>">
 	  <%=check_box_tag @question_id,check_button.id,false,:id=>"op-"+check_button.id.to_s,:name=>"question[#{@question_id}][]",:class=>"option" %>
 	  <%= label_tag "op-"+check_button.id.to_s, :class => "option" , :tabindex => @tab_index  do %>
 	  	<%= check_button.option_title %>
@@ -11,7 +11,7 @@
 <% end %>	
 
 <% if @question_other_answer==true %>
-	<div class="input-report select-input multi-select">
+	<div class="input-report select-input multi-select radio-select platform-select">
 	  <label class="option other-option" for="op_<%=@question_id%>">
 	  	<%= t(:other) %>
 	  	<i class="fa fa-check"></i>

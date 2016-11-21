@@ -1,0 +1,2 @@
+module PlatformLinksHelper
+end

@@ -22,24 +22,6 @@
           <%= @social_media_platform.color %>
         </p>
 
-        <p>
-          <strong>Slide Pages:</strong>
-          <% if @social_media_platform.pages.present? %>
-            <%= @social_media_platform.pages.count %>
-          <% end %>
-        </p>
-
-        <p>
-          <strong>Total Questions:</strong>
-          <% if @social_media_platform.pages.present? %>
-            <% total_questions=0%>
-            <% @social_media_platform.pages.each do |page| %>
-              <% total_questions=total_questions+page.questions.count%>
-            <% end %>
-            <%=total_questions%> questions
-          <% end %>          
-        </p>
-
 				<p>
 					<%= link_to 'Edit', edit_social_media_platform_path(@social_media_platform) %> |
 					<%= link_to 'All platforms', admin_social_media_platforms_path %>

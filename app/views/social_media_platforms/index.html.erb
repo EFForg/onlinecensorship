@@ -17,8 +17,6 @@
       <div class="sub-links col-md-12">
         <i class="fa fa-pencil-square-o"></i>
         <%= link_to 'New Platform', new_social_media_platform_path %>
-        <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Export To Excel", social_media_platforms_path(format: "xls") %>
       </div>
   </div><!--panel-title-->
 
@@ -31,9 +29,6 @@
         <tr>
           <th>Title</th>
           <th>Icon</th>
-          <th>Slides</th>
-          <th>Questions</th>
-          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -50,23 +45,6 @@
               <td><%= social_media_platform.title %></td>
               <td>
                 <div class="<%= social_media_platform.font_awesome_style %>" style="color:<%=social_media_platform.color%>"></div>
-              </td>
-              <td>
-                <% if social_media_platform.pages.present? %>
-                  <%=social_media_platform.pages.count%>
-                <% end %>
-              </td>
-              <td>
-                <% if social_media_platform.pages.present? %>
-                  <% total_questions=0%>
-                  <% social_media_platform.pages.each do |page| %>
-                    <% total_questions=total_questions+page.questions.count%>
-                  <% end %>
-                  <%=total_questions%>
-                <% end %>
-              </td>
-              <td class="icon-control">
-                <%= link_to social_media_platform, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
               </td>
               <td class="icon-control">
                 <%= link_to edit_social_media_platform_path(social_media_platform), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>

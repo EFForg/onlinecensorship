@@ -1200,6 +1200,7 @@ select {
   .other-option-input {
     position: absolute;
     top: 0;
+    left: 0;
     background-color: $dark-blue;
     border: none;
     width: 100%;
@@ -1287,6 +1288,11 @@ select {
           }
           label {
             color: #fff;
+          }
+        }
+        &.selected:hover {
+          .fa-check:before {
+            content: "\f00d";
           }
         }
       }
@@ -1478,4 +1484,16 @@ select {
 .spam-checker {
   display:none;
   visibility:hidden;
+}
+
+.start-survey {
+  margin-top: 12px;
+}
+
+.btn-white {
+  color: #fff;
+  border: 2px solid #fff !important;
+  &:hover {
+    background: #fff;
+  }
 }

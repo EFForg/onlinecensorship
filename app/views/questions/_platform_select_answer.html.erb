@@ -1,0 +1,8 @@
+<% option = @submission.question_answer %>
+<ul>
+	<% if option.other_option_answer %>
+		<li><%= option.other_option_answer %></li>
+	<% else %>
+		<li><%= option.question_option.option_title %></li>
+	<% end %>
+</ul>
