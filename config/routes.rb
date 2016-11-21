@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
     root 'home#index'
 
+    get '/maintenance' => "home#maintenance"
+
     resources :posts, path: 'news-and-analysis' do
       put :publish
       put :featured

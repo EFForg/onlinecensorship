@@ -23,10 +23,14 @@ class SocialMediaPlatformsController < ApplicationController
   end
 
   def submit_report_show
-    @countries=Country.order("name ASC")
-    @languages=Language.order("name ASC")
-    @pages = Page.order(:theorder => :asc)
-    render :layout => "report"
+    if user_signed_in?
+      @countries=Country.order("name ASC")
+      @languages=Language.order("name ASC")
+      @pages = Page.order(:theorder => :asc)
+      render :layout => "report"
+    else
+      redirect_to maintenance_path
+    end
   end
 
   def new
