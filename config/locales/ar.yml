@@ -113,6 +113,7 @@ ar:
   RSS_Feed: "تغذية RSS"
   twitter_handle: "censored@"
   may_we_use_your_case: "هل تسمح لنا باستخم قضيتك كدراسة حالة العامة؟ لن نظهر معلوماتك الشخصية"
+  get_started: "ابدأ الآن"
 
   date:
     abbr_month_names:

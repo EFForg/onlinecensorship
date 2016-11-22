@@ -113,6 +113,7 @@ en:
   RSS_Feed: "RSS Feed"
   twitter_handle: "@censored"
   may_we_use_your_case: "May we use your case as a public case study? (We will remove publicly identifying information)"
+  get_started: "Get Started"
 
   date:
     abbr_month_names:
