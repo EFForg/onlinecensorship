@@ -19,11 +19,11 @@ class PagesController < ApplicationController
 
   def update_page
     # We using it to update pages order number by ajax from the backEnd
-    @update = @page.update_attributes(:theorder=> params[:theorder])
+    @update = @page.update_attributes(:theorder => params[:theorder])
   end
 
   def update_message
-    @update = @page.update_attributes(:message=> params[:message])
+    @update = @page.update_attributes(:message => params[:message])
   end
 
   def new

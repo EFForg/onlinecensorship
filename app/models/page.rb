@@ -16,5 +16,6 @@ class Page < ActiveRecord::Base
 
   # Validation
   # validates :social_media_platform_id, :presence => true
+  translates :message
 
 end

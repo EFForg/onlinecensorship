@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107080602) do
+ActiveRecord::Schema.define(version: 20161122111612) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -198,6 +198,17 @@ ActiveRecord::Schema.define(version: 20161107080602) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "page_translations", force: true do |t|
+    t.integer  "page_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "message"
+  end
+
+  add_index "page_translations", ["locale"], name: "index_page_translations_on_locale", using: :btree
+  add_index "page_translations", ["page_id"], name: "index_page_translations_on_page_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "social_media_platform_id"

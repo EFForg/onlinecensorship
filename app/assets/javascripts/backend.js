@@ -117,9 +117,10 @@ $( document ).ready(function() {
 
   $(document).on("click", '.save-page', function() {
     var el_id = $(this).parents(".fieldset").attr("id");
+    var el_lang = $(this).data("lang");
     $.ajax({
       method: "POST",
-      url: "/admin/update_message",
+      url: "/"+el_lang+"/admin/update_message",
       data: { id: el_id, message: $(this).prev().val()}
     })
     .done(function(html) {
