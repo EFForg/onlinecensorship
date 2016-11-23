@@ -84,7 +84,7 @@ en:
   provide_us_with_your_email: "Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details."
   may_we_contact_you: "May we contact you to follow up on this report?"
   how_old_are_you: "How old are you?"
-  over_45_years: "Over 45 years"
+  over_65_years: "65+"
   under_13_years: "Under 13 years"
   report_intro: "In addition to collecting data on content takedowns, we may want to highlight particular cases that illustrate an issue, or include them in analysis of trends. Answering these questions is highly optional, and will remain consistent with our privacy policy"
   link: "link"
