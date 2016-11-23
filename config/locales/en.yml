@@ -112,7 +112,7 @@ en:
   provide_us: "Can you please provide us?"
   RSS_Feed: "RSS Feed"
   twitter_handle: "@censored"
-  may_we_use_your_case: "May we use your case as a public case study? <i>We will remove publicly identifying information</i>"
+  may_we_use_your_case: "<i>In order to raise awareness about the problem of online censorship, we will publish a report on the information users provide here, and may talk with companies directly about what they are doing well and what they can improve. To help illustrate our findings, we may want to point to specific examples. If so, we will do our best to protect the anonymity of the user.</i> Please indicate whether you are willing to allow us to share your story."
   get_started: "Get Started"
 
   date:
