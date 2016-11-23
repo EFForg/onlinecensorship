@@ -112,7 +112,7 @@ es:
   provide_us: ""
   RSS_Feed: "RSS"
   twitter_handle: "@censored"
-  may_we_use_your_case: "Podemos usar su caso como un caso de estudio público? (Vamos a eliminar la información que identifica públicamente)"
+  may_we_use_your_case: "Podemos usar su caso como un caso de estudio público? <i>Vamos a eliminar la información que identifica públicamente</i>"
   get_started: "empezar"
 
   date:
