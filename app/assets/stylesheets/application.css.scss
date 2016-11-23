@@ -1073,6 +1073,13 @@ select {
           }
           .question {
             margin-bottom: 20px;
+            h2 {
+              i {
+                display: block;
+                font-size: 14px;
+                line-height: 20px;
+              }
+            }
             &.prompt {
 
               h2 {
