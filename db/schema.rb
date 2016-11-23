@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122111612) do
+ActiveRecord::Schema.define(version: 20161123113308) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -435,11 +435,13 @@ ActiveRecord::Schema.define(version: 20161122111612) do
     t.text     "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "inform_platform", default: false
+    t.boolean  "inform_platform",          default: false
     t.string   "age"
-    t.boolean  "contact",         default: true
-    t.boolean  "case_study",      default: false
+    t.boolean  "contact",                  default: true
+    t.boolean  "case_study",               default: false
     t.string   "language"
+    t.string   "pgp_key"
+    t.text     "communication_preference"
   end
 
   create_table "questions", force: true do |t|

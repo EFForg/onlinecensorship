@@ -237,10 +237,18 @@
   					<div class="col-md-7 question depends-question-static-1 depends-option-yes hide long_text" id="question-static-2">
 
   						<h2>
-  							<%= t(:provide_us_with_your_email) %>
+  							<%= t(:provide_us_with_your_email).html_safe %>
   						</h2>
 
-  						<textarea class="input-report text-input require-field" id="static_2" name="static_2" placeholder="<%= t(:provide_us) %>" tabindex="2"></textarea>
+              <input type="email" class="input-report text-input require-field" id="static_2" name="static_2" placeholder="<%= t(:email) %>" tabindex="1" />
+
+              <input type="text" class="input-report text-input" id="static_4" name="static_4" placeholder="<%= t(:pgp_key) %>" tabindex="2" />
+
+              <h2>
+                <%= t(:communication_preference).html_safe %>
+              </h2>
+
+  						<textarea class="input-report text-input require-field" id="static_5" name="static_5" tabindex="3"></textarea>
 
   					</div>
 

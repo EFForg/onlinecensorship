@@ -64,17 +64,19 @@
         </p>
         
         <p>
-				  <strong>Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details:</strong>
-          <% if @question_user.email? %>
-				  	<%= @question_user.email %>
+				  <strong>Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details:</strong><br/>
+          <% if @question_user.email? || @question_user.communication_preference? %>
+				  	<b>Email:</b> <%= @question_user.email %><br/>
+            <b>PGP Key:</b> <%= @question_user.pgp_key %><br/>
+            <b>Communication Preference:</b> <%= @question_user.communication_preference %><br/>
 				  <% else %>
 				  	Anonymous
 				  <% end %>
 				</p>
 
         <p>
-				  <strong>Would you like us to contact the platform about your case? We cannot guarantee a response.</strong>
-			  	<%= @question_user.inform_platform %>
+				  <strong>May we use your case?</strong>
+			  	<%= @question_user.case_study %>
 				</p>
 
 				<p>

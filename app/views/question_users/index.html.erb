@@ -28,7 +28,7 @@
         <tr>
           <th>ID</th>
           <th>Language</th>
-          <th>Email</th>
+          <th>Contact</th>
           <th>Age</th>
           <th>Contact user?</th>
           <th>Created at</th>
@@ -51,8 +51,9 @@
                 <%= question_user.language %>
               </td>
               <td>
-                <% if question_user.email? %>
-                  <%= question_user.email %>
+                <% if question_user.email? || question_user.communication_preference? %>
+                  <%= question_user.email %> / <%= question_user.pgp_key %> /
+                  <%= question_user.communication_preference %>
                 <% else %>
                   Anonymous
                 <% end %>

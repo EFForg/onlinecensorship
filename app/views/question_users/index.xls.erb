@@ -9,9 +9,9 @@
         <th style="text-align:left; font-weight:bold;"><%= question.question_title %></th>
       <% end %>
     <% end %>
-    <th style="text-align:left; font-weight:bold;">May we contact you to follow up on this report? </th>
-    <th style="text-align:left; font-weight:bold;">Please provide us your email address so we may follow up with you. If you use encrypted mail, please provide us your public key so that we may communicate securely. If there is another means of communication that you prefer, please specify and provide contact details. </th>
-    <th style="text-align:left; font-weight:bold;">Would you like us to contact the platform about your case? We cannot guarantee a response. </th>
+    <th style="text-align:left; font-weight:bold;">May we contact you?</th>
+    <th style="text-align:left; font-weight:bold;">Contact (Email/PGP Key/Other) </th>
+    <th style="text-align:left; font-weight:bold;">Case Study? </th>
   </tr>
 
   <% @question_users.each do |user| %>
@@ -93,8 +93,10 @@
         <% end %>
       </td>
       <td>
-        <% if user.email? %>
-          <%= user.email %>
+        <% if user.email? || user.communication_preference? %>
+          <%= user.email %> /
+          <%= user.pgp_key %> /
+          <%= user.communication_preference %>
         <% else %>
           Anonymous
         <% end %>
