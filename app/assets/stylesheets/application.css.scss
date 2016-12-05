@@ -1321,6 +1321,14 @@ select {
 
   }
 
+  .multi_select.multi-select-false .select-input {
+    &.selected:hover {
+      .fa-check:before {
+        content: "\f00c";
+      }
+    }
+  }
+
   .select2 {
     &.select2-hidden-accessible {
       position: absolute !important;

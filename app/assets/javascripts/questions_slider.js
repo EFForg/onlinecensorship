@@ -110,7 +110,7 @@ $( document ).ready(function() {
   );
 
   // radio select
-  $(".select-input.radio-select, .platform_select .other-option-input").click(function(){
+  $(".select-input.radio-select, .platform_select .other-option-input, .multi_select.multi-select-false .select-input").click(function(){
     // $(".platform_select input[type=checkbox]:checked").removeAttr('checked');
     // $(this).find("input[type=checkbox]").prop('checked', true);
     var el=$(this);
@@ -128,6 +128,13 @@ $( document ).ready(function() {
     showNextButton(parent_page_id);
   });
 
+  // radio / multi with other
+  $(".multi_select.multi-select-false .select-input, .platform_select .select-input").click(function(){
+    $(this).parent().find("input[type=checkbox]").prop('checked', false);
+    $(this).find("input[type=checkbox]").prop('checked', true);
+  });
+
+  // platform select
   $(".platform_select .platform-select").click(function(){
     var selectedPlatform = $('.platform_select .selected label').text().trim().toLowerCase();
 
@@ -141,7 +148,6 @@ $( document ).ready(function() {
       $("."+selectedPlatform+"-support-link").removeClass("hide");
       $(".prompt h2").css("color","#41DCF5");
     }
-    console.log(selectedPlatform);
 
     $(".question h2").each(function(index) {
       $(this).find("b.platform").html( selectedPlatform );
@@ -155,8 +161,6 @@ $( document ).ready(function() {
       });
     })
   );
-
-  
 
   // multi select
   $(".select-input.multi-select label").click(function(){

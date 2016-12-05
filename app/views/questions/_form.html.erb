@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label :question_type %><br>
-    <%= f.select :question_type, options_for_select([["Text","text"],["Email","email"],["URL","url"],["Prompt","prompt"],["Long Text","long_text"],["Upload File","upload"],["Select","select"],["Multi Select","multi_select"],["Platform Select","platform_select"],["Countries","countries"],["Languages","languages"]],@question.question_type) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'}%>
+    <%= f.select :question_type, options_for_select([["Text","text"],["Email","email"],["URL","url"],["Prompt","prompt"],["Long Text","long_text"],["Upload File","upload"],["Select","select"],["Select with Other","multi_select"],["Platform Select","platform_select"],["Countries","countries"],["Languages","languages"]],@question.question_type) ,{},{required: 'true',:class=> 'form-control input-sm col-md-10'}%>
   </div>
 
   <% 
@@ -75,7 +75,12 @@
   
     <div class="field other-option <%=other_klass%>">
       <%= f.check_box :other_answer %>
-      <%= f.label :other_answer, "Has other answer?!" %>
+      <%= f.label :other_answer, "Has other answer?" %>
+    </div>
+
+    <div class="field other-option <%=other_klass%>">
+      <%= f.check_box :multi_select %>
+      <%= f.label :multi_select, "Multi select?" %>
     </div>
 
     <br/>

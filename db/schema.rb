@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123113308) do
+ActiveRecord::Schema.define(version: 20161205125831) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -454,6 +454,7 @@ ActiveRecord::Schema.define(version: 20161123113308) do
     t.string   "prompt_link"
     t.boolean  "required_field", default: true
     t.string   "placeholder"
+    t.boolean  "multi_select",   default: false
   end
 
   create_table "quote_translations", force: true do |t|

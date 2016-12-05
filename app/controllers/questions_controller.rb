@@ -191,7 +191,7 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:question_title, :question_type ,
         :other_answer ,:prompt_text, :required_field,
-        :placeholder, :upload_file,
+        :placeholder, :upload_file, :multi_select,
         question_options_attributes:
           [:id,:question_id,:next_page,:dependent_on_question_id,:option_title,:_destroy])
     end
