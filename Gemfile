@@ -89,3 +89,5 @@ gem 'ckeditor_rails'
 
 # for frindly urls
 gem 'friendly_id', '~> 5.0.0'
+
+gem "select2-rails"

@@ -1,4 +1,4 @@
 <div class="input-report dropdown-input">
-	<%= select_tag "question[#{@question_id}]",options_from_collection_for_select(@languages,"id","name"),{:class => "require-field",:include_blank => true, :tabindex => @tab_index }%>
+	<%= select_tag "question[#{@question_id}]",options_from_collection_for_select(@languages,"id","name"),{:class => "require-field select2",:include_blank => true, :tabindex => @tab_index }%>
 	<i class="fa fa-chevron-down"></i>
 </div>

@@ -17,6 +17,7 @@
 //= require owl.carousel.min
 //= require questions_slider
 //= require headline
+//= require select2
 
 NProgress.configure({
   showSpinner: false,
@@ -25,6 +26,9 @@ NProgress.configure({
 });
 
 $(document).ready(function(){
+
+  // select2
+  $(".select2").select2(); 
 
   // page scroll, header to minimize on scrolling
   if( $(window).width() > 991 && $(".main-header").length > 0 ) {

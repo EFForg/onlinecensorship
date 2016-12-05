@@ -18,6 +18,7 @@
  *= require post
  *= require owl.carousel
  *= require arabic
+ *= require select2
  */
 
 @import "bourbon";
@@ -1318,6 +1319,39 @@ select {
       padding-left: 0;
     }
 
+  }
+
+  .select2 {
+    &.select2-hidden-accessible {
+      position: absolute !important;
+      left: 0;
+      top: 0;
+      z-index: 1 !important;
+    }
+    &.select2-container {
+      width: 100% !important;
+      position: relative;
+      left: 0;
+      top: 0;
+      height: 42px;
+      z-index: 100;
+      .select2-selection {
+        height: 100%;
+        background: transparent;
+        border: none;
+        .select2-selection__rendered {
+          height: 100%;
+          line-height: 42px;
+          color: #fff;
+        }
+        .select2-selection__arrow {
+          display: none;
+        }
+      }
+    }
+  }
+  .select2-dropdown {
+    color: #000;
   }
 
   .btn-report {
