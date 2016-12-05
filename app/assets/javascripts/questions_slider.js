@@ -80,6 +80,7 @@ $( document ).ready(function() {
     }else{
       // add require-answer
       $(".depends-option-"+option_id).removeClass("hide").addClass("require-answer");
+      $(".depends-option-"+option_id+".upload").removeClass("require-answer");
     }
   }
 
