@@ -80,7 +80,9 @@ $( document ).ready(function() {
     }else{
       // add require-answer
       $(".depends-option-"+option_id).removeClass("hide").addClass("require-answer");
+      // quick fix, to be updated later
       $(".depends-option-"+option_id+".upload").removeClass("require-answer");
+      $("#question-57").removeClass("require-answer");
     }
   }
 
