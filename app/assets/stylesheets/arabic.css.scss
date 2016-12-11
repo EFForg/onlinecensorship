@@ -203,4 +203,16 @@ body.ar {
     direction: rtl;
   }
 
+  .select2-dropdown, .select2-selection__rendered {
+    direction: rtl;
+  }
+  .select2-selection__rendered {
+    padding-right: 8px;
+    padding-left: 20px;
+  }
+  .input-report i.fa-chevron-down {
+    left: 10px !important;
+    right: auto;
+  }
+
 }
