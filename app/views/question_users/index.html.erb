@@ -14,8 +14,9 @@
       </div>
       <br>
       <div class="export">
-        <i class="fa fa-file-excel-o"></i>
-        <%= link_to "Download Submissions", question_users_path(format: "xls") %>
+        <i class="fa fa-file-excel-o"></i> Download Submissions
+        <%= link_to "XLS", question_users_path(format: "xls") %>,
+        <%= link_to "CSV", question_users_path(format: "csv") %>
       </div>
       <br>
     </div><!--panel-title-->
