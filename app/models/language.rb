@@ -4,6 +4,8 @@
 #
 class Language < ActiveRecord::Base
 
+	default_scope { order(name: :asc) }
+
   ## DB relations
   has_many :question_answers
 
