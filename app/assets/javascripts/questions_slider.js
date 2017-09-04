@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
   // enable the questionnaire
-  $("#over-13-18 ,#over-19-25 ,#over-26-35 ,#over-36-45 ,#over-45").click(function(){
+  $("#over-13-17, #over-18-24, #over-25-44 ,#over-45-64, #over-65").click(function(){
     // hide the question
     $("#page-0").hide();
     // show the questionnaire
