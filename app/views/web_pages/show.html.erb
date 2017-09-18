@@ -5,10 +5,29 @@
 <section class="dark-blue-bg page-title-wrapper">
   <div class="container">
     <h1> <%= @web_page.title %> </h1> 
+
+    <% if @web_page.brief.present? %>
+
+	    <div class="row">
+	    	<div class="col-md-8">
+			    <p>
+			    	<%= @web_page.brief %>
+			    </p>
+		    </div>
+	    </div>
+
+    <% end %>
+
   </div>
 </section>
 
 <div class="container web-page">
+
+	<% if @web_page.content.present? %>
+		<div class="white-box">
+			<%= @web_page.content.html_safe %>
+		</div>
+	<% end %>
 
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	  
