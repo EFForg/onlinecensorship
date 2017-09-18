@@ -15,6 +15,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :sub_sections
+
+    resources :sections
+
+    resources :web_pages
+
+    get "content/:id" => "web_pages#show", as: "content"
+
     get 'feed' => 'posts#feed'
 
     # for cms pages

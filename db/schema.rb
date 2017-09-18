@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205125831) do
+ActiveRecord::Schema.define(version: 20170918141750) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -487,6 +487,26 @@ ActiveRecord::Schema.define(version: 20161205125831) do
     t.datetime "updated_at"
   end
 
+  create_table "section_translations", force: true do |t|
+    t.integer  "section_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "content"
+  end
+
+  add_index "section_translations", ["locale"], name: "index_section_translations_on_locale", using: :btree
+  add_index "section_translations", ["section_id"], name: "index_section_translations_on_section_id", using: :btree
+
+  create_table "sections", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "web_page_id"
+  end
+
   create_table "social_media_platform_translations", force: true do |t|
     t.integer  "social_media_platform_id", null: false
     t.string   "locale",                   null: false
@@ -538,6 +558,30 @@ ActiveRecord::Schema.define(version: 20161205125831) do
   add_index "story_translations", ["locale"], name: "index_story_translations_on_locale", using: :btree
   add_index "story_translations", ["story_id"], name: "index_story_translations_on_story_id", using: :btree
 
+  create_table "sub_section_translations", force: true do |t|
+    t.integer  "sub_section_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "content"
+  end
+
+  add_index "sub_section_translations", ["locale"], name: "index_sub_section_translations_on_locale", using: :btree
+  add_index "sub_section_translations", ["sub_section_id"], name: "index_sub_section_translations_on_sub_section_id", using: :btree
+
+  create_table "sub_sections", force: true do |t|
+    t.string   "title"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "section_id"
+  end
+
   create_table "subscribes", force: true do |t|
     t.text     "email"
     t.datetime "created_at"
@@ -574,5 +618,27 @@ ActiveRecord::Schema.define(version: 20161205125831) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "web_page_translations", force: true do |t|
+    t.integer  "web_page_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "brief"
+    t.text     "content"
+  end
+
+  add_index "web_page_translations", ["locale"], name: "index_web_page_translations_on_locale", using: :btree
+  add_index "web_page_translations", ["web_page_id"], name: "index_web_page_translations_on_web_page_id", using: :btree
+
+  create_table "web_pages", force: true do |t|
+    t.string   "title"
+    t.text     "brief"
+    t.text     "content"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,0 +1,26 @@
+<fieldset class="col-md-offset-1">
+  <br/>
+  <h5> Sub-section </h5>
+	<div class="field form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class=>"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :icon %>
+    <%= f.file_field :icon %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, :class=>"form-control ckeditor" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove Sub-section" %>
+  </div>
+
+</fieldset>
+
+<hr/>

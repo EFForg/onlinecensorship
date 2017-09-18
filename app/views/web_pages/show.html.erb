@@ -1,0 +1,67 @@
+<%
+  meta title: @web_page.title
+%>
+
+<section class="dark-blue-bg page-title-wrapper">
+  <div class="container">
+    <h1> <%= @web_page.title %> </h1> 
+  </div>
+</section>
+
+<div class="container web-page">
+
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  
+	  <% @web_page.sections.each_with_index do |section,x| %>
+
+		  <div class="panel">
+		    <div class="panel-heading dark-blue-bg" role="tab" id="headingOne">
+		      <h2 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=x%>" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
+		          <%= section.title %>
+		          <div class="fa-wrapper">
+			          <i class="fa fa-plus"></i>
+			        </div>
+		        </a>
+		      </h2>
+		    </div>
+		    <div id="collapse_<%=x%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+		        <p class="section-content"><%= section.content.html_safe if section.content %></p>
+
+		        <div class="panel-group" id="sub-accordion" role="tablist" aria-multiselectable="true">
+	  
+						  <% section.sub_sections.each_with_index do |subsection,i| %>
+
+							  <div class="panel">
+							    <div class="panel-heading" role="tab" id="headingOne">
+							      <h2 class="panel-title">
+							        <a role="button" data-toggle="collapse" data-parent="#sub-accordion" href="#subcollapse_<%=x%>-<%=i%>" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
+							        	<%= image_tag subsection.icon(:thumb) if subsection.icon.exists? %>
+							          <%= subsection.title %>
+							          <div class="fa-wrapper">
+								          <i class="fa fa-plus"></i>
+								        </div>
+							        </a>
+							      </h2>
+							    </div>
+							    <div id="subcollapse_<%=x%>-<%=i%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+							      <div class="panel-body">
+							        <p><%= subsection.content.html_safe %></p>
+							      </div>
+							    </div>
+							  </div><!--panel-->
+							
+							<% end %>
+
+						</div>
+
+		      </div>
+		    </div>
+		  </div><!--panel-->
+		
+		<% end %>
+
+	</div>
+
+</div>

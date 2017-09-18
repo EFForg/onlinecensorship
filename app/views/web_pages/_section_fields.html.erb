@@ -1,0 +1,26 @@
+<fieldset>
+  <br/>
+  <h4> Page Section </h4>
+	<div class="field form-group">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, :class=>"form-control" %>
+  </div>
+
+  <div class="field form-group col-md-offset-1">
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove Section" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :sub_sections do |builder| %>
+      <%= render 'sub_section_fields', f: builder %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-offset-1">
+    <%= link_to_add_fields "Add Subsectoin", f, :sub_sections %>
+  </div>
+
+</fieldset>
+
+<hr/>

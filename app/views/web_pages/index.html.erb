@@ -1,0 +1,53 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-file-text-o"></i>
+      Listing Web Pages
+      <br>
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Web Page', new_web_page_path %>
+      </div>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th>Page</th>
+          <th>Slug</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @web_pages.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @web_pages.each do |page| %>
+            <tr class="show-image">
+              <td><%= page.title %></td>
+              <td><%= page.slug %></td>
+              <td class="icon-control">
+                <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to content_path(page), :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_web_page_path(page), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+            </tr>
+          <% end %>    
+        <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->

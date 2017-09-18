@@ -67,15 +67,18 @@ $(document).ready(function(){
   }
 
   // Accordion
-  $("#accordion .panel").click(function(event){
-    if( $(this).find(".collapsing").length > 0)
-      return false;
-    // slide down
-    if($(this).find(".collapse.in").length == 0)
-      $(this).find(".fa").removeClass("fa-plus").addClass("fa-minus");
-    else // slide up
-      $(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
-  });
+  // $("#accordion .panel").click(function(event){
+  //   if( $(this).find(".collapsing").length > 0)
+  //     return false;
+  //   // slide down
+  //   if($(this).find(".collapse.in").length == 0) {
+  //     $(".dark-blue-bg .fa-minus").removeClass("fa-minus").addClass("fa-plus");
+  //     $(this).find(".fa").first().removeClass("fa-plus").addClass("fa-minus");
+  //   }
+  //   else {// slide up
+  //     $(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+  //   }
+  // });
 
   // submit message
   $("#new_contact, #new_subscribe").submit(function(e){

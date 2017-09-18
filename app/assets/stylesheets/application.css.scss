@@ -808,7 +808,7 @@ select {
 }
 
 // faqs page
-.faqs-page {
+.faqs-page, .web-page {
   margin: 40px 0;
   .panel-group {
     .panel+.panel {
@@ -842,6 +842,16 @@ select {
       padding: 24px 76px 24px 15px;
       position: relative;
       z-index: 2;
+
+      .fa:before {
+        content: "\f068";
+      }
+
+      &.collapsed {
+        .fa:before {
+          content: "\f067";
+        }
+      }
 
       .fa-wrapper {
         width: 36px;
@@ -878,6 +888,31 @@ select {
     }
   }
 }
+
+.web-page {
+  .panel {
+    .panel-heading.dark-blue-bg {
+      background: $dark-blue;
+      color: #fff !important;
+      .panel-title a {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+    .panel-heading .panel-title a {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .section-content {
+      padding: 0 15px;
+    }
+  }
+}
+
+// a.collapsed .fa:before {
+//   content: "\f067";
+// }
 
 // further readings
 .readings-page {
