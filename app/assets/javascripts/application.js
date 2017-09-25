@@ -27,6 +27,54 @@ NProgress.configure({
 
 $(document).ready(function(){
 
+  // tab links
+  // specific url for each tab
+  if( $(".web-page .nav-pills").length > 0 ) {
+    // Javascript to enable link to tab
+    var url = document.location.toString();
+    if (url.match('#')) {
+      $('.nav-pills a[href="#' + url.split('#')[1] + '"]').tab('show');
+    } 
+
+    // Change hash for page-reload
+    $('.nav-pills a').on('shown.bs.tab', function (e) {
+      window.location.hash = e.target.hash;
+      var offsetTop = $(".nav-pills").offset().top - 15;
+      window.scrollTo(0, offsetTop);
+    });
+
+    $('.nav-pills a').click(function(e){
+      e.preventDefault();
+      if(!$(this).parent().hasClass('main')) {
+        $(this).parent().parent().prev().find('a').click();
+      }
+
+      // smooth scrolling
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        var scrollTo = target.offset().top - 100;
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: scrollTo
+          }, 800);
+          // window.history.pushState({}, "BDS" , $(this).attr("href"));
+          // return false;
+        }
+      }
+
+    });
+  }
+  //
+
+  //Smooth Scrolling
+  $(function() {
+    $('.scroll-link').click(function(e) {
+      // e.preventDefault();
+      
+    });
+  }); 
+
   // select2
   $(".select2").select2(); 
 

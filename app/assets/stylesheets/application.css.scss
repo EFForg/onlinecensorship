@@ -908,6 +908,80 @@ select {
       padding: 0 15px;
     }
   }
+
+  .page-sidemenu {
+    margin: 10px 0;
+    .nav {
+      .list-unstyled {
+        display: inline-block;
+        width: 100%;
+        // height: 6px;
+        float: left;
+        background: #fff;
+        margin-bottom: 10px;
+        // padding-bottom: 8px;
+      }
+      li {
+        width: 100%;
+        a {
+          display: block;
+          font-size: 15px;
+          font-family: 'Work Sans', sans-serif;
+          text-transform: capitalize;
+          font-weight: normal;
+          padding-right: 0;
+          &:hover, &:focus {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .white-box {
+      margin: 0;
+      padding: 0 15px 6px;
+      &.main {
+        padding-top: 12px;
+        padding-bottom: 6px;
+        a {
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+      }
+    }
+    .side-section {
+      margin: 10px 0;
+    }
+  }
+
+  .sections-content {
+    .white-box {
+      @media (min-width: 768px) {
+        padding: 15px 20px;
+      }
+    }
+    .page-section {
+      h2 {
+        margin-bottom: 0;
+      }
+      margin: 10px 0 80px;
+      padding-bottom: 20px;
+      background: #fff;
+
+      .page-section-header {
+        margin: 10px 0 0;
+        padding-bottom: 0;
+      }
+
+      .page-subsection {
+        margin: 0 0 10px;
+        padding-top: 10px;
+        h3 {
+          font-weight: normal;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 }
 
 // a.collapsed .fa:before {
@@ -1582,3 +1656,5 @@ select {
     background: #fff;
   }
 }
+
+

@@ -29,58 +29,62 @@
 		</div>
 	<% end %>
 
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	  
-	  <% @web_page.sections.each_with_index do |section,x| %>
 
-		  <div class="panel">
-		    <div class="panel-heading dark-blue-bg" role="tab" id="headingOne">
-		      <h2 class="panel-title">
-		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=x%>" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-		          <%= section.title %>
-		          <div class="fa-wrapper">
-			          <i class="fa fa-plus"></i>
-			        </div>
-		        </a>
-		      </h2>
-		    </div>
-		    <div id="collapse_<%=x%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-		      <div class="panel-body">
-		        <p class="section-content"><%= section.content.html_safe if section.content %></p>
+	<div class="row">
+		<div class="col-sm-3">
 
-		        <div class="panel-group" id="sub-accordion" role="tablist" aria-multiselectable="true">
-	  
-						  <% section.sub_sections.each_with_index do |subsection,i| %>
+			<div class="page-sidemenu">
 
-							  <div class="panel">
-							    <div class="panel-heading" role="tab" id="headingOne">
-							      <h2 class="panel-title">
-							        <a role="button" data-toggle="collapse" data-parent="#sub-accordion" href="#subcollapse_<%=x%>-<%=i%>" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-							        	<%= image_tag subsection.icon(:thumb) if subsection.icon.exists? %>
-							          <%= subsection.title %>
-							          <div class="fa-wrapper">
-								          <i class="fa fa-plus"></i>
-								        </div>
-							        </a>
-							      </h2>
-							    </div>
-							    <div id="subcollapse_<%=x%>-<%=i%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-							      <div class="panel-body">
-							        <p><%= subsection.content.html_safe %></p>
-							      </div>
-							    </div>
-							  </div><!--panel-->
+				<ul class="nav nav-pills">
+					<% @web_page.sections.each_with_index do |section,x| %>
+						<!-- <span class="side-section white-box"> -->
 							
-							<% end %>
+							<li class="white-box main <%= x == 0 ? 'active' : '' %>">
+								<a data-toggle="pill" href="#<%= section.title.gsub(' ','-') %>"><b> <%= section.title %> </b></a>
+							</li>
 
+							<ul class="list-unstyled">
+							<% section.sub_sections.each_with_index do |subsection,i| %>
+
+								<!-- data-toggle="pill" href="#<= section.title.gsub(' ','-') %>" -->
+								<li class="white-box"><a href="#<%= subsection.title.gsub(' ','-') %>"><%= subsection.title %></a></li>
+
+							<% end %>
+							</ul>
+
+						<!-- </span> -->
+						<!-- <div class="seperator"></div> -->
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+		<div class="col-sm-9">
+			<div class="sections-content tab-content">
+
+				<% @web_page.sections.each_with_index do |section,x| %>
+
+					<div id="<%= section.title.gsub(' ','-') %>" class="page-section tab-pane fade <%= x == 0 ? 'in active' : '' %>">
+
+						<div class="white-box page-section-header">
+							<h2> <%= section.title %> </h2>
+							<div><%= section.content.html_safe if section.content %></div>
 						</div>
 
-		      </div>
-		    </div>
-		  </div><!--panel-->
-		
-		<% end %>
+						<% section.sub_sections.each_with_index do |subsection,i| %>
 
+							<div id="<%= subsection.title.gsub(' ','-') %>" class="page-subsection white-box">
+								<h3> <%= subsection.title %> </h3>
+								<div> <%= subsection.content.html_safe %> </div>
+							</div>
+
+						<% end %>
+
+					</div>
+				<% end %>
+
+			</div>
+		</div>
 	</div>
 
 </div>
