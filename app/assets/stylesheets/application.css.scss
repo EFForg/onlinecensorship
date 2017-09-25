@@ -918,7 +918,7 @@ select {
     &:after {
       content: '”';
       right: 0;
-      bottom: 34px;
+      bottom: 0;
     }
     &:after, &:before {
       color: $medium-blue;
