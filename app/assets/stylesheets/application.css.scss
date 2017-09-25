@@ -890,6 +890,46 @@ select {
 }
 
 .web-page {
+  blockquote {
+    position: relative;
+    border-left: none;
+    padding: 20px 40px;
+
+    p {
+      font-size: 36px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: bold;
+      line-height: 40px;
+      z-index: 99;
+      position: relative;
+    }
+
+    sub {
+      font-size: 14px;
+      font-weight: normal;
+      float: right;
+    }
+
+    &:before {
+      content: '“';
+      left: 0;
+      top: 38px;
+    }
+    &:after {
+      content: '”';
+      right: 0;
+      bottom: 34px;
+    }
+    &:after, &:before {
+      color: $medium-blue;
+      font-size: 144px;
+      position: absolute;
+      opacity: 0.5;
+      z-index: 1;
+      line-height: 36px;
+      z-index: 9;
+    }
+  }
   .panel {
     .panel-heading.dark-blue-bg {
       background: $dark-blue;
