@@ -58,22 +58,12 @@ $(document).ready(function(){
           $('html,body').animate({
             scrollTop: scrollTo
           }, 800);
-          // window.history.pushState({}, "BDS" , $(this).attr("href"));
-          // return false;
         }
       }
 
     });
   }
-  //
-
-  //Smooth Scrolling
-  $(function() {
-    $('.scroll-link').click(function(e) {
-      // e.preventDefault();
-      
-    });
-  }); 
+  // 
 
   // select2
   $(".select2").select2(); 

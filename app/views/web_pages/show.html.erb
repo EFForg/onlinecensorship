@@ -47,7 +47,7 @@
 							<% section.sub_sections.each_with_index do |subsection,i| %>
 
 								<!-- data-toggle="pill" href="#<= section.title.gsub(' ','-') %>" -->
-								<li class="white-box"><a href="#<%= subsection.title.gsub(' ','-').gsub('?','').gsub('"','') %>"><%= i + 1 %>. <%= subsection.title %></a></li>
+								<li class="white-box"><a href="#<%= subsection.title.gsub(' ','-').gsub('?','').gsub('"','').gsub(',','') %>"><%= i + 1 %>. <%= subsection.title %></a></li>
 
 							<% end %>
 							</ul>
@@ -73,7 +73,7 @@
 
 						<% section.sub_sections.each_with_index do |subsection,i| %>
 
-							<div id="<%= subsection.title.gsub(' ','-').gsub('?','').gsub('"','') %>" class="page-subsection white-box">
+							<div id="<%= subsection.title.gsub(' ','-').gsub('?','').gsub('"','').gsub(',','') %>" class="page-subsection white-box">
 								<h3> <%= image_tag subsection.icon(:thumb) if subsection.icon.exists? %> <%= i + 1 %>. <%= subsection.title %> </h3>
 								<div> <%= subsection.content.html_safe %> </div>
 							</div>
