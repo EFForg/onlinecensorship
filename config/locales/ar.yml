@@ -116,6 +116,7 @@ ar:
   may_we_use_your_case: "هل تسمح لنا باستخم قضيتك كدراسة حالة العامة؟ <i>لن نظهر معلوماتك الشخصية</i>"
   get_started: "ابدأ الآن"
   select: "اختر"
+  journalists_resources: "مجموعة موارد للصحفيين"
 
   date:
     abbr_month_names:

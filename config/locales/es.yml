@@ -116,6 +116,7 @@ es:
   may_we_use_your_case: "<i>Con el fin de crear conciencia sobre el problema de la censura en línea, publicaremos un informe en base a la información que los usuarios nos den aquí, y podremos hablar, directamente, con las empresas sobre lo que están haciendo bien y lo que pueden hacer mejor. Para ayudar a ilustrar nuestros hallazgos, es posible que necesitemos señalar ejemplos específicos. Si es así, haremos todo lo posible para proteger el anonimato del usuario. Por favor, indicanos si estás dispuesto a permitirnos compartir tu historia.</i>"
   get_started: "empezar"
   select: "Seleccionar"
+  journalists_resources: "kit de recursos para periodistas"
 
   date:
     abbr_month_names:
