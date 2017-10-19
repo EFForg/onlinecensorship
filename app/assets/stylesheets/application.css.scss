@@ -1007,6 +1007,11 @@ select {
       padding-bottom: 20px;
       background: #fff;
 
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
       .page-section-header {
         margin: 10px 0 0;
         padding-bottom: 0;
