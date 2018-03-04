@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :sections
 
-    resources :web_pages
+    resources :web_pages, path: "content"
 
     get "content/:id" => "web_pages#show", as: "content"
 
