@@ -65,14 +65,15 @@ Rails.application.routes.draw do
     resources :contacts , except: :index
     get "/contacts" => "contacts#new"
 
-    get "/submit-report" => "social_media_platforms#submit_report", :as => "submit_report"
-    get "/submit" => "social_media_platforms#submit_report_show", :as => "submit_report_show"
-    get "/submit-report/facebook", :to => redirect("/submit")
-    get "/submit-report/twitter", :to => redirect("/submit")
-    get "/submit-report/flickr", :to => redirect("/submit")
-    get "/submit-report/youtube", :to => redirect("/submit")
-    get "/submit-report/google", :to => redirect("/submit")
-    get "/submit-report/instagram", :to => redirect("/submit")
+    # redirect old form links to the new flow
+    get "/submit-report", :to => redirect("/")
+    get "/submit", :to => redirect("/")
+    get "/submit-report/facebook", :to => redirect("/")
+    get "/submit-report/twitter", :to => redirect("/")
+    get "/submit-report/flickr", :to => redirect("/")
+    get "/submit-report/youtube", :to => redirect("/")
+    get "/submit-report/google", :to => redirect("/")
+    get "/submit-report/instagram", :to => redirect("/")
 
     get "/admin/stories" => "stories#index"
     get "/admin/posts" => "posts#admin"

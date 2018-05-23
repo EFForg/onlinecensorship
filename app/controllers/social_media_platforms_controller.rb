@@ -18,17 +18,6 @@ class SocialMediaPlatformsController < ApplicationController
     end
   end
 
-  def submit_report
-    @platforms=SocialMediaPlatform.all
-  end
-
-  def submit_report_show
-    @countries = Country.all #.order("name ASC")
-    @languages = Language.order("name ASC")
-    @pages = Page.order(:theorder => :asc)
-    render :layout => "report"
-  end
-
   def new
     @social_media_platform = SocialMediaPlatform.new
   end
