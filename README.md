@@ -68,7 +68,7 @@ bundle install
 
 ## Create secrets file ##
 ```
-cp application.yml.example application.yml
+cp config/application.yml.example config/application.yml
 ```
 
 ## Database Creation ##
