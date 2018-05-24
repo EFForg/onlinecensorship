@@ -20,7 +20,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 ## Install Ruby ##
 
-We recommend you to use one of the Ruby version control. We mainly use Ruby 2.0.
+We recommend you to use one of the Ruby version control. We mainly use Ruby 2.2.0.
 
 ### Install rbenv a Ruby version manager (with Homebrew) ###
 
@@ -35,11 +35,11 @@ brew install rbenv # Follow the instructions after installing rbenv
 brew install rbenv-gemset
 ```
 
-### Install Ruby 2.0 ###
+### Install Ruby 2.2.0 ###
 
 ```
 #!ruby
-rbenv install 2.0.0-p247
+rbenv install 2.2.0
 ```
 
 ## Install MySql ##
@@ -66,10 +66,16 @@ git clone git@bitbucket.org:thaber/oc.git
 bundle install
 ```
 
+## Create secrets file ##
+```
+cp config/application.yml.example config/application.yml
+```
+
 ## Database Creation ##
 
 ```
 #!ruby
+cp config/database.yml.example config/database.yml
 bundle exec rake db:create
 bundle exec rake db:migrate
 # Seed the Database with some test data.
