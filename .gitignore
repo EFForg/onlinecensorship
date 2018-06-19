@@ -29,3 +29,6 @@ Thumbs.db
 config/database.yml
 config/application.yml
 
+# ignore vim swap files
+*.swo
+*.swp
