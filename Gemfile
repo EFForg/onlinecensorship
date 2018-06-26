@@ -46,10 +46,20 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'byebug'
   gem 'capistrano', '~> 3.3.0', require: false
   gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'rspec-rails', '~> 3.7'
+  gem 'factory_bot_rails', '~> 4.10'
+end
+
+group :test do
+  gem 'capybara-webkit', '~> 1.15'
+  gem 'database_cleaner'
+  gem 'simplecov', '~> 0.16'
+  gem 'launchy'
 end
 
 # logging
