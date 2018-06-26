@@ -76,7 +76,6 @@ gem 'aws-s3'
 
 # translation
 gem 'globalize', '~> 5.0'
-gem 'globalize-versioning', '~> 0.1'
 
 gem 'metamagic'
 
