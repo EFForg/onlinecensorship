@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:new, :create]
-  before_filter :filter_spam , only: [:create]
+  before_action :filter_spam , only: [:create]
   layout 'backend', except: [:new]
 
   def index

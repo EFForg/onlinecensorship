@@ -2,7 +2,7 @@
 #
 # The admin can add country as dropdown menu in the questions 
 #
-class Country < ActiveRecord::Base
+class Country < ApplicationRecord
   
   ## DB relations
   has_many :question_users
@@ -15,4 +15,5 @@ class Country < ActiveRecord::Base
   validates :name, :presence => true
 
   translates :name
+  attribute :name
 end

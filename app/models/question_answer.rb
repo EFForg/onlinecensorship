@@ -2,7 +2,7 @@
 #
 # We save the users answers in the question answers model
 #
-class QuestionAnswer < ActiveRecord::Base
+class QuestionAnswer < ApplicationRecord
 
   ## DB relations
   belongs_to :uploaded_file

@@ -2,7 +2,7 @@
 #
 # The users can answer the questions and we store the users data in this model
 #
-class QuestionUser < ActiveRecord::Base
+class QuestionUser < ApplicationRecord
 
   ## DB relations
   has_many :question_user_submissions

@@ -2,7 +2,7 @@
 #
 # The admin can add question as upload file
 #
-class UploadedFile < ActiveRecord::Base
+class UploadedFile < ApplicationRecord
 
 	## DB relations
 	has_one :question_answer

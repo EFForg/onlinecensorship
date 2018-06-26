@@ -2,7 +2,7 @@
 #
 # The admin can add stuff emails to the notifications system
 #
-class Notification < ActiveRecord::Base
+class Notification < ApplicationRecord
 
   # For use search method
   extend Search

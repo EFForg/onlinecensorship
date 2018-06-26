@@ -2,7 +2,7 @@
 #
 # The admin can add questions and answers for the users 
 #
-class Faq < ActiveRecord::Base
+class Faq < ApplicationRecord
 
   # For use search method
   extend Search
@@ -11,5 +11,6 @@ class Faq < ActiveRecord::Base
   validates :question, :answer, :presence => true
 
   translates :question, :answer
-
+  attribute :question
+  attribute :answer
 end

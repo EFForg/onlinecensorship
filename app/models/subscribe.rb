@@ -2,7 +2,7 @@
 #
 # The Subscribe form in the forntEnd
 #
-class Subscribe < ActiveRecord::Base
+class Subscribe < ApplicationRecord
 
   # For use search method
   extend Search

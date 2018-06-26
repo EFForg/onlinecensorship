@@ -1,4 +1,4 @@
-class SubSection < ActiveRecord::Base
+class SubSection < ApplicationRecord
 	belongs_to :section
 
 	has_attached_file :icon, :styles => { :thumb => '36x36#'},
@@ -7,4 +7,6 @@ class SubSection < ActiveRecord::Base
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
 
   translates :title, :content
+  attribute :title
+  attribute :content
 end

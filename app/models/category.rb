@@ -2,7 +2,7 @@
 #
 # The admin can add category for every post 
 #
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
 
   ## DB relations
   has_many :posts
@@ -14,5 +14,6 @@ class Category < ActiveRecord::Base
   validates :title,:color, :presence => true
 
   translates :title
+  attribute :title
 
 end

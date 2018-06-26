@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user! , except: [:submit, :ty]
-  before_filter :filter_spam , only: [:submit]
+  before_action :filter_spam , only: [:submit]
   layout 'backend', except: [:submit, :ty]
 
   def index

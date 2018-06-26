@@ -2,7 +2,7 @@
 #
 # The admin can add alot of option to every checkbox or radio button questions
 #
-class QuestionOption < ActiveRecord::Base
+class QuestionOption < ApplicationRecord
 
   ## DB relations
   belongs_to :question
@@ -15,5 +15,5 @@ class QuestionOption < ActiveRecord::Base
   validates :option_title, :presence => true
 
   translates :option_title
-
+  attribute :option_title
 end

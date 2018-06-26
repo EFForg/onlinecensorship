@@ -2,15 +2,15 @@ ruby '2.5.1'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 5.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '< 0.5'
 gem 'rails_12factor'
 gem 'figaro'
 
 group :assets do
-  gem 'sass-rails', '~> 4.0'
-  gem 'coffee-rails', '~> 4.0'
+  gem 'sass-rails', '~> 5.0'
+  gem 'coffee-rails', '~> 4.2'
   gem 'uglifier', '~> 4.1'
   #gem 'turbo-sprockets-rails3' # faster asset compilation
 end

@@ -2,7 +2,7 @@
 #
 # The admin can add stories
 #
-class Story < ActiveRecord::Base
+class Story < ApplicationRecord
 
   # For use search method
   extend Search
@@ -19,5 +19,7 @@ class Story < ActiveRecord::Base
   validates :title,:brief, :presence => true
 
   translates :title, :brief, :content
-
+  attribute :title
+  attribute :brief
+  attribute :content
 end
