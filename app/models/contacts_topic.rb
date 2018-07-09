@@ -2,7 +2,7 @@
 #
 # The admin can add topics and the topics will appear to the users in drop down menu
 #
-class ContactsTopic < ActiveRecord::Base
+class ContactsTopic < ApplicationRecord
 
   ## DB relations
   has_many :contacts
@@ -14,5 +14,5 @@ class ContactsTopic < ActiveRecord::Base
   validates :name, :presence => true
 
   translates :name
-
+  attribute :name
 end

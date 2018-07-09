@@ -2,7 +2,7 @@
 #
 # The admin can assign multi platforms for ever post so we using this model in this relation 
 #
-class PostsSocialMediaPlatform < ActiveRecord::Base
+class PostsSocialMediaPlatform < ApplicationRecord
 
   ## DB relations
  	belongs_to :post

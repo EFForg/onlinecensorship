@@ -2,7 +2,7 @@ class SubscribesController < ApplicationController
   before_action :set_subscribe, only: [:show, :edit, :update, :destroy]
   before_action :set_confirmation, only: [:subscribe_confirmation]
   before_action :authenticate_user!, only: [:index , :destroy]
-  before_filter :filter_spam , only: [:create]
+  before_action :filter_spam , only: [:create]
   layout 'backend'
 
   def index

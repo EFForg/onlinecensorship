@@ -29,3 +29,12 @@ Thumbs.db
 config/database.yml
 config/application.yml
 
+# ignore vim swap files
+*.swo
+*.swp
+
+# ignore test coverage files
+coverage/*
+
+# ignore byebug history
+.byebug_history

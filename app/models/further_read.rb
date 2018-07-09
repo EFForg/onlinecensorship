@@ -2,7 +2,7 @@
 #
 # The admin can add posts in the section further read
 #
-class FurtherRead < ActiveRecord::Base
+class FurtherRead < ApplicationRecord
 
   # For use search method
   extend Search
@@ -11,5 +11,7 @@ class FurtherRead < ActiveRecord::Base
   validates :title, :category ,:author ,:link, :presence => true
 
   translates :title, :author, :written_in
-
+  attribute :title
+  attribute :author
+  attribute :written_in
 end

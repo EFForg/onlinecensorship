@@ -1,4 +1,4 @@
-class WebPage < ActiveRecord::Base
+class WebPage < ApplicationRecord
 	has_many :sections
 
 	extend FriendlyId
@@ -6,5 +6,8 @@ class WebPage < ActiveRecord::Base
 
 	accepts_nested_attributes_for :sections, :reject_if => :all_blank, allow_destroy: true
 
-	translates :title, :brief, :content
+  translates :title, :brief, :content
+  attribute :title
+  attribute :brief
+  attribute :content
 end

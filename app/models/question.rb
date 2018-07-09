@@ -2,7 +2,7 @@
 #
 # The admin can add many questions to any slider page and social media platform
 #
-class Question < ActiveRecord::Base
+class Question < ApplicationRecord
   ## DB relations
   has_many :question_options
 	has_many :question_answers
@@ -21,6 +21,9 @@ class Question < ActiveRecord::Base
   # Validation
   validates :question_title,:question_type, :presence => true
 
-  translates :question_title, :prompt_text, :placeholder
-
+  translates :question_title, :prompt_text, :placeholder, :prompt_link
+  attribute :question_title
+  attribute :prompt_text
+  attribute :placeholder
+  attribute :prompt_link
 end
