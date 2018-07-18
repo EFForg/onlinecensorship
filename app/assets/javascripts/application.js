@@ -83,16 +83,8 @@ $(document).ready(function(){
 
   // Home owl slider
   if($(".owl-carousel").length > 0) {
-
     $(".owl-carousel").owlCarousel({
-      responsive: {
-      0 : {
-      items: 1
-      },
-      992: {
-      items: 2
-      }
-      },
+      responsive: { 0 : { items: 1 }, 992: { items: 3 } },
       center: true,
       loop: true,
       autoplay: true,
@@ -101,7 +93,6 @@ $(document).ready(function(){
       autoplayHoverPause: true,
       dots: true
     });
-
   }
 
   // Accordion

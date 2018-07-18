@@ -27,6 +27,9 @@
 $light-blue: #41dcf5;
 $medium-blue: #4ab2c3;
 $dark-blue: #152f4e;
+$light-gray: #f6f6f6;
+$gray: #dddddd;
+$dark-gray: #aaaaaa;
 
 html {
   height: 100%;
@@ -58,13 +61,10 @@ input, select, textarea, button {
   }
 }
 
-// @media (max-width: 767px) {
-//   .dropdown-menu {
-//     display: none;
-//     position: relative;
-//     float: none;
-//   }
-// }
+.flex {
+  display: flex;
+  align-items: center;
+}
 
 .dotted-bg, .home-header {
   background: image-url("header-bg.png") repeat;
@@ -79,7 +79,7 @@ input, select, textarea, button {
   background-color: $medium-blue;
 }
 .gray-bg {
-  background-color: #f6f6f6;
+  background-color: $light-gray;
 }
 
 #nprogress .bar {
@@ -130,8 +130,19 @@ input, select, textarea, button {
 }
 
 .about-oc {
+  background-color: #fff;
+  padding-top: 250px;
+  padding-bottom: 2rem;
+  p {
+    margin-bottom: 2rem;
+  }
+  h1 {
+    color: $dark-blue;
+  }
+}
+
+.carousel {
   padding: 62px 0 200px;
-  margin-bottom: 250px;
   position: relative;
   @media (max-width: 767px) {
     padding-bottom: 62px;
@@ -152,11 +163,14 @@ input, select, textarea, button {
       position: relative;
       bottom: 0;
     }
+    .owl-item {
+      margin-right: 1px;
+    }
     .owl-controls {
       text-align: center;
       margin-top: 10px;
       .owl-dot {
-        background: #ddd;
+        background: $gray;
         width: 16px;
         height: 16px;
         display: inline-block;
@@ -172,26 +186,14 @@ input, select, textarea, button {
 }
 
 .appeal {
-  background-image: image-url("appeal-bg.png");
-  background-position: center -4px;
-  background-repeat: no-repeat;
-  padding: 72px 0;
-  @media (max-width: 767px) {
-    background-image: none;
-    .col-md-8 {
-      padding: 0 !important;
-    }
-  }
+  background: #ffffff;
   h1 {
     color: $dark-blue;
-    @media (min-width: 1200px) {
-      padding: 0 80px;
-    }
   }
   .btn {
     margin: 50px 0;
     padding: 14px;
-    font-size: 14px;
+    font-size: 18px;
     @media (max-width: 767px) {
       font-size: 10px;
       padding: 6px;
@@ -349,6 +351,10 @@ footer {
 
 .news-box {
   overflow: hidden;
+  border: 1px solid $dark-gray;
+  hr {
+    border-color: $dark-gray;
+  }
   .post-brief {
     font-size: 14px;
     overflow: hidden;
@@ -1653,6 +1659,7 @@ select {
   }
   .story {
     height: 100%;
+    border: 1px solid $dark-gray;
   }
   .story-content {
     height: 100%;
