@@ -64,6 +64,10 @@ input, select, textarea, button {
 .flex {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .dotted-bg, .home-header {
@@ -89,13 +93,17 @@ input, select, textarea, button {
 // homepage
 .intro {
   padding: 40px 0;
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
   h3 {
     font-size: 62px;
     height: 76px;
     @media (min-width: 768px) and (max-width: 1199px) {
       font-size: 54px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       font-size: 42px;
       height: 52px;
     }
@@ -139,12 +147,15 @@ input, select, textarea, button {
   h1 {
     color: $dark-blue;
   }
+  @media (max-width: 768px) {
+    padding: 2rem 2rem;
+  }
 }
 
 .carousel {
   padding: 62px 0 200px;
   position: relative;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     padding-bottom: 62px;
     margin-bottom: 0;
   }
@@ -159,7 +170,7 @@ input, select, textarea, button {
   .owl-carousel {
     position: absolute;
     bottom: -212px;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       position: relative;
       bottom: 0;
     }
@@ -189,14 +200,22 @@ input, select, textarea, button {
   background: #ffffff;
   h1 {
     color: $dark-blue;
+    @media (max-width: 768px) {
+      font-size: 20px !important;
+      padding-top: 2rem;
+      text-align: center;
+    }
   }
   .btn {
     margin: 50px 0;
     padding: 14px;
     font-size: 18px;
-    @media (max-width: 767px) {
-      font-size: 10px;
-      padding: 6px;
+    @media (max-width: 768px) {
+      margin: 2rem 0;
+      font-size: 12px;
+      padding: 6px 20px;
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -469,7 +488,7 @@ footer {
   margin-bottom: 14px;
   .links {
     margin: 26px 0;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       a {
         display: inline-block;
         margin-top: 16px;
@@ -584,7 +603,7 @@ footer {
     padding: 24px 0;
     .appeal-question, h2 {
       padding: 0 34px;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         padding: 0 20px;
       }
     }
@@ -638,7 +657,7 @@ footer {
         a {
           font-size: 16px;
           padding: 14px 20px;
-          @media (max-width: 767px) {
+          @media (max-width: 768px) {
             font-size: 12px;
             padding: 10px 20px;
           }
@@ -1143,7 +1162,7 @@ select {
           font-size: 36px;
         }
       }
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         height: 60px;
         width: 60px;
         h4 {
@@ -1348,7 +1367,7 @@ select {
       background-color: rgba(21, 47, 78, 0.75);
       z-index: 99;
       overflow: hidden;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         width: 100%;
       }
     h1 {
@@ -1390,7 +1409,7 @@ select {
 
     &.select-input, &.dropdown-input, &.short-field {
       width: 375px;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         width: 100%;
       }
     }
@@ -1586,7 +1605,7 @@ select {
   margin: 8px;
   background: #fff;
   height: 352px;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     height: auto;
   }
   .post-brief {
@@ -1613,7 +1632,7 @@ select {
       min-height: 106px;
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .post-brief {
       height: 128px;
     }
@@ -1651,7 +1670,7 @@ select {
         height: 100% !important;
       }
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       width: 100%;
       float: left;
       height: auto;
@@ -1663,7 +1682,7 @@ select {
   }
   .story-content {
     height: 100%;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       width: 100%;
       .read-link {
         display: none;

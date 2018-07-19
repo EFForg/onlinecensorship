@@ -120,7 +120,7 @@
       <% end %>
 
       <% @posts.each_with_index do |post, i| %>
-        <div class="col-md-4">
+        <div class="col-md-4 hidden-xs">
           <div class="news-box">
             <% if post.category.present? %>
               <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
