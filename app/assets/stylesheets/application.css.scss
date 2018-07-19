@@ -1681,25 +1681,45 @@ select {
     border: 1px solid $dark-gray;
   }
   .story-content {
-    height: 100%;
-    @media (max-width: 768px) {
-      width: 100%;
-      .read-link {
-        display: none;
-      }
-      h3 {
-        height: 62px;
-      }
-    }
-    margin-top: 0;
+    padding: 0 2rem;
     position: static;
+    overflow: hidden;
+
     p {
       color: #162F4E;
+    }
+
+    h3 {
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-bottom: 0;
+      a {
+        color: $dark-blue;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     .read-link {
       position: static;
       bottom: 34px;
+    }
+
+    .post-brief {
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 10px;
+      width: 100%;
+      h3 {
+        margin-top: 5px;
+      }
+      .post-brief {
+        height: auto;
+      }
     }
   }
 }
@@ -1727,5 +1747,3 @@ select {
     background: #fff;
   }
 }
-
-
