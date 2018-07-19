@@ -1605,6 +1605,7 @@ select {
   margin: 8px;
   background: #fff;
   height: 352px;
+  overflow: hidden;
   @media (max-width: 768px) {
     height: auto;
   }
@@ -1632,12 +1633,7 @@ select {
       min-height: 106px;
     }
   }
-  @media (max-width: 768px) {
-    .post-brief {
-      height: 128px;
-    }
-  }
-  overflow: hidden;
+
   @include transition(all, 0.5s);
   &:hover {
     box-shadow: 0px 2px 13px 0px rgba(0, 0, 0, 0.13);
