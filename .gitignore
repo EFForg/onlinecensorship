@@ -38,3 +38,8 @@ coverage/*
 
 # ignore byebug history
 .byebug_history
+
+.env
+docker-compose.yml
+
+mysql/
