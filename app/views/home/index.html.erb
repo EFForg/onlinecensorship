@@ -6,338 +6,39 @@ meta og: {
 }
 %>
 
-<section class="dotted-bg intro">
+<%= render 'header' %>
+
+<section class="appeal">
   <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-
-        <% if locale == :en %>
-          <h3 class="cd-headline letters type">
-            <span> Has your</span>
-            <span class="cd-words-wrapper">
-              <b class="is-visible" style="opacity: 1;"><i class="in">a</i><i class="out">c</i><i class="out">c</i><i class="out">o</i><i class="out">u</i><i class="out">n</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">o</i><i class="out">s</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">h</i><i class="out">o</i><i class="out">t</i><i class="out">o</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">l</i><i class="out">i</i><i class="out">n</i><i class="out">k</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">a</i><i class="out">m</i><i class="out">p</i><i class="out">a</i><i class="out">i</i><i class="out">g</i><i class="out">n</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            </span>
-          </h3><h3 class="cd-headline letters type">
-            <span>been</span>
-            <span class="cd-words-wrapper">
-              <b class="is-visible" style="opacity: 1;"><i class="in">s</i><i class="out">u</i><i class="out">s</i><i class="out">p</i><i class="out">e</i><i class="out">n</i><i class="out">d</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">e</i><i class="out">n</i><i class="out">s</i><i class="out">o</i><i class="out">r</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">t</i><i class="out">a</i><i class="out">k</i><i class="out">e</i><i class="out">n</i><i class="out"> </i><i class="out">d</i><i class="out">o</i><i class="out">w</i><i class="out">n</i><i class="out">?</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">r</i><i class="out">e</i><i class="out">m</i><i class="out">o</i><i class="out">v</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">b</i><i class="out">a</i><i class="out">n</i><i class="out">n</i><i class="out">e</i><i class="out">d</i><i class="out">?</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            </span>
-          </h3>
-        <% elsif locale == :ar %>
-          <h3> هل تم <span class="dark-blue-bg"> حجب </span> </h3>
-          <h3><span class="dark-blue-bg"> تدوينتك؟ </span></h3>
-        <% else %>
-          <h3 class="cd-headline letters type">
-            <span> ¿Tu </span>
-            <span class="cd-words-wrapper">
-              <b class="is-visible" style="opacity: 1;"><i class="in">c</i><i class="out">u</i><i class="out">e</i><i class="out">n</i><i class="out">t</i><i class="out">a</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">o</i><i class="out">s</i><i class="out">t</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">f</i><i class="out">o</i><i class="out">t</i><i class="out">o</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">e</i><i class="out">n</i><i class="out">l</i><i class="out">a</i><i class="out">c</i><i class="out">e</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">a</i><i class="out">m</i><i class="out">p</i><i class="out">a</i><i class="out">ñ</i><i class="out">a</i><i class="out">/</i><i class="out">/</i><i class="out">/</i><i class="out">/</i></b>
-            </span>
-          </h3><h3 class="cd-headline letters type">
-            <span> ha sido </span>
-            <span class="cd-words-wrapper">
-              <b class="is-visible" style="opacity: 1;"><i class="in">s</i><i class="out">u</i><i class="out">s</i><i class="out">p</i><i class="out">e</i><i class="out">n</i><i class="out">d</i><i class="out">i</i><i class="out">d</i><i class="out">a</i><i class="out">?</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">c</i><i class="out">e</i><i class="out">n</i><i class="out">s</i><i class="out">u</i><i class="out">r</i><i class="out">a</i><i class="out">d</i><i class="out">o</i><i class="out">?</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">r</i><i class="out">e</i><i class="out">t</i><i class="out">i</i><i class="out">r</i><i class="out">a</i><i class="out">d</i><i class="out">a</i><i class="out">?</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">r</i><i class="out">e</i><i class="out">m</i><i class="out">o</i><i class="out">v</i><i class="out">i</i><i class="out">d</i><i class="out">o</i><i class="out">?</i><i class="out">/</i><i class="out">/</i></b>
-              <b class="is-hidden" style="opacity: 1;"><i class="out">p</i><i class="out">r</i><i class="out">o</i><i class="out">h</i><i class="out">i</i><i class="out">b</i><i class="out">i</i><i class="out">d</i><i class="out">a</i><i class="out">?</i><i class="out">/</i></b>
-            </span>
-          </h3>
-        <% end %>
-
-        <div class="row">
-          <p class="col-md-9">
-            <%=@home_fields.slogan%>
-          </p>
-        </div>
+    <div class="row flex">
+      <div class="col-sm-8">
+        <h1> <%=@home_fields.appeal_text%> </h1>
       </div>
-      <div class="col-md-4 action">
-        <a href="mailto:oc-reports@eff.org" class="btn btn-default">
-          <%=@home_fields.submit_btn_text%> &nbsp; <i class='fa fa-arrow-right'></i>
-        </a>
+      <div class="col-sm-4">
+        <%= link_to @home_fields.appeal_btn_text, resources_how_to_appeal_path, :class => "btn btn-primary" %>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about-oc dark-blue-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h1> <%=@home_fields.what_oc_title%> </h1>
-      </div>
-      <div class="col-md-8">
-        <p> <%=@home_fields.what_oc_text%> </p>
-      </div>
+<%= render 'carousel' %>
+
+<section class="about-oc">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h1> <%=@home_fields.what_oc_title%> </h1>
+    </div>
+    <div class="col-md-8">
+      <p> <%=@home_fields.what_oc_text%> </p>
+      <p>
+      <a href="mailto:oc-reports@eff.org" class="btn btn-primary">
+        <%=@home_fields.submit_btn_text%> &nbsp; <i class='fa fa-arrow-right'></i>
+      </a>
+      </p>
     </div>
   </div>
-
-  <div class="owl-carousel">
-
-   <!--  <div class="story-wrapper fake-story">
-    </div> -->
-
-    <% if @stories %>
-      <% @stories.each do |story| %>
-
-        <div class="story-wrapper">
-
-          <div class="story clearfix">
-
-            <div class="image">
-              <% if story.external_link? %>
-                <%=link_to story.external_link , :target => "_blank" do %>
-                  <%=image_tag story.photo(:thumb) %>
-                <% end %>
-              <% else %>
-                <%=link_to story_path(story),:title=>story.title do %>
-                  <%=image_tag story.photo(:thumb) %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="news-box story-content">
-              <h3>
-                <% if story.external_link? %>
-                  <%=link_to story.external_link , :target => "_blank" do %>
-                    <%=story.title %>
-                  <% end %>
-                <% else %>
-                  <%=link_to story_path(story),:title=>story.title do %>
-                    <%=story.title %>
-                  <% end %>
-                <% end %>
-              </h3>
-              <p class="post-brief"><%= story.brief.truncate(200) %></p>
-              <% if story.external_link? %>
-                <%= link_to t(:read_story), story.external_link, target: "_blank", :class => "read-link more-link" %>
-              <% else %>
-                <%= link_to t(:read_story), story_path(story), :class => "read-link more-link" %>
-              <% end %>
-            </div>
-
-          </div>
-
-        </div>
-
-      <% end %>
-    <% end %>
-  </div>
-
+</div>
 </section>
 
-<section class="latest-news gray-bg news-area">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-12">
-        <h1> <%= t(:latest_news_analysis) %> </h1>
-      </div>
-    </div>
-
-    <div class="row">
-
-      <% if @featured_post %>
-
-        <% if @featured_post.photo_file_name %>
-
-          <div class="col-md-8">
-            <div class="news-box featured-post clearfix">
-              <div class="col-md-6 col-no-padding">
-                <div class="image-wrapper">
-
-                  <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                    <%=link_to @featured_post.link, :title => @featured_post.title, :target => "_blank" do %>
-                      <%=image_tag @featured_post.photo(:thumb) %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to @featured_post, :title => @featured_post.title do %>
-                      <%=image_tag @featured_post.photo(:thumb) %>
-                    <% end %>
-                  <% end %>
-                  <% if @featured_post.image_link.present? && @featured_post.image_author_name.present? && @featured_post.cc_license.present? %>
-                    <div class="image-tip">
-                      <a href="<%=@featured_post.image_link%>" target="_blank"><%= t(:image) %></a>
-                      <%= t(:by) %> <a href="<%=@featured_post.image_author_link%>" target="_blank"><%=@featured_post.image_author_name%></a>
-                      <a href="<%=@featured_post.cc_license%>" target="_blank"><%= t(:cc_license) %></a>
-                    </div><!--image-tip-->
-                  <% end %>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-no-padding">
-                <div class="post-content">
-
-                  <% if @featured_post.category.present? %>
-                    <i class="fa fa-circle" style="color: <%= @featured_post.category.color %>"></i>
-                    <label class="category"><%= @featured_post.category.title %></label>
-                  <% end %>
-
-                  <h3>
-                    <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                      <%=link_to @featured_post.link, :title => @featured_post.title, :target => "_blank" do %>
-                        <%=@featured_post.title %>
-                      <% end %>
-                    <% else %>
-                      <%=link_to @featured_post, :title => @featured_post.title do %>
-                        <%=@featured_post.title %>
-                      <% end %>
-                    <% end %>
-                  </h3>
-
-                  <h5>
-                    <% if @featured_post.person_id? %>
-                      <% if @featured_post.person.present? %>
-                        <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
-                          <%= @featured_post.person.name %>
-                        <% end %>
-                      <% end %>
-                    <% elsif @featured_post.news_source? %>
-                      <%=@featured_post.news_source%>
-                    <% end %>
-                  </h5>
-                  <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
-                  <p class="post-brief"><%=@featured_post.intro.truncate(163) %></p>
-                  <hr>
-                  <label class="post-tags">
-                    <% if @featured_post.tags?%>
-                      <% @featured_post.tags.split(/,/).each do |tag| %>
-                        <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                      <% end %>
-                    <% end %>
-                  </label>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        <% else %>
-
-          <div class="col-md-4">
-            <div class="news-box">
-
-              <% if @featured_post.category.present? %>
-                <i class="fa fa-circle" style="color: <%= @featured_post.category.color %>"></i>
-                <label class="category"> <%= @featured_post.category.title %> </label>
-              <% end %>
-
-              <h3>
-                <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                  <%=link_to @featured_post.link,:title=>@featured_post.title , :target => "_blank" do %>
-                    <%=@featured_post.title %>
-                  <% end %>
-                <% else %>
-                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
-                    <%=@featured_post.title %>
-                  <% end %>
-                <% end %>
-              </h3>
-
-              <h5>
-                <% if @featured_post.person_id? %>
-                  <% if @featured_post.person.present? %>
-                    <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
-                      <%= @featured_post.person.name %>
-                    <% end %>
-                  <% end %>
-                <% elsif @featured_post.news_source? %>
-                  <%=@featured_post.news_source%>
-                <% end %>
-              </h5>
-              <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
-              <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
-              <hr>
-              <label class="post-tags">
-                <% if @featured_post.tags?%>
-                  <% @featured_post.tags.split(/,/).each do |tag| %>
-                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                  <% end %>
-                <% end %>
-              </label>
-            </div>
-          </div>
-
-        <% end %>
-
-      <% end %>
-
-      <% @posts.each_with_index do |post, i| %>
-
-        <div class="col-md-4">
-          <div class="news-box">
-
-            <% if post.category.present? %>
-              <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
-              <label class="category"> <%= post.category.title %> </label>
-            <% end %>
-
-            <h3>
-              <% if post.category && post.category.title.downcase=="news" %>
-                <%=link_to post.link ,:title=>post.title, :target => "_blank" do %>
-                  <%=post.title %>
-                <% end %>
-              <% else %>
-                <%= link_to post, :title => post.title do %>
-                  <%= post.title %>
-                <% end %>
-              <% end %>
-            </h3>
-
-            <h5>
-              <% if post.person_id? %>
-                <% if post.person.present? %>
-                  <%=link_to author_path(id: post.person),:title=>post.person.name do %>
-                    <%= post.person.name %>
-                  <% end %>
-                <% end %>
-              <% elsif post.news_source? %>
-                <%=post.news_source%>
-              <% end %>
-            </h5>
-            <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
-            <p class="post-brief"><%= post.intro.truncate(163) %></p>
-            <hr>
-            <label class="post-tags">
-              <% if post.tags?%>
-                <% post.tags.split(/,/).each do |tag| %>
-                  <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                <% end %>
-              <% end %>
-            </label>
-          </div>
-        </div>
-
-      <% end %>
-
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 centered">
-        <%= link_to posts_path do %>
-          <div class="btn btn-default more-btn white-btn"> <%= t(:more_news_analysis) %> </div>
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="appeal medium-blue-bg">
-  <div class="container">
-    <div class="col-md-8 centered col-md-offset-2">
-      <h1> <%=@home_fields.appeal_text%> </h1>
-      <%= link_to @home_fields.appeal_btn_text, resources_how_to_appeal_path, :class => "btn btn-primary" %>
-    </div>
-  </div>
-</section>
+<%= render 'news' %>

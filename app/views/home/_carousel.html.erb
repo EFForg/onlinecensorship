@@ -1,0 +1,42 @@
+<section class="carousel dark-blue-bg">
+  <div class="owl-carousel">
+    <% if @stories %>
+      <% @stories.each do |story| %>
+        <div class="story-wrapper">
+          <div class="story clearfix">
+            <div class="image">
+              <% if story.external_link? %>
+                <%=link_to story.external_link , :target => "_blank" do %>
+                  <%=image_tag story.photo(:thumb) %>
+                <% end %>
+              <% else %>
+                <%=link_to story_path(story),:title=>story.title do %>
+                  <%=image_tag story.photo(:thumb) %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="story-content">
+              <h3>
+                <% if story.external_link? %>
+                  <%=link_to story.external_link , :target => "_blank" do %>
+                    <%=story.title %>
+                  <% end %>
+                <% else %>
+                  <%=link_to story_path(story),:title=>story.title do %>
+                    <%=story.title %>
+                  <% end %>
+                <% end %>
+              </h3>
+              <p class="post-brief"><%= story.brief.truncate(200) %></p>
+              <% if story.external_link? %>
+                <%= link_to t(:read_story), story.external_link, target: "_blank", :class => "read-link more-link" %>
+              <% else %>
+                <%= link_to t(:read_story), story_path(story), :class => "read-link more-link" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>
