@@ -1,0 +1,26 @@
+version: '2.1'
+services:
+  app:
+    build:
+      context: .
+      args:
+        BUILD_ENV: development
+
+    restart: unless-stopped
+
+    volumes:
+      - .:/opt/oc
+      - /opt/oc/tmp
+
+    env_file: .env
+
+    ports:
+      - 3000:3000
+
+  db:
+    image: mysql:5.7
+    restart: always
+    env_file: .env
+
+    volumes:
+      - ./mysql:/var/lib/mysql/
