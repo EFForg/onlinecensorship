@@ -28,8 +28,9 @@ meta og: {
   <div class="row">
     <div class="col-md-4">
       <h1> <%=@home_fields.what_oc_title%> </h1>
+      <%= image_tag("magnify-sm", size: "200x200", class: 'hidden-sm hidden-xs center-block') %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-2">
       <p> <%=@home_fields.what_oc_text%> </p>
       <p>
       <a href="mailto:oc-reports@eff.org" class="btn btn-primary">
