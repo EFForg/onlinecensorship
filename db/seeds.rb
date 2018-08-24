@@ -3,7 +3,7 @@
 #######
 
 # Create default admin
-User.create(email: ENV['admin_user'],  password: ENV['admin_pass'], password_confirmation: ENV['admin_pass'])
+User.create(email: "admin@example.com",  password: "password", password_confirmation: "password")
 
 # G+, flickr, youtube
 smp = SocialMediaPlatform.create(title: "Google+", color: "#000000", font_awesome_style: "fa fa-google-plus")
