@@ -2,7 +2,7 @@
 #
 # The admin can add pages for every social media platform
 #
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   ## DB relations
   # belongs_to :social_media_platform
   belongs_to :report
@@ -17,5 +17,5 @@ class Page < ActiveRecord::Base
   # Validation
   # validates :social_media_platform_id, :presence => true
   translates :message
-
+  attribute :message
 end

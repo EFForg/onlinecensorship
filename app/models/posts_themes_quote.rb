@@ -2,7 +2,7 @@
 #
 # The admin can assign multi themes for ever quote so we using this model in this relation 
 #
-class PostsThemesQuote < ActiveRecord::Base
+class PostsThemesQuote < ApplicationRecord
 
   ## DB relations
  	belongs_to :quote

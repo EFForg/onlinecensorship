@@ -2,7 +2,7 @@
 #
 # The admin can assign multi platforms for ever quote so we using this model in this relation 
 #
-class QuotesSocialMediaPlatform < ActiveRecord::Base
+class QuotesSocialMediaPlatform < ApplicationRecord
 
   ## DB relations
  	belongs_to :quote

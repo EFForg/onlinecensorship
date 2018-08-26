@@ -46,11 +46,8 @@
               <li> <%= link_to t(:further_readings), resources_further_readings_path %> </li>
 
               <% WebPage.where(published: true).each do |page| %>
-
                 <li> <%= link_to t(page.title), web_page_path(page) %> </li>
-                
               <% end %>
-
               <!--<li><a href="#">Getting involved</a></li>-->
             </ul>
           </li>

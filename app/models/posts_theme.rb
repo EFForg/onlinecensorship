@@ -2,7 +2,7 @@
 #
 # The admin can add theme for every post
 #
-class PostsTheme < ActiveRecord::Base
+class PostsTheme < ApplicationRecord
 
   ## DB relations
   has_and_belongs_to_many :posts
@@ -15,5 +15,5 @@ class PostsTheme < ActiveRecord::Base
   validates :title, :presence => true
 
   translates :title
-
+  attribute :title
 end

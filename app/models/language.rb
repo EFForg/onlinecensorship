@@ -2,7 +2,7 @@
 #
 # The admin can add language as dropdown menu in the questions 
 #
-class Language < ActiveRecord::Base
+class Language < ApplicationRecord
 
 	default_scope { order(name: :asc) }
 
@@ -16,5 +16,5 @@ class Language < ActiveRecord::Base
   validates :name, :presence => true
 
   translates :name
-
+  attribute :name
 end

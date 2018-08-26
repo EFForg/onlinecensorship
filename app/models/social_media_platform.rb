@@ -2,7 +2,7 @@
 #
 # The admin can add social media platforms to allow the visitors to send there issues about it
 #
-class SocialMediaPlatform < ActiveRecord::Base
+class SocialMediaPlatform < ApplicationRecord
 
   ## DB relations
   # has_many :pages
@@ -29,5 +29,5 @@ class SocialMediaPlatform < ActiveRecord::Base
   validates :title,:color,:font_awesome_style, :presence => true
 
   translates :title
-
+  attribute :title
 end

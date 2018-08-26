@@ -1,4 +1,4 @@
-class PagesQuestion < ActiveRecord::Base
+class PagesQuestion < ApplicationRecord
 
   ## DB relations
  	belongs_to :page

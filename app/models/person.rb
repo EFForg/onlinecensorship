@@ -2,7 +2,7 @@
 #
 # The People in this site can be "team members , posts authors or advisors"
 #
-class Person < ActiveRecord::Base
+class Person < ApplicationRecord
 
   ## DB relations
   has_many :posts
@@ -26,5 +26,7 @@ class Person < ActiveRecord::Base
   validates :name, :bio, :presence => true
 
   translates :name, :bio, :role
-
+  attribute :name
+  attribute :bio
+  attribute :role
 end

@@ -27,6 +27,9 @@
 $light-blue: #41dcf5;
 $medium-blue: #4ab2c3;
 $dark-blue: #152f4e;
+$light-gray: #f6f6f6;
+$gray: #dddddd;
+$dark-gray: #aaaaaa;
 
 html {
   height: 100%;
@@ -58,13 +61,14 @@ input, select, textarea, button {
   }
 }
 
-// @media (max-width: 767px) {
-//   .dropdown-menu {
-//     display: none;
-//     position: relative;
-//     float: none;
-//   }
-// }
+.flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
 
 .dotted-bg, .home-header {
   background: image-url("header-bg.png") repeat;
@@ -79,7 +83,7 @@ input, select, textarea, button {
   background-color: $medium-blue;
 }
 .gray-bg {
-  background-color: #f6f6f6;
+  background-color: $light-gray;
 }
 
 #nprogress .bar {
@@ -89,13 +93,17 @@ input, select, textarea, button {
 // homepage
 .intro {
   padding: 40px 0;
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
   h3 {
     font-size: 62px;
     height: 76px;
     @media (min-width: 768px) and (max-width: 1199px) {
       font-size: 54px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       font-size: 42px;
       height: 52px;
     }
@@ -130,10 +138,24 @@ input, select, textarea, button {
 }
 
 .about-oc {
+  background-color: #fff;
+  padding-top: 250px;
+  padding-bottom: 2rem;
+  p {
+    margin-bottom: 2rem;
+  }
+  h1 {
+    color: $dark-blue;
+  }
+  @media (max-width: 768px) {
+    padding: 2rem 2rem;
+  }
+}
+
+.carousel {
   padding: 62px 0 200px;
-  margin-bottom: 250px;
   position: relative;
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     padding-bottom: 62px;
     margin-bottom: 0;
   }
@@ -148,15 +170,18 @@ input, select, textarea, button {
   .owl-carousel {
     position: absolute;
     bottom: -212px;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       position: relative;
       bottom: 0;
+    }
+    .owl-item {
+      margin-right: 1px;
     }
     .owl-controls {
       text-align: center;
       margin-top: 10px;
       .owl-dot {
-        background: #ddd;
+        background: $gray;
         width: 16px;
         height: 16px;
         display: inline-block;
@@ -172,29 +197,25 @@ input, select, textarea, button {
 }
 
 .appeal {
-  background-image: image-url("appeal-bg.png");
-  background-position: center -4px;
-  background-repeat: no-repeat;
-  padding: 72px 0;
-  @media (max-width: 767px) {
-    background-image: none;
-    .col-md-8 {
-      padding: 0 !important;
-    }
-  }
+  background: #ffffff;
   h1 {
     color: $dark-blue;
-    @media (min-width: 1200px) {
-      padding: 0 80px;
+    @media (max-width: 768px) {
+      font-size: 20px !important;
+      padding-top: 2rem;
+      text-align: center;
     }
   }
   .btn {
     margin: 50px 0;
     padding: 14px;
-    font-size: 14px;
-    @media (max-width: 767px) {
-      font-size: 10px;
-      padding: 6px;
+    font-size: 18px;
+    @media (max-width: 768px) {
+      margin: 2rem 0;
+      font-size: 12px;
+      padding: 6px 20px;
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -349,6 +370,10 @@ footer {
 
 .news-box {
   overflow: hidden;
+  border: 1px solid $dark-gray;
+  hr {
+    border-color: $dark-gray;
+  }
   .post-brief {
     font-size: 14px;
     overflow: hidden;
@@ -463,7 +488,7 @@ footer {
   margin-bottom: 14px;
   .links {
     margin: 26px 0;
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       a {
         display: inline-block;
         margin-top: 16px;
@@ -578,7 +603,7 @@ footer {
     padding: 24px 0;
     .appeal-question, h2 {
       padding: 0 34px;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         padding: 0 20px;
       }
     }
@@ -632,7 +657,7 @@ footer {
         a {
           font-size: 16px;
           padding: 14px 20px;
-          @media (max-width: 767px) {
+          @media (max-width: 768px) {
             font-size: 12px;
             padding: 10px 20px;
           }
@@ -1137,7 +1162,7 @@ select {
           font-size: 36px;
         }
       }
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         height: 60px;
         width: 60px;
         h4 {
@@ -1342,7 +1367,7 @@ select {
       background-color: rgba(21, 47, 78, 0.75);
       z-index: 99;
       overflow: hidden;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         width: 100%;
       }
     h1 {
@@ -1384,7 +1409,7 @@ select {
 
     &.select-input, &.dropdown-input, &.short-field {
       width: 375px;
-      @media (max-width: 767px) {
+      @media (max-width: 768px) {
         width: 100%;
       }
     }
@@ -1580,7 +1605,8 @@ select {
   margin: 8px;
   background: #fff;
   height: 352px;
-  @media (max-width: 767px) {
+  overflow: hidden;
+  @media (max-width: 768px) {
     height: auto;
   }
   .post-brief {
@@ -1607,12 +1633,7 @@ select {
       min-height: 106px;
     }
   }
-  @media (max-width: 767px) {
-    .post-brief {
-      height: 128px;
-    }
-  }
-  overflow: hidden;
+
   @include transition(all, 0.5s);
   &:hover {
     box-shadow: 0px 2px 13px 0px rgba(0, 0, 0, 0.13);
@@ -1645,7 +1666,7 @@ select {
         height: 100% !important;
       }
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       width: 100%;
       float: left;
       height: auto;
@@ -1653,27 +1674,48 @@ select {
   }
   .story {
     height: 100%;
+    border: 1px solid $dark-gray;
   }
   .story-content {
-    height: 100%;
-    @media (max-width: 767px) {
-      width: 100%;
-      .read-link {
-        display: none;
-      }
-      h3 {
-        height: 62px;
-      }
-    }
-    margin-top: 0;
+    padding: 0 2rem;
     position: static;
+    overflow: hidden;
+
     p {
       color: #162F4E;
+    }
+
+    h3 {
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-bottom: 0;
+      a {
+        color: $dark-blue;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     .read-link {
       position: static;
       bottom: 34px;
+    }
+
+    .post-brief {
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 10px;
+      width: 100%;
+      h3 {
+        margin-top: 5px;
+      }
+      .post-brief {
+        height: auto;
+      }
     }
   }
 }
@@ -1701,5 +1743,3 @@ select {
     background: #fff;
   }
 }
-
-

@@ -2,7 +2,7 @@
 #
 # The admin can assign multi themes for ever post so we using this model in this relation 
 #
-class PostsPostsTheme < ActiveRecord::Base
+class PostsPostsTheme < ApplicationRecord
 
   ## DB relations
  	belongs_to :post

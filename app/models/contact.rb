@@ -2,7 +2,7 @@
 #
 # It's used for contact us form in the front-end and
 #
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
   ## DB relations
   belongs_to :contacts_topic
 
