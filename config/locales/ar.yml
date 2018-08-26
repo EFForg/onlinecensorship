@@ -99,6 +99,7 @@ ar:
   twitter_handle: "censored@"
   select: "اختر"
   journalists_resources: "مجموعة موارد للصحفيين"
+  page_unavailable: "* هذه الصفحة لم تعد متاحة!"
 
   date:
     abbr_month_names:

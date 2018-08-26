@@ -99,6 +99,7 @@ en:
   twitter_handle: "@censored"
   select: "Select"
   journalists_resources: "Resource kit for journalists"
+  page_unavailable: "* This page is no longer available!"
 
   date:
     abbr_month_names:
