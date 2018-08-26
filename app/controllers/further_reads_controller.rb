@@ -14,7 +14,8 @@ class FurtherReadsController < ApplicationController
   end
 
   def index
-    @further_reads = FurtherRead.order(:the_order => :asc)
+    # binding.pry
+    @further_reads = FurtherRead.order(:author)
     @staff=@further_reads.where(:category=>"STAFF")
     @books=@further_reads.where(:category=>"Books")
     @blog=@further_reads.where(:category=>"Blog")

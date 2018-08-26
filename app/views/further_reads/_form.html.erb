@@ -42,16 +42,6 @@
     <%= f.number_field :year, :class=>"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :the_order %><br>
-    <% if params[:action]=="new" %>
-      <%= f.number_field :the_order, :value => FurtherRead.count+1 , :class=>"form-control" %>
-    <% else %>
-      <%= f.number_field :the_order , :class=>"form-control" %>
-    <% end %>
-    <p class="tip"> Optional </p>
-  </div>
-
   <div class="actions">
     <%= f.submit :class=> "btn btn-primary" %>
   </div>
