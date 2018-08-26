@@ -17,6 +17,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :page, "Slug" %><br>
+    <%= f.text_field :page, required: true, :class => "form-control"  %>
+    <p> Use - - instead of spaces </p>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :appeal_page, checked: @content_management_page.appeal_page %> <%= f.label :appeal_page %>?
+  </div>
+
+  <div class="field">
     <%= f.label :brief %><br>
     <%= f.text_area :brief, :class=>"form-control"  %>
     <p class="tip"> Optional </p>

@@ -54,6 +54,7 @@ class ContentManagementPagesController < ApplicationController
   end
 
   def appeal
+    @appeal_pages = ContentManagementPage.where(appeal_page: true)
   end
 
 
@@ -63,6 +64,6 @@ class ContentManagementPagesController < ApplicationController
     end
 
     def content_management_page_params
-      params.require(:content_management_page).permit(:page, :page_title, :brief, :content)
+      params.require(:content_management_page).permit(:page, :page_title, :brief, :content, :appeal_page)
     end
 end

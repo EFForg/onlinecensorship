@@ -12,13 +12,13 @@
 
       <% if @page.brief.present? %>
 
-  	    <div class="row">
-  	    	<div class="col-md-9">
-  			    <p>
-  			    	<%= @page.brief %>
-  			    </p>
-  		    </div>
-  	    </div>
+        <div class="row">
+          <div class="col-md-9">
+            <p>
+              <%= @page.brief %>
+            </p>
+          </div>
+        </div>
 
       <% end %>
     </div>
@@ -28,49 +28,38 @@
 
 <div class="container appeal-page">
 
-	<div class="row">
+  <div class="row">
 
-		<div class="col-md-3">
+    <div class="col-md-3">
 
-			<div class="appeal-tabs">
-				<ul class="nav nav-pills">
-				  <li class="active"><a data-toggle="tab" href="#facebook"><%= t(:facebook) %></a></li>
-				  <li><a data-toggle="tab" href="#twitter"><%= t(:twitter) %></a></li>
-				  <li><a data-toggle="tab" href="#youtube"><%= t(:youtube) %></a></li>
-				  <li><a data-toggle="tab" href="#instagram"><%= t(:instagram) %></a></li>
-				</ul>
-			</div>
+      <div class="appeal-tabs">
 
-		</div>
+        <ul class="nav nav-pills">
+          <% @appeal_pages.each_with_index do |p, index| %>
+            <li class="<%= index == 0 ? 'active' : '' %>"><a data-toggle="tab" href="#<%= p.page %>"><%= p.page_title %></a></li>
+          <% end %>
+        </ul>
+      </div>
 
-		<div class="col-md-9">
+    </div>
 
-			<div class="tab-content">
+    <div class="col-md-9">
 
-				<div id="facebook" class="tab-pane fade in active">
-					<% cms_page_content('how-to-appeal-facebook')%>
-					<%=@page.content.html_safe%>
-				</div>
+      <div class="tab-content">
 
-				<div id="twitter" class="tab-pane fade">
-					<% cms_page_content('how-to-appeal-twitter')%>
-					<%=@page.content.html_safe%>
-				</div>
+        <% @appeal_pages.each_with_index do |p, index| %>
 
-				<div id="youtube" class="tab-pane fade">
-					<% cms_page_content('how-to-appeal-youtube')%>
-					<%=@page.content.html_safe%>
-				</div>
+          <div id="<%= p.page %>" class="tab-pane fade <%= index == 0 ? 'in active' : '' %>">
+            <% cms_page_content( p.page ) %>
+            <%= p.content.html_safe %>
+          </div>
 
-				<div id="instagram" class="tab-pane fade">
-					<% cms_page_content('how-to-appeal-instagram')%>
-					<%=@page.content.html_safe%>
-				</div>
+        <% end %>
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
 </div>
