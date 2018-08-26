@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918141750) do
+ActiveRecord::Schema.define(version: 20180826091123) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -639,6 +639,7 @@ ActiveRecord::Schema.define(version: 20170918141750) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published",  default: true
   end
 
 end

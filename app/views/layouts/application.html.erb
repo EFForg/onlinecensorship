@@ -44,10 +44,13 @@
               <li> <%= link_to t(:news_analysis), posts_path %> </li>
               <li> <%= link_to t(:how_to_appeal), resources_how_to_appeal_path %> </a></li>
               <li> <%= link_to t(:further_readings), resources_further_readings_path %> </li>
-              <li> <%= link_to t(:journalists_resources), web_page_path(WebPage.find(1)) %> </li>
-              <% if WebPage.find_by_slug("infographics") %>
-                <li> <%= link_to t(:infographics), web_page_path(WebPage.find_by_slug("infographics")) %> </li>
+
+              <% WebPage.where(published: true).each do |page| %>
+
+                <li> <%= link_to t(page.title), web_page_path(page) %> </li>
+                
               <% end %>
+
               <!--<li><a href="#">Getting involved</a></li>-->
             </ul>
           </li>

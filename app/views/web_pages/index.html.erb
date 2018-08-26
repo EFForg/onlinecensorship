@@ -19,6 +19,7 @@
         <tr>
           <th>Page</th>
           <th>Slug</th>
+          <th>Published</th>
           <th></th>
           <th></th>
           <th></th>
@@ -35,6 +36,7 @@
             <tr class="show-image">
               <td><%= page.title %></td>
               <td><%= page.slug %></td>
+              <td><%= page.published %></td>
               <td class="icon-control">
                 <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
               </td>

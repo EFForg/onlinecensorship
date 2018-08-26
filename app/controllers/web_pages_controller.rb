@@ -44,6 +44,6 @@ class WebPagesController < ApplicationController
     end
 
     def web_page_params
-      params.require(:web_page).permit(:title, :brief, :content, :slug, sections_attributes: [:id, :title, :content, :_destroy, sub_sections_attributes: [:id, :title, :content, :icon, :_destroy]])
+      params.require(:web_page).permit(:title, :brief, :content, :published, :slug, sections_attributes: [:id, :title, :content, :_destroy, sub_sections_attributes: [:id, :title, :content, :icon, :_destroy]])
     end
 end
