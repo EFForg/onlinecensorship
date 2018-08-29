@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180826134325) do
 
-  create_table "categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "color"
     t.datetime "created_at"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
-  create_table "contacts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "contacts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "surname"
     t.string "email"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_contacts_topic_translations_on_locale"
   end
 
-  create_table "contacts_topics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "contacts_topics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_content_management_page_translations_on_locale"
   end
 
-  create_table "content_management_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "content_management_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "page"
     t.text "content"
     t.datetime "created_at"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.boolean "appeal_page", default: false
   end
 
-  create_table "countries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "countries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_faq_translations_on_locale"
   end
 
-  create_table "faqs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "faqs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "question"
     t.text "answer"
     t.integer "theorder"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_further_read_translations_on_locale"
   end
 
-  create_table "further_reads", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "further_reads", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_home_field_translations_on_locale"
   end
 
-  create_table "home_fields", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "home_fields", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "slogan"
     t.string "what_oc_title"
     t.text "what_oc_text"
@@ -175,13 +175,13 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["locale"], name: "index_language_translations_on_locale"
   end
 
-  create_table "languages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "languages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "notifications", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "notifications", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.boolean "submit_report"
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["page_id"], name: "index_page_translations_on_page_id"
   end
 
-  create_table "pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "social_media_platform_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.text "message"
   end
 
-  create_table "pages_questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "pages_questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "question_id"
     t.integer "page_id"
     t.integer "dependent_on_question"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.datetime "updated_at"
   end
 
-  create_table "people", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "people", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "bio"
     t.boolean "advisor"
@@ -290,7 +290,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["post_id"], name: "index_post_translations_on_post_id"
   end
 
-  create_table "posts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "category_id"
     t.string "title"
     t.text "description"
@@ -329,14 +329,14 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.datetime "pdf_updated_at"
   end
 
-  create_table "posts_posts_themes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts_posts_themes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "post_id"
     t.integer "posts_theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts_social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts_social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "post_id"
     t.integer "social_media_platform_id"
     t.datetime "created_at"
@@ -353,20 +353,20 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["posts_theme_id"], name: "index_posts_theme_translations_on_posts_theme_id"
   end
 
-  create_table "posts_themes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts_themes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts_themes_quotes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "posts_themes_quotes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "quote_id"
     t.integer "posts_theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "question_answers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "question_answers", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "question_id"
     t.integer "uploaded_file_id"
     t.integer "question_option_id"
@@ -389,7 +389,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["question_option_id"], name: "index_question_option_translations_on_question_option_id"
   end
 
-  create_table "question_options", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "question_options", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "question_id"
     t.string "option_title"
     t.datetime "created_at"
@@ -409,14 +409,14 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["question_id"], name: "index_question_translations_on_question_id"
   end
 
-  create_table "question_user_submissions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "question_user_submissions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "question_user_id"
     t.integer "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "question_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "question_users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -429,7 +429,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.text "communication_preference"
   end
 
-  create_table "questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "question_title"
     t.string "question_type"
     t.datetime "created_at"
@@ -454,7 +454,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["quote_id"], name: "index_quote_translations_on_quote_id"
   end
 
-  create_table "quotes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "quotes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "author"
     t.text "quote"
     t.datetime "created_at"
@@ -464,7 +464,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.integer "font_size", default: 16
   end
 
-  create_table "quotes_social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "quotes_social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "quote_id"
     t.integer "social_media_platform_id"
     t.datetime "created_at"
@@ -500,7 +500,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.index ["social_media_platform_id"], name: "index_09379ecb3055166365c9619341e09b593d47e89c"
   end
 
-  create_table "social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "social_media_platforms", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -513,7 +513,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.string "slug"
   end
 
-  create_table "stories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "stories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "brief"
     t.text "content"
@@ -562,7 +562,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.integer "section_id"
   end
 
-  create_table "subscribes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "subscribes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -570,7 +570,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.boolean "confirmed", default: false
   end
 
-  create_table "uploaded_files", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "uploaded_files", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -581,7 +581,7 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.datetime "the_file_updated_at"
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
