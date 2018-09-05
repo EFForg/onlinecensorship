@@ -48,9 +48,11 @@
               <td class="icon-control">
                 <%= link_to edit_content_management_page_path(content_management_page), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
               </td>
-              <!--<td class="icon-control">
-                <%= link_to content_management_page, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
-              </td>-->
+              <% if content_management_page.appeal_page %>
+                <td class="icon-control">
+                  <%= link_to content_management_page, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+                </td>
+              <% end %>
             </tr>
           <% end %>
             <tfoot>
