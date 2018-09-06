@@ -24,11 +24,11 @@
             </button>
             <ul class="dropdown-menu category-dropdown" aria-labelledby="post-type" id="filter-post-type">
               <li>
-                <a data-remote="true" href="/news-and-analysis?category_id=All" title="All"> <%= t(:all) %> </a>
+                <a data-remote="true" href="/news-and-analysis?category_id=All""> <%= t(:all) %> </a>
               </li>
               <% @categories.each do |type| %>
                 <li>
-                  <%=link_to posts_path(category_id: type.id ,platform_id: params[:platform_id],theme_id: params[:theme_id]) ,:title=>type.title , :remote=> true do %>
+                  <%=link_to posts_path(category_id: type.id ,platform_id: params[:platform_id],theme_id: params[:theme_id]), :remote=> true do %>
                     <%=type.title%>
                   <% end %>
                 </li>
@@ -47,11 +47,11 @@
             </button>
             <ul class="dropdown-menu platform-dropdown" aria-labelledby="post-platform">
               <li>
-                <a data-remote="true" href="/news-and-analysis?platform_id=All" title="All"><%= t(:all) %></a>
+                <a data-remote="true" href="/news-and-analysis?platform_id=All"><%= t(:all) %></a>
               </li>
               <% @platform.each do |type| %>
                 <li>
-                  <%=link_to posts_path(platform_id: type.id,category_id: params[:category_id],theme_id: params[:theme_id]) ,:title=>type.title , :remote=> true do %>
+                  <%=link_to posts_path(platform_id: type.id,category_id: params[:category_id],theme_id: params[:theme_id]), :remote=> true do %>
                     <%=type.title%>
                   <% end %>
                 </li>
@@ -70,11 +70,11 @@
             </button>
             <ul class="dropdown-menu theme-dropdown" aria-labelledby="post-theme">
               <li>
-                <a data-remote="true" href="/news-and-analysis?theme_id=All" title="All"><%= t(:all) %></a>
+                <a data-remote="true" href="/news-and-analysis?theme_id=All"><%= t(:all) %></a>
               </li>
               <% @theme.each do |type| %>
                 <li>
-                  <%=link_to posts_path(theme_id: type.id,category_id: params[:category_id] ,platform_id: params[:platform_id]) ,:title=>type.title , :remote=> true do %>
+                  <%=link_to posts_path(theme_id: type.id,category_id: params[:category_id] ,platform_id: params[:platform_id]), :remote=> true do %>
                     <%=type.title%>
                   <% end %>
                 </li>
@@ -86,9 +86,9 @@
         <div class="col-md-3">
           <div class="search-posts-wrapper">
             <form class="search-posts">
-              <input type="text" name="tag" value="<%=params[:tag]%>" class="search-field <%= (params[:tag]) ? 'opened' : '' %>">
+              <input aria-label="Search" type="text" name="tag" value="<%=params[:tag]%>" class="search-field <%= (params[:tag]) ? 'opened' : '' %>">
               <i class="fa fa-search search-icon"></i>
-              <button type="submit" class="search-submit">
+              <button type="submit" class="search-submit" aria-label="Submit Search">
                 <i class="fa fa-search"></i>
               </button>
             </form>
