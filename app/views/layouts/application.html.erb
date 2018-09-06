@@ -99,8 +99,7 @@
 
         --><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=<%= root_url %>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn btn-footer share-btn"> <i class="fa fa-facebook"></i> <%= t(:facebook) %> </a>
         </div>
-        <div class="col-md-2 col-md-offset-1">
-          <h5> &nbsp; </h5>
+        <div class="col-md-2 col-md-offset-1 contact-links">
           <%= link_to t(:contact_us), contacts_path, :class => "btn btn-footer" %>
           <%= link_to t(:RSS_Feed), feed_path(format: :rss), :class => "btn btn-footer" %>
           <%= link_to t(:privacy_policy), privacy_policy_path, :class => "btn btn-footer" %>
