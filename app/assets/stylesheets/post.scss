@@ -1,7 +1,4 @@
-// Colors
-$light-blue: #41dcf5;
-$medium-blue: #4ab2c3;
-$dark-blue: #152f4e;
+@import "colors.css.scss";
 
 .post-preview {
 	position: fixed;

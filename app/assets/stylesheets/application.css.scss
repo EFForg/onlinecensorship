@@ -22,14 +22,7 @@
  */
 
 @import "bourbon";
-
-// Colors
-$light-blue: #41dcf5;
-$medium-blue: #4ab2c3;
-$dark-blue: #152f4e;
-$light-gray: #f6f6f6;
-$gray: #dddddd;
-$dark-gray: #aaaaaa;
+@import "colors.css.scss";
 
 html {
   height: 100%;
@@ -77,6 +70,15 @@ input, select, textarea, button {
   background-color: $dark-blue;
   p {
     color: #fff;
+  }
+  h1, h2 {
+    color: $light-blue;
+  }
+  a {
+    color: $light-link;
+    &:hover {
+      color: $link-blue;
+    }
   }
 }
 .medium-blue-bg {
