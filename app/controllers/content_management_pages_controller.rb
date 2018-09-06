@@ -39,6 +39,16 @@ class ContentManagementPagesController < ApplicationController
     end
   end
 
+  def destroy
+    page_title = @content_management_page.page_title
+    msg =  if @content_management_page.destroy
+             { notice: "#{page_title} successfully deleted." }
+           else
+             { error: "#{page_title} could not be deleted" }
+           end
+    redirect_to admin_content_management_pages_url, **msg
+  end
+
   # CMS pages methods
   def what_we_do
   end
@@ -56,7 +66,6 @@ class ContentManagementPagesController < ApplicationController
   def appeal
     @appeal_pages = ContentManagementPage.where(appeal_page: true)
   end
-
 
   private
     def set_content_management_page

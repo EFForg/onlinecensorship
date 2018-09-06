@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Admin" do
-  before do
-    FactoryBot.create(:home_field) # for home page loading
-    log_in_admin
-  end
+  before { log_in_admin }
 
   it 'can log in' do
     expect(page).to have_content('Administration Panel')
@@ -37,13 +34,5 @@ RSpec.feature "Admin" do
     visit '/'
     click_on 'News & Analysis'
     expect(page).to have_content('Test Post Title')
-  end
-
-  def log_in_admin
-    admin = FactoryBot.create(:admin)
-    visit '/admin'
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: 'password'
-    click_on 'Log in'
   end
 end
