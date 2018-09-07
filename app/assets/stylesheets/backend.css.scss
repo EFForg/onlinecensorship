@@ -22,10 +22,10 @@ $white-color : #ffffff;          // usually used in wrappers background #ffffff
 $green-color: #009610;          // usually used in succes messages #009610
 $feilds-border-color: #A9A9A9; // usually used in fields borders #A3A3A3
 $link-color:#999999;          // usually used in links texts #999999
-$paging:#F9F9F9;             // usually used in paging background #F9F9F9
+$paging: #F9F9F9;             // usually used in paging background #F9F9F9
 $nav-color: #7B7C7C;        // usually used in nav bar #7B7C7C
 $gray-color: #E1DDDC;      // usually used in buttons color and footer texts #E1DDDC
-$link-blue:#428bca;       // usually used in links #428bca
+$link-blue-backend: #428bca;       // usually used in links #428bca
 $icons-links:#818181;    // usually used in controller icons links #4F4F4F
 
 #error_explanation {
@@ -65,7 +65,7 @@ $icons-links:#818181;    // usually used in controller icons links #4F4F4F
 
   .notice-area {
     width:100% !important;
-    color: $link-blue;
+    color: $link-blue-backend;
   }
 }
 
@@ -79,7 +79,7 @@ html,body {
   cursor:pointer;
 }
 
-.link {color:$link-blue;}
+.link {color: $link-blue-backend;}
 
 .hide {display: none;}
 
@@ -299,10 +299,10 @@ label{
       margin: 0 0 0 25px !important;
 
       a {
-        color:$link-color !important;
+        color:$link-color;
 
         &:hover {
-          color:$black-color !important;
+          color:$black-color;
         }
       }//a
 
@@ -542,7 +542,7 @@ label{
 }
 
 .save-page {
-  color: $link-blue;
+  color: $link-blue-backend;
   display: inline;
   &:hover {
     cursor: pointer;

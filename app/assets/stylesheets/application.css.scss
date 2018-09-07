@@ -74,7 +74,10 @@ input, select, textarea, button {
   h1, h2 {
     color: $light-blue;
   }
-  footer a {
+}
+
+footer.dark-blue-bg {
+  a {
     color: $light-link;
     &:hover {
       color: $link-blue;
@@ -95,7 +98,7 @@ input, select, textarea, button {
     a {
       color: #fff;
     }
-}
+  }
 
 }
 .medium-blue-bg {
