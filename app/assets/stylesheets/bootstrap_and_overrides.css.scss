@@ -159,10 +159,10 @@ h5{
 
 .more-link, h5 a {
   font-size: 16px;
-  color: #162F4E;
+  color: $link-blue;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 3px solid #4AB2C3;
+  border-bottom: 3px solid $link-blue;
   transition: color 0.5s ease;
   margin-right: 30px;
   padding-bottom: 2px;
