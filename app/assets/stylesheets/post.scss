@@ -99,7 +99,7 @@
     margin: 32px 0;
   }
   .share-post {
-    h5 { 
+    .h5 { 
       color: $medium-blue; 
       margin: 14px 0;
       font-weight: bold;
@@ -224,11 +224,11 @@
       margin-left: 0;
       margin-top: 18px;
     }
-    h2, h4 {
+    .h2, .h4 {
       font-weight: 500;
       color: #1c3f61;
     }
-    h2 {
+    .h2 {
       font-size: 24px;
       margin-bottom: 4px;
       a {
@@ -236,7 +236,7 @@
         text-transform: capitalize;
       }
     }
-    h4 {
+    .h4 {
       font-size: 14px;
       margin-bottom: 14px;
     }
@@ -249,7 +249,7 @@
   }
   &.post-author {
     background: #f6f6f6;
-    h4 {
+    .h4 {
       color: $medium-blue;
       margin-bottom: 0;
     }

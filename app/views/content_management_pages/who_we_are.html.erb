@@ -8,9 +8,7 @@
   <% unless @page.nil? %>
     <div class="container">
       <h1> <%= @page.page_title %> </h1>
-
       <% if @page.brief.present? %>
-
   	    <div class="row">
   	    	<div class="col-md-8">
   			    <p>
@@ -18,42 +16,30 @@
   			    </p>
   		    </div>
   	    </div>
-
       <% end %>
-
     </div>
   <% end %>
 </section>
 
 <div class="container about-page">
-
   <div class="row">
-
     <div class="col-md-12">
       <div class="text-box clearfix">
-
       	<div class="row">
 				  <%=@page.content.html_safe%>
-        </div><!--row-->
-
+        </div>
       </div>
     </div>
-
   </div>
 
-
   <div class="tabs-wrapper">
-
 		<ul class="nav nav-pills">
 		  <li class="active"><a data-toggle="tab" href="#team"><%= t(:our_team) %></a></li>
 		  <li><a data-toggle="tab" href="#advisors"><%= t(:our_advisors) %></a></li>
 		</ul>
-
 		<div class="tab-content">
 		  <div id="team" class="tab-pane fade in active">
-
 		  	<div class="row">
-
 			  	<% @team.each do |person| %>
 			  		<div class="col col-md-6">
 			  			<div class="team-member clearfix">
@@ -61,8 +47,8 @@
 			  					<%= image_tag person.photo.url(:thumb) %>
 			  				</div>
 			  				<div class="personal-info">
-			  					<h2> <%=person.name%> </h2>
-			  					<h4> <%=person.role%> </h4>
+			  					<h1 class="h2"> <%=person.name%> </h1>
+			  					<p class="h4"> <%=person.role%> </p>
 			  					<p> <%=person.bio.html_safe%> </p>
 			  				</div>
 			  			</div>
