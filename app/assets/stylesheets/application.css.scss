@@ -231,7 +231,7 @@ footer {
   .license {
     padding: 5px 0;
   }
-  h5 {
+  .h5 {
     color: #fff;
     margin: 10px 0;
     font-weight: bold;
@@ -481,7 +481,7 @@ footer {
 }
 
 .about-page {
-  h3 {
+  .h3 {
     font-weight: normal;
     margin-top: 32px;
   }
@@ -1685,13 +1685,14 @@ select {
       color: #162F4E;
     }
 
-    h3 {
+    h1 {
       overflow: hidden;
       margin-top: 2rem;
-      margin-bottom: 0;
+      margin-bottom: 1rem;
       a {
         color: $dark-blue;
         &:hover {
+          color: $medium-blue;
           text-decoration: none;
         }
       }
@@ -1710,7 +1711,7 @@ select {
     @media (max-width: 768px) {
       padding: 10px 10px;
       width: 100%;
-      h3 {
+      h1 {
         margin-top: 5px;
       }
       .post-brief {

@@ -116,12 +116,12 @@ h1, h2, h3, h4, h5, label {
 
 h1 {
   font-weight: bold;
-  font-size: 32px !important;
+  font-size: 32px;
   color: #41DCF5;
   text-transform: uppercase;
 }
 
-h2{
+h2 {
   font-size: 24px;
   color: #41DCF5;
   line-height: 150%;
@@ -130,12 +130,13 @@ h2{
   margin-bottom: 20px;
 }
 
-h3{
+h3 {
   font-size: 23px; // 24px 
   color: #162F4E;
   line-height: 130%;
   font-weight: bold;
   margin-bottom: 20px;
+  text-transform: none;
 }
 
 h4{
@@ -175,6 +176,29 @@ h6{
   letter-spacing: 1px;
 }
 
+.h1 {
+  @extend h1
+}
+
+.h2 {
+  @extend h2
+}
+
+.h3 {
+  @extend h3
+}
+
+.h4 {
+  @extend h4
+}
+
+.h5 {
+  @extend h5
+}
+
+.h6 {
+  @extend h6
+}
 p, .post-content {
   font-family: 'Lora';
   font-size: 16px;
