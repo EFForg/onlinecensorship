@@ -80,6 +80,23 @@ input, select, textarea, button {
       color: $link-blue;
     }
   }
+  .btn-footer, .btn-footer:focus {
+    color: $light-link;
+    background-color: $dark-blue;
+    border: 2px solid #fff;
+    i {
+      color: #fff;
+    }
+  }
+
+  .btn-footer:hover {
+    color: #fff;
+    background-color: $medium-blue;
+    a {
+      color: #fff;
+    }
+}
+
 }
 .medium-blue-bg {
   background-color: $medium-blue;

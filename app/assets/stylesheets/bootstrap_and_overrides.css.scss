@@ -274,23 +274,6 @@ h5 a:hover{
   border: 2px solid #162F4E;
 }
 
-.btn-footer, .btn-footer:focus {
-  color: $medium-blue;
-  background-color: $dark-blue;
-  border: 2px solid #fff;
-  i {
-    color: #fff;
-  }
-}
-
-.btn-footer:hover {
-  color: $dark-blue;
-  background-color: $pastel-blue;
-  i {
-    color: $medium-blue;
-  }
-}
-
 .btn-default, .btn-default:focus {
   color: #162F4E;
   background-color: transparent;
