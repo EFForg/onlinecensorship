@@ -264,26 +264,24 @@ h5 a:hover{
 
 .btn-primary, .btn-primary:focus {
   color: #ffffff;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
+  background-color: $dark-blue;
+  border: 2px solid $dark-blue;
 }
 
 .btn-primary:hover{
-  color: #41DCF5;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
+  color: $light-link;
+  background-color: $dark-blue;
+  border: 2px solid $dark-blue;
 }
 
 .btn-default, .btn-default:focus {
-  color: #162F4E;
+  color: $dark-blue;
   background-color: transparent;
   border: 2px solid #162F4E;
 }
 
 .btn-default:hover {
-  color: #41DCF5;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
+  @extend .btn-primary:hover;
 }
 
 .btn.white-btn {
@@ -320,7 +318,7 @@ h5 a:hover{
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover  {
     color: #262626;
     text-decoration: none;
-    background-color: #4AB2C3!important;
+    background-color: $light-link;
 }
 
 .navbar-default {
