@@ -10,6 +10,7 @@ services:
 
     volumes:
       - .:/opt/oc
+      - /opt/oc/public
       - /opt/oc/tmp
 
     env_file: .env
