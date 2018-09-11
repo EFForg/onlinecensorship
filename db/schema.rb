@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826134325) do
+ActiveRecord::Schema.define(version: 20180910202751) do
 
   create_table "categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -163,6 +163,17 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "submit_btn_text"
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "takedown_id", null: false
+    t.string "file_file_name", null: false
+    t.string "file_content_type", null: false
+    t.integer "file_file_size", null: false
+    t.datetime "file_updated_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["takedown_id"], name: "index_images_on_takedown_id"
   end
 
   create_table "language_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -568,6 +579,17 @@ ActiveRecord::Schema.define(version: 20180826134325) do
     t.datetime "updated_at"
     t.string "confirmation_token"
     t.boolean "confirmed", default: false
+  end
+
+  create_table "takedowns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "platform", null: false
+    t.string "reason", null: false
+    t.string "email"
+    t.string "name"
+    t.text "details"
+    t.boolean "appealed", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "uploaded_files", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

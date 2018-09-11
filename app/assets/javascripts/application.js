@@ -18,6 +18,7 @@
 //= require questions_slider
 //= require headline
 //= require select2
+//= require takedowns
 
 NProgress.configure({
   showSpinner: false,

@@ -1,0 +1,32 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      Takedown Report 
+      <% if @takedown.name.present? || @takedown.email.present? %>
+        submitted by <%= @takedown.name %> (<%= @takedown.email %>) on
+      <% else %>
+          from
+      <% end %>
+      <%= @takedown.created_at.strftime("%d/%m/%y") %>
+    <br>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Platform</dt>
+      <dd><%= @takedown.platform.capitalize %></dd>
+      <dt>Reason</dt>
+      <dd><%= @takedown.reason %></dd>
+      <dt>Appealed?</dt>
+      <dd><%= @takedown.appealed ? 'Yes' : 'No' %></dd>
+      <dt>Description</dt>
+      <dd><%= @takedown.details %></dd>
+      <dt>Images</dt>
+      <dd>
+        <% @takedown.images.each do |image| %>
+          <%= link_to image_tag(image.file.url, width: 300), image.file.url %>
+        <% end %>
+      </dd>
+    </dl>
+  </div>
+</div>
