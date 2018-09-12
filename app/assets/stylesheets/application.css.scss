@@ -406,7 +406,7 @@ footer {
 
   @media (min-width: 1200px) {
     height: 438px;
-    h3 {
+    .h3 {
       height: 150px;
     }
     .post-brief {
@@ -415,7 +415,7 @@ footer {
   }
   @media (min-width: 992px) and (max-width: 1199px) {
     height: 490px;
-    h3 {
+    .h3 {
       height: 150px;
     }
     .post-brief {
@@ -423,7 +423,7 @@ footer {
     }
   }
 
-  h3 {
+  .h3 {
     overflow: hidden;
     a {
       color: $dark-blue;
@@ -492,6 +492,16 @@ footer {
       vertical-align: middle;
     }
   }
+}
+
+.news-box.featured {
+  @extend .news-box;
+  &:hover {
+    box-shadow: none;
+    opacity: 1;
+  }
+  border: none;
+  padding: 0 30px 30px 30px;
 }
 
 .page-title-wrapper {

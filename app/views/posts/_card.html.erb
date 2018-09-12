@@ -1,10 +1,3 @@
-<!--
-<% if post.category.present? %>
-  <i class="fa fa-circle" style="color: <%= post.category.color %>"></i>
-  <label class="category"><%= post.category.title %></label>
-<% end %>
--->
-
 <h2>
   <% if post.category && post.category.title.downcase=="news" %>
     <%=link_to post.link ,:title=>post.title , :target => "_blank", class: 'h3' do %>
@@ -17,7 +10,7 @@
   <% end %>
 </h2>
 
-<p class="h5">
+<div class="h5">
   <% if post.person_id? %>
     <% if post.person.present? %>
       <%=link_to author_path(post.person),:title=>post.person.name, class: 'h5' do %>
@@ -27,16 +20,14 @@
   <% elsif post.news_source.present? %>
     <%=post.news_source%>
   <% end %>
-</p>
-<p class="h6"><%= l(post.publish_date, :format => :long, :locale => locale) %></p>
+</div>
+<div class="h6"><%= l(post.publish_date, :format => :long, :locale => locale) %></div>
 <p class="post-brief"><%= post.intro.truncate(163) %></p>
 <hr>
-<!--
-<label class="post-tags">
+<div class="post-tags">
   <% if post.tags.present? %>
     <% post.tags.split(/,/).each do |tag| %>
       <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
     <% end %>
   <% end %>
-</label>
---->
+</div>

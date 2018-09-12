@@ -15,7 +15,6 @@
       <p> <%= t(:filter_by) %> </p>
       <div class="row">
         <div class="col-md-3">
-
           <div class="select-wrapper">
             <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <span class="btn-placeholder"> <%= t(:type) %> </span>
@@ -24,7 +23,7 @@
             </button>
             <ul class="dropdown-menu category-dropdown" aria-labelledby="post-type" id="filter-post-type">
               <li>
-                <a data-remote="true" href="/news-and-analysis?category_id=All""> <%= t(:all) %> </a>
+                <a data-remote="true" href="/news-and-analysis?category_id=All"> <%= t(:all) %> </a>
               </li>
               <% @categories.each do |type| %>
                 <li>
@@ -61,7 +60,6 @@
 
         </div>
         <div class="col-md-3">
-          
           <div class="select-wrapper">
             <button class="btn white-btn dropdown-toggle hide-more-btn" type="button" id="post-theme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <span class="btn-placeholder"><%= t(:theme) %></span>
@@ -99,7 +97,7 @@
 
     <div class="row posts-append-div">
       <%= render 'posts' %>
-    </div><!--posts-append-div-->
+    </div>
 
     <% if @show_all %>
       <div class="row">
@@ -110,6 +108,5 @@
         </div>
       </div>
     <% end %>
-
   </div>
 </section>

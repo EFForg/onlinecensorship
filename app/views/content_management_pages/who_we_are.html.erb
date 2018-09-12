@@ -31,7 +31,6 @@
       </div>
     </div>
   </div>
-
   <div class="tabs-wrapper">
 		<ul class="nav nav-pills">
 		  <li class="active"><a data-toggle="tab" href="#team"><%= t(:our_team) %></a></li>
@@ -47,23 +46,18 @@
 			  					<%= image_tag person.photo.url(:thumb) %>
 			  				</div>
 			  				<div class="personal-info">
-			  					<h1 class="h2"> <%=person.name%> </h1>
-			  					<p class="h4"> <%=person.role%> </p>
+			  					<h2> <%=person.name%> </h2>
+			  					<span class="h4"> <%=person.role%> </span>
 			  					<p> <%=person.bio.html_safe%> </p>
 			  				</div>
 			  			</div>
 			  		</div>
 			  	<% end %>
-
-		  	</div><!--row-->
-
-		  </div><!--team-->
+		  	</div>
+		  </div>
 		  <div id="advisors" class="tab-pane fade">
-
 		  	<div class="row">
-
 			  	<% @advisors.each do |person| %>
-
 			  		<div class="col col-md-4">
 			  			<div class="team-member advisor clearfix">
 			  				<div class="personal-info">
@@ -72,14 +66,9 @@
 			  				</div>
 			  			</div>
 			  		</div>
-
 			  	<% end %>
-
-		  	</div><!--row-->
-
-		  </div><!--advisors-->
+		  	</div>
+		  </div>
 		</div>
-
   </div>
-
 </div>
