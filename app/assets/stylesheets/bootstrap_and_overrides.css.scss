@@ -100,11 +100,44 @@ body {
   padding: 30px;
   // cursor: pointer;
   transition: box-shadow 0.5s ease;
+  border: 1px solid $dark-gray;
+  hr {
+    border-color: $dark-gray;
+  }
+  h5 {
+    margin-top: 70px;
+    a { border-bottom: none; }
+  }
 }
 
 .news-box:hover{
   box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.13);
   opacity: 0.7;
+}
+
+.news-box-reads {
+  @extend .news-box;
+  height: 100%;
+
+  .article-title {
+    a {
+      font-family: 'Lora';
+      color: $dark-blue;
+      font-size: 18px;
+      line-height: normal;
+    }
+  }
+  div.author-info {
+  }
+  .h5 {
+    margin: 0;
+  }
+}
+
+.reads-row {
+  @extend .posts-append-div;
+  display: flex;
+  padding-bottom: 70px;
 }
 
 
@@ -244,12 +277,6 @@ h5 a:hover{
   text-decoration: none;
   color: #4AB2C3;
 }
-
-.news-box h5 {
-  margin-top: 70px;
-  a { border-bottom: none; }
-}
-
 
 /*UI*/
 .btn {

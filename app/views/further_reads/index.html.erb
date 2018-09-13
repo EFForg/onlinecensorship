@@ -1,6 +1,6 @@
 <%
-  meta title: t(:further_readings)
-%>
+    meta title: t(:further_readings)
+  %>
 
 <section class="dark-blue-bg page-title-wrapper">
   <div class="container">
@@ -8,107 +8,75 @@
   </div>
 </section>
 
-<div class="container readings-page">
+<section class="latest-news news-area">
+  <div class="container">
+    <% if @staff.present? %>
+      <h2> <%= t(:featured_reads) %> </h2>
+      <div class="row reads-row">
+        <% @staff.each do |read| %>
+          <div class="col-md-4">
+            <div class="news-box-reads">
+              <div class="article-title">
+                <h3>
+                  <%=link_to read.link, :target=>"_blank" do %>
+                    <%=read.title%>
+                  <% end %>
+                </h3>
+              </div>
+              <div class="author-info">
+                <hr>
+                <div class="h5"> <%=read.author%> (<%=read.year%>) </div>
+                <div class="h6"> <%=read.written_in%> </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
-	<% if @staff.present? %>
+  <div class="white-box box">
+    <div class="row">
+      <div class="col-md-3">
+        <h2> <%= t(:books_and_journal_articles) %> </h2>
+      </div>
+      <div class="col-md-9">
+        <div>
+          <% @books.each do |read| %>
+            <div class="read">
+              <h3 class="read-title">
+                <%=link_to read.link, :target=>"_blank" do %>
+                  <%=read.title%>
+                <% end %>
+              </h3>
+              <p> <%=read.author%> (<%=read.year%>) </p>
+              <p> <%=read.written_in%> </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<div class="dark-blue-bg box">
-			<div class="row">
-				
-				<div class="col-md-3">
-					<h2> <%= t(:featured_reads) %> </h2>
-				</div>
-
-				<div class="col-md-8">
-
-					<% @staff.each do |read| %>
-
-						<div class="read">
-							<p> <%=read.author%> (<%=read.year%>) </p>
-							<p>
-								<b>
-	              	<%=link_to read.link, :target=>"_blank" do %>
-										<%=read.title%>
-									<% end %>
-								</b>
-							</p>
-							<p> <%=read.written_in%> </p>
-						</div>
-					
-					<% end %>
-					
-				</div>
-
-			</div>
-		</div>
-
-	<% end %>
-
-	<div class="white-box box">
-		<div class="row">
-			
-			<div class="col-md-3">
-				<h2> <%= t(:books_and_journal_articles) %> </h2>
-			</div>
-
-			<div class="col-md-9">
-
-				<div>
-					
-					<% @books.each do |read| %>
-
-					<div class="read">
-						<p> <%=read.author%> (<%=read.year%>) </p>
-						<p> 
-							<b>
-              	<%=link_to read.link, :target=>"_blank" do %>
-									<%=read.title%>
-								<% end %>
-							</b>
-						</p>
-						<p> <%=read.written_in%> </p>
-					</div>
-					
-					<% end %>
-
-				</div>
-
-			</div>
-			
-		</div>
-	</div>
-
-	<div class="white-box box">
-		<div class="row">
-			
-			<div class="col-md-3">
-				<h2> <%= t(:blog_posts_and_news_articles) %> </h2>
-			</div>
-
-			<div class="col-md-9">
-
-				<div>
-					
-					<% @blog.each do |read| %>
-
-						<div class="read">
-							<p> <%=read.author%> (<%=read.year%>) </p>
-							<p> 
-								<b>
-	              	<%=link_to read.link, :target=>"_blank" do %>
-										<%=read.title%>
-									<% end %>
-								</b> 
-							</p>
-							<p> <%=read.written_in%> </p>
-						</div>
-
-					<% end %>
-
-				</div>
-			</div>
-			
-		</div>
-	</div>
-
-</div>
+  <div class="white-box box">
+    <div class="row">
+      <div class="col-md-3">
+        <h2> <%= t(:blog_posts_and_news_articles) %> </h2>
+      </div>
+      <div class="col-md-9">
+        <div>
+          <% @blog.each do |read| %>
+            <div class="read">
+              <h3 class="read-title">
+                <%=link_to read.link, :target=>"_blank" do %>
+                  <%=read.title%>
+                <% end %>
+              </h3>
+              <p> <%=read.author%> (<%=read.year%>) </p>
+              <p> <%=read.written_in%> </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
