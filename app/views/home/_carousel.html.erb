@@ -16,17 +16,17 @@
               <% end %>
             </div>
             <div class="story-content">
-              <h3>
+              <h1>
                 <% if story.external_link? %>
-                  <%=link_to story.external_link , :target => "_blank" do %>
+                  <%=link_to story.external_link , :target => "_blank", class: 'h3' do %>
                     <%=story.title %>
                   <% end %>
                 <% else %>
-                  <%=link_to story_path(story),:title=>story.title do %>
+                  <%=link_to story_path(story),:title=>story.title, class: 'h3' do %>
                     <%=story.title %>
                   <% end %>
                 <% end %>
-              </h3>
+              </h1>
               <p class="post-brief"><%= story.brief.truncate(200) %></p>
               <% if story.external_link? %>
                 <%= link_to t(:read_story), story.external_link, target: "_blank", :class => "read-link more-link" %>

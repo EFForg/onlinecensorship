@@ -7,6 +7,8 @@
   */
 
   /*** bootstrap override ****/
+@import "colors.css.scss";
+
 body {
   background-color: transparent; ;
   -webkit-font-smoothing: antialiased;
@@ -116,26 +118,27 @@ h1, h2, h3, h4, h5, label {
 
 h1 {
   font-weight: bold;
-  font-size: 32px !important;
-  color: #41DCF5;
+  font-size: 32px;
+  color: $header-blue;
   text-transform: uppercase;
 }
 
-h2{
+h2 {
   font-size: 24px;
-  color: #41DCF5;
+  color: $header-blue;
   line-height: 150%;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-h3{
+h3 {
   font-size: 23px; // 24px 
   color: #162F4E;
   line-height: 130%;
   font-weight: bold;
   margin-bottom: 20px;
+  text-transform: none;
 }
 
 h4{
@@ -154,12 +157,12 @@ h5{
   letter-spacing: 1px;
 }
 
-.more-link, h5 a {
+h5.more-link, a.more-link {
   font-size: 16px;
-  color: #162F4E;
+  color: $link-blue;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 3px solid #4AB2C3;
+  border-bottom: 3px solid $link-blue;
   transition: color 0.5s ease;
   margin-right: 30px;
   padding-bottom: 2px;
@@ -170,11 +173,34 @@ h5{
 
 h6{
   font-size: 12px;
-  color: #4AB2C3;
+  color: $link-blue;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+.h1 {
+  @extend h1
+}
+
+.h2 {
+  @extend h2
+}
+
+.h3 {
+  @extend h3
+}
+
+.h4 {
+  @extend h4
+}
+
+.h5 {
+  @extend h5
+}
+
+.h6 {
+  @extend h6
+}
 p, .post-content {
   font-family: 'Lora';
   font-size: 16px;
@@ -190,7 +216,7 @@ p, .post-content {
 p a{
   font-family: 'Lora';
   font-weight: 700;
-  color: #4AB2C3;
+  color: $link-blue;
   transition: color 0.5s ease;
 }
 
@@ -238,41 +264,24 @@ h5 a:hover{
 
 .btn-primary, .btn-primary:focus {
   color: #ffffff;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
+  background-color: $dark-blue;
+  border: 2px solid $dark-blue;
 }
 
 .btn-primary:hover{
-  color: #41DCF5;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
-}
-
-.btn-footer, .btn-footer:focus {
-  color: #4ae2f7;
-  background-color: #162F4E;
-  border: 2px solid #fff;
-  i {
-    color: #fff;
-  }
-}
-
-.btn-footer:hover {
-  color: #fff;
-  background-color: #41DCF5;
-  border: 2px solid #fff;
+  color: $light-link;
+  background-color: $dark-blue;
+  border: 2px solid $dark-blue;
 }
 
 .btn-default, .btn-default:focus {
-  color: #162F4E;
+  color: $dark-blue;
   background-color: transparent;
   border: 2px solid #162F4E;
 }
 
 .btn-default:hover {
-  color: #41DCF5;
-  background-color: #162F4E;
-  border: 2px solid #162F4E;
+  @extend .btn-primary:hover;
 }
 
 .btn.white-btn {
@@ -309,7 +318,7 @@ h5 a:hover{
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover  {
     color: #262626;
     text-decoration: none;
-    background-color: #4AB2C3!important;
+    background-color: $light-link;
 }
 
 .navbar-default {
@@ -331,7 +340,7 @@ h5 a:hover{
 .nav-pills {
   li {
     a {
-      color: #c3c3c3;
+      color: $charcoal;
       background-color: transparent;
       text-transform: uppercase;
       font-size: 32px;
@@ -342,13 +351,13 @@ h5 a:hover{
       padding: 0;
       padding-right: 34px;
       &:hover, &:focus {
-        color: #152f4e;
+        color: $header-blue;
         background-color: transparent;
       }
     }
     &.active {
       a:hover, a:focus, a {
-        color: #152f4e;
+        color: $header-blue;
         background-color: transparent;
       }
     }

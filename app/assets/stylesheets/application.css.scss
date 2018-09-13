@@ -22,14 +22,7 @@
  */
 
 @import "bourbon";
-
-// Colors
-$light-blue: #41dcf5;
-$medium-blue: #4ab2c3;
-$dark-blue: #152f4e;
-$light-gray: #f6f6f6;
-$gray: #dddddd;
-$dark-gray: #aaaaaa;
+@import "colors.css.scss";
 
 html {
   height: 100%;
@@ -78,6 +71,35 @@ input, select, textarea, button {
   p {
     color: #fff;
   }
+  h1, h2 {
+    color: #fff;
+  }
+}
+
+footer.dark-blue-bg {
+  a {
+    color: $light-link;
+    &:hover {
+      color: $link-blue;
+    }
+  }
+  .btn-footer, .btn-footer:focus {
+    color: $light-link;
+    background-color: $dark-blue;
+    border: 2px solid #fff;
+    i {
+      color: #fff;
+    }
+  }
+
+  .btn-footer:hover {
+    color: #fff;
+    background-color: $medium-blue;
+    a {
+      color: #fff;
+    }
+  }
+
 }
 .medium-blue-bg {
   background-color: $medium-blue;
@@ -231,10 +253,13 @@ footer {
   .license {
     padding: 5px 0;
   }
-  h5 {
+  .h5 {
     color: #fff;
     margin: 10px 0;
     font-weight: bold;
+  }
+  .contact-links {
+    margin-top: 32px; // h5 sz + footer h5 margin sz + button top margin sz
   }
   .btn {
     width: 100%;
@@ -381,7 +406,7 @@ footer {
 
   @media (min-width: 1200px) {
     height: 438px;
-    h3 {
+    .h3 {
       height: 150px;
     }
     .post-brief {
@@ -390,7 +415,7 @@ footer {
   }
   @media (min-width: 992px) and (max-width: 1199px) {
     height: 490px;
-    h3 {
+    .h3 {
       height: 150px;
     }
     .post-brief {
@@ -398,7 +423,7 @@ footer {
     }
   }
 
-  h3 {
+  .h3 {
     overflow: hidden;
     a {
       color: $dark-blue;
@@ -469,6 +494,16 @@ footer {
   }
 }
 
+.news-box.featured {
+  @extend .news-box;
+  &:hover {
+    box-shadow: none;
+    opacity: 1;
+  }
+  border: none;
+  padding: 0 30px 30px 30px;
+}
+
 .page-title-wrapper {
   padding: 60px 0;
   h1 {
@@ -481,7 +516,7 @@ footer {
 }
 
 .about-page {
-  h3 {
+  .h3 {
     font-weight: normal;
     margin-top: 32px;
   }
@@ -1685,13 +1720,14 @@ select {
       color: #162F4E;
     }
 
-    h3 {
+    h1 {
       overflow: hidden;
       margin-top: 2rem;
-      margin-bottom: 0;
+      margin-bottom: 1rem;
       a {
         color: $dark-blue;
         &:hover {
+          color: $medium-blue;
           text-decoration: none;
         }
       }
@@ -1710,7 +1746,7 @@ select {
     @media (max-width: 768px) {
       padding: 10px 10px;
       width: 100%;
-      h3 {
+      h1 {
         margin-top: 5px;
       }
       .post-brief {

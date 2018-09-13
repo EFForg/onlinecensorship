@@ -1,0 +1,33 @@
+<h2>
+  <% if post.category && post.category.title.downcase=="news" %>
+    <%=link_to post.link ,:title=>post.title , :target => "_blank", class: 'h3' do %>
+      <%=post.title %>
+    <% end %>
+  <% else %>
+    <%=link_to post,:title=>post.title, class: 'h3' do %>
+      <%=post.title %>
+    <% end %>
+  <% end %>
+</h2>
+
+<div class="h5">
+  <% if post.person_id? %>
+    <% if post.person.present? %>
+      <%=link_to author_path(post.person),:title=>post.person.name, class: 'h5' do %>
+        <%= post.person.name %>
+      <% end %>
+    <% end %>
+  <% elsif post.news_source.present? %>
+    <%=post.news_source%>
+  <% end %>
+</div>
+<div class="h6"><%= l(post.publish_date, :format => :long, :locale => locale) %></div>
+<p class="post-brief"><%= post.intro.truncate(163) %></p>
+<hr>
+<div class="post-tags">
+  <% if post.tags.present? %>
+    <% post.tags.split(/,/).each do |tag| %>
+      <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
+    <% end %>
+  <% end %>
+</div>

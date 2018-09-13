@@ -5,7 +5,6 @@
         <h1> <%= t(:latest_news_analysis) %> </h1>
       </div>
     </div>
-
     <div class="row">
       <% if @featured_post %>
         <% if @featured_post.photo_file_name %>
@@ -14,11 +13,11 @@
               <div class="col-md-6 col-no-padding">
                 <div class="image-wrapper">
                   <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                    <%=link_to @featured_post.link, :title => @featured_post.title, :target => "_blank" do %>
+                    <%=link_to @featured_post.link , :target => "_blank" do %>
                       <%=image_tag @featured_post.photo(:thumb) %>
                     <% end %>
                   <% else %>
-                    <%= link_to @featured_post, :title => @featured_post.title do %>
+                    <%=link_to @featured_post, :title=>@featured_post.title do %>
                       <%=image_tag @featured_post.photo(:thumb) %>
                     <% end %>
                   <% end %>
@@ -31,126 +30,29 @@
                   <% end %>
                 </div>
               </div>
-
               <div class="col-md-6 col-no-padding">
-                <div class="post-content">
-                  <h3>
-                    <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                      <%=link_to @featured_post.link, :title => @featured_post.title, :target => "_blank" do %>
-                        <%=@featured_post.title %>
-                      <% end %>
-                    <% else %>
-                      <%=link_to @featured_post, :title => @featured_post.title do %>
-                        <%=@featured_post.title %>
-                      <% end %>
-                    <% end %>
-                  </h3>
-                  <h5>
-                    <% if @featured_post.person_id? %>
-                      <% if @featured_post.person.present? %>
-                        <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
-                          <%= @featured_post.person.name %>
-                        <% end %>
-                      <% end %>
-                    <% elsif @featured_post.news_source? %>
-                      <%=@featured_post.news_source%>
-                    <% end %>
-                  </h5>
-                  <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
-                  <p class="post-brief"><%=@featured_post.intro.truncate(163) %></p>
-                  <hr>
-                  <label class="post-tags">
-                    <% if @featured_post.tags?%>
-                      <% @featured_post.tags.split(/,/).each do |tag| %>
-                        <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                      <% end %>
-                    <% end %>
-                  </label>
+                <div class="news-box featured">
+                  <%= render partial: 'posts/card', locals: { post: @featured_post } %>
                 </div>
               </div>
-
             </div>
           </div>
         <% else %>
           <div class="col-md-4">
             <div class="news-box">
-              <h3>
-                <% if @featured_post.category && @featured_post.category.title.downcase=="news" %>
-                  <%=link_to @featured_post.link,:title=>@featured_post.title , :target => "_blank" do %>
-                    <%=@featured_post.title %>
-                  <% end %>
-                <% else %>
-                  <%=link_to post_path(@featured_post),:title=>@featured_post.title do %>
-                    <%=@featured_post.title %>
-                  <% end %>
-                <% end %>
-              </h3>
-              <h5>
-                <% if @featured_post.person_id? %>
-                  <% if @featured_post.person.present? %>
-                    <%=link_to author_path(id: @featured_post.person),:title=>@featured_post.person.name do %>
-                      <%= @featured_post.person.name %>
-                    <% end %>
-                  <% end %>
-                <% elsif @featured_post.news_source? %>
-                  <%=@featured_post.news_source%>
-                <% end %>
-              </h5>
-              <h6><%= l(@featured_post.publish_date, :format => :long, :locale => locale) %></h6>
-              <p class="post-brief"><%= @featured_post.intro.truncate(163) %></p>
-              <hr>
-              <label class="post-tags">
-                <% if @featured_post.tags?%>
-                  <% @featured_post.tags.split(/,/).each do |tag| %>
-                    <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                  <% end %>
-                <% end %>
-              </label>
+              <%= render partial: 'posts/card', locals: { post: @featured_post } %>
             </div>
           </div>
         <% end %>
       <% end %>
-
-      <% @posts.each_with_index do |post, i| %>
-        <div class="col-md-4 hidden-xs">
+      <% @posts.each do |post| %>
+        <div class="col-md-4">
           <div class="news-box">
-            <h3>
-              <% if post.category && post.category.title.downcase=="news" %>
-                <%=link_to post.link ,:title=>post.title, :target => "_blank" do %>
-                  <%=post.title %>
-                <% end %>
-              <% else %>
-                <%= link_to post, :title => post.title do %>
-                  <%= post.title %>
-                <% end %>
-              <% end %>
-            </h3>
-            <h5>
-              <% if post.person_id? %>
-                <% if post.person.present? %>
-                  <%=link_to author_path(id: post.person),:title=>post.person.name do %>
-                    <%= post.person.name %>
-                  <% end %>
-                <% end %>
-              <% elsif post.news_source? %>
-                <%=post.news_source%>
-              <% end %>
-            </h5>
-            <h6><%= l(post.publish_date, :format => :long, :locale => locale) %></h6>
-            <p class="post-brief"><%= post.intro.truncate(163) %></p>
-            <hr>
-            <label class="post-tags">
-              <% if post.tags?%>
-                <% post.tags.split(/,/).each do |tag| %>
-                  <%= link_to posts_path(tag: tag) do %>#<%= tag %><% end %>
-                <% end %>
-              <% end %>
-            </label>
+            <%= render partial: 'posts/card', locals: { post: post } %>
           </div>
         </div>
       <% end %>
     </div>
-
     <div class="row">
       <div class="col-md-12 centered">
         <%= link_to posts_path do %>

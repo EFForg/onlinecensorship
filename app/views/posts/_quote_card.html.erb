@@ -1,0 +1,12 @@
+<div class="news-box quote-box dark-blue-bg">
+  <div class="post-quote">
+    <div class="quote-text-wrapper">
+      <p class="quote-text" style="font-size: <%= quote.font_size.to_s%>px;"> <%= quote.quote %> </p>
+    </div>
+    <p class="quote-by"> <%= quote.author %> </p>
+    <div class="quote-share">
+      <p> <%= t(:share_it) %> </p>
+      <a href="http://twitter.com/home?status=<%= quote.twitter_text %> <%= root_url %> @censored" aria-label="Share on Twitter" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" title="<%= t(:twitter) %>"> <i class="fa fa-twitter"></i> </a>
+    </div>
+  </div>
+</div>
