@@ -150,6 +150,11 @@ input, select, textarea, button {
   @media (max-width: 768px) {
     padding: 2rem 2rem;
   }
+  img {
+    margin-top: 2rem;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .carousel {
