@@ -1,4 +1,4 @@
-FROM ruby:2.5-slim
+FROM ruby:2.5-alpine
 
 RUN mkdir -p /opt/oc /opt/oc/tmp
 WORKDIR /opt/oc
@@ -11,27 +11,29 @@ RUN if [ "$BUILD_ENV" = "development" ]; then \
       adduser -DS -h /opt/oc www-data; \
     fi
 
-RUN apt-get update && apt-get install -y \
-  curl \
-  build-essential \
-  default-libmysqlclient-dev \
-  mysql-client \
-  libfontconfig \
-  nodejs \
-  cron \
-  qt5-default \
-  libqt5webkit5-dev \
-  gstreamer1.0-plugins-base \
-  gstreamer1.0-tools \
-  gstreamer1.0-x \
-  libssl-dev \
-  libmagickwand-dev
+RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >>/etc/apk/repositories \
+  && echo "@edgecommunity http://nl.alpinelinux.org/alpine/edge/community" >>/etc/apk/repositories \
+  && apk upgrade --update-cache
 
+RUN apk add \
+    build-base \
+    git \
+    mysql-dev \
+    mysql-client \
+    imagemagick-dev \
+    qt5-qtwebkit-dev \
+    nodejs
+
+# RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.5/main' >> /etc/apk/repositories \
+#   && apk add --no-cache imagemagick-dev=6.9.6.8-r1
 
 COPY Gemfile* ./
+RUN QMAKE=/usr/lib/qt5/bin/qmake gem install capybara-webkit
 RUN bundle install
 
 COPY . .
+
+RUN cp ./app/assets/fonts/* /usr/share/fonts
 
 RUN if [ "$BUILD_ENV" = "production" ]; \
   then bundle exec rake assets:precompile \
