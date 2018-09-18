@@ -25,8 +25,8 @@ RUN apt-get update && apt-get install -y \
   gstreamer1.0-tools \
   gstreamer1.0-x \
   libssl-dev \
-  libmagickwand-dev
-
+  libmagickwand-dev \
+  imagemagick
 
 COPY Gemfile* ./
 RUN bundle install
