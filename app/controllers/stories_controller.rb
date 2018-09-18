@@ -30,7 +30,9 @@ class StoriesController < ApplicationController
   end
 
   def new
+    @icons = Icon.where(available: true)
     @story = Story.new
+    @story.icon.build
   end
 
   def create
@@ -38,8 +40,13 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to admin_stories_url, notice: 'The story was successfully created.'
     else
+      @story.icon.build
       render :new , notice: @story.errors
     end
+  end
+
+  def edit
+    @icons = Icon.where(available: true)
   end
 
   def update
@@ -56,16 +63,19 @@ class StoriesController < ApplicationController
   end
 
   private
-    def set_story
-      @story = Story.find(params[:id])
-    end
 
-    # using in publish / unpublish methods
-    def set_story_id
-      @story = Story.find(params[:story_id])
-    end
+  def set_story
+    @story = Story.find(params[:id])
+  end
 
-    def story_params
-      params.require(:story).permit(:photo, :title, :brief, :content, :external_link, :published)
-    end
+  # using in publish / unpublish methods
+  def set_story_id
+    @story = Story.find(params[:story_id])
+  end
+
+  def story_params
+    params.require(:story).permit(:title, :brief, :content, :external_link,
+                                  :published, :icon_id,
+                                  icon_attributes: %i(file content_type))
+  end
 end

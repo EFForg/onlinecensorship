@@ -12,13 +12,10 @@
   <% end %>
 
   <div class="field image-field">
-    <% if params[:action]=="edit" %>
-      <br><%= image_tag @story.photo(:thumb) %><br>
+    <%= f.label :icon %>
+    <%= f.collection_radio_buttons :icon_id, @icons, :id, :show do |i| %>
+      <%= i.label { i.radio_button + image_tag(i.text) } %>
     <% end %>
-    <%= f.label :photo, "Thumbnail" %> <b>*</b>
-    <%= f.file_field :photo, :class=>"form-control" ,:onchange => "fileUploader('1',this)" %>
-    <div class="tip error_message"></div>
-    <div class="tip">Maximum size 1MB</div>
   </div>
 
   <div class="field">

@@ -58,10 +58,7 @@
                 <% end %>
               </td>
               <td class="icon-control">
-                <% if story.photo? %>
-                  <div class="main-image"><%= image_tag story.photo(:thumb)%></div>
-                  <div class="backend-icon icon-image" title="Contain image"></div>
-                <% end %>
+                <!-- TODO: icon display -->
               </td>
               <td class="icon-control">
                 <%= link_to story, :title => "Show" do %><div class="backend-icon icon-show"></div><% end %>

@@ -110,6 +110,11 @@ Rails.application.routes.draw do
 
     resources :notifications
 
+    resources :icons, only: %i(index new create edit update destroy) do
+      patch :toggle_availability, on: :member
+    end
+
+
     post "/thanks" => "questions#submit"
     get '/ty' => 'questions#ty'
 

@@ -1,0 +1,58 @@
+<!--BackEnd page-->
+<div class="content-box-large col-md-12 col-sm-7 col-xs-12">
+  <div class="panel-heading">
+    <div class="panel-title col-md-12">
+      <i class="fa fa-newspaper-o"></i>
+      Listing Icons
+      ( <%=@count%> )
+      <div class="sub-links col-md-12">
+        <i class="fa fa-pencil-square-o"></i>
+        <%= link_to 'New Icon', new_icon_path %>
+      </div>
+    </div><!--panel-title-->
+    <br>
+  </div><!--panel-heading-->
+  <div class="panel-body">
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered sortable" id="example">
+      <thead title="Click to short" class="cursor">
+        <tr>
+          <th></th>
+          <th>Available?</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @icons.blank? %>
+          <tr>
+            <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
+          </tr>
+        <% else %>
+          <% @icons.each do |icon| %>
+            <tr class="show-image">
+              <td><%= image_tag icon.show %></td>
+              <td><%= icon.available ? 'Yes' : 'No' %></td>
+              <td class="icon-control">
+                <%= link_to "Make #{icon.available ? 'Unavailable' : 'Available'}",
+                  toggle_availability_icon_path(icon), method: :patch, class: 'btn' %>
+              </td>
+              <td class="icon-control">
+                <%= link_to edit_icon_path(icon), :title => "Edit" do %><div class="backend-icon icon-edit"></div><% end %>
+              </td>
+              <td class="icon-control">
+                <%= link_to icon, method: :delete, data: { confirm: 'Are you sure?' } ,:title => "Delete" do %><div class="backend-icon icon-delete"></div><% end %>
+              </td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <tr>
+                <th colspan="100%"><%= paginate @icons %></th>
+              </tr>
+            </tfoot>
+          <% end %>
+      </tbody>
+    </table>
+  </div><!--panel-body-->
+</div><!--content-box-large-->
