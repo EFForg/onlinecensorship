@@ -1,5 +1,5 @@
 class Takedown < ApplicationRecord
-  PLATFORMS = %w(facebook twitter youtube instagram)
+  PLATFORMS = %w(facebook twitter youtube instagram tumblr flickr google+ other)
 
   extend Search
 

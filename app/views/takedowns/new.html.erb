@@ -14,7 +14,7 @@
 <div class="container white-box">
   <%= simple_form_for @takedown do |f| %>
     <%= f.input  :platform,
-      collection: Takedown::PLATFORMS.map(&:capitalize),
+      collection: Takedown::PLATFORMS.map(&:capitalize).sort,
       include_blank: '- Select an option -',
       value_method: :downcase, label: 'Select your social media platform' %>
 
