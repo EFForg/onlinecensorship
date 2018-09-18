@@ -175,7 +175,7 @@ footer.dark-blue-bg {
 }
 
 .carousel {
-  padding: 62px 0 200px;
+  padding: 0 0 200px;
   position: relative;
   @media (max-width: 768px) {
     padding-bottom: 62px;
@@ -1639,13 +1639,13 @@ select {
 .story-wrapper {
   margin: 8px;
   background: #fff;
-  height: 352px;
+  height: 280px;
   overflow: hidden;
   @media (max-width: 768px) {
-    height: auto;
+    height: 330px;
   }
   .post-brief {
-    height: 148px;
+    height: 100px;
     overflow: hidden;
     font-size: 12px;
   }
@@ -1654,18 +1654,6 @@ select {
       height: 93px;
       overflow: hidden;
       margin-bottom: 10px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .post-brief {
-      height: 162px;
-    }
-  }
-  @media (max-width: 1280px) and (min-width: 992px) {
-    height: 292px;
-    .post-brief {
-      height: 86px;
-      min-height: 106px;
     }
   }
 
@@ -1684,27 +1672,48 @@ select {
     }
   }
 
-  .image, .story-content {
-    width: 50%;
+  .story-content {
+    width: 60%;
     float: left;
   }
   .image {
     position: static;
     overflow: hidden;
     height: 100%;
+    width: 40%;
+    float: left;
+    vertical-align: middle;
+    display: inline-block;
+    a {
+      display: block;
+      margin: auto;
+      text-align: center;
+      @media (min-width: 769px) {
+        padding: 60px 0;
+      }
+    }
     img {
+      display: block;
+      margin: auto;
+      vertical-align: middle;
       position: static;
-      width: 100%;
+      max-width: 160px;
+      max-height: 160px;
       @include transition(all, 0.5s);
-      @media (min-width: 992px) {
-        width: auto !important;
-        height: 100% !important;
+      @media (min-width: 769px) {
+        width: auto;
+        height: 100%;
       }
     }
     @media (max-width: 768px) {
+      float: none;
       width: 100%;
-      float: left;
-      height: auto;
+      height: 100px;
+      padding: 15px 0;
+      a, img {
+        width: 80px;
+        height: 80px;
+      }
     }
   }
   .story {
@@ -1715,6 +1724,7 @@ select {
     padding: 0 2rem;
     position: static;
     overflow: hidden;
+    height: 250px;
 
     p {
       color: #162F4E;
@@ -1724,6 +1734,9 @@ select {
       overflow: hidden;
       margin-top: 2rem;
       margin-bottom: 1rem;
+      @media (min-width: 769px) {
+        height: 75px;
+      }
       a {
         color: $dark-blue;
         &:hover {

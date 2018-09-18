@@ -9,7 +9,7 @@ class Story < ApplicationRecord
 
   # Define attachments
   ## The post photo # min-height: 490px
-  has_attached_file :photo, :styles => { :thumb => '352x352#' },
+  has_attached_file :photo, :styles => { :thumb => '160x160#' },
                            :default_url => "/:style_default_post.jpg"
   ## Attachments Validation
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
