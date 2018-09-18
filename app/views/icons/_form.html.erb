@@ -1,0 +1,27 @@
+<%= form_for(@icon) do |f| %>
+  <% if @icon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@icon.errors.count, "error") %> prohibited this icon from being saved:</h2>
+
+      <ul>
+      <% @icon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file %><br>
+    <%= f.file_field :file , required: true, :class=>"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :available %>
+    <%= f.label :available %><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary" %>
+  </div>
+<% end %>
