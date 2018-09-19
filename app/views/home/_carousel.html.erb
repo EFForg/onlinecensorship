@@ -7,11 +7,11 @@
             <div class="image">
               <% if story.external_link? %>
                 <%=link_to story.external_link , :target => "_blank" do %>
-                  <%=image_tag story.photo(:thumb) %>
+                  <%= image_tag story.photo(:thumb) %>
                 <% end %>
               <% else %>
                 <%=link_to story_path(story),:title=>story.title do %>
-                  <%=image_tag story.photo(:thumb) %>
+                  <%= image_tag story.photo(:thumb) %>
                 <% end %>
               <% end %>
             </div>
@@ -27,7 +27,7 @@
                   <% end %>
                 <% end %>
               </h1>
-              <p class="post-brief"><%= story.brief.truncate(200) %></p>
+              <p class="post-brief"><%= story.brief.truncate(175) %></p>
               <% if story.external_link? %>
                 <%= link_to t(:read_story), story.external_link, target: "_blank", :class => "read-link more-link" %>
               <% else %>
