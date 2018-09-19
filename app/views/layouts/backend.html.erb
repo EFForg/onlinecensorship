@@ -366,6 +366,11 @@
               <%= notice %>
             </div>
           <% end %>
+          <% if flash[:error] %>
+            <div class="alert alert-danger" role="alert">
+              <%= flash[:error] %>
+            </div>
+          <% end %>
           <div class="admin-language-switcher">
             <%= link_to :locale => :en do %>
               <span class="<%= locale == :en ? 'active' : '' %>"> En </span>
