@@ -58,6 +58,7 @@ GEM
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
+    brakeman (4.3.1)
     builder (3.2.3)
     byebug (10.0.2)
     capistrano (3.3.5)
@@ -322,6 +323,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bourbon
+  brakeman (~> 4.3)
   byebug
   capistrano (~> 3.3.0)
   capistrano-bundler (~> 1.1)

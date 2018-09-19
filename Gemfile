@@ -53,6 +53,7 @@ group :development, :test do
   gem 'capistrano-rbenv', '~> 2.0', require: false
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails', '~> 4.10'
+  gem 'brakeman', '~> 4.3'
 end
 
 group :test do
