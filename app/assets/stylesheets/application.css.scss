@@ -1785,3 +1785,13 @@ select {
     background: #fff;
   }
 }
+
+.report-header {
+  padding-bottom: 0;
+}
+
+form.simple_form {
+  a.remove-link {
+    cursor: pointer;
+  }
+}

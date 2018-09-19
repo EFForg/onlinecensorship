@@ -462,6 +462,63 @@ h5 a:hover{
   }
 }
 
+.form-group {
+  margin-bottom: 4rem;
+}
+
+.form-control {
+  height: 50px;
+  border: 2px solid $dark-blue;
+  border-radius: 0px;
+  font-family: 'Work Sans', sans-serif;
+  color: $dark-blue;
+  font-size: 18px;
+  letter-spacing: -1px;
+}
+
+.form-control-btn {
+  color: $dark-blue;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  letter-spacing: -1px;
+}
+
+select, option {
+  -webkit-appearance: none; /* WebKit/Chromium */
+  -moz-appearance: none; /* Gecko */
+  appearance: none;
+}
+
+/* Internet Explorer 10–11 and Edge */
+select::-ms-expand {
+  display: none;
+}
+
+select.form-control {
+  background-image: url("carot-down.png");
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: right;
+  background-origin: content-box;
+  padding: 6px 10px;
+  height: 50px;
+  option {
+  }
+}
+
+.control-label {
+  color: $dark-blue;
+  text-transform: none;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+form {
+  margin: 5px 10px;
+}
+
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   h2 {

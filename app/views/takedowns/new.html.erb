@@ -1,0 +1,47 @@
+<% meta title: 'Submit Your Report' %>
+
+<section class="page-title-wrapper dark-blue-bg">
+  <div class="container">
+    <h1> Submit your report </h1>
+    <p>
+      We're collecting reports from users in an effort to shine a light on 
+      what content is taken down, why companies make certain decisions about
+      content, and how content takedowns are affecting communities around the world.
+    </p>
+  </div>
+</section>
+
+<div class="container white-box">
+  <%= simple_form_for @takedown do |f| %>
+    <%= f.input  :platform,
+      collection: Takedown::PLATFORMS.map(&:capitalize).sort,
+      include_blank: '- Select an option -',
+      value_method: :downcase, label: 'Select your social media platform' %>
+
+    <%= f.input  :appealed, as: :select, label: 'Did you appeal this decision?',
+      include_blank: '- Select an option -', selected: @appealed, required: true %>
+
+    <%= f.input  :reason, label: 'What reason was given for the takedown?' %>
+
+    <% if @takedown.errors.any? %>
+      <div class="has-error">
+        <%= f.label :images, 'Attach screenshots (Optional)', class: 'control-label' %>
+        <span class="help-block">Please re-upload any screenshots</span>
+      </div>
+    <% else %>
+      <%= f.label :images, 'Attach screenshots (Optional)', class: 'control-label' %>
+    <% end %>
+    <%= f.simple_fields_for :images do |fa| %>
+      <%= fa.input :file, as: :file, label: false,
+        wrapper_html: { class: 'form-control-btn' } %>
+    <% end %>
+
+    <%= f.input  :name, label: 'Your name (Optional)' %>
+
+    <%= f.input  :email, label: 'Your email (Optional)' %>
+
+    <%= f.input  :details, label: 'Details about the takedown' %>
+
+    <%= f.submit 'submit your report', class: 'btn btn-primary' %>
+  <% end %>
+</div>

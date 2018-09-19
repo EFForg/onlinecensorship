@@ -33,9 +33,7 @@ meta og: {
     <div class="col-md-6 col-md-offset-2">
       <p> <%=@home_fields.what_oc_text%> </p>
       <p>
-      <a href="mailto:oc-reports@eff.org" class="btn btn-primary">
-        <%=@home_fields.submit_btn_text%> &nbsp; <i class='fa fa-arrow-right'></i>
-      </a>
+        <%= link_to @home_fields.submit_btn_text, new_takedown_path, class: 'btn btn-primary' %>
       </p>
     </div>
   </div>

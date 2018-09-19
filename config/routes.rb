@@ -131,6 +131,9 @@ Rails.application.routes.draw do
     
     resources :pages
 
+    resources :takedowns, only: %i(new create index destroy show) do
+      get 'submitted', on: :collection
+    end
   end
 
   devise_for :users, :skip => [:registrations]                                        
