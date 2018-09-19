@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20180918175351) do
     t.string "file_content_type", null: false
     t.integer "file_file_size", null: false
     t.datetime "file_updated_at", null: false
+    t.boolean "available", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,7 +5,16 @@ class Icon < ApplicationRecord
   validates_attachment :file,
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
+  before_destroy :check_stories
+
   def show
     file(:thumb)
+  end
+
+  private
+
+  def check_stories
+    return if Story.where(icon_id: id).empty?
+    throw(:abort)
   end
 end

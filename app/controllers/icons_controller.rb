@@ -41,7 +41,13 @@ class IconsController < ApplicationController
   end
 
   def destroy
-    # TODO: validation requiring changing in use stories
+    msg = if @icon.destroy
+            { notice: "Icon deleted." }
+          else
+            { flash: { error: "Icon could not be deleted because it is still "\
+                       "used in a story." } }
+          end
+    redirect_to icons_path, **msg
   end
 
   private
