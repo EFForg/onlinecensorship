@@ -12,8 +12,7 @@ class IconsController < ApplicationController
   end
 
   def create
-    attrs = icon_params.transform_keys(&:to_sym)
-    @icon = Icon.new(attrs.to_h)
+    @icon = Icon.new(icon_params)
     if @icon.save
       redirect_to icons_path, notice: 'Icon uploaded'
     else
@@ -25,7 +24,7 @@ class IconsController < ApplicationController
   def edit; end
 
   def update
-    if @icon.update(icon_params.transform_keys(&:to_sym).to_h)
+    if @icon.update(icon_params)
       redirect_to icons_path, notice: 'Icon uploaded'
     else
       flash[:error] = 'Icon failed to upload'

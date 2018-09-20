@@ -32,7 +32,6 @@ class StoriesController < ApplicationController
   def new
     @icons = Icon.where(available: true)
     @story = Story.new
-    @story.icon.build
   end
 
   def create
@@ -40,7 +39,6 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to admin_stories_url, notice: 'The story was successfully created.'
     else
-      @story.icon.build
       render :new , notice: @story.errors
     end
   end
