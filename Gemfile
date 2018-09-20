@@ -73,6 +73,7 @@ gem 'aws-sdk-v1'
 gem 'paperclip'
 gem 'rmagick'
 gem 'aws-s3'
+gem 'aws-sdk-s3'
 
 # translation
 gem 'globalize', '~> 5.0'
