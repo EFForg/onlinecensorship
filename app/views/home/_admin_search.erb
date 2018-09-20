@@ -1,6 +1,6 @@
 <%= form_tag("", method: "get") do %>
   <% if params[:search]%>
-    <%=link_to "Show All", params[:controller] ,:class=>'pull-right btn btn-primary btn-xs search-btn'%>
+    <%=link_to "Show All", controller_name,:class=>'pull-right btn btn-primary btn-xs search-btn'%>
   <% else %>
     <%= submit_tag "" ,:class=>'pull-right btn btn-primary btn-xs search-btn', title: "Search" , value: "Search" %>
   <% end%>
