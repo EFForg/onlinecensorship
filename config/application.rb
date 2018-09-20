@@ -41,12 +41,12 @@ module Oc
     # Enable loading from /lib
     config.autoload_paths += %W(#{config.root}/lib)
 
-    unless ENV['attachment_storage'].nil? or ENV['attachment_storage'] == 'file'
+    unless ENV['ATTACHMENT_STORAGE'].nil? || ENV['ATTACHMENT_STORAGE'] == 'file'
       config.paperclip_defaults = {
-        :storage => ENV['attachment_storage'],
-        :s3_host_name => "s3-#{ENV['aws_region']}.amazonaws.com",
+        :storage => ENV['ATTACHMENT_STORAGE'],
+        :s3_host_name => "s3-#{ENV['AWS_REGION']}.amazonaws.com",
         :s3_protocol => :https,
-        :bucket => ENV['aws_bucket']
+        :bucket => ENV['AWS_BUCKET']
       }
     end
 

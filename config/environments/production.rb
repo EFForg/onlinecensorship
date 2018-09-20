@@ -82,16 +82,16 @@ Rails.application.configure do
 
   # For mailer
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => ENV['smtp_domain'] }
+  config.action_mailer.default_url_options = { :host => ENV['SMTP_DOMAIN'] }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :address => ENV["smtp_address"],
-      :authentication => ENV["smtp_authentication"],
-      :user_name => ENV["smtp_username"],
-      :password => ENV["smtp_password"],
-      :enable_starttls_auto => ENV["smtp_enable_starttls_auto"],
-      :port => ENV["smtp_port"]
+      :address => ENV["SMTP_ADDRESS"],
+      :authentication => ENV["SMTP_AUTHENTICATION"],
+      :user_name => ENV["SMTP_USERNAME"],
+      :password => ENV["SMTP_PASSWORD"],
+      :enable_starttls_auto => ENV["SMTP_ENABLE_STARTTLS_AUTO"],
+      :port => ENV["SMTP_PORT"]
   }
   config.action_mailer.perform_deliveries = true
 
