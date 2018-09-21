@@ -14,11 +14,7 @@ class Contact < ApplicationRecord
 
   # Validation
   validates :name,:surname,:message, :presence => true
-  validates :email,
-          	presence: true,
-          	format: {
-            	with: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}\z/,
-            	message: "Error email format"
-          	}
-
+  validates :email, presence: true, uniqueness: true,
+                    format: { with: URI::MailTo::EMAIL_REGEXP,
+                              message: "Please submit a valid email address" }
 end
