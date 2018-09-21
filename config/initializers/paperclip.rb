@@ -16,3 +16,6 @@ end
 Paperclip.interpolates :parent_id do |a, s|
   a.instance.contract.id
 end
+
+Paperclip::Attachment.default_options[:path] = '/pub/:class/:attachment/'\
+                                               ':id_partition/:style/:filename'
