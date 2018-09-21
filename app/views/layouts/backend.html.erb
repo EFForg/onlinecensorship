@@ -211,6 +211,10 @@
                       <i class="fa fa-check-square-o"></i>
                       <%= link_to 'Manage', admin_stories_path %>
                     </li>
+                    <li>
+                      <i class="fa fa-check-square-o"></i>
+                      <%= link_to 'Manage Icons', icons_path %>
+                    </li>
                   </ul>
                 </li>
 
@@ -360,6 +364,11 @@
           <% if notice %>
             <div class="alert alert-success" role="alert">
               <%= notice %>
+            </div>
+          <% end %>
+          <% if flash[:error] %>
+            <div class="alert alert-danger" role="alert">
+              <%= flash[:error] %>
             </div>
           <% end %>
           <div class="admin-language-switcher">

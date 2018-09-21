@@ -44,7 +44,7 @@ class ContentManagementPagesController < ApplicationController
     msg =  if @content_management_page.destroy
              { notice: "#{page_title} successfully deleted." }
            else
-             { error: "#{page_title} could not be deleted" }
+             { flash: { error: "#{page_title} could not be deleted" } }
            end
     redirect_to admin_content_management_pages_url, **msg
   end

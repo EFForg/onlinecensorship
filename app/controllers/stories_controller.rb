@@ -30,6 +30,7 @@ class StoriesController < ApplicationController
   end
 
   def new
+    @icons = Icon.where(available: true)
     @story = Story.new
   end
 
@@ -40,6 +41,10 @@ class StoriesController < ApplicationController
     else
       render :new , notice: @story.errors
     end
+  end
+
+  def edit
+    @icons = Icon.where(available: true)
   end
 
   def update
@@ -56,16 +61,19 @@ class StoriesController < ApplicationController
   end
 
   private
-    def set_story
-      @story = Story.find(params[:id])
-    end
 
-    # using in publish / unpublish methods
-    def set_story_id
-      @story = Story.find(params[:story_id])
-    end
+  def set_story
+    @story = Story.find(params[:id])
+  end
 
-    def story_params
-      params.require(:story).permit(:photo, :title, :brief, :content, :external_link, :published)
-    end
+  # using in publish / unpublish methods
+  def set_story_id
+    @story = Story.find(params[:story_id])
+  end
+
+  def story_params
+    params.require(:story).permit(:title, :brief, :content, :external_link,
+                                  :published, :icon_id,
+                                  icon_attributes: %i(file content_type))
+  end
 end

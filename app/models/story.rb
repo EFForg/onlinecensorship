@@ -7,13 +7,7 @@ class Story < ApplicationRecord
   # For use search method
   extend Search
 
-  # Define attachments
-  ## The post photo # min-height: 490px
-  has_attached_file :photo, :styles => { :thumb => '160x160#' },
-                           :default_url => "/:style_default_post.jpg"
-  ## Attachments Validation
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_size :photo, :less_than => 1.megabyte
+  belongs_to :icon
 
   # Validation
   validates :title,:brief, :presence => true
@@ -22,4 +16,8 @@ class Story < ApplicationRecord
   attribute :title
   attribute :brief
   attribute :content
+
+  def photo(*args)
+    icon.file(*args)
+  end
 end

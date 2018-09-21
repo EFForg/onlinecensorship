@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910202751) do
+ActiveRecord::Schema.define(version: 20180918175351) do
 
   create_table "categories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -163,6 +163,16 @@ ActiveRecord::Schema.define(version: 20180910202751) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "submit_btn_text"
+  end
+
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "file_file_name", null: false
+    t.string "file_content_type", null: false
+    t.integer "file_file_size", null: false
+    t.datetime "file_updated_at", null: false
+    t.boolean "available", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -532,10 +542,8 @@ ActiveRecord::Schema.define(version: 20180910202751) do
     t.boolean "published", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.bigint "icon_id"
+    t.index ["icon_id"], name: "index_stories_on_icon_id"
   end
 
   create_table "story_translations", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
