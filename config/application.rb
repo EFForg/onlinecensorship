@@ -49,7 +49,9 @@ module Oc
           access_key_id: ENV['aws_access_key_id'],
           secret_access_key: ENV['aws_secret_access_key']
         },
-        s3_region: ENV['aws_region']
+        s3_region: ENV['aws_region'],
+        s3_hostname: "s3-#{ENV['aws_region']}.amazonaws.com",
+        url: ':s3_domain_url'
       }
     end
 
