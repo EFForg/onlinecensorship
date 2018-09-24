@@ -43,10 +43,14 @@ module Oc
 
     unless ENV['ATTACHMENT_STORAGE'].nil? || ENV['ATTACHMENT_STORAGE'] == 'file'
       config.paperclip_defaults = {
-        :storage => ENV['ATTACHMENT_STORAGE'],
-        :s3_host_name => "s3-#{ENV['AWS_REGION']}.amazonaws.com",
-        :s3_protocol => :https,
-        :bucket => ENV['AWS_BUCKET']
+        storage: ENV['ATTACHMENT_STORAGE'],
+        s3_credentials: {
+          bucket: ENV['AWS_BUCKET'],
+          access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+          secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+        },
+        s3_hostname: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
+        url: ':s3_domain_url'
       }
     end
 
