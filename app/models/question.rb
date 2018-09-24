@@ -15,8 +15,7 @@ class Question < ApplicationRecord
                                 reject_if: proc { |attributes| attributes['option_title'].blank? }, # to remove blank field
                                 allow_destroy: true  # to allow admin to remove options
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(question_title))
 
   # Validation
   validates :question_title,:question_type, :presence => true

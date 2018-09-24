@@ -26,4 +26,22 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
+  private
+
+  def backend_index(model_class, translation: true)
+    respond_to do |format|
+      format.html {
+        if translation
+          model_class = model_class.unscoped.with_translations(I18n.locale)
+        end
+        @query = model_class.ransack(params[:q])
+        @collection = @query.result(distinct: true)
+        @count = @collection.count
+        @collection = @collection.page(params[:page])
+      }
+      format.xls {
+        @collection = model_class.all
+      }
+    end
+  end
 end

@@ -4,18 +4,7 @@ class LanguagesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Language.search(params[:search],'name')
-        @languages=results.page(params[:page])
-        @count=results.count  
-      }
-      # Using it to export excel file 
-      format.xls {
-        @languages = Language.all
-      }
-    end
+    backend_index(Language)
   end
 
   def new

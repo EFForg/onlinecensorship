@@ -11,9 +11,6 @@ class Page < ApplicationRecord
   has_and_belongs_to_many :questions, through: :pages_questions
 
 
-  # For use search method
-  extend Search
-
   # Validation
   # validates :social_media_platform_id, :presence => true
   translates :message

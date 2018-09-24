@@ -7,8 +7,7 @@ class Category < ApplicationRecord
   ## DB relations
   has_many :posts
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(title))
 
   # Validation
   validates :title,:color, :presence => true

@@ -3,16 +3,8 @@
   <div class="panel-heading">
     <div class="panel-title col-md-12">
       <i class="fa fa-list"></i>
-      Listing Posts Categories
-      <% if params[:search] %>
-        Search Result About <%=params[:search]%>
-      <% end %>
-      ( <%= @count %> )
-
-      <div class="pull-right search-wrapper col-md-6">
-        <% @Search_placeholder="Search in title" %>
-        <%= render 'home/admin_search' %>
-      </div>
+      Post Categories
+      <%= render 'home/admin_search' %>
       <br>
       <div class="sub-links col-md-12">
         <i class="fa fa-pencil-square-o"></i>
@@ -37,12 +29,12 @@
       </thead>
 
       <tbody>
-        <% if @categories.blank? %>
+        <% if @collection.blank? %>
           <tr>
             <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
           </tr>
         <% else %>
-          <% @categories.each do |category| %>
+          <% @collection.each do |category| %>
             <tr class="show-image">
               <td>
                 <i class="fa fa-circle" style="color: <%= category.color %>"></i>
@@ -66,7 +58,7 @@
           <% end %>
             <tfoot>
               <tr>
-                <th colspan="100%"><%= paginate @categories %></th>
+                <th colspan="100%"><%= paginate @collection %></th>
               </tr>
             </tfoot>
         <% end %>

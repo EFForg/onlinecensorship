@@ -1,7 +1,8 @@
 class Takedown < ApplicationRecord
   PLATFORMS = %w(facebook twitter youtube instagram tumblr flickr google+ other)
 
-  extend Search
+  ransack_alias :searchable,
+                translated_search(%i(platform details reason email name))
 
   has_many :images
   accepts_nested_attributes_for :images

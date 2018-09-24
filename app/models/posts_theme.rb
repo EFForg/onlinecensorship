@@ -8,8 +8,7 @@ class PostsTheme < ApplicationRecord
   has_and_belongs_to_many :posts
   has_many :quotes
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(title))
 
   # Validation
   validates :title, :presence => true

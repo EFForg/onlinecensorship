@@ -26,8 +26,7 @@ class Post < ApplicationRecord
   attribute :pdf_file_size
   attribute :pdf_updated_at
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(title description))
 
   # For gem FriendlyId
   extend FriendlyId

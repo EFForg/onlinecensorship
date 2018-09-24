@@ -1,8 +1,13 @@
-<%= form_tag("", method: "get") do %>
-  <% if params[:search]%>
-    <%=link_to "Show All", params[:controller] ,:class=>'pull-right btn btn-primary btn-xs search-btn'%>
-  <% else %>
-    <%= submit_tag "" ,:class=>'pull-right btn btn-primary btn-xs search-btn', title: "Search" , value: "Search" %>
-  <% end%>
-  <%= text_field_tag "search" ,(params[:search]),:class=>'pull-right col-md-9 col-sm-9 col-xs-8',placeholder: @Search_placeholder ,:required => true %>
+<% if params[:q]%>
+  - search results for "<%= params[:q][:searchable_cont] %>" (<%=@count%> found)
+  <div class="pull-right search-wrapper col-md-6">
+    <%=link_to "Show All", controller_name,:class=>'pull-right btn btn-primary btn-xs search-btn'%>
+  </div>
+<% else %>
+  <div class="pull-right search-wrapper col-md-6">
+    <%= search_form_for @query do |f| %>
+      <%= f.search_field :searchable_cont %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 <% end %>

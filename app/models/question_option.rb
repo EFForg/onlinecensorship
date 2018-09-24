@@ -8,9 +8,6 @@ class QuestionOption < ApplicationRecord
   belongs_to :question
   has_many :question_answers
 
-  # For use search method
-  extend Search
-
   # Validation
   validates :option_title, :presence => true
 

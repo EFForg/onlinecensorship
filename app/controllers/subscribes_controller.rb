@@ -6,19 +6,7 @@ class SubscribesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Subscribe.search(params[:search],'email')
-        @subscribes=results.page(params[:page])
-        @count=results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @subscribes = Subscribe.all
-      }
-    end
-
+    backend_index(Subscribe, translation: false)
   end
 
   def create

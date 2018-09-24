@@ -6,8 +6,7 @@ class Contact < ApplicationRecord
   ## DB relations
   belongs_to :contacts_topic
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, %w(name email surname message pgp_key).join('_or_')
 
   # change the id order
   default_scope { order("id DESC") }

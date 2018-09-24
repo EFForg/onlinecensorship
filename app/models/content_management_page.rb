@@ -6,8 +6,7 @@ class ContentManagementPage < ApplicationRecord
   HARD_CODED_PAGES = %w(how-to-appeal privacy-policy what-we-do
     who-we-are).freeze
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(content page_title))
 
   # Validation
   validates :page_title, :content, :presence => true

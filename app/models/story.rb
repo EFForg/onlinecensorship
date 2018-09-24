@@ -3,10 +3,6 @@
 # The admin can add stories
 #
 class Story < ApplicationRecord
-
-  # For use search method
-  extend Search
-
   belongs_to :icon
 
   # Validation
@@ -16,6 +12,8 @@ class Story < ApplicationRecord
   attribute :title
   attribute :brief
   attribute :content
+
+  ransack_alias :searchable, translated_search(%i(title brief content))
 
   def photo(*args)
     icon.file(*args)

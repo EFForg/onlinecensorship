@@ -4,18 +4,7 @@ class ContactsTopicsController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=ContactsTopic.search(params[:search],'name')
-        @contacts_topics=results.page(params[:page])
-        @count=results.count      
-      }
-      # Using it to export excel file 
-      format.xls {
-        @contacts_topics = ContactsTopic.all
-      }
-    end
+    backend_index(ContactsTopic)
   end
 
   def new

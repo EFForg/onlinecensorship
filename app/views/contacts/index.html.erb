@@ -3,15 +3,8 @@
   <div class="panel-heading">
     <div class="panel-title col-md-12">
       <i class="fa fa-envelope-o"></i>
-      Listing Messages
-      <% if params[:search] %>
-        Search Result About <%=params[:search]%>
-      <% end %>
-      ( <%=@count%> )
-
-      <div class="pull-right search-wrapper col-md-6">
-        <% @Search_placeholder="Search in name , surname , email , pgp key, message" %>
-        <%= render 'home/admin_search' %>
+      Messages
+      <%= render 'home/admin_search' %>
       </div>
     </div><!--panel-title-->
     <p><%= @unreplied_count %> unreplied messages </p>
@@ -39,12 +32,12 @@
       </thead>
 
       <tbody>
-        <% if @contacts.blank? %>
+        <% if @collection.blank? %>
           <tr>
             <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
           </tr>
         <% else %>
-          <% @contacts.each do |contact| %>
+          <% @collection.each do |contact| %>
             <tr class="show-image">
               <td><%= contact.name %></td>
               <td><%= contact.surname %></td>
@@ -67,7 +60,7 @@
           <% end %>
             <tfoot>
               <tr>
-                <th colspan="100%"><%= paginate @contacts %></th>
+                <th colspan="100%"><%= paginate @collection %></th>
               </tr>
             </tfoot>
           <% end %>

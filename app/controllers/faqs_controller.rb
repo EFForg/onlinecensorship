@@ -5,13 +5,8 @@ class FaqsController < ApplicationController
 
 
   def admin
-    ######################################################################
-    # Admin method
-    # we using it in the backEnd to allow the admin to show and navigate all the model data
-    ######################################################################
-    results=Faq.search(params[:search],'question','answer')
-    @faqs=results.page(params[:page])
-    @count=results.count
+    # this is the admin backend index
+    backend_index(Faq)
   end
 
   def index

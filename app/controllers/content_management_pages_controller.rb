@@ -4,18 +4,7 @@ class ContentManagementPagesController < ApplicationController
   layout 'backend', except: [:what_we_do ,:who_we_are , :appeal ,:privacy]
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=ContentManagementPage.search(params[:search],'page','content')
-        @content_management_pages=results.page(params[:page])
-        @count=results.count      
-      }
-      # Using it to export excel file 
-      format.xls {
-        @content_management_pages = ContentManagementPage.all
-      }
-    end
+    backend_index(ContentManagementPage)
   end
 
   def new

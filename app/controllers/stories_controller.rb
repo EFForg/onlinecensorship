@@ -5,18 +5,7 @@ class StoriesController < ApplicationController
   layout 'backend', except: [:show]
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Story.search(params[:search],'title','brief','content')
-        @stories=results.page(params[:page])
-        @count=results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @stories = Story.all
-      }
-    end
+    backend_index(Story)
   end
 
   def publish

@@ -4,18 +4,7 @@ class SocialMediaPlatformsController < ApplicationController
   layout 'backend', except: [:submit_report ,:submit_report_show]
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=SocialMediaPlatform.search(params[:search],'title')
-        @social_media_platforms=results.page(params[:page])
-        @count=results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @social_media_platforms=SocialMediaPlatform.all
-      }
-    end
+    backend_index(SocialMediaPlatform)
   end
 
   def new
