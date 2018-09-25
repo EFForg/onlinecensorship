@@ -4,13 +4,7 @@ class FurtherReadsController < ApplicationController
   layout 'backend', except: [:index]
 
   def admin
-    ######################################################################
-    # Admin method
-    # we using it in the backEnd to allow the admin to show and navigate all the model data
-    ######################################################################
-    results=FurtherRead.search(params[:search],'title','author' ,'category' ,'link' ,'written_in' ,'year')
-    @further_reads=results.page(params[:page])
-    @count=results.count
+    backend_index(FurtherRead)
   end
 
   def index

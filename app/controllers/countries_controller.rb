@@ -4,18 +4,7 @@ class CountriesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Country.search(params[:search],'name')
-        @countries=results.page(params[:page])
-        @count=results.count    
-      }
-      # Using it to export excel file 
-      format.xls {
-        @countries = Country.all
-      }
-    end
+    backend_index(Country)
   end
 
   def new

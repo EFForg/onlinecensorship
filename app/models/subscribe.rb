@@ -3,9 +3,7 @@
 # The Subscribe form in the forntEnd
 #
 class Subscribe < ApplicationRecord
-
-  # For use search method
-  extend Search
+  ransack_alias :searchable, :email
 
   # Validation
   validates :email, presence: true, uniqueness: true,

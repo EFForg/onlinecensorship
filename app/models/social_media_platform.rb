@@ -9,9 +9,7 @@ class SocialMediaPlatform < ApplicationRecord
   has_many :posts
   has_many :quotes
 
-
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(title))
 
   # For gem FriendlyId
   extend FriendlyId

@@ -3,15 +3,8 @@
   <div class="panel-heading">
     <div class="panel-title col-md-12">
       <i class="fa fa-user"></i>
-      Listing Users Submissions
-      <% if params[:search] %>
-        Search Result About <%=params[:search]%>
-      <% end %>
-      ( <%=@count%> )
-      <div class="pull-right search-wrapper col-md-6">
-        <% @Search_placeholder="Search in name , email" %>
-        <%= render 'home/admin_search' %>
-      </div>
+      Users Submissions
+      <%= render 'home/admin_search' %>
       <br>
       <div class="export">
         <i class="fa fa-file-excel-o"></i> Download Submissions

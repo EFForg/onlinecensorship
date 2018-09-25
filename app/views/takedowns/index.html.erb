@@ -4,15 +4,7 @@
     <div class="panel-title col-md-12">
       <i class="fa fa-file-text-o"></i>
       Takedown Reports
-      <% if params[:search] %>
-        Search Result About <%=params[:search]%>
-      <% end %>
-      ( <%= @count %> )
-
-      <div class="pull-right search-wrapper col-md-6">
-        <% @Search_placeholder="Search by platform, takedown reason, name, email, or description" %>
-        <%= render 'home/admin_search' %>
-      </div>
+      <%= render 'home/admin_search' %>
       <!-- TODO: excel export
       <br>
       <div class="sub-links col-md-12">
@@ -41,12 +33,12 @@
       </thead>
 
       <tbody>
-        <% if @takedowns.blank? %>
+        <% if @collection.blank? %>
           <tr>
             <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
           </tr>
         <% else %>
-          <% @takedowns.each do |takedown| %>
+          <% @collection.each do |takedown| %>
             <tr class="show-image">
               <td><%= takedown.created_at.strftime("%d/%m/%y") %></td>
               <td><%= takedown.platform.capitalize %></td>
@@ -65,7 +57,7 @@
           <% end %>
             <tfoot>
               <tr>
-                <th colspan="100%"><%= paginate @takedowns %></th>
+                <th colspan="100%"><%= paginate @collection %></th>
               </tr>
             </tfoot>
           <% end %>

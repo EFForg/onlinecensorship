@@ -5,18 +5,7 @@ class QuestionsController < ApplicationController
   layout 'backend', except: [:submit, :ty]
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results = Question.search(params[:search],'question_title')
-        @questions = results.page(params[:page])
-        @count = results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @questions = Question.all
-      }
-    end
+    backend_index(Question)
   end
 
   def related_questions

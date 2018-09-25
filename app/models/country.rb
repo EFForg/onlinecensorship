@@ -8,8 +8,7 @@ class Country < ApplicationRecord
   has_many :question_users
   has_many :question_answers
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(name))
 
   # Validation
   validates :name, :presence => true

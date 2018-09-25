@@ -3,9 +3,7 @@
 # The admin can add posts in the section further read
 #
 class FurtherRead < ApplicationRecord
-
-  # For use search method
-  extend Search
+  ransack_alias :searchable, translated_search(%i(title author written_in))
 
   # Validation
   validates :title, :category ,:author ,:link, :presence => true

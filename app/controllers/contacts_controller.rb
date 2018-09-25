@@ -5,11 +5,8 @@ class ContactsController < ApplicationController
   layout 'backend', except: [:new]
 
   def index
-    # Using it in the backEnd to allow the admin to show and navigate all the model data
-    results=Contact.search(params[:search],'name','surname','email','pgp_key','message')
-    @contacts=results.page(params[:page])
-    @count=results.count
-    @unreplied_count = results.where(replied: false).count    
+    backend_index(Contact)
+    @unreplied_count = @collection.where(replied: false).count    
   end
 
   def new

@@ -5,9 +5,7 @@ class TakedownsController < ApplicationController
   layout 'backend', except: PUBLIC
 
   def index
-    @takedowns = Takedown.search(params[:search], 'platform', 'name', 'email',
-                                 'details', 'reason').page(params[:page]).order(created_at: :desc)
-    @count = @takedowns.count
+    backend_index(Takedown, translation: false)
   end
 
   def show; end

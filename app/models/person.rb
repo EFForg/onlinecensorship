@@ -7,9 +7,6 @@ class Person < ApplicationRecord
   ## DB relations
   has_many :posts
 
-  # For use search method
-  extend Search
-
   # For gem FriendlyId
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -29,4 +26,6 @@ class Person < ApplicationRecord
   attribute :name
   attribute :bio
   attribute :role
+
+  ransack_alias :searchable, translated_search(%i(name bio role))
 end

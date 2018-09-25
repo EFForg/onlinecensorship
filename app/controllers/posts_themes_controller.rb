@@ -4,18 +4,7 @@ class PostsThemesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=PostsTheme.search(params[:search],'title')
-        @posts_themes=results.page(params[:page])
-        @count=results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @posts_themes = PostsTheme.all
-      }
-    end    
+    backend_index(PostsTheme)
   end
 
   def new

@@ -5,13 +5,7 @@ class PostsController < ApplicationController
   layout 'backend', except: [:index,:author,:show]
 
   def admin
-    ######################################################################
-    # Admin method
-    # we using it in the backEnd to allow the admin to show and navigate all the model data
-    ######################################################################
-    results=Post.search(params[:search],'title','description').order("id DESC")
-    @posts=results.page(params[:page])
-    @count=results.count
+    backend_index(Post)
   end
 
   def author

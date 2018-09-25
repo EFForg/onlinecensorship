@@ -4,18 +4,7 @@ class PeopleController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Person.search(params[:search],'name','bio')
-        @people=results.page(params[:page])
-        @count=results.count 
-      }
-      # Using it to export excel file
-      format.xls {
-        @people = Person.all
-      }
-    end
+    backend_index(Person)
   end
 
   def new

@@ -3,9 +3,7 @@
 # The admin can add stuff emails to the notifications system
 #
 class Notification < ApplicationRecord
-
-  # For use search method
-  extend Search
+  ransack_alias :searchable, %w(email name).join('_or_')
 
   # Validation
   validates :name, :presence => true

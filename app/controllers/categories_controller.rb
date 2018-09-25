@@ -4,18 +4,7 @@ class CategoriesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Category.search(params[:search],'title')
-        @categories=results.page(params[:page])
-        @count=results.count      
-      }
-      # Using it to export excel file 
-      format.xls {
-        @categories=Category.all
-      }
-    end
+    backend_index(Category)
   end
 
   def new

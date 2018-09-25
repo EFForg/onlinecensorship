@@ -103,3 +103,5 @@ gem 'friendly_id', '~> 5.0'
 gem "select2-rails"
 
 gem 'simple_form', '~> 3.1'
+
+gem 'ransack', '~> 2.0'

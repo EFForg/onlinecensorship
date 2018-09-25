@@ -11,16 +11,14 @@ class QuestionUser < ApplicationRecord
   # change the id order
   default_scope { order("id DESC") }
 
-  # For use search method
-  extend Search
+  ransack_alias :searchable, :email
 
   def self.to_csv(options = {})
-	  CSV.generate(options) do |csv|
-	    csv << column_names
-	    all.each do |submission|
-	      csv << submission.attributes.values_at(*column_names)
-	    end
-	  end
-	end
-
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |submission|
+        csv << submission.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

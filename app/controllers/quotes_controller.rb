@@ -5,18 +5,7 @@ class QuotesController < ApplicationController
   layout 'backend'
 
   def index
-    respond_to do |format|
-      # Using it in the backEnd to allow the admin to show and navigate all the model data
-      format.html {
-        results=Quote.search(params[:search],'author','quote')
-        @quotes=results.page(params[:page])
-        @count=results.count
-      }
-      # Using it to export excel file
-      format.xls {
-        @quotes = Quote.all
-      }
-    end
+    backend_index(Quote)
   end
 
   def featured
