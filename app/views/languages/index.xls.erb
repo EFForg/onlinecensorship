@@ -4,7 +4,7 @@
     <th style="text-align:left; font-weight:bold;">Name</th>
   </tr>
 
-  <% @languages.each do |excel| %>
+  <% @collection.each do |excel| %>
     <tr>
       <td style="text-align:left;"><%= excel.created_at.to_date %></td>
       <td style="text-align:left;"><%= excel.name %></td>

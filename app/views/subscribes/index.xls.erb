@@ -5,7 +5,7 @@
     <th style="text-align:left; font-weight:bold;">Confirmed</th>
   </tr>
 
-  <% @subscribes.each do |excel| %>
+  <% @collection.each do |excel| %>
     <tr>
       <td style="text-aligalignn:left;"><%= excel.created_at.to_date %></td>
       <td style="text-:left;"><%= excel.email %></td>
