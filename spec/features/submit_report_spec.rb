@@ -13,7 +13,7 @@ RSpec.feature 'Report submission' do
     fill_in :takedown_email, with: 'example@example.com'
     fill_in :takedown_details, with: 'message'
     click_on 'submit your report'
-    expect(page).to have_content(/Success/)
+    expect(page).to have_content(/Thank you/)
   end
   it 'properly displays errors' do
     visit root_path

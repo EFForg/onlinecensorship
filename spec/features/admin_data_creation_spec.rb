@@ -8,10 +8,11 @@ RSpec.feature "Admin" do
   end
 
   it 'can create new stories' do
+    icon = FactoryBot.create(:icon)
     click_on 'Manage Stories'
     click_on 'New Story'
-    attach_file('Thumbnail', Rails.root + 'spec/fixtures/eff.jpg')
     fill_in 'Title', with: 'Test title'
+    choose option: icon.id
     fill_in 'Brief', with: 'brief story'
     fill_in 'Content', with: 'story content'
     click_on 'Create Story'

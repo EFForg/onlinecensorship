@@ -48,8 +48,4 @@ RSpec.feature "Public Navigation" do
     click_on 'News & Analysis'
     expect(page).not_to be_nil
   end
-
-  it 'can submit report' do
-    expect(page).to have_selector("a[href='mailto:oc-reports@eff.org']")
-  end
 end
