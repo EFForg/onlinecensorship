@@ -49,6 +49,7 @@ module Oc
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
         },
         s3_hostname: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
+        s3_region: ENV['AWS_REGION'],
         url: ':s3_domain_url'
       }
     end
