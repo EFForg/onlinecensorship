@@ -6,6 +6,8 @@ class SubSection < ApplicationRecord
   ## Attachments Validation
   validates_attachment_content_type :icon, :content_type => /\Aimage\/.*\Z/
 
+  validates :title, :content, presence: true
+
   translates :title, :content
   attribute :title
   attribute :content
