@@ -4,7 +4,7 @@ class ContentManagementPagesController < ApplicationController
   layout 'backend', except: [:what_we_do ,:who_we_are , :appeal ,:privacy]
 
   def index
-    backend_index(ContentManagementPage)
+    @collection, @count, @query = backend_index(ContentManagementPage)
   end
 
   def new

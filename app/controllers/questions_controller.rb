@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   layout 'backend', except: [:submit, :ty]
 
   def index
-    backend_index(Question)
+    @collection, @count, @query = backend_index(Question)
   end
 
   def related_questions

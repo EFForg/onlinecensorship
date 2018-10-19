@@ -4,7 +4,7 @@ class ContactsTopicsController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(ContactsTopic)
+    @collection, @count, @query = backend_index(ContactsTopic)
   end
 
   def new

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   layout 'backend', except: [:index,:author,:show]
 
   def admin
-    backend_index(Post)
+    @collection, @count, @query = backend_index(Post)
   end
 
   def author

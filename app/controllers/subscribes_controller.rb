@@ -6,7 +6,7 @@ class SubscribesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Subscribe, translation: false)
+    @collection, @count, @query = backend_index(Subscribe, translation: false)
   end
 
   def create

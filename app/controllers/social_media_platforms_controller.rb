@@ -4,7 +4,7 @@ class SocialMediaPlatformsController < ApplicationController
   layout 'backend', except: [:submit_report ,:submit_report_show]
 
   def index
-    backend_index(SocialMediaPlatform)
+    @collection, @count, @query = backend_index(SocialMediaPlatform)
   end
 
   def new

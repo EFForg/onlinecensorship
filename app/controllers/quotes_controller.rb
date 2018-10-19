@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Quote)
+    @collection, @count, @query = backend_index(Quote)
   end
 
   def featured

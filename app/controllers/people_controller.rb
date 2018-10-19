@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Person)
+    @collection, @count, @query = backend_index(Person)
   end
 
   def new

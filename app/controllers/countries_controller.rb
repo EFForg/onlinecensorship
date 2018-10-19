@@ -4,7 +4,7 @@ class CountriesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Country)
+    @collection, @count, @query = backend_index(Country)
   end
 
   def new

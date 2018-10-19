@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   layout 'backend', except: [:new]
 
   def index
-    backend_index(Contact)
+    @collection, @count, @query  = backend_index(Contact)
     @unreplied_count = @collection.where(replied: false).count    
   end
 

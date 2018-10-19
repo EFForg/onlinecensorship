@@ -4,7 +4,7 @@ class FurtherReadsController < ApplicationController
   layout 'backend', except: [:index]
 
   def admin
-    backend_index(FurtherRead)
+    @collection, @count, @query = backend_index(FurtherRead)
   end
 
   def index
