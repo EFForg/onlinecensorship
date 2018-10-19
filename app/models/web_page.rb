@@ -6,6 +6,8 @@ class WebPage < ApplicationRecord
 
 	accepts_nested_attributes_for :sections, :reject_if => :all_blank, allow_destroy: true
 
+  validates :title, presence: true
+
   translates :title, :brief, :content
   attribute :title
   attribute :brief

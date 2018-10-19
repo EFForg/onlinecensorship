@@ -6,7 +6,7 @@ class Story < ApplicationRecord
   belongs_to :icon
 
   # Validation
-  validates :title,:brief, :presence => true
+  validates :title, :brief, :content, presence: true
 
   translates :title, :brief, :content
   attribute :title
