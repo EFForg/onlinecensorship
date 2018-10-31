@@ -176,7 +176,7 @@ GEM
       sprockets (> 2, < 4)
       tilt
     libv8 (3.16.14.19)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -198,7 +198,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (5.0.2)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     nprogress-rails (0.2.0.2)
     orm_adapter (0.5.0)
