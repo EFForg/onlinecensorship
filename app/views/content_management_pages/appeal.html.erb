@@ -50,7 +50,9 @@
         <% @appeal_pages.each_with_index do |p, index| %>
 
           <div id="<%= p.page %>" class="tab-pane fade <%= index == 0 ? 'in active' : '' %>">
-            <%= p.content.html_safe %>
+            <div class="appeal-content">
+              <%= p.content.html_safe %>
+            </div>
           </div>
 
         <% end %>
