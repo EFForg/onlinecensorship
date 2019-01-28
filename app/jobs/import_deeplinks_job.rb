@@ -23,6 +23,7 @@ class ImportDeeplinksJob < ApplicationJob
         intro: intro,
         link: update.link,
         publish_date: update.pubDate,
+        published: true,
         category: category
       )
     end
