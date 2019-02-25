@@ -3,7 +3,7 @@ require 'rss'
 
 RSpec.describe ImportDeeplinksJob, type: :job do
   it 'creates posts from items in an rss feed' do
-    FactoryBot.create(:category)
+    FactoryBot.create(:category, title: 'Analysis')
     xml = file_fixture("deeplinks.xml").read
     feed = RSS::Parser.parse(xml).items
     allow_any_instance_of(described_class).to \
