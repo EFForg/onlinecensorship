@@ -47,7 +47,7 @@ class ImportDeeplinksJob < ApplicationJob
   def feed
     @items ||= []
     return @items unless @items.empty?
-    open("https://www.eff.org/deeplinks.xml") do |rss|
+    open("https://www.eff.org/deeplinks.xml?field_tags_tid=11520") do |rss|
       @items = RSS::Parser.parse(rss).items
     end
     @items
