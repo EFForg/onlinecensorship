@@ -25,7 +25,7 @@ RSpec.feature 'Report submission' do
       expect(page).to have_content(/Thank you/)
       expect(Takedown.first.confirmed).to be false
       visit_confirmation_in_email
-      # expect(page).to have_content(/Confirmed/)
+      expect(page).to have_content(/Thank you for confirming/)
       expect(Takedown.first.confirmed).to be true
     end
   end
