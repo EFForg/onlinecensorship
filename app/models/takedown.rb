@@ -16,4 +16,16 @@ class Takedown < ApplicationRecord
   validates :platform,
     inclusion: { in: PLATFORMS, message: "%{value} is not a platform "\
                  "we accept reports for." }
+
+  before_save :create_token
+
+  def create_token
+    if token.blank?
+      self.token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
+  def self.confirm(token)
+    find_by(token: token).update_attribute(:confirmed, true)
+  end
 end

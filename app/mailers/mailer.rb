@@ -20,4 +20,8 @@ class Mailer < ActionMailer::Base
     mail(to: to, subject: "Verifying your email address").deliver
   end
 
+  def takedown_confirmation(takedown)
+    @takedown = takedown
+    mail(to: takedown.email, subject: "Verifying your email address")
+  end
 end
