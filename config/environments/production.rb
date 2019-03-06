@@ -82,7 +82,6 @@ Rails.application.configure do
 
   # For mailer
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: ENV["SMTP_DOMAIN"] }
   config.action_mailer.default_options = { from: ENV["SMTP_FROM"] }
 
   config.action_mailer.delivery_method = :smtp
