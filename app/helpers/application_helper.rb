@@ -87,19 +87,6 @@ module ApplicationHelper
     @registerd_questions=PagesQuestion.where(:page_id =>page_id);
   end
 
-  def piwiki_tracking_code(site_id, page_title)
-    <<-EOF
-      <div id="anon-stats" style="width:0; height:0;position:absolute;bottom:-20px">
-        <noscript>
-          <img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;action_name=#{page_title}" style="border:0" alt="" />
-        </noscript>
-        <script>
-          document.getElementById('anon-stats').innerHTML = '<img src="https://anon-stats.eff.org/piwik.php?idsite=#{site_id}&amp;rec=1&amp;urlref='+encodeURIComponent(document.referrer)+'&amp;action_name=#{page_title}" style="border:0" alt="" />';
-        </script>
-      </div>
-    EOF
-  end
-
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id

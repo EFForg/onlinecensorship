@@ -107,6 +107,7 @@
   <link href='/fonts/work_sans_font.css' rel='stylesheet' type='text/css'>
   <link href='/fonts/lora_font.css' rel='stylesheet' type='text/css'>
 
-  <%= piwiki_tracking_code(23, "#{controller_name}:#{action_name}").html_safe %>
+  <%= matomo_tracking_embed(action_name: "#{controller_name}:#{action_name}") %>
+
 </body>
 </html>
