@@ -35,7 +35,7 @@ $(document).ready(function(){
     var url = document.location.toString();
     if (url.match('#')) {
       $('.nav-pills a[href="#' + url.split('#')[1] + '"]').tab('show');
-    } 
+    }
 
     // Change hash for page-reload
     $('.nav-pills a').on('shown.bs.tab', function (e) {
@@ -64,10 +64,10 @@ $(document).ready(function(){
 
     });
   }
-  // 
+  //
 
   // select2
-  $(".select2").select2(); 
+  $(".select2").select2();
 
   // page scroll, header to minimize on scrolling
   if( $(window).width() > 991 && $(".main-header").length > 0 ) {
