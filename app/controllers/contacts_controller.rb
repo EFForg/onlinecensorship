@@ -32,10 +32,8 @@ class ContactsController < ApplicationController
       data="<br> <b> Name: </b>"+@contact.name.to_s+"<br> <b> Surname: </b>"+@contact.surname.to_s+"<br> <b> Email: </b>"+@contact.email.to_s+"<br> <b> Pgp Key: </b>"+@contact.pgp_key.to_s+"<br> <b> Contacts Topic: </b>"+@contact.contacts_topic.name.to_s+"<br> <b> Message: </b>"+@contact.message.to_s
       Mailer.notify(@contact.name,"contact us",data,"contact_us","[OC notification System] Contact")
       ##
-      render :nothing => true
-    else
-      render :nothing => true
     end
+    render json: {}
   end
 
   def destroy

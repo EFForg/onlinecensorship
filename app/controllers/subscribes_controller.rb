@@ -25,10 +25,8 @@ class SubscribesController < ApplicationController
       data="<br> <b> Email: </b>"+@subscribe.email.to_s
       Mailer.notify("","subscriber",data,"subscriber","[OC notification System] Subscription")
       ##
-      render :nothing => true
-    else
-      render :nothing => true
     end
+    render json: {}
   end
 
   # subscribe confirmation method using to confirm the user email

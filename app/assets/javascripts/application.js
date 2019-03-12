@@ -110,16 +110,19 @@ $(document).ready(function(){
   //   }
   // });
 
-  // submit message
-  $("#new_contact, #new_subscribe").submit(function(e){
+  // Handle footer subscription submit.
+  $(document).on('ajax:success', '#new_subscribe', function(e, r, xhr) {
     NProgress.start();
-    if($(this).hasClass("new_contact")) {
-      $(".contact-page .form-wrapper").hide();
-      $(".contact-page .form-confirmation").fadeIn(500);
-    } else {
-      $(".subscribe-form .form-wrapper").hide();
-      $(".subscribe-form .form-confirmation").fadeIn(500);
-    }
+    $(".subscribe-form .form-wrapper").hide();
+    $(".subscribe-form .form-confirmation").fadeIn(500);
+    NProgress.done();
+  });
+
+  // Handle contact form submit.
+  $(document).on('ajax:success', '#new_contact', function(e, r, xhr) {
+    NProgress.start();
+    $(".contact-page .form-wrapper").hide();
+    $(".contact-page .form-confirmation").fadeIn(500);
     NProgress.done();
   });
 
