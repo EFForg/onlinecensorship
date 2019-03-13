@@ -1,7 +1,5 @@
 class Mailer < ActionMailer::Base
 
-  default from: "info@onlinecensorship.org"
-
   # Using to send notifications to the administrations
   def notify(user,form,data,notification_kind,subject)
     @user=user
