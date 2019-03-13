@@ -13,8 +13,7 @@ class QuestionUsersController < ApplicationController
       }
 
       format.csv {
-        @submissions = QuestionUser.all
-        send_data @submissions.to_csv
+        send_data QuestionUser.to_csv
       }
 
       # Using it to export excel file

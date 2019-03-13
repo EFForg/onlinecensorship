@@ -42,6 +42,11 @@ class ApplicationController < ActionController::Base
       format.xls {
         @collection = model_class.all
       }
+      if model_class.respond_to? :to_csv
+        format.csv {
+          send_data model_class.to_csv
+        }
+      end
     end
   end
 end
