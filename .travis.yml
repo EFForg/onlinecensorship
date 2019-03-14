@@ -1,0 +1,18 @@
+language: ruby
+cache:
+  bundler: true
+rvm:
+  - 2.5.1
+services:
+  - mysql
+env:
+  - DB_HOST=localhost
+  - DB_USERNAME=travis
+before_install:
+  - gem install bundler
+install:
+  - bundle install --path vendor/bundle
+before_script:
+  - mysql -e 'CREATE DATABASE oc_test;'
+script:
+  - bundle exec rspec
