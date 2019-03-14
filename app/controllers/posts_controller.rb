@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
       # using it in the backEnd and in the frontEnd posts page
       format.any(:js, :html) {
-        @posts = Post.where(:published=>true).order("id DESC")
+        @posts = Post.where(:published=>true).order("publish_date DESC")
         # featured post
         @featured_post = @posts.where(:featured=>true).first
 
