@@ -2,7 +2,7 @@ language: ruby
 cache:
   bundler: true
 rvm:
-  - 2.5.1
+  - 2.5.3
 services:
   - mysql
 env:
