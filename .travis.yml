@@ -14,4 +14,4 @@ install:
 before_script:
   - mysql -e 'CREATE DATABASE oc_test;'
 script:
-  - bundle exec rspec
+  - xvfb run bundle exec rspec
