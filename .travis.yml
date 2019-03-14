@@ -6,8 +6,7 @@ rvm:
 services:
   - mysql
 env:
-  - DB_HOST=localhost
-  - DB_USERNAME=travis
+  - DB_HOST=localhost DB_USERNAME=travis
 before_install:
   - gem install bundler
 install:
