@@ -44,7 +44,9 @@ class ApplicationController < ActionController::Base
       }
       if model_class.respond_to? :to_csv
         format.csv {
-          send_data model_class.to_csv
+          send_data model_class.to_csv,
+            filename: model_class.name.downcase.pluralize + "_" +
+              Date.current().to_s(:iso8601)
         }
       end
     end
