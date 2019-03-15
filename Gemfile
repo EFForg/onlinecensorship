@@ -1,8 +1,6 @@
 ruby '2.5.3'
 source 'https://rubygems.org'
 
-gem 'dotenv-rails', groups: [:development, :test]
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1'
 # Use mysql as the database for Active Record
