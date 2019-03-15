@@ -4,7 +4,7 @@
       <%=post.title %>
     <% end %>
   <% else %>
-    <%=link_to post,:title=>post.title, class: 'h3' do %>
+    <%=link_to post_path(post) ,:title=>post.title, class: 'h3' do %>
       <%=post.title %>
     <% end %>
   <% end %>
@@ -22,7 +22,9 @@
   <% end %>
 </div>
 <div class="h6"><%= l(post.publish_date, :format => :long, :locale => locale) %></div>
-<p class="post-brief"><%= post.intro.truncate(163) %></p>
+<% unless post.title.length > 80 %>
+  <p class="post-brief"><%= post.intro.truncate(163) %></p>
+<% end %>
 <hr>
 <div class="post-tags">
   <% if post.tags.present? %>

@@ -40,6 +40,7 @@ class StoriesController < ApplicationController
     if @story.update(story_params)
       redirect_to admin_stories_url, notice: 'The story was successfully updated.'
     else
+      @icons = Icon.where(available: true)
       render :edit , notice: @story.errors
     end
   end
