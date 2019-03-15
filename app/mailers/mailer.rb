@@ -22,6 +22,6 @@ class Mailer < ActionMailer::Base
 
   def takedown_confirmation(takedown)
     @takedown = takedown
-    mail(to: takedown.email, subject: "Verifying your email address")
+    mail(to: takedown.email, subject: "Please confirm your report")
   end
 end

@@ -1,3 +1,7 @@
-Please confirm your email.
+Thank you for submitting your report through Onlinecensorship.org.
 
-<%= link_to "click here", confirm_takedowns_url(token: @takedown.token) %>
+Because reports may contain particularly sensitive information, such as racial or ethnic origin, political opinions, and religious or philosophical beliefs, we are asking you to confirm your consent for the <%= link_to "Electronic Frontier Foundation", "https://eff.org" %> to use this information, according to the <%= link_to "Privacy Policy", "https://www.eff.org/policy" %> to further the mission of OnlineCensorship.org, including gaining a fuller picture of how companies are enforcing their terms of service to regulate content online, engaging with companies on how they can improve their regulations and reporting mechanisms and processes and raise public awareness about the ways that social media companies regulate speech and how users are affected.
+
+EFF will separately ask your permission to share your report with with third parties, such as companies, policymakers and the public, or otherwise publicizing your case.
+
+To confirm your consent, please click this <%= link_to "confirmation link", confirm_takedowns_url(token: @takedown.token) %> or vist <%= confirm_takedowns_url(token: @takedown.token) %>.
