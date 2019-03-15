@@ -17,7 +17,7 @@ class SubscribesController < ApplicationController
       @subscribe.update_attributes(:confirmation_token => token)
       # Send confirmation email
       # subscribe_confirmation method need params [token,to email,domain url]
-      Mailer.subscribe_confirmation(token,@subscribe.email,root_url)
+      Mailer.subscribe_confirmation(token,@subscribe.email,root_url).deliver
       ##
       # Call notify mailer method to notify the admin,
       # which will send the email template located in views/mailer/notify.html.erb
