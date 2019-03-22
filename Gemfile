@@ -67,6 +67,9 @@ end
 # logging
 gem "sentry-raven"
 
+# analytics
+gem 'eff_matomo', '~> 0.2.3', require: 'matomo'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
