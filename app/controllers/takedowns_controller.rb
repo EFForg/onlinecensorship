@@ -1,5 +1,5 @@
 class TakedownsController < ApplicationController
-  PUBLIC = %i(new create submitted).freeze
+  PUBLIC = %i(new create confirm submitted).freeze
   before_action :set_takedown, only: %i(show destroy)
   before_action :authenticate_user! , except: PUBLIC
   layout 'backend', except: PUBLIC
@@ -18,6 +18,7 @@ class TakedownsController < ApplicationController
   def create
     @takedown = Takedown.new(takedown_params)
     if @takedown.save
+      Mailer.takedown_confirmation(@takedown).deliver if @takedown.email.present?
       redirect_to submitted_takedowns_path
     else
       @appealed = @takedown.appealed
@@ -25,6 +26,10 @@ class TakedownsController < ApplicationController
       flash[:error] = 'Unable to submit takedown'
       render action: 'new'
     end
+  end
+
+  def confirm
+    Takedown.confirm(params[:token])
   end
 
   def destroy

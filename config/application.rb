@@ -54,5 +54,10 @@ module Oc
       }
     end
 
+    config.action_mailer.default_url_options = {
+      host: ENV["SERVER_HOST"],
+      port: ENV["SERVER_PORT"],
+      protocol: ENV["SERVER_PROTOCOL"]
+    }
   end
 end

@@ -30,6 +30,7 @@
           <th>Appealed?</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Email confirmed?</th>
           <th>Description</th>
           <th></th>
           <th></th>
@@ -47,9 +48,10 @@
               <td><%= takedown.created_at.strftime("%d/%m/%y") %></td>
               <td><%= takedown.platform.capitalize %></td>
               <td><%= takedown.reason %></td>
-              <td><%= takedown.appealed ? 'Yes' : 'No' %></td>
+              <td><%= takedown.appealed ? "Yes" : "No" %></td>
               <td><%= takedown.name %></td>
               <td><%= takedown.email %></td>
+              <td><%= takedown.confirmed ? "Yes" : "No" %></td>
               <td><%= truncate(takedown.details, length: 50) %></td>
               <td align="center">  <%= link_to 'View', takedown_path(takedown), class: 'btn' %>
               <td class="icon-control">

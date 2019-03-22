@@ -17,7 +17,11 @@ class Mailer < ActionMailer::Base
   def subscribe_confirmation(token,to,domain)
     @token=token
     @domain=domain
-    mail(to: to, subject: "Verifying your email address").deliver
+    mail(to: to, subject: "Verifying your email address")
   end
 
+  def takedown_confirmation(takedown)
+    @takedown = takedown
+    mail(to: takedown.email, subject: "Please confirm your report")
+  end
 end

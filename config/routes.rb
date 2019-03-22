@@ -137,7 +137,10 @@ Rails.application.routes.draw do
     resources :pages
 
     resources :takedowns, only: %i(new create index destroy show) do
-      get 'submitted', on: :collection
+      collection do
+        get "confirm/:token" => "takedowns#confirm", as: "confirm"
+        get "submitted"
+      end
     end
   end
 
