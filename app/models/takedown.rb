@@ -1,6 +1,8 @@
 class Takedown < ApplicationRecord
   PLATFORMS = %w(facebook twitter youtube instagram tumblr flickr google+ other)
 
+  include CSVing
+
   ransack_alias :searchable,
                 translated_search(%i(platform details reason email name))
 

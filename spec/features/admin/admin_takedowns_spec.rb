@@ -1,18 +1,29 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Admin takedowns" do
-  before { log_in_admin }
-  it 'can view table' do
-    takedown = FactoryBot.create(:takedown)
-    click_on 'Takedown Reports'
-    within('table') do
-      expect(page).to have_content(takedown.name)
+  let!(:takedown) { FactoryBot.create(:takedown, details: "TEST MESSAGE") }
+  before {
+    log_in_admin
+    visit takedowns_path
+  }
+
+  describe "Index" do
+    it "displays a table" do
+      within("table") do
+        expect(page).to have_content(takedown.name)
+      end
+    end
+
+    it "supports CSV download" do
+      click_on "CSV"
+      expect(page).to have_content takedown.name
     end
   end
-  it 'can view an individual takedown' do
-    takedown = FactoryBot.create(:takedown, details: 'TEST MESSAGE')
-    click_on 'Takedown Reports'
-    click_on 'View'
-    expect(page).to have_content(takedown.details)
+
+  describe "Show" do
+    it "can view an individual takedown" do
+      click_on "View"
+      expect(page).to have_content(takedown.details)
+    end
   end
 end
