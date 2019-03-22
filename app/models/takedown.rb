@@ -9,7 +9,7 @@ class Takedown < ApplicationRecord
   has_many :images
   accepts_nested_attributes_for :images
 
-  validates_presence_of %i(platform details reason),
+  validates_presence_of %i(platform details reason email),
                         message: 'This field is required'
 
   validates :appealed, inclusion: { in: [true, false], 
