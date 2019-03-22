@@ -5,6 +5,10 @@
       <i class="fa fa-file-text-o"></i>
       Takedown Reports
       <%= render 'home/admin_search' %>
+      <div class="export">
+        <i class="fa fa-file-excel-o"></i> Download Submissions
+        <%= link_to "CSV", takedowns_path(format: "csv") %>
+      </div>
       <!-- TODO: excel export
       <br>
       <div class="sub-links col-md-12">

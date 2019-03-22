@@ -3,6 +3,7 @@
 # The users can answer the questions and we store the users data in this model
 #
 class QuestionUser < ApplicationRecord
+  include CSVing
 
   ## DB relations
   has_many :question_user_submissions
@@ -12,13 +13,4 @@ class QuestionUser < ApplicationRecord
   default_scope { order("id DESC") }
 
   ransack_alias :searchable, :email
-
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |submission|
-        csv << submission.attributes.values_at(*column_names)
-      end
-    end
-  end
 end
