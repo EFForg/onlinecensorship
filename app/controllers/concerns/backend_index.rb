@@ -18,7 +18,6 @@ module BackendIndex
                   filename: model_class.name.downcase.pluralize + "_" +
                             Date.current().to_s(:iso8601))
       end
-
     end
   end
 
