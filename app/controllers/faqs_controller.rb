@@ -6,6 +6,7 @@ class FaqsController < ApplicationController
 
   def admin
     # this is the admin backend index
+    @url = admin_faqs_path
     @collection, @count, @query = backend_index(Faq)
   end
 

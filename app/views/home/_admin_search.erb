@@ -5,7 +5,7 @@
   </div>
 <% else %>
   <div class="pull-right search-wrapper col-md-6">
-    <%= search_form_for @query do |f| %>
+    <%= search_form_for @query, url: @url do |f| %>
       <%= f.search_field :searchable_cont %>
       <%= f.submit %>
     <% end %>
