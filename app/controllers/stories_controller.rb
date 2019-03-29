@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   layout 'backend', except: [:show]
 
   def index
-    backend_index(Story)
+    @collection, @count, @query = backend_index(Story)
   end
 
   def publish

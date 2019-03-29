@@ -4,7 +4,7 @@ class PostsThemesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(PostsTheme)
+    @collection, @count, @query = backend_index(PostsTheme)
   end
 
   def new

@@ -4,7 +4,7 @@ class LanguagesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Language)
+    @collection, @count, @query = backend_index(Language)
   end
 
   def new

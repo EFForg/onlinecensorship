@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Notification, translation: false)
+    @collection, @count, @query = backend_index(Notification, translation: false)
   end
 
   def new

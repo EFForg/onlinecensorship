@@ -31,12 +31,12 @@
       </thead>
 
       <tbody>
-        <% if @question_users.blank? %>
+        <% if @collection.blank? %>
           <tr>
             <td colspan="100%" align="center" class="empty"><%= t('empty_table') %></td>
           </tr>
         <% else %>
-           <% @question_users.each do |question_user| %>
+           <% @collection.each do |question_user| %>
             <tr class="show-image">
               <td>
                 <%= question_user.id %>
@@ -70,7 +70,7 @@
           <% end %>
             <tfoot>
               <tr>
-                <th colspan="100%"><%= paginate @question_users %></th>
+                <th colspan="100%"><%= paginate @collection %></th>
               </tr>
             </tfoot>
           <% end %>

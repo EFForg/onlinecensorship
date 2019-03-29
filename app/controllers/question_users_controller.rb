@@ -6,10 +6,8 @@ class QuestionUsersController < ApplicationController
     respond_to do |format|
       # Using it in the backEnd to allow the admin to show and navigate all the model data
       format.html {
-        @query = QuestionUser.ransack(params[:q])
-        @question_users = @query.result(distinct: true)
-        @count = @question_users.count
-        @question_users = @question_users.page(params[:page])
+        @collection, @count, @query = backend_index(QuestionUser,
+                                                    translation: false)
       }
 
       format.csv {

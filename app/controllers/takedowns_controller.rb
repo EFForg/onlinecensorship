@@ -5,7 +5,7 @@ class TakedownsController < ApplicationController
   layout 'backend', except: PUBLIC
 
   def index
-    backend_index(Takedown, translation: false)
+    @collection, @count, @query = backend_index(Takedown, translation: false)
   end
 
   def show; end

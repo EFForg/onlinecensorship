@@ -4,6 +4,6 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
   def self.translated_search(attrs)
-    attrs.join("_or_")
+    attrs.map { |a| "translations_#{a}" }.join("_or_")
   end
 end

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   layout 'backend'
 
   def index
-    backend_index(Category)
+    @collection, @count, @query = backend_index(Category)
   end
 
   def new
