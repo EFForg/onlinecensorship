@@ -27,5 +27,5 @@ class Person < ApplicationRecord
   attribute :bio
   attribute :role
 
-  ransack_alias :searchable, translated_search(%i(name bio role))
+  ransack_alias :searchable, translated_search_any(%i(name bio role))
 end

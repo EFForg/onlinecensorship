@@ -13,7 +13,7 @@ class Story < ApplicationRecord
   attribute :brief
   attribute :content
 
-  ransack_alias :searchable, translated_search(%i(title brief content))
+  ransack_alias :searchable, translated_search_any(%i(title brief content))
 
   def photo(*args)
     icon.file(*args)

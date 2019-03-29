@@ -3,7 +3,7 @@
 # The admin can add questions and answers for the users 
 #
 class Faq < ApplicationRecord
-  ransack_alias :searchable, translated_search(%i(question answer))
+  ransack_alias :searchable, translated_search_any(%i(question answer))
 
   # Validation
   validates :question, :answer, :presence => true
