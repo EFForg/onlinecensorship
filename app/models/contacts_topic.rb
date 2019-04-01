@@ -7,7 +7,7 @@ class ContactsTopic < ApplicationRecord
   ## DB relations
   has_many :contacts
 
-  ransack_alias :searchable, translated_search(%i(name))
+  ransack_alias :searchable, translated_search_any(%i(name))
 
   # Validation
   validates :name, :presence => true

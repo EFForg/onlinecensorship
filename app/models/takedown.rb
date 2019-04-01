@@ -4,7 +4,7 @@ class Takedown < ApplicationRecord
   include CSVing
 
   ransack_alias :searchable,
-                translated_search(%i(platform details reason email name))
+                search_any(%i(platform details reason email name))
 
   has_many :images
   accepts_nested_attributes_for :images

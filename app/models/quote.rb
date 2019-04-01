@@ -8,7 +8,7 @@ class Quote < ApplicationRecord
   has_and_belongs_to_many :posts_themes, through: :quotes_posts_themes
   has_and_belongs_to_many :social_media_platforms, through: :quotes_social_media_platforms
 
-  ransack_alias :searchable, translated_search(%i(author quote))
+  ransack_alias :searchable, translated_search_any(%i(author quote))
 
   # change the id order
   default_scope { order("id DESC") }

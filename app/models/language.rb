@@ -8,7 +8,7 @@ class Language < ApplicationRecord
   ## DB relations
   has_many :question_answers
 
-  ransack_alias :searchable, translated_search(%i(name))
+  ransack_alias :searchable, translated_search_any(%i(name))
 
   # Validation
   validates :name, :presence => true
