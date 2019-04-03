@@ -26,7 +26,9 @@ RUN apt-get update && apt-get install -y \
   gstreamer1.0-x \
   libssl-dev \
   libmagickwand-dev \
-  imagemagick
+  imagemagick \
+  && echo "*/15 * * * * su -s/bin/sh www-data -c \
+    'cd /opt/oc && bundle exec rake import_deeplinks' >>/proc/1/fd/1 2>&1" >>/etc/crontab
 
 COPY Gemfile* ./
 RUN bundle install
