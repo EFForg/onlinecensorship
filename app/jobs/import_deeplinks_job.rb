@@ -28,17 +28,16 @@ class ImportDeeplinksJob < ApplicationJob
         end
       end
 
-      post = Post.where(link: update.link)
-      post = post.empty? ? Post.new : post.first
-        post.update!(
-          title: update.title,
-          news_source: authors,
-          intro: intro,
-          description: body.to_html,
-          publish_date: update.pubDate,
-          published: true,
-          category: category
-        )
+      post = Post.find_or_initialize_by(link: update.link)
+      post.update!(
+        title: update.title,
+        news_source: authors,
+        intro: intro,
+        description: body.to_html,
+        publish_date: update.pubDate,
+        published: true,
+        category: category
+      )
     end
   end
 
