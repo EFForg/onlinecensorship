@@ -86,7 +86,7 @@ gem 'globalize', '~> 5.0'
 gem 'metamagic'
 
 # Manage authentication
-gem 'devise', '~> 4.4'
+gem 'devise', '~> 4.6'
 
 # Pagination gem
 gem 'kaminari'
