@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '< 0.5'
 gem 'rails_12factor'
@@ -81,7 +81,7 @@ gem 'aws-s3'
 gem 'aws-sdk-s3'
 
 # translation
-gem 'globalize', '~> 5.0'
+gem 'globalize', '~> 5.2.0'
 
 gem 'metamagic'
 
@@ -109,4 +109,4 @@ gem "select2-rails"
 
 gem 'simple_form', '~> 5.0'
 
-gem 'ransack', '~> 2.0'
+gem 'ransack', '~> 2.3.2'
