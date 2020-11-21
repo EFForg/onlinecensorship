@@ -58,7 +58,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara-webkit', '~> 1.15'
+  gem 'apparition'
   gem 'database_cleaner'
   gem 'simplecov', '~> 0.16'
   gem 'launchy'

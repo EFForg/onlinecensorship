@@ -10,7 +10,7 @@ abort('DATABASE_URL environment variable is set') if ENV['DATABASE_URL']
 
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'capybara/rails'
+require 'capybara/apparition'
 
 SUPPORT_PATH = %w(spec support ** *.rb).freeze
 
@@ -20,7 +20,7 @@ module Features
   # Capybara Config
   include Capybara::DSL
   Capybara.asset_host = 'http://0.0.0.0:3000'
-  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :apparition
 end
 
 RSpec.configure do |config|
