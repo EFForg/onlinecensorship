@@ -1,4 +1,4 @@
-ruby '2.5.3'
+ruby '2.7.2'
 source 'https://rubygems.org'
 
 gem 'dotenv-rails', groups: [:development, :test]
@@ -18,7 +18,7 @@ group :assets do
 end
 
 
-gem 'less-rails', '~> 2.8'
+gem 'less-rails', '~> 3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 gem 'twitter-bootstrap-rails'
@@ -29,8 +29,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', '~> 1.3' ,      group: :development
