@@ -72,8 +72,7 @@ gem 'eff_matomo', '~> 0.2.3', require: 'matomo'
 # gem 'debugger', group: [:development, :test]
 
 # Manage attachements images
-gem 'aws-sdk-v1'
-gem 'paperclip'
+gem 'kt-paperclip', '~> 6.3'
 gem 'rmagick'
 gem 'aws-s3'
 gem 'aws-sdk-s3'
