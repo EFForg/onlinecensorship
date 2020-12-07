@@ -50,10 +50,6 @@ GEM
     arel (9.0.0)
     aws-eventstream (1.0.1)
     aws-partitions (1.104.0)
-    aws-s3 (0.6.3)
-      builder
-      mime-types
-      xml-simple
     aws-sdk-core (3.27.0)
       aws-eventstream (~> 1.0)
       aws-partitions (~> 1.0)
@@ -350,7 +346,6 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xml-simple (1.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -359,8 +354,7 @@ PLATFORMS
 
 DEPENDENCIES
   apparition
-  aws-s3
-  aws-sdk-s3
+  aws-sdk-s3 (~> 1)
   better_errors
   binding_of_caller
   bourbon

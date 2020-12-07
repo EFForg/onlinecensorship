@@ -74,8 +74,7 @@ gem 'eff_matomo', '~> 0.2.3', require: 'matomo'
 # Manage attachements images
 gem 'kt-paperclip', '~> 6.3'
 gem 'rmagick'
-gem 'aws-s3'
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', '~> 1'
 
 # translation
 gem 'globalize', '~> 5.2.0'
