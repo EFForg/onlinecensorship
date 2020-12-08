@@ -17,7 +17,6 @@ group :assets do
   #gem 'turbo-sprockets-rails3' # faster asset compilation
 end
 
-
 gem 'less-rails', '~> 3.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
@@ -58,7 +57,7 @@ end
 group :test do
   gem 'apparition'
   gem 'database_cleaner'
-  gem 'simplecov', '~> 0.16'
+  gem 'simplecov', '~> 0.20'
   gem 'launchy'
 end
 
