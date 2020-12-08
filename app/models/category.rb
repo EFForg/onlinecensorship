@@ -13,6 +13,4 @@ class Category < ApplicationRecord
   validates :title,:color, :presence => true
 
   translates :title
-  attribute :title
-
 end

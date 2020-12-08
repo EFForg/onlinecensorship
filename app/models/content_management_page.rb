@@ -15,9 +15,6 @@ class ContentManagementPage < ApplicationRecord
   before_destroy :prevent, if: ->(p) { HARD_CODED_PAGES.include? p.page }
 
   translates :content, :brief, :page_title
-  attribute :content
-  attribute :brief
-  attribute :page_title
 
   private
 

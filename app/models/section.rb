@@ -6,6 +6,4 @@ class Section < ApplicationRecord
   validates :title, presence: true
 
   translates :title, :content
-  attribute :title
-  attribute :content
 end

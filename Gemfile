@@ -75,7 +75,7 @@ gem 'rmagick'
 gem 'aws-sdk-s3', '~> 1'
 
 # translation
-gem 'globalize', '~> 5.2.0'
+gem 'globalize', '~> 5'
 
 gem 'metamagic'
 

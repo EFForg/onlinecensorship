@@ -14,5 +14,4 @@ class Country < ApplicationRecord
   validates :name, :presence => true
 
   translates :name
-  attribute :name
 end
