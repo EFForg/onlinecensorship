@@ -102,13 +102,6 @@ GEM
       railties (>= 3.0)
     climate_control (0.2.0)
     coderay (1.1.2)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -364,7 +357,6 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   ckeditor_rails
-  coffee-rails (~> 4.2)
   database_cleaner
   devise (~> 4.7)
   dotenv-rails

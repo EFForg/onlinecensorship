@@ -12,7 +12,6 @@ gem 'figaro'
 
 group :assets do
   gem 'sass-rails', '~> 5.0'
-  gem 'coffee-rails', '~> 4.2'
   gem 'uglifier', '~> 4.1'
   #gem 'turbo-sprockets-rails3' # faster asset compilation
 end
