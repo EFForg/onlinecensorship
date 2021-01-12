@@ -1,4 +1,4 @@
-FROM ruby:2.5.3-slim
+FROM ruby:2.7-slim
 
 RUN mkdir -p /opt/oc /opt/oc/tmp
 WORKDIR /opt/oc
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
   curl \
   build-essential \
   default-libmysqlclient-dev \
-  mysql-client \
+  default-mysql-client \
   libfontconfig \
   nodejs \
   cron \
@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y \
   'cd /opt/oc && bundle exec rake import_deeplinks'" >>/etc/crontab
 
 COPY Gemfile* ./
+RUN gem install bundler:1.17.2
 RUN bundle install
 
 COPY . .

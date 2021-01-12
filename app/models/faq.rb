@@ -9,6 +9,4 @@ class Faq < ApplicationRecord
   validates :question, :answer, :presence => true
 
   translates :question, :answer
-  attribute :question
-  attribute :answer
 end

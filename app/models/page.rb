@@ -14,5 +14,4 @@ class Page < ApplicationRecord
   # Validation
   # validates :social_media_platform_id, :presence => true
   translates :message
-  attribute :message
 end

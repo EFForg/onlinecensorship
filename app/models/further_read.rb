@@ -9,7 +9,4 @@ class FurtherRead < ApplicationRecord
   validates :title, :category ,:author ,:link, :presence => true
 
   translates :title, :author, :written_in
-  attribute :title
-  attribute :author
-  attribute :written_in
 end
