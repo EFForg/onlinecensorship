@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2'
 gem 'mysql2', '< 0.5'
-gem 'spring', '~> 1.3' , group: :development
+gem 'spring', '~> 2' , group: :development
 gem 'puma', '~> 3.12'
 gem 'devise', '~> 4.7'
 gem 'friendly_id', '~> 5.0'
